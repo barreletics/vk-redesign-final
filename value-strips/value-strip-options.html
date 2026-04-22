@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Value Strip Options — 6 variants | VK Redesign Final</title>
+<title>Value Strip Options — 7 variants | VK Redesign Final</title>
 <meta name="description" content="6 value-strip variants side by side. Pick 1-2 keepers. Kill the rest.">
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -78,6 +78,15 @@ section.opt{padding:40px 32px;border-bottom:1px solid var(--hairline)}
 .v6 strong{display:block;font-size:13px;font-weight:600;margin-bottom:2px}
 .v6 small{font-size:11px;color:var(--mid-grey);display:block;line-height:1.5}
 
+/* Variant 7 — Credential bar (4-stat with big serif numbers) — from locked main prototype */
+.v7{background:var(--off-white);border-top:2px solid rgba(26,26,24,0.10);border-bottom:2px solid rgba(26,26,24,0.10)}
+.v7 .row{max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(4,1fr)}
+.v7 .item{padding:32px 16px;text-align:center;border-right:1px solid rgba(26,26,24,0.10)}
+.v7 .item:last-child{border-right:0}
+.v7 .num{font-family:var(--font-display);font-size:42px;font-weight:700;color:var(--near-black);line-height:1;padding-bottom:12px;border-bottom:1px solid rgba(26,26,24,0.10);margin-bottom:12px}
+.v7 .label{font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;color:var(--amber)}
+@media(max-width:780px){.v7 .row{grid-template-columns:repeat(2,1fr)}.v7 .item:nth-child(2){border-right:0}}
+
 @media(max-width:780px){.v1 .row,.v2 .row,.v3 .row,.v4 .row,.v6 .row{grid-template-columns:repeat(2,1fr)}}
 
 footer{background:var(--near-black);color:rgba(255,255,255,0.7);padding:36px 32px;text-align:center;font-size:13px}
@@ -87,7 +96,7 @@ footer a{color:var(--amber)}
 </style>
 </head>
 <body>
-<div class="topbar"><a href="../index.html" class="back">← Dashboard</a><span><strong>Value Strip Options</strong> — 6 variants. Pick 1-2 keepers, kill the rest.</span></div>
+<div class="topbar"><a href="../index.html" class="back">← Dashboard</a><span><strong>Value Strip Options</strong> — 7 variants. Pick 1-2 keepers, kill the rest.</span></div>
 
 <section class="hero">
   <div class="hero-inner">
@@ -147,8 +156,16 @@ footer a{color:var(--amber)}
   <div class="preview"><div class="code-note">.value-strip-boxed · 4-col cards · centered · thin border</div><div class="v6"><div class="row"><div class="item"><div class="ic">✓</div><strong>Free Shipping</strong><small>Orders over $99</small></div><div class="item"><div class="ic">★</div><strong>VK Warranty</strong><small>Every item covered</small></div><div class="item"><div class="ic">$</div><strong>0% Financing</strong><small>12 months available</small></div><div class="item"><div class="ic">⚙</div><strong>Hand-tested</strong><small>By VK technicians</small></div></div></div></div>
 </div></section>
 
+<section class="opt"><div class="opt-inner">
+  <div class="opt-head">
+    <div class="opt-meta"><h2>V7 — Credential bar (4-stat · big numbers)</h2><p class="when"><strong>Pulled from the locked main prototype (Sell or Trade page).</strong> Off-white bg, vertical dividers, 42px Playfair numbers above small amber labels. Strongest VK pattern by a mile — proven in production.</p></div>
+    <span class="tag rec">Recommended · landing pages</span>
+  </div>
+  <div class="preview"><div class="code-note">.value-strip-credential · off-white · 4-col · vertical dividers · big serif nums</div><div class="v7"><div class="row"><div class="item"><div class="num">30+ Years</div><div class="label">Buying Pro Audio</div></div><div class="item"><div class="num">24 Hr</div><div class="label">Offer Guarantee</div></div><div class="item"><div class="num">Same Day</div><div class="label">Trade Credit Applied</div></div><div class="item"><div class="num">We Pay</div><div class="label">All Shipping Costs</div></div></div></div></div>
+</div></section>
+
 <footer>
-  <p>Value Strip Options · 6 variants · <a href="../index.html">Back to Dashboard</a> · <a href="../section-buffet.html">Section Buffet</a></p>
+  <p>Value Strip Options · 7 variants · <a href="../index.html">Back to Dashboard</a> · <a href="../section-buffet.html">Section Buffet</a></p>
 </footer>
 </body>
 </html>

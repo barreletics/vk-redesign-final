@@ -143,6 +143,45 @@ section.cat{padding:56px 32px;border-bottom:1px solid var(--hairline)}
 .s-cta-form form{display:flex;gap:8px;max-width:520px;margin:0 auto;flex-wrap:wrap}
 .s-cta-form input{flex:1;min-width:220px;padding:12px 16px;border:1px solid var(--hairline);background:#fff;border-radius:3px;font-family:var(--font-body);font-size:14px}
 .s-cta-form button{background:var(--amber);color:#fff;border:0;padding:12px 24px;font-family:var(--font-body);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border-radius:3px;cursor:pointer}
+/* Category tile grid (from locked main prototype homepage) */
+.s-cat-grid{background:var(--warm-white);padding:48px 32px}
+.s-cat-grid .inner{max-width:1280px;margin:0 auto}
+.s-cat-grid .head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px}
+.s-cat-grid .head h3{font-family:var(--font-display);font-size:24px;font-weight:700}
+.s-cat-grid .head a{font-size:13px;color:var(--vk-red);font-weight:600}
+.s-cat-grid .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.s-cat-grid .tile{background:#fff;border:1px solid var(--hairline);border-radius:3px;overflow:hidden;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s}
+.s-cat-grid .tile:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.08)}
+.s-cat-grid .tile-img{height:140px;display:grid;place-items:center}
+.s-cat-grid .tile-img.dark{background:#1A1A18;color:rgba(255,255,255,0.5)}
+.s-cat-grid .tile-img.mid{background:#3A3A38;color:rgba(255,255,255,0.5)}
+.s-cat-grid .tile-img.light{background:#E8E4DE;color:rgba(26,26,24,0.5)}
+.s-cat-grid .tile-body{padding:14px 18px}
+.s-cat-grid .tile-name{font-family:var(--font-display);font-size:15px;font-weight:700;margin-bottom:2px}
+.s-cat-grid .tile-count{font-size:12px;color:var(--mid-grey)}
+@media(max-width:780px){.s-cat-grid .grid{grid-template-columns:repeat(2,1fr)}}
+/* Editorial 2x2 large image cards (from locked Open Box page) */
+.s-edit-2x2{background:#fff;padding:32px}
+.s-edit-2x2 .inner{max-width:1280px;margin:0 auto}
+.s-edit-2x2 .head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px}
+.s-edit-2x2 .head .meta .eye{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid-grey);margin-bottom:8px}
+.s-edit-2x2 .head h3{font-family:var(--font-display);font-size:28px;font-weight:700}
+.s-edit-2x2 .head a{font-size:13px;color:var(--near-black);font-weight:600}
+.s-edit-2x2 .grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.s-edit-2x2 .sq{cursor:pointer}
+.s-edit-2x2 .photo{background:var(--off-white);height:280px;position:relative}
+.s-edit-2x2 .badge{position:absolute;top:14px;left:14px;display:inline-flex;align-items:center;gap:6px;border-radius:2px;padding:4px 10px;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase}
+.s-edit-2x2 .badge.amber{background:var(--amber-bg);color:var(--amber)}
+.s-edit-2x2 .badge.amber .dot{width:6px;height:6px;border-radius:50%;background:var(--amber)}
+.s-edit-2x2 .badge.blue{background:#EEF4FF;color:#2563EB}
+.s-edit-2x2 .badge.blue .dot{width:6px;height:6px;border-radius:50%;background:#2563EB}
+.s-edit-2x2 .body{background:#fff;padding:18px 22px;display:flex;justify-content:space-between;align-items:start;border:1px solid var(--hairline);border-top:0}
+.s-edit-2x2 .body .cat{font-size:11px;color:var(--mid-grey);margin-bottom:3px}
+.s-edit-2x2 .body .name{font-family:var(--font-display);font-size:17px;font-weight:700}
+.s-edit-2x2 .body .price{font-family:var(--font-body);font-size:15px;font-weight:500}
+.s-edit-2x2 .body .strike{font-size:12px;color:var(--mid-grey);text-decoration:line-through;display:block}
+.s-edit-2x2 .shop{display:inline-block;font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--vk-red);margin-top:8px}
+@media(max-width:780px){.s-edit-2x2 .grid{grid-template-columns:1fr}}
 footer{background:var(--near-black);color:rgba(255,255,255,0.7);padding:36px 32px;text-align:center;font-size:13px}
 footer a{color:var(--amber)}
 .summary{background:var(--amber-bg);padding:18px 22px;margin-bottom:18px;border-radius:4px;border-left:3px solid var(--amber);font-size:13px}
@@ -163,7 +202,7 @@ footer a{color:var(--amber)}
 
 <nav class="toc">
   <span class="label">Categories:</span>
-  <a href="#heroes">Heroes</a><a href="#trust">Trust / Value</a><a href="#process">Process</a><a href="#grids">Card grids</a><a href="#quotes">Quotes</a><a href="#stats">Stats</a><a href="#forms">Form CTAs</a>
+  <a href="#heroes">Heroes</a><a href="#trust">Trust / Value</a><a href="#process">Process</a><a href="#grids">Card grids</a><a href="#quotes">Quotes</a><a href="#stats">Stats</a><a href="#forms">Form CTAs</a><a href="#cat-tiles">Category tiles</a><a href="#editorial">Editorial 2x2</a>
 </nav>
 
 <section class="cat" id="heroes">
@@ -299,6 +338,42 @@ footer a{color:var(--amber)}
     <div class="variant" data-id="cta-form">
       <div class="variant-head"><div><div class="variant-name">Email capture · centered <code>EDE8E2 bg · amber button</code></div><div class="variant-when">Newsletter, quote request, sign-up. Single canonical pattern.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
       <div class="preview"><div class="s-cta-form"><div class="inner"><div class="eye">Stay in touch</div><h2>Get drops, deals, and the occasional Hall of Fame deep-dive.</h2><p>Email only. No spam. Easy unsubscribe.</p><form><input type="email" placeholder="you@studio.com"><button type="button">Subscribe</button></form></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cat" id="cat-tiles">
+  <div class="cat-inner">
+    <div class="cat-head">
+      <div><div class="cat-eye">H · Category tile grid</div><h2 class="cat-h">Shop by Category — visual navigator</h2></div>
+      <p class="cat-sub">Pulled from the locked main prototype homepage. 4-col grid with hand-drawn SVG icons, name, product count. Drop on landing pages, About, or homepage.</p>
+    </div>
+    <div class="variant" data-id="cat-tiles">
+      <div class="variant-head"><div><div class="variant-name">4-up category tiles <code>dark + mid + light tiles · SVG icons · count</code></div><div class="variant-when">Visual category navigator. Insert on homepage, landing pages, after hero on PLP.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-cat-grid"><div class="inner"><div class="head"><h3>Shop by Category</h3><a href="#">All Categories →</a></div><div class="grid">
+        <a class="tile"><div class="tile-img dark"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"><rect x="22" y="5" width="16" height="38" rx="8" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" fill="none"/><circle cx="30" cy="24" r="5" fill="rgba(192,57,43,0.6)"/><line x1="30" y1="43" x2="30" y2="52" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><ellipse cx="30" cy="54" rx="10" ry="3" stroke="rgba(255,255,255,0.2)" fill="none"/></svg></div><div class="tile-body"><div class="tile-name">Microphones</div><div class="tile-count">843 products</div></div></a>
+        <a class="tile"><div class="tile-img mid"><svg width="70" height="50" viewBox="0 0 70 50" fill="none"><rect x="5" y="10" width="60" height="30" rx="4" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none"/><rect x="12" y="17" width="8" height="16" rx="2" fill="rgba(255,255,255,0.15)"/><rect x="24" y="17" width="8" height="16" rx="2" fill="rgba(255,255,255,0.15)"/><rect x="36" y="17" width="8" height="16" rx="2" fill="rgba(255,255,255,0.15)"/><rect x="48" y="17" width="8" height="16" rx="2" fill="rgba(192,57,43,0.5)"/></svg></div><div class="tile-body"><div class="tile-name">Outboard &amp; Processing</div><div class="tile-count">1,240 products</div></div></a>
+        <a class="tile"><div class="tile-img light"><svg width="80" height="50" viewBox="0 0 80 50" fill="none"><rect x="4" y="8" width="72" height="34" rx="3" stroke="#8C8C88" stroke-width="1.5" fill="none"/><rect x="4" y="8" width="72" height="10" rx="3" fill="#D8D4CE"/><line x1="4" y1="18" x2="76" y2="18" stroke="#C0BCBA" stroke-width="1"/><line x1="20" y1="18" x2="20" y2="42" stroke="#C0BCBA" stroke-width="0.75"/><line x1="36" y1="18" x2="36" y2="42" stroke="#C0BCBA" stroke-width="0.75"/><line x1="52" y1="18" x2="52" y2="42" stroke="#C0BCBA" stroke-width="0.75"/></svg></div><div class="tile-body"><div class="tile-name">Consoles &amp; Mixers</div><div class="tile-count">287 products</div></div></a>
+        <a class="tile"><div class="tile-img dark"><svg width="60" height="55" viewBox="0 0 60 55" fill="none"><rect x="8" y="5" width="44" height="32" rx="20" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none"/><circle cx="30" cy="21" r="8" stroke="rgba(255,255,255,0.3)" stroke-width="1" fill="none"/><circle cx="30" cy="21" r="3" fill="rgba(192,57,43,0.7)"/></svg></div><div class="tile-body"><div class="tile-name">Studio Monitoring</div><div class="tile-count">412 products</div></div></a>
+      </div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cat" id="editorial" style="background:var(--off-white)">
+  <div class="cat-inner">
+    <div class="cat-head">
+      <div><div class="cat-eye">I · Editorial 2x2 · Large image cards</div><h2 class="cat-h">Featured Finds — full-bleed photo squares</h2></div>
+      <p class="cat-sub">From the locked Open Box page. 2x2 grid of large 280px photo squares with corner condition badge, category, name, price + strikethrough. Best "insert anywhere" feature pattern.</p>
+    </div>
+    <div class="variant" data-id="editorial-2x2">
+      <div class="variant-head"><div><div class="variant-name">2x2 large image grid <code>full-bleed photos · condition badge · price</code></div><div class="variant-when">Featured products on PLP, Demo Deals, Open Box, brand spotlight pages. The proven pattern.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-edit-2x2"><div class="inner"><div class="head"><div class="meta"><div class="eye">Featured Finds</div><h3>Gear Worth Every Dollar.</h3></div><a href="#">View All Open Box →</a></div><div class="grid">
+        <div class="sq"><div class="photo"><span class="badge blue"><span class="dot"></span>Open Box</span></div><div class="body"><div><div class="cat">Outboard</div><div class="name">Neve 1073 Preamp</div><a class="shop">Shop Now →</a></div><div style="text-align:right"><div class="price">$2,400</div><span class="strike">$3,199</span></div></div></div>
+        <div class="sq"><div class="photo"><span class="badge amber"><span class="dot"></span>B-Stock</span></div><div class="body"><div><div class="cat">Microphones</div><div class="name">Neumann U87 Ai</div><a class="shop">Shop Now →</a></div><div style="text-align:right"><div class="price">$2,950</div><span class="strike">$3,599</span></div></div></div>
+        <div class="sq"><div class="photo"><span class="badge blue"><span class="dot"></span>Open Box</span></div><div class="body"><div><div class="cat">Interfaces</div><div class="name">UA Apollo x8</div><a class="shop">Shop Now →</a></div><div style="text-align:right"><div class="price">$1,699</div><span class="strike">$1,999</span></div></div></div>
+        <div class="sq"><div class="photo"><span class="badge amber"><span class="dot"></span>Floor Demo</span></div><div class="body"><div><div class="cat">Studio Monitors</div><div class="name">Genelec 8351B (Pair)</div><a class="shop">Shop Now →</a></div><div style="text-align:right"><div class="price">$3,800</div><span class="strike">$5,198</span></div></div></div>
+      </div></div></div></div>
     </div>
   </div>
 </section>
