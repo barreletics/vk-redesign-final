@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Section Buffet — Pick what stays | VK Redesign Final</title>
+<meta name="description" content="Every body section in one page. Mark Keep / Kill / Maybe with the team. Round 2 deletes the losers.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--vk-red:#C0392B;--amber:#D4860A;--amber-bg:#F5E6C8;--near-black:#1A1A18;--warm-white:#FDFCFB;--off-white:#F7F5F2;--mid-grey:#6B6B68;--hairline:rgba(26,26,24,0.08);--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',sans-serif;--keep:#2E7D32;--maybe:#D4860A;--kill:#C0392B}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--warm-white);color:var(--near-black);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.topbar{background:var(--near-black);color:#fff;padding:10px 24px;font-size:12px;display:flex;align-items:center;gap:14px}
+.topbar .back{background:var(--vk-red);color:#fff;padding:7px 14px;border-radius:3px;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase}
+.topbar strong{color:#fff;font-weight:600}
+.hero{background:#EDE8E2;padding:56px 32px 48px}
+.hero-inner{max-width:1100px;margin:0 auto}
+.hero .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:18px}
+.hero h1{font-family:var(--font-display);font-size:42px;font-weight:600;line-height:1.05;letter-spacing:-0.01em;margin:0 0 18px;max-width:880px}
+.hero p{font-size:16px;color:var(--near-black);max-width:780px;line-height:1.6;margin-bottom:8px}
+.toc{background:#fff;border-bottom:1px solid var(--hairline);padding:14px 32px;position:sticky;top:0;z-index:50;display:flex;gap:20px;flex-wrap:wrap;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:var(--mid-grey)}
+.toc a{padding:6px 0;border-bottom:2px solid transparent}
+.toc a:hover{color:var(--near-black);border-bottom-color:var(--amber)}
+.toc .label{color:rgba(26,26,24,0.35)}
+section.cat{padding:56px 32px;border-bottom:1px solid var(--hairline)}
+.cat-inner{max-width:1280px;margin:0 auto}
+.cat-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:30px;padding-bottom:14px;border-bottom:2px solid var(--near-black);flex-wrap:wrap;gap:14px}
+.cat-eye{font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+.cat-h{font-family:var(--font-display);font-size:30px;font-weight:600;line-height:1.15}
+.cat-sub{font-size:13px;color:var(--mid-grey);max-width:520px;line-height:1.6}
+.variant{background:#fff;border:1px solid var(--hairline);border-radius:4px;margin-bottom:24px;overflow:hidden}
+.variant-head{background:var(--off-white);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-bottom:1px solid var(--hairline)}
+.variant-name{font-size:13px;font-weight:600}
+.variant-name code{background:rgba(26,26,24,0.06);padding:2px 6px;border-radius:2px;font-size:11px;font-family:monospace;margin-left:8px;color:var(--mid-grey)}
+.variant-when{font-size:12px;color:var(--mid-grey);margin-top:4px}
+.markers{display:flex;gap:6px}
+.mark{font-size:11px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;padding:5px 10px;border-radius:3px;border:1px solid;cursor:pointer;background:#fff;font-family:var(--font-body)}
+.mark.keep{color:var(--keep);border-color:var(--keep)}
+.mark.maybe{color:var(--maybe);border-color:var(--maybe)}
+.mark.kill{color:var(--kill);border-color:var(--kill)}
+.mark.active.keep{background:var(--keep);color:#fff}
+.mark.active.maybe{background:var(--maybe);color:#fff}
+.mark.active.kill{background:var(--kill);color:#fff}
+.preview{padding:0;background:var(--warm-white)}
+.s-hero-light{background:#EDE8E2;padding:56px 32px}
+.s-hero-light .inner{max-width:1080px;margin:0 auto}
+.s-hero-light .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.s-hero-light h1{font-family:var(--font-display);font-size:44px;font-weight:600;line-height:1.05;margin-bottom:14px}
+.s-hero-light p{font-size:16px;color:var(--near-black);max-width:680px}
+.s-hero-dark{background:#1A1A18;color:#fff}
+.s-hero-dark .eye{color:var(--amber)}
+.s-hero-dark h1{color:#fff}
+.s-hero-dark p{color:rgba(255,255,255,0.7)}
+.s-hero-split{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#1A1A18;color:#fff}
+.s-hero-split .text{padding:48px 32px}
+.s-hero-split .photo{background:linear-gradient(135deg,#444,#222);min-height:320px}
+@media(max-width:780px){.s-hero-split{grid-template-columns:1fr}}
+.s-trust-plain{background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);padding:24px 32px}
+.s-trust-plain .inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.s-trust-plain .item{font-size:12px;color:var(--near-black);font-weight:500}
+.s-trust-icon{background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);padding:28px 32px}
+.s-trust-icon .inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.s-trust-icon .item{display:flex;gap:12px;align-items:flex-start}
+.s-trust-icon .item .ic{width:32px;height:32px;background:var(--amber-bg);border-radius:50%;display:grid;place-items:center;color:var(--amber);font-weight:700;font-size:14px;flex-shrink:0}
+.s-trust-icon .item .meta strong{display:block;font-size:13px;font-weight:600;margin-bottom:2px}
+.s-trust-icon .item .meta small{font-size:11px;color:var(--mid-grey)}
+.s-trust-amber{background:var(--amber-bg);padding:28px 32px}
+.s-trust-amber .inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.s-trust-amber .item{display:flex;gap:12px;align-items:flex-start}
+.s-trust-amber .item .num{width:34px;height:34px;background:var(--amber);color:#fff;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:14px;flex-shrink:0;font-family:var(--font-display)}
+.s-trust-amber .item strong{display:block;font-size:13px;font-weight:600;margin-bottom:2px}
+.s-trust-amber .item small{font-size:11px;color:var(--mid-grey)}
+.s-trust-pill{background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);padding:18px 32px}
+.s-trust-pill .inner{max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.s-trust-pill .pill{background:var(--off-white);padding:8px 16px;border-radius:30px;font-size:12px;font-weight:500;border:1px solid var(--hairline)}
+.s-trust-pill .pill::before{content:"\2713 ";color:var(--amber);font-weight:700}
+.s-trust-dark{background:#1A1A18;color:#fff;padding:32px}
+.s-trust-dark .inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.s-trust-dark .item strong{display:block;font-family:var(--font-display);font-size:24px;color:var(--amber);margin-bottom:4px}
+.s-trust-dark .item small{font-size:11px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.10em}
+@media(max-width:780px){.s-trust-plain .inner,.s-trust-icon .inner,.s-trust-amber .inner,.s-trust-dark .inner{grid-template-columns:repeat(2,1fr)}}
+.s-process-3step{background:#fff;padding:48px 32px}
+.s-process-3step .inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.s-process-3step .step .n{font-family:var(--font-display);font-size:48px;color:var(--amber);font-weight:600;line-height:1;margin-bottom:8px}
+.s-process-3step .step h4{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:6px}
+.s-process-3step .step p{font-size:13px;color:var(--mid-grey)}
+.s-process-amber{background:var(--amber-bg);padding:48px 32px}
+.s-process-amber .inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.s-process-amber .step{display:flex;gap:14px;align-items:flex-start}
+.s-process-amber .num{width:36px;height:36px;background:var(--amber);color:#fff;border-radius:50%;display:grid;place-items:center;font-weight:700;flex-shrink:0;font-family:var(--font-display)}
+.s-process-amber h4{font-size:14px;font-weight:600;margin-bottom:4px}
+.s-process-amber p{font-size:13px;color:rgba(26,26,24,0.7)}
+@media(max-width:780px){.s-process-3step .inner,.s-process-amber .inner{grid-template-columns:1fr}}
+.s-grid-3up{background:var(--off-white);padding:48px 32px}
+.s-grid-3up .inner{max-width:1080px;margin:0 auto}
+.s-grid-3up .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.s-grid-3up .card{background:#fff;border:1px solid var(--hairline);border-radius:4px;overflow:hidden}
+.s-grid-3up .photo{background:linear-gradient(135deg,#ddd,#bbb);height:160px}
+.s-grid-3up .meta{padding:14px}
+.s-grid-3up .meta strong{display:block;font-family:var(--font-display);font-size:16px;font-weight:600;margin-bottom:4px}
+.s-grid-3up .meta small{font-size:12px;color:var(--mid-grey)}
+.s-grid-2up{background:#fff;padding:48px 32px}
+.s-grid-2up .inner{max-width:1080px;margin:0 auto}
+.s-grid-2up .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.s-grid-2up .card{background:var(--off-white);border-radius:4px;overflow:hidden}
+.s-grid-2up .photo{background:linear-gradient(135deg,#ccc,#999);height:240px}
+.s-grid-2up .meta{padding:18px}
+.s-grid-2up .meta strong{display:block;font-family:var(--font-display);font-size:20px;margin-bottom:6px}
+.s-grid-2up .meta p{font-size:13px;color:var(--mid-grey)}
+.s-grid-4up{background:var(--off-white);padding:48px 32px}
+.s-grid-4up .inner{max-width:1080px;margin:0 auto}
+.s-grid-4up .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.s-grid-4up .card{background:#fff;border:1px solid var(--hairline);border-radius:4px;padding:14px}
+.s-grid-4up .photo{background:linear-gradient(135deg,#ddd,#bbb);height:120px;margin-bottom:10px;border-radius:2px}
+.s-grid-4up strong{display:block;font-size:13px;font-weight:600;margin-bottom:2px}
+.s-grid-4up small{font-size:11px;color:var(--mid-grey)}
+@media(max-width:780px){.s-grid-3up .grid{grid-template-columns:1fr}.s-grid-2up .grid{grid-template-columns:1fr}.s-grid-4up .grid{grid-template-columns:repeat(2,1fr)}}
+.s-quote-amber{background:var(--off-white);padding:48px 32px;border-left:4px solid var(--amber)}
+.s-quote-amber .inner{max-width:880px;margin:0 auto}
+.s-quote-amber blockquote{font-family:var(--font-display);font-size:24px;line-height:1.4;color:var(--near-black);margin-bottom:14px;font-style:italic}
+.s-quote-amber cite{font-size:13px;color:var(--mid-grey);font-style:normal;font-weight:500}
+.s-quote-dark{background:#1A1A18;color:#fff;padding:48px 32px}
+.s-quote-dark .inner{max-width:880px;margin:0 auto;text-align:center}
+.s-quote-dark blockquote{font-family:var(--font-display);font-size:28px;line-height:1.4;margin-bottom:18px}
+.s-quote-dark cite{font-size:12px;color:var(--amber);text-transform:uppercase;letter-spacing:0.16em;font-style:normal;font-weight:600}
+.s-stats{background:#fff;padding:40px 32px;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.s-stats .inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.s-stats .num{font-family:var(--font-display);font-size:42px;font-weight:600;color:var(--near-black);line-height:1;margin-bottom:4px}
+.s-stats .label{font-size:11px;color:var(--mid-grey);text-transform:uppercase;letter-spacing:0.16em;font-weight:600}
+.s-stats-dark{background:#1A1A18;color:#fff;padding:40px 32px}
+.s-stats-dark .inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.s-stats-dark .num{font-family:var(--font-display);font-size:48px;font-weight:600;color:var(--amber);line-height:1;margin-bottom:4px}
+.s-stats-dark .label{font-size:11px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.16em}
+@media(max-width:780px){.s-stats .inner,.s-stats-dark .inner{grid-template-columns:repeat(2,1fr)}}
+.s-cta-form{background:#EDE8E2;padding:56px 32px}
+.s-cta-form .inner{max-width:780px;margin:0 auto;text-align:center}
+.s-cta-form .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.s-cta-form h2{font-family:var(--font-display);font-size:32px;font-weight:600;margin-bottom:12px}
+.s-cta-form p{color:var(--mid-grey);margin-bottom:22px}
+.s-cta-form form{display:flex;gap:8px;max-width:520px;margin:0 auto;flex-wrap:wrap}
+.s-cta-form input{flex:1;min-width:220px;padding:12px 16px;border:1px solid var(--hairline);background:#fff;border-radius:3px;font-family:var(--font-body);font-size:14px}
+.s-cta-form button{background:var(--amber);color:#fff;border:0;padding:12px 24px;font-family:var(--font-body);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border-radius:3px;cursor:pointer}
+footer{background:var(--near-black);color:rgba(255,255,255,0.7);padding:36px 32px;text-align:center;font-size:13px}
+footer a{color:var(--amber)}
+.summary{background:var(--amber-bg);padding:18px 22px;margin-bottom:18px;border-radius:4px;border-left:3px solid var(--amber);font-size:13px}
+.summary strong{font-weight:600}
+</style>
+</head>
+<body>
+<div class="topbar"><a href="index.html" class="back">← Dashboard</a><span><strong>Section Buffet</strong> — every body section in one page. Mark Keep / Kill / Maybe with the team. Click marker buttons (saves to your browser).</span></div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eye">Decision tool · Buffet style</div>
+    <h1>Section Buffet — pick what stays.</h1>
+    <p>Walk this page with the team. Click <strong style="color:#2E7D32">KEEP</strong> on winners, <strong style="color:#D4860A">MAYBE</strong> on undecided, <strong style="color:#C0392B">KILL</strong> on losers. Round 2 deletes everything marked KILL and refines the keepers.</p>
+    <p style="font-size:13px;color:var(--mid-grey)">Sample content shown for context. Each variant is functional HTML you can copy into a page.</p>
+  </div>
+</section>
+
+<nav class="toc">
+  <span class="label">Categories:</span>
+  <a href="#heroes">Heroes</a><a href="#trust">Trust / Value</a><a href="#process">Process</a><a href="#grids">Card grids</a><a href="#quotes">Quotes</a><a href="#stats">Stats</a><a href="#forms">Form CTAs</a>
+</nav>
+
+<section class="cat" id="heroes">
+  <div class="cat-inner">
+    <div class="cat-head">
+      <div><div class="cat-eye">A · Heroes</div><h2 class="cat-h">3 hero variants</h2></div>
+      <p class="cat-sub">Light is the default for secondary pages. Dark only when the page is meant to feel premium / commerce-heavy.</p>
+    </div>
+    <div class="variant" data-id="hero-light">
+      <div class="variant-head"><div><div class="variant-name">Light hero <code>EDE8E2 bg · amber eye · 44px H1</code></div><div class="variant-when">Default for every secondary page. Always start here.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-hero-light"><div class="inner"><div class="eye">Eyebrow label</div><h1>Headline that does the heavy lifting</h1><p>Lede paragraph below H1. Sets context, makes the next click obvious.</p></div></div></div>
+    </div>
+    <div class="variant" data-id="hero-dark">
+      <div class="variant-head"><div><div class="variant-name">Dark hero <code>1A1A18 bg · amber eye · white text</code></div><div class="variant-when">Use sparingly. Premium / commerce moments only.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-hero-light s-hero-dark"><div class="inner"><div class="eye">Eyebrow label</div><h1>Premium dark moment</h1><p>Use only on commerce or campaign pages. Never on secondary content pages.</p></div></div></div>
+    </div>
+    <div class="variant" data-id="hero-split">
+      <div class="variant-head"><div><div class="variant-name">Split hero 50/50 <code>dark text left · photo right</code></div><div class="variant-when">Brand spotlight, partner weeks, hero product moments.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-hero-split"><div class="text"><div style="font-size:12px;font-weight:700;letter-spacing:0.20em;color:var(--amber);margin-bottom:14px;text-transform:uppercase">Spotlight</div><h1 style="font-family:var(--font-display);font-size:36px;margin-bottom:12px">Featured brand or product</h1><p style="color:rgba(255,255,255,0.7)">Co-op pill in upper corner. Big photo on the right.</p></div><div class="photo"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cat" id="trust" style="background:var(--off-white)">
+  <div class="cat-inner">
+    <div class="cat-head">
+      <div><div class="cat-eye">B · Value / Trust strips</div><h2 class="cat-h">5 variants — current strip is too quiet</h2></div>
+      <p class="cat-sub">The "plain" one (variant 1) is what's currently on most secondary pages. Flagged as too weak. Compare against the four alternatives.</p>
+    </div>
+    <div class="summary"><strong>Recommendation:</strong> kill plain text strip. Keep "Icon + headline" or "Amber circle number" as the standard. See the full <a href="value-strips/value-strip-options.html" style="color:var(--vk-red);text-decoration:underline">Value Strip Options gallery</a> for 6 polished variants.</div>
+
+    <div class="variant" data-id="trust-plain">
+      <div class="variant-head"><div><div class="variant-name">Plain text 4-col <code>current — too quiet</code></div><div class="variant-when">Currently on most secondary pages. Flagged for replacement.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-trust-plain"><div class="inner"><div class="item">Free Shipping over $99</div><div class="item">VK Warranty on every item</div><div class="item">0% Financing available</div><div class="item">Hand-tested by techs</div></div></div></div>
+    </div>
+    <div class="variant" data-id="trust-icon">
+      <div class="variant-head"><div><div class="variant-name">Icon + headline <code>amber circle icon · 2-line copy</code></div><div class="variant-when">Strong default. More visible than plain text. Easy to scan.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-trust-icon"><div class="inner"><div class="item"><div class="ic">✓</div><div class="meta"><strong>Free Shipping</strong><small>Orders over $99</small></div></div><div class="item"><div class="ic">★</div><div class="meta"><strong>VK Warranty</strong><small>Every item covered</small></div></div><div class="item"><div class="ic">$</div><div class="meta"><strong>0% Financing</strong><small>12 months available</small></div></div><div class="item"><div class="ic">⚙</div><div class="meta"><strong>Hand-tested</strong><small>By VK technicians</small></div></div></div></div></div>
+    </div>
+    <div class="variant" data-id="trust-amber">
+      <div class="variant-head"><div><div class="variant-name">Amber circle number <code>amber bg · numbered circles</code></div><div class="variant-when">Strongest visual presence. Use on key landing pages.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-trust-amber"><div class="inner"><div class="item"><div class="num">1</div><div><strong>Free Shipping</strong><small>Orders over $99</small></div></div><div class="item"><div class="num">2</div><div><strong>VK Warranty</strong><small>Every item</small></div></div><div class="item"><div class="num">3</div><div><strong>0% Financing</strong><small>12 months</small></div></div><div class="item"><div class="num">4</div><div><strong>Hand-tested</strong><small>By VK techs</small></div></div></div></div></div>
+    </div>
+    <div class="variant" data-id="trust-pill">
+      <div class="variant-head"><div><div class="variant-name">Pill row <code>single-line pills · check icon</code></div><div class="variant-when">Quietest variant. Use on PLP under the hero, where filters need attention.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-trust-pill"><div class="inner"><div class="pill">Free Shipping over $99</div><div class="pill">VK Warranty</div><div class="pill">0% Financing</div><div class="pill">Hand-tested</div></div></div></div>
+    </div>
+    <div class="variant" data-id="trust-dark">
+      <div class="variant-head"><div><div class="variant-name">Dark stat strip <code>numbers above labels · amber accent</code></div><div class="variant-when">When you want to convey scale (years in business, gear shipped, etc).</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-trust-dark"><div class="inner"><div class="item"><strong>30+</strong><small>Years</small></div><div class="item"><strong>50K+</strong><small>Items shipped</small></div><div class="item"><strong>1973</strong><small>Founded</small></div><div class="item"><strong>★ 4.9</strong><small>Avg rating</small></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cat" id="process">
+  <div class="cat-inner">
+    <div class="cat-head">
+      <div><div class="cat-eye">C · Process strips</div><h2 class="cat-h">2 variants</h2></div>
+      <p class="cat-sub">Used on programs (Trade, Studio Pros, Audio Consultants). Tells "how it works" in 3 steps.</p>
+    </div>
+    <div class="variant" data-id="process-3step">
+      <div class="variant-head"><div><div class="variant-name">3-step amber numerals <code>big amber Playfair numbers</code></div><div class="variant-when">Editorial feel. Light backgrounds.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-process-3step"><div class="inner"><div class="step"><div class="n">01</div><h4>Tell us about your gear</h4><p>Quick form — make, model, condition.</p></div><div class="step"><div class="n">02</div><h4>Get a fair quote</h4><p>Our buyers respond within 24 hours with a number.</p></div><div class="step"><div class="n">03</div><h4>Ship and get paid</h4><p>Free shipping label. Payment within 48 hours of inspection.</p></div></div></div></div>
+    </div>
+    <div class="variant" data-id="process-amber">
+      <div class="variant-head"><div><div class="variant-name">Amber numbered circles <code>amber bg · circle nums</code></div><div class="variant-when">More compact, more visual presence. Works on any page.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-process-amber"><div class="inner"><div class="step"><div class="num">1</div><div><h4>Tell us about your gear</h4><p>Make, model, condition — quick form.</p></div></div><div class="step"><div class="num">2</div><div><h4>Get a fair quote</h4><p>VK buyers respond within 24 hours.</p></div></div><div class="step"><div class="num">3</div><div><h4>Ship and get paid</h4><p>Free label. Payment in 48 hours.</p></div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cat" id="grids" style="background:var(--off-white)">
+  <div class="cat-inner">
+    <div class="cat-head">
+      <div><div class="cat-eye">D · Card grids</div><h2 class="cat-h">3 variants — 2-up, 3-up, 4-up</h2></div>
+      <p class="cat-sub">Pick based on density goal. 2-up = features. 3-up = related products. 4-up = editorial cards.</p>
+    </div>
+    <div class="variant" data-id="grid-3up">
+      <div class="variant-head"><div><div class="variant-name">3-up product grid <code>cards · photo · meta</code></div><div class="variant-when">Default for category PLP, related products.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-grid-3up"><div class="inner"><div class="grid"><div class="card"><div class="photo"></div><div class="meta"><strong>Neumann U47</strong><small>Tube condenser · From $4,995</small></div></div><div class="card"><div class="photo"></div><div class="meta"><strong>Shure SM7B</strong><small>Dynamic · $399</small></div></div><div class="card"><div class="photo"></div><div class="meta"><strong>Coles 4038</strong><small>Ribbon · $1,495</small></div></div></div></div></div></div>
+    </div>
+    <div class="variant" data-id="grid-2up">
+      <div class="variant-head"><div><div class="variant-name">2-up feature cards <code>large photos · headline · sub</code></div><div class="variant-when">Hero of section. Featured studios, big editorial.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-grid-2up"><div class="inner"><div class="grid"><div class="card"><div class="photo"></div><div class="meta"><strong>Electric Lady Studios</strong><p>Where Hendrix made Voodoo Child and Stevie made Talking Book.</p></div></div><div class="card"><div class="photo"></div><div class="meta"><strong>AIR Montserrat</strong><p>The remote island studio that defined the 80s sound.</p></div></div></div></div></div></div>
+    </div>
+    <div class="variant" data-id="grid-4up">
+      <div class="variant-head"><div><div class="variant-name">4-up dense grid <code>compact cards · 4 columns</code></div><div class="variant-when">Editorial collections, milestone grids.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-grid-4up"><div class="inner"><div class="grid"><div class="card"><div class="photo"></div><strong>1993</strong><small>Founded in Detroit</small></div><div class="card"><div class="photo"></div><strong>2003</strong><small>Tech Shop opens</small></div><div class="card"><div class="photo"></div><strong>2015</strong><small>50K shipments</small></div><div class="card"><div class="photo"></div><strong>2025</strong><small>30 years</small></div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cat" id="quotes">
+  <div class="cat-inner">
+    <div class="cat-head">
+      <div><div class="cat-eye">E · Quote rails</div><h2 class="cat-h">2 variants</h2></div>
+      <p class="cat-sub">Engineer quotes, customer testimonials, founder voice. Light is the default.</p>
+    </div>
+    <div class="variant" data-id="quote-amber">
+      <div class="variant-head"><div><div class="variant-name">Light amber-bordered <code>off-white bg · amber left rule</code></div><div class="variant-when">Default for engineer quotes between sections.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-quote-amber"><div class="inner"><blockquote>"VK is the only place I trust to vet a vintage Neve before it ships to my studio."</blockquote><cite>— Engineer, Studio in Nashville</cite></div></div></div>
+    </div>
+    <div class="variant" data-id="quote-dark">
+      <div class="variant-head"><div><div class="variant-name">Dark centered <code>black bg · centered · amber cite</code></div><div class="variant-when">Hero moment quote. Use sparingly — once per page max.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-quote-dark"><div class="inner"><blockquote>"Hand-tested. Fair pricing. Real expertise. That's the bar."</blockquote><cite>— VK founder</cite></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cat" id="stats" style="background:var(--off-white)">
+  <div class="cat-inner">
+    <div class="cat-head">
+      <div><div class="cat-eye">F · Stat blocks</div><h2 class="cat-h">2 variants</h2></div>
+      <p class="cat-sub">Conversion tools. Numbers that prove scale, history, trust.</p>
+    </div>
+    <div class="variant" data-id="stats-light">
+      <div class="variant-head"><div><div class="variant-name">Light 4-stat <code>white bg · big serif numbers</code></div><div class="variant-when">Subtle. Use on any page that needs a credibility line.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-stats"><div class="inner"><div class="item"><div class="num">30+</div><div class="label">Years in business</div></div><div class="item"><div class="num">50K+</div><div class="label">Items shipped</div></div><div class="item"><div class="num">100%</div><div class="label">Hand-tested</div></div><div class="item"><div class="num">4.9★</div><div class="label">Avg rating</div></div></div></div></div>
+    </div>
+    <div class="variant" data-id="stats-dark">
+      <div class="variant-head"><div><div class="variant-name">Dark amber stats <code>black bg · amber numbers</code></div><div class="variant-when">Big moment. Anniversary pages, About hero adjacent.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-stats-dark"><div class="inner"><div class="item"><div class="num">30+</div><div class="label">Years in business</div></div><div class="item"><div class="num">50K+</div><div class="label">Items shipped</div></div><div class="item"><div class="num">100%</div><div class="label">Hand-tested</div></div><div class="item"><div class="num">4.9★</div><div class="label">Avg rating</div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cat" id="forms">
+  <div class="cat-inner">
+    <div class="cat-head">
+      <div><div class="cat-eye">G · Form CTAs</div><h2 class="cat-h">1 canonical form CTA</h2></div>
+      <p class="cat-sub">Light hero bg, white input, amber button. Form focus border = vk-red regardless.</p>
+    </div>
+    <div class="variant" data-id="cta-form">
+      <div class="variant-head"><div><div class="variant-name">Email capture · centered <code>EDE8E2 bg · amber button</code></div><div class="variant-when">Newsletter, quote request, sign-up. Single canonical pattern.</div></div><div class="markers"><button class="mark keep">Keep</button><button class="mark maybe">Maybe</button><button class="mark kill">Kill</button></div></div>
+      <div class="preview"><div class="s-cta-form"><div class="inner"><div class="eye">Stay in touch</div><h2>Get drops, deals, and the occasional Hall of Fame deep-dive.</h2><p>Email only. No spam. Easy unsubscribe.</p><form><input type="email" placeholder="you@studio.com"><button type="button">Subscribe</button></form></div></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Section Buffet · marks save to your browser only · <a href="index.html">Back to Dashboard</a></p>
+  <p style="margin-top:10px;font-size:12px;color:rgba(255,255,255,0.5)">Click marker buttons to track Keep / Maybe / Kill choices. After team review, marked KILL variants get removed in v2.</p>
+</footer>
+
+<script>
+document.querySelectorAll('.variant').forEach(v=>{
+  const id=v.dataset.id;
+  const saved=localStorage.getItem('vk-buffet-'+id);
+  if(saved){const btn=v.querySelector('.mark.'+saved);if(btn)btn.classList.add('active');}
+  v.querySelectorAll('.mark').forEach(b=>{
+    b.addEventListener('click',e=>{
+      e.preventDefault();
+      v.querySelectorAll('.mark').forEach(x=>x.classList.remove('active'));
+      const cls=b.classList.contains('keep')?'keep':b.classList.contains('maybe')?'maybe':'kill';
+      b.classList.add('active');
+      localStorage.setItem('vk-buffet-'+id,cls);
+    });
+  });
+});
+</script>
+</body>
+</html>

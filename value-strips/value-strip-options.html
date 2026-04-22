@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Value Strip Options — 6 variants | VK Redesign Final</title>
+<meta name="description" content="6 value-strip variants side by side. Pick 1-2 keepers. Kill the rest.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--vk-red:#C0392B;--amber:#D4860A;--amber-bg:#F5E6C8;--near-black:#1A1A18;--warm-white:#FDFCFB;--off-white:#F7F5F2;--mid-grey:#6B6B68;--hairline:rgba(26,26,24,0.08);--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',sans-serif;--keep:#2E7D32;--kill:#C0392B}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--warm-white);color:var(--near-black);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.topbar{background:var(--near-black);color:#fff;padding:10px 24px;font-size:12px;display:flex;align-items:center;gap:14px}
+.topbar .back{background:var(--vk-red);color:#fff;padding:7px 14px;border-radius:3px;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase}
+.topbar strong{color:#fff;font-weight:600}
+.hero{background:#EDE8E2;padding:48px 32px}
+.hero-inner{max-width:1080px;margin:0 auto}
+.hero .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.hero h1{font-family:var(--font-display);font-size:38px;font-weight:600;line-height:1.05;margin-bottom:14px;max-width:780px}
+.hero p{font-size:16px;color:var(--near-black);max-width:760px}
+section.opt{padding:40px 32px;border-bottom:1px solid var(--hairline)}
+.opt-inner{max-width:1280px;margin:0 auto}
+.opt-head{display:flex;justify-content:space-between;align-items:start;margin-bottom:18px;gap:16px;flex-wrap:wrap}
+.opt-meta h2{font-family:var(--font-display);font-size:22px;font-weight:600;margin-bottom:4px}
+.opt-meta .when{font-size:13px;color:var(--mid-grey);max-width:560px}
+.opt-meta .when strong{color:var(--near-black);font-weight:600}
+.tag{font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;padding:4px 10px;border-radius:3px;width:fit-content}
+.tag.rec{background:rgba(46,125,50,0.10);color:var(--keep);border:1px solid rgba(46,125,50,0.30)}
+.tag.bad{background:rgba(192,57,43,0.08);color:var(--kill);border:1px solid rgba(192,57,43,0.30)}
+.tag.maybe{background:var(--amber-bg);color:var(--amber);border:1px solid rgba(212,134,10,0.30)}
+.preview{border:1px solid var(--hairline);border-radius:4px;overflow:hidden}
+.code-note{background:var(--off-white);padding:10px 18px;font-size:12px;color:var(--mid-grey);font-family:monospace;border-bottom:1px solid var(--hairline)}
+
+/* Variant 1 — Plain text (CURRENT) */
+.v1{background:#fff;padding:24px 32px}
+.v1 .row{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.v1 .item{font-size:12px;color:var(--near-black);font-weight:500}
+
+/* Variant 2 — Icon + headline */
+.v2{background:#fff;padding:30px 32px}
+.v2 .row{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.v2 .item{display:flex;gap:14px;align-items:flex-start}
+.v2 .ic{width:36px;height:36px;background:var(--amber-bg);border-radius:50%;display:grid;place-items:center;color:var(--amber);font-weight:700;font-size:15px;flex-shrink:0}
+.v2 .meta strong{display:block;font-size:13px;font-weight:600;margin-bottom:2px}
+.v2 .meta small{font-size:11px;color:var(--mid-grey)}
+
+/* Variant 3 — Amber circle number */
+.v3{background:var(--amber-bg);padding:32px}
+.v3 .row{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.v3 .item{display:flex;gap:14px;align-items:flex-start}
+.v3 .num{width:38px;height:38px;background:var(--amber);color:#fff;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:15px;flex-shrink:0;font-family:var(--font-display)}
+.v3 .meta strong{display:block;font-size:13px;font-weight:600;margin-bottom:2px}
+.v3 .meta small{font-size:11px;color:rgba(26,26,24,0.65)}
+
+/* Variant 4 — Photo tile */
+.v4{background:#fff;padding:32px}
+.v4 .row{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.v4 .item{background:var(--off-white);border-radius:4px;overflow:hidden}
+.v4 .img{height:80px;background:linear-gradient(135deg,#ddd,#bbb)}
+.v4 .body{padding:12px 14px}
+.v4 strong{display:block;font-size:13px;font-weight:600;margin-bottom:2px}
+.v4 small{font-size:11px;color:var(--mid-grey)}
+
+/* Variant 5 — Pill bar */
+.v5{background:#fff;padding:18px 32px;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.v5 .row{max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.v5 .pill{background:var(--off-white);padding:8px 16px;border-radius:30px;font-size:12px;font-weight:500;border:1px solid var(--hairline)}
+.v5 .pill::before{content:"\2713 ";color:var(--amber);font-weight:700;margin-right:4px}
+
+/* Variant 6 — Boxed with thin border */
+.v6{background:var(--off-white);padding:32px}
+.v6 .row{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.v6 .item{background:#fff;border:1px solid var(--hairline);padding:18px;text-align:center;border-radius:4px}
+.v6 .ic{width:32px;height:32px;background:var(--off-white);border:1px solid var(--hairline);border-radius:50%;display:grid;place-items:center;color:var(--amber);margin:0 auto 10px;font-size:14px;font-weight:700}
+.v6 strong{display:block;font-size:13px;font-weight:600;margin-bottom:2px}
+.v6 small{font-size:11px;color:var(--mid-grey);display:block;line-height:1.5}
+
+@media(max-width:780px){.v1 .row,.v2 .row,.v3 .row,.v4 .row,.v6 .row{grid-template-columns:repeat(2,1fr)}}
+
+footer{background:var(--near-black);color:rgba(255,255,255,0.7);padding:36px 32px;text-align:center;font-size:13px}
+footer a{color:var(--amber)}
+.summary{background:var(--amber-bg);padding:18px 22px;border-radius:4px;border-left:3px solid var(--amber);font-size:13px;max-width:1080px;margin:0 auto 24px}
+.summary strong{font-weight:600}
+</style>
+</head>
+<body>
+<div class="topbar"><a href="../index.html" class="back">← Dashboard</a><span><strong>Value Strip Options</strong> — 6 variants. Pick 1-2 keepers, kill the rest.</span></div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eye">Decision tool</div>
+    <h1>Value strip options — pick the keepers.</h1>
+    <p>The current strip on most secondary pages (variant 1) is too quiet. Compare 5 alternatives. Flag what you want to standardize on.</p>
+  </div>
+</section>
+
+<section class="opt"><div class="opt-inner">
+  <div class="summary"><strong>AJ's recommendation:</strong> Kill V1 (plain text). Standardize on V2 (icon + headline) for daily use, V3 (amber circle number) for hero landing pages. V4-V6 are nice-to-have alternates.</div>
+
+  <div class="opt-head">
+    <div class="opt-meta"><h2>V1 — Plain text 4-col</h2><p class="when"><strong>Currently on most secondary pages.</strong> Functional but flat. Hard to scan. No visual anchor.</p></div>
+    <span class="tag bad">Current · flagged for kill</span>
+  </div>
+  <div class="preview"><div class="code-note">.value-strip-plain · 24px padding · 4-col equal · text-align center</div><div class="v1"><div class="row"><div class="item">Free Shipping over $99</div><div class="item">VK Warranty on every item</div><div class="item">0% Financing available</div><div class="item">Hand-tested by techs</div></div></div></div>
+</div></section>
+
+<section class="opt" style="background:var(--off-white)"><div class="opt-inner">
+  <div class="opt-head">
+    <div class="opt-meta"><h2>V2 — Icon + headline (amber circle)</h2><p class="when"><strong>Recommended default.</strong> Easy to scan. Icon anchors the eye. Two-line copy gives more substance.</p></div>
+    <span class="tag rec">Recommended · daily driver</span>
+  </div>
+  <div class="preview"><div class="code-note">.value-strip-icon · 30px padding · amber circle ic · 4-col</div><div class="v2"><div class="row"><div class="item"><div class="ic">✓</div><div class="meta"><strong>Free Shipping</strong><small>Orders over $99</small></div></div><div class="item"><div class="ic">★</div><div class="meta"><strong>VK Warranty</strong><small>Every item covered</small></div></div><div class="item"><div class="ic">$</div><div class="meta"><strong>0% Financing</strong><small>12 months available</small></div></div><div class="item"><div class="ic">⚙</div><div class="meta"><strong>Hand-tested</strong><small>By VK technicians</small></div></div></div></div></div>
+</div></section>
+
+<section class="opt"><div class="opt-inner">
+  <div class="opt-head">
+    <div class="opt-meta"><h2>V3 — Amber circle number (full amber bg)</h2><p class="when"><strong>Recommended for hero landing pages.</strong> Strongest visual presence. Use sparingly so it stays special.</p></div>
+    <span class="tag rec">Recommended · landing pages</span>
+  </div>
+  <div class="preview"><div class="code-note">.value-strip-amber-num · amber-bg · numbered circles · 4-col</div><div class="v3"><div class="row"><div class="item"><div class="num">1</div><div class="meta"><strong>Free Shipping</strong><small>Orders over $99</small></div></div><div class="item"><div class="num">2</div><div class="meta"><strong>VK Warranty</strong><small>Every item</small></div></div><div class="item"><div class="num">3</div><div class="meta"><strong>0% Financing</strong><small>12 months</small></div></div><div class="item"><div class="num">4</div><div class="meta"><strong>Hand-tested</strong><small>By VK techs</small></div></div></div></div></div>
+</div></section>
+
+<section class="opt" style="background:var(--off-white)"><div class="opt-inner">
+  <div class="opt-head">
+    <div class="opt-meta"><h2>V4 — Photo tile</h2><p class="when">Photo-forward. Each value gets a real photo. Strongest brand feel — but requires real photography.</p></div>
+    <span class="tag maybe">Maybe · needs photos</span>
+  </div>
+  <div class="preview"><div class="code-note">.value-strip-photo · 4-col tiles · 80px image + meta</div><div class="v4"><div class="row"><div class="item"><div class="img"></div><div class="body"><strong>Free Shipping</strong><small>Orders over $99</small></div></div><div class="item"><div class="img"></div><div class="body"><strong>VK Warranty</strong><small>Every item</small></div></div><div class="item"><div class="img"></div><div class="body"><strong>0% Financing</strong><small>12 months</small></div></div><div class="item"><div class="img"></div><div class="body"><strong>Hand-tested</strong><small>By VK techs</small></div></div></div></div></div>
+</div></section>
+
+<section class="opt"><div class="opt-inner">
+  <div class="opt-head">
+    <div class="opt-meta"><h2>V5 — Pill row</h2><p class="when">Single-line pills. Quietest variant. Use on PLP under hero where filters need to win attention.</p></div>
+    <span class="tag maybe">Maybe · PLP secondary</span>
+  </div>
+  <div class="preview"><div class="code-note">.value-strip-pill · single line · check + label</div><div class="v5"><div class="row"><div class="pill">Free Shipping over $99</div><div class="pill">VK Warranty</div><div class="pill">0% Financing</div><div class="pill">Hand-tested</div></div></div></div>
+</div></section>
+
+<section class="opt" style="background:var(--off-white)"><div class="opt-inner">
+  <div class="opt-head">
+    <div class="opt-meta"><h2>V6 — Boxed cards (centered)</h2><p class="when">Each value in a bordered card. Most "designed" feel. Use on hero landing pages as alt to V3.</p></div>
+    <span class="tag maybe">Maybe · alt to V3</span>
+  </div>
+  <div class="preview"><div class="code-note">.value-strip-boxed · 4-col cards · centered · thin border</div><div class="v6"><div class="row"><div class="item"><div class="ic">✓</div><strong>Free Shipping</strong><small>Orders over $99</small></div><div class="item"><div class="ic">★</div><strong>VK Warranty</strong><small>Every item covered</small></div><div class="item"><div class="ic">$</div><strong>0% Financing</strong><small>12 months available</small></div><div class="item"><div class="ic">⚙</div><strong>Hand-tested</strong><small>By VK technicians</small></div></div></div></div>
+</div></section>
+
+<footer>
+  <p>Value Strip Options · 6 variants · <a href="../index.html">Back to Dashboard</a> · <a href="../section-buffet.html">Section Buffet</a></p>
+</footer>
+</body>
+</html>

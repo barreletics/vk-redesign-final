@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Page Layouts — VK Redesign Final | Vintage Pro Audio</title>
+<meta name="description" content="The 3 secondary templates and 3 category headers visualized.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--vk-red:#C0392B;--amber:#D4860A;--amber-bg:#F5E6C8;--near-black:#1A1A18;--warm-white:#FDFCFB;--off-white:#F7F5F2;--mid-grey:#6B6B68;--hairline:rgba(26,26,24,0.08);--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--warm-white);color:var(--near-black);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.topbar{background:var(--near-black);color:#fff;padding:10px 24px;font-size:12px;display:flex;align-items:center;gap:14px}
+.topbar .back{background:var(--vk-red);color:#fff;padding:7px 14px;border-radius:3px;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase}
+.topbar strong{color:#fff;font-weight:600}
+.hero{background:#EDE8E2;padding:56px 32px}
+.hero-inner{max-width:1080px;margin:0 auto}
+.hero .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.hero h1{font-family:var(--font-display);font-size:40px;font-weight:600;line-height:1.05;margin-bottom:14px}
+.hero p{font-size:16px;color:var(--near-black);max-width:780px}
+section.cat{padding:56px 32px;border-bottom:1px solid var(--hairline)}
+.cat-inner{max-width:1280px;margin:0 auto}
+.cat-head{padding-bottom:14px;border-bottom:2px solid var(--near-black);margin-bottom:30px}
+.cat-eye{font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+.cat-h{font-family:var(--font-display);font-size:30px;font-weight:600;line-height:1.15}
+.cat-sub{font-size:13px;color:var(--mid-grey);max-width:680px;line-height:1.6;margin-top:8px}
+.layouts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:980px){.layouts{grid-template-columns:1fr}}
+.layout{background:#fff;border:1px solid var(--hairline);border-radius:4px;overflow:hidden}
+.layout-head{padding:14px 18px;border-bottom:1px solid var(--hairline)}
+.layout-name{font-size:14px;font-weight:600;margin-bottom:4px}
+.layout-when{font-size:12px;color:var(--mid-grey)}
+.silhouette{background:var(--off-white);padding:14px;display:flex;flex-direction:column;gap:6px;min-height:340px}
+.sil{border-radius:2px;background:#fff}
+.sil-hero-light{background:#EDE8E2;height:64px;padding:14px}
+.sil-hero-dark{background:#1A1A18;height:64px;padding:14px;color:#fff}
+.sil-hero-split{background:linear-gradient(90deg,#1A1A18 50%,#666 50%);height:80px}
+.sil-strip{background:var(--amber-bg);height:24px}
+.sil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;height:80px}
+.sil-grid div{background:#ddd;border-radius:2px}
+.sil-content{height:120px;padding:14px}
+.sil-content strong{display:block;font-family:var(--font-display);font-size:11px;height:8px;background:#333;width:60%;border-radius:1px;margin-bottom:6px}
+.sil-content small{display:block;background:#eee;height:4px;width:80%;border-radius:1px;margin-bottom:3px}
+.sil-form{background:#EDE8E2;height:60px}
+.sil-foot{background:#1A1A18;height:24px}
+.layout-foot{padding:14px 18px;border-top:1px solid var(--hairline);font-size:11px;color:var(--mid-grey);display:flex;justify-content:space-between;align-items:center}
+.layout-foot a{color:var(--vk-red);font-weight:600;font-size:12px}
+.tag{font-size:9px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;padding:3px 7px;border-radius:2px;background:var(--amber-bg);color:var(--amber)}
+footer{background:var(--near-black);color:rgba(255,255,255,0.7);padding:36px 32px;text-align:center;font-size:13px}
+footer a{color:var(--amber)}
+</style>
+</head>
+<body>
+<div class="topbar"><a href="index.html" class="back">← Dashboard</a><span><strong>Page Layouts</strong> — 3 templates · 3 headers · visualized</span></div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eye">Layout reference</div>
+    <h1>Three templates. Three headers. One product page. One category page.</h1>
+    <p>Every page in the site uses one of these. Section choices inside each come from <a href="section-buffet.html" style="color:var(--vk-red);text-decoration:underline">section-buffet.html</a>.</p>
+  </div>
+</section>
+
+<section class="cat">
+  <div class="cat-inner">
+    <div class="cat-head">
+      <div class="cat-eye">A · Secondary page templates</div>
+      <h2 class="cat-h">3 templates · pick one per secondary page</h2>
+      <p class="cat-sub">All 3 share the same nav, footer, and section vocabulary. Different hero treatment + section ordering.</p>
+    </div>
+    <div class="layouts">
+      <div class="layout">
+        <div class="layout-head"><div class="layout-name">T1 · Editorial Light</div><div class="layout-when">About · Make Your Mark · Careers · PLAYBACK</div></div>
+        <div class="silhouette">
+          <div class="sil-hero-light"><div style="font-size:9px;color:var(--amber);font-weight:700;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:4px">Eyebrow</div><div style="font-family:var(--font-display);font-size:14px;font-weight:600">Headline</div></div>
+          <div class="sil sil-strip"></div>
+          <div class="sil sil-grid"><div></div><div></div><div></div></div>
+          <div class="sil sil-content"><strong></strong><small></small><small></small><small></small></div>
+          <div class="sil sil-form"></div>
+          <div class="sil sil-foot"></div>
+        </div>
+        <div class="layout-foot"><span class="tag">T1</span><a href="secondary/secondary-template-1.html">Open template →</a></div>
+      </div>
+      <div class="layout">
+        <div class="layout-head"><div class="layout-name">T2 · Deep Article</div><div class="layout-when">Hall of Fame articles (Neve 1073, Fairchild, U47, etc)</div></div>
+        <div class="silhouette">
+          <div class="sil-hero-light"><div style="font-size:9px;color:var(--amber);font-weight:700;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:4px">HOF · Hall</div><div style="font-family:var(--font-display);font-size:14px;font-weight:600">Product H1</div></div>
+          <div class="sil" style="height:90px;background:#fff;border:1px solid var(--hairline);padding:10px"><small style="display:block;background:#eee;height:4px;width:90%;border-radius:1px;margin-bottom:3px"></small><small style="display:block;background:#eee;height:4px;width:75%;border-radius:1px;margin-bottom:3px"></small><small style="display:block;background:#eee;height:4px;width:85%;border-radius:1px;margin-bottom:3px"></small><small style="display:block;background:#eee;height:4px;width:60%;border-radius:1px"></small></div>
+          <div class="sil" style="height:50px;background:#1A1A18"></div>
+          <div class="sil sil-grid"><div></div><div></div><div></div></div>
+          <div class="sil sil-form"></div>
+          <div class="sil sil-foot"></div>
+        </div>
+        <div class="layout-foot"><span class="tag">T2</span><a href="secondary/secondary-template-2.html">Open template →</a></div>
+      </div>
+      <div class="layout">
+        <div class="layout-head"><div class="layout-name">T3 · Program / Service</div><div class="layout-when">Trade · Studio Pros · Audio Consultants · Section 179 · Warranty</div></div>
+        <div class="silhouette">
+          <div class="sil-hero-light"><div style="font-size:9px;color:var(--amber);font-weight:700;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:4px">Program</div><div style="font-family:var(--font-display);font-size:14px;font-weight:600">Program H1</div></div>
+          <div class="sil sil-strip" style="background:#1A1A18"></div>
+          <div class="sil" style="height:70px;background:var(--amber-bg);padding:10px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;align-items:center"><div style="text-align:center;font-family:var(--font-display);color:var(--amber);font-size:14px;font-weight:600">1</div><div style="text-align:center;font-family:var(--font-display);color:var(--amber);font-size:14px;font-weight:600">2</div><div style="text-align:center;font-family:var(--font-display);color:var(--amber);font-size:14px;font-weight:600">3</div></div>
+          <div class="sil sil-grid" style="grid-template-columns:repeat(4,1fr);height:60px"><div></div><div></div><div></div><div></div></div>
+          <div class="sil sil-form"></div>
+          <div class="sil sil-foot"></div>
+        </div>
+        <div class="layout-foot"><span class="tag">T3</span><a href="secondary/secondary-template-3.html">Open template →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cat" style="background:var(--off-white)">
+  <div class="cat-inner">
+    <div class="cat-head">
+      <div class="cat-eye">B · Category page headers</div>
+      <h2 class="cat-h">3 headers · same body · pick per context</h2>
+      <p class="cat-sub">Same product grid, filter rail, trust strip below. Header swaps based on whether it's a daily category, a brand spotlight, or a curated drop.</p>
+    </div>
+    <div class="layouts">
+      <div class="layout">
+        <div class="layout-head"><div class="layout-name">H1 · Default Dark Strip</div><div class="layout-when">Daily driver. Every category landing.</div></div>
+        <div class="silhouette">
+          <div class="sil-hero-dark"><div style="font-size:9px;color:var(--amber);font-weight:700;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:4px">Microphones</div><div style="font-family:var(--font-display);font-size:14px;font-weight:600;color:#fff">Headline</div></div>
+          <div class="sil sil-strip" style="background:#fff;border:1px solid var(--hairline);height:30px;padding:6px"></div>
+          <div class="sil sil-grid" style="height:160px"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+          <div class="sil sil-foot"></div>
+        </div>
+        <div class="layout-foot"><span class="tag">H1</span><a href="headers/header-1-default.html">Open header →</a></div>
+      </div>
+      <div class="layout">
+        <div class="layout-head"><div class="layout-name">H2 · Spotlight 50/50</div><div class="layout-when">Brand spotlights, partner weeks.</div></div>
+        <div class="silhouette">
+          <div class="sil-hero-split"></div>
+          <div class="sil sil-strip" style="background:#fff;border:1px solid var(--hairline);height:30px;padding:6px"></div>
+          <div class="sil sil-grid" style="height:160px"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+          <div class="sil sil-foot"></div>
+        </div>
+        <div class="layout-foot"><span class="tag">H2</span><a href="headers/header-2-spotlight.html">Open header →</a></div>
+      </div>
+      <div class="layout">
+        <div class="layout-head"><div class="layout-name">H3 · Editorial 6-Grid</div><div class="layout-when">Curated drops, campaigns, staff picks.</div></div>
+        <div class="silhouette">
+          <div class="sil-hero-light" style="height:80px"><div style="font-size:9px;color:var(--amber);font-weight:700;letter-spacing:0.16em;text-transform:uppercase">Drops</div><div class="sil sil-grid" style="height:50px;margin-top:4px;grid-template-columns:repeat(3,1fr)"><div></div><div></div><div></div></div></div>
+          <div class="sil sil-strip" style="background:#fff;border:1px solid var(--hairline);height:30px;padding:6px"></div>
+          <div class="sil sil-grid" style="height:140px"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+          <div class="sil sil-foot"></div>
+        </div>
+        <div class="layout-foot"><span class="tag">H3</span><a href="headers/header-3-editorial.html">Open header →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cat">
+  <div class="cat-inner">
+    <div class="cat-head">
+      <div class="cat-eye">C · Category &amp; Product</div>
+      <h2 class="cat-h">1 canonical category · 1 canonical product</h2>
+      <p class="cat-sub">The category page accepts any of the 3 headers above. The product page is fixed.</p>
+    </div>
+    <div class="layouts" style="grid-template-columns:repeat(2,1fr)">
+      <div class="layout"><div class="layout-head"><div class="layout-name">Category PLP — Microphones</div><div class="layout-when">Filters · 3-up grid · trust strip</div></div><div class="silhouette"><div class="sil-hero-dark"><div style="color:#fff;font-family:var(--font-display);font-size:14px">Microphones</div></div><div class="sil sil-strip" style="background:#fff;border:1px solid var(--hairline);height:30px"></div><div class="sil sil-grid" style="height:200px"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="sil sil-foot"></div></div><div class="layout-foot"><span class="tag" style="background:rgba(192,57,43,0.08);color:var(--vk-red)">PLP</span><a href="category/microphones.html">Open category →</a></div></div>
+      <div class="layout"><div class="layout-head"><div class="layout-name">Product — Neumann U47</div><div class="layout-when">Gallery · price · spec · related</div></div><div class="silhouette"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;background:#fff;padding:14px"><div style="background:#ddd;border-radius:2px;height:140px"></div><div><div style="font-family:var(--font-display);font-size:13px;font-weight:600;height:10px;background:#333;width:80%;border-radius:1px;margin-bottom:6px"></div><div style="background:var(--amber);height:6px;width:30%;border-radius:1px;margin-bottom:8px"></div><div style="background:#eee;height:4px;width:90%;margin-bottom:3px"></div><div style="background:#eee;height:4px;width:70%;margin-bottom:8px"></div><div style="background:var(--vk-red);height:24px;width:50%;border-radius:2px"></div></div></div><div class="sil sil-grid" style="height:80px"><div></div><div></div><div></div></div><div class="sil sil-foot"></div></div><div class="layout-foot"><span class="tag" style="background:rgba(192,57,43,0.08);color:var(--vk-red)">PRODUCT</span><a href="product/neumann-u47.html">Open product →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Page Layouts · <a href="index.html">Back to Dashboard</a> · <a href="style-guide.html">Style Guide</a> · <a href="section-buffet.html">Section Buffet</a>
+</footer>
+</body>
+</html>

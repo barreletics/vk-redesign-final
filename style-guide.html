@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Style Guide — VK Redesign Final | Vintage Pro Audio</title>
+<meta name="description" content="Slim VK design system: colors, type, spacing, no-go list. Min font 12px. Vintage Pro Audio (no more Pro Audio Outfitter).">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--vk-red:#C0392B;--amber:#D4860A;--amber-bg:#F5E6C8;--near-black:#1A1A18;--warm-white:#FDFCFB;--off-white:#F7F5F2;--mid-grey:#6B6B68;--hairline:rgba(26,26,24,0.08);--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--warm-white);color:var(--near-black);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.topbar{background:var(--near-black);color:#fff;padding:10px 24px;font-size:12px;letter-spacing:0.04em;display:flex;align-items:center;gap:14px}
+.topbar .back{background:var(--vk-red);color:#fff;padding:7px 14px;border-radius:3px;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase}
+.topbar strong{color:#fff;font-weight:600}
+.hero{background:#EDE8E2;padding:64px 32px}
+.hero-inner{max-width:1080px;margin:0 auto}
+.hero .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:18px}
+.hero h1{font-family:var(--font-display);font-size:48px;font-weight:600;line-height:1.05;letter-spacing:-0.01em;margin:0 0 18px}
+.hero p{font-size:17px;color:var(--near-black);max-width:760px;line-height:1.6}
+section{padding:56px 32px;border-bottom:1px solid var(--hairline)}
+.inner{max-width:1080px;margin:0 auto}
+.eye{font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+h2{font-family:var(--font-display);font-size:30px;font-weight:600;margin-bottom:24px;line-height:1.2}
+h3{font-family:var(--font-display);font-size:20px;font-weight:600;margin:22px 0 10px;line-height:1.3}
+p{font-size:15px;color:var(--near-black);margin-bottom:14px;max-width:780px}
+.color-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+@media(max-width:780px){.color-grid{grid-template-columns:repeat(2,1fr)}}
+.swatch{background:#fff;border:1px solid var(--hairline);border-radius:4px;overflow:hidden}
+.swatch .chip{height:90px}
+.swatch .meta{padding:14px}
+.swatch .name{font-size:13px;font-weight:600;margin-bottom:4px}
+.swatch .hex{font-size:12px;color:var(--mid-grey);font-family:monospace}
+.swatch .use{font-size:12px;color:var(--mid-grey);margin-top:6px;line-height:1.5}
+.type-row{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:18px 0;border-bottom:1px solid var(--hairline);align-items:baseline}
+.type-row .label{font-size:12px;color:var(--mid-grey);font-weight:600;letter-spacing:0.06em}
+.type-row .label small{display:block;color:rgba(26,26,24,0.5);font-weight:400;margin-top:4px;font-size:11px}
+.h1-sample{font-family:var(--font-display);font-size:52px;font-weight:600;line-height:1.05}
+.h2-sample{font-family:var(--font-display);font-size:34px;font-weight:600;line-height:1.15}
+.h3-sample{font-family:var(--font-display);font-size:22px;font-weight:600;line-height:1.3}
+.lede-sample{font-size:18px;line-height:1.6}
+.body-sample{font-size:15px;line-height:1.6}
+.small-sample{font-size:13px;color:var(--mid-grey)}
+.eye-sample{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber)}
+.price-sample{font-size:18px;font-weight:500;color:var(--near-black)}
+.rule-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:780px){.rule-grid{grid-template-columns:1fr}}
+.rule-card{background:var(--off-white);padding:20px 22px;border-radius:4px;border-left:3px solid var(--amber)}
+.rule-card.bad{border-left-color:var(--vk-red)}
+.rule-card h4{font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--mid-grey);margin-bottom:10px}
+.rule-card.bad h4{color:var(--vk-red)}
+.rule-card ul{padding-left:18px;font-size:14px;line-height:1.7}
+.rule-card li{margin-bottom:4px}
+code{background:rgba(26,26,24,0.05);padding:2px 6px;border-radius:2px;font-size:12px;font-family:monospace}
+.callout{background:var(--amber-bg);padding:18px 22px;border-radius:4px;border-left:3px solid var(--amber);margin:18px 0;font-size:14px}
+.callout strong{font-weight:600}
+.spacing-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.space-chip{background:var(--off-white);padding:14px 20px;border-radius:3px;font-size:13px;border:1px solid var(--hairline)}
+.space-chip strong{color:var(--amber);font-family:monospace;font-size:12px;display:block;margin-bottom:4px}
+footer{background:var(--near-black);color:rgba(255,255,255,0.7);padding:36px 32px;text-align:center;font-size:13px}
+footer a{color:var(--amber)}
+</style>
+</head>
+<body>
+<div class="topbar"><a href="index.html" class="back">← Dashboard</a><span><strong>Style Guide</strong> — colors, type, spacing, no-go. The whole rulebook in one slim page.</span></div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eye">Slim by design</div>
+    <h1>VK Style Guide</h1>
+    <p>Colors. Typography. Spacing. No-go list. That's it. Layout patterns live in <a href="page-layouts.html" style="color:var(--vk-red);text-decoration:underline">page-layouts.html</a>. Section choices live in <a href="section-buffet.html" style="color:var(--vk-red);text-decoration:underline">section-buffet.html</a>.</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <div class="eye">01 · Colors</div>
+    <h2>The full palette — 8 tokens. No others.</h2>
+    <p>Amber on every secondary page. Red reserved for core ecommerce chrome (nav, cart, "Talk to an Expert" CTA, form focus).</p>
+    <div class="color-grid">
+      <div class="swatch"><div class="chip" style="background:#1A1A18"></div><div class="meta"><div class="name">Near Black</div><div class="hex">#1A1A18</div><div class="use">All body text. Dark backgrounds.</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#C0392B"></div><div class="meta"><div class="name">VK Red</div><div class="hex">#C0392B</div><div class="use">Core ecommerce CTA only. Form focus border. Cart badge.</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#D4860A"></div><div class="meta"><div class="name">Amber</div><div class="hex">#D4860A</div><div class="use">All secondary page accents — eyebrows, CTAs, accent lines.</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#F5E6C8"></div><div class="meta"><div class="name">Amber BG</div><div class="hex">#F5E6C8</div><div class="use">Credential bars, callout boxes, tinted info panels.</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#FDFCFB;border-bottom:1px solid #ddd"></div><div class="meta"><div class="name">Warm White</div><div class="hex">#FDFCFB</div><div class="use">Primary page background.</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#F7F5F2"></div><div class="meta"><div class="name">Off-White</div><div class="hex">#F7F5F2</div><div class="use">Section backgrounds. Tile bgs. Soft contrast.</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#EDE8E2"></div><div class="meta"><div class="name">Hero BG</div><div class="hex">#EDE8E2</div><div class="use">All secondary page heroes + CTA blocks. Always light.</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#6B6B68"></div><div class="meta"><div class="name">Mid Grey</div><div class="hex">#6B6B68</div><div class="use">Secondary text. Sub-copy. Captions.</div></div></div>
+    </div>
+    <div class="callout"><strong>Banned:</strong> <code>#fde8e6</code> (looks pinkish on uncalibrated screens) · <code>rgba(192,57,43,0.04–0.08)</code> as standalone bg (also pinkish). Use <code>rgba(26,26,24,0.07)</code> for neutral pills, <code>var(--off-white)</code> for tinted bgs.</div>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <div class="eye">02 · Typography</div>
+    <h2>Two fonts. Every size has a job. Min 12px. No exceptions.</h2>
+    <p><strong>Display</strong>: Playfair Display (serif) — headings, product names, large stats only. <strong>Body</strong>: DM Sans — everything else, including pricing.</p>
+    <div class="type-row"><div class="label">H1<small>Playfair · 48–54px · 600</small></div><div class="h1-sample">Headline that does the heavy lifting</div></div>
+    <div class="type-row"><div class="label">H2<small>Playfair · 30–34px · 600</small></div><div class="h2-sample">Section headline, calmer rhythm</div></div>
+    <div class="type-row"><div class="label">H3<small>Playfair · 18–22px · 600</small></div><div class="h3-sample">Card title, item title</div></div>
+    <div class="type-row"><div class="label">Lede<small>DM Sans · 17–18px · 400</small></div><div class="lede-sample">Lede paragraph below H1. Sets context in one or two lines.</div></div>
+    <div class="type-row"><div class="label">Body<small>DM Sans · 15px · 400</small></div><div class="body-sample">Standard body copy. Readable at arm's length on a laptop screen.</div></div>
+    <div class="type-row"><div class="label">Small<small>DM Sans · 13px · 400 · mid-grey</small></div><div class="small-sample">Captions, sub-copy, helper text.</div></div>
+    <div class="type-row"><div class="label">Eyebrow<small>DM Sans · 12px · 700 · amber · 0.20em tracking · UPPER</small></div><div class="eye-sample">Section eyebrow label</div></div>
+    <div class="type-row"><div class="label">Price<small>DM Sans · 18px · 500 · near-black</small></div><div class="price-sample">$3,495.00</div></div>
+    <div class="callout"><strong>Pricing rule (locked):</strong> DM Sans only, font-weight 500, color near-black. <strong>Never Playfair on numbers.</strong></div>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <div class="eye">03 · Spacing</div>
+    <h2>Section padding, container widths, gaps.</h2>
+    <div class="spacing-row">
+      <div class="space-chip"><strong>Section padding (desktop)</strong>72px top · 80px bottom</div>
+      <div class="space-chip"><strong>Section padding (hero)</strong>80px top · 64px bottom</div>
+      <div class="space-chip"><strong>Container max-width</strong>1080–1280px</div>
+      <div class="space-chip"><strong>Card gap</strong>16–24px</div>
+      <div class="space-chip"><strong>Hairline border</strong>rgba(26,26,24,0.08)</div>
+      <div class="space-chip"><strong>Border radius</strong>2px (chips) · 4px (cards)</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <div class="eye">04 · Rules</div>
+    <h2>Do / Don't.</h2>
+    <div class="rule-grid">
+      <div class="rule-card">
+        <h4>Always</h4>
+        <ul>
+          <li>Use <strong>Vintage Pro Audio</strong> as the tagline next to the wordmark</li>
+          <li>Min font size: 12px on every element</li>
+          <li>Amber on every secondary page accent</li>
+          <li>DM Sans for prices, font-weight 500</li>
+          <li>Light hero (#EDE8E2) on every secondary page</li>
+          <li>Form focus border: <code>var(--vk-red)</code> regardless of page accent</li>
+          <li>One mega menu site-wide</li>
+        </ul>
+      </div>
+      <div class="rule-card bad">
+        <h4>Never</h4>
+        <ul>
+          <li>Use "Pro Audio Outfitter" — that tagline is retired</li>
+          <li>Drop below 12px anywhere</li>
+          <li>Use Playfair on prices or numbers</li>
+          <li>Use red as a secondary-page accent</li>
+          <li>Build a dark hero on a secondary page</li>
+          <li>Use #fde8e6 or rgba(192,57,43,0.04–0.08) as bg</li>
+          <li>Add a second mega menu</li>
+          <li>Use HTML entities like <code>&amp;amp;</code> in visible UI text — write "and"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Style Guide · <a href="index.html">Back to Dashboard</a> · <a href="page-layouts.html">Page Layouts</a> · <a href="section-buffet.html">Section Buffet</a>
+</footer>
+</body>
+</html>

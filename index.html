@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>VK Redesign — Buffet Dashboard | Vintage Pro Audio</title>
+<meta name="description" content="One entry point for the Vintage King redesign demo. 3 templates, 3 headers, 1 mega menu, every built page organized.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--vk-red:#C0392B;--amber:#D4860A;--amber-bg:#F5E6C8;--near-black:#1A1A18;--warm-white:#FDFCFB;--off-white:#F7F5F2;--mid-grey:#6B6B68;--hairline:rgba(26,26,24,0.08);--hero-bg:#EDE8E2;--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--font-body);background:var(--warm-white);color:var(--near-black);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.topbar{background:var(--near-black);color:#fff;padding:8px 24px;font-size:12px;letter-spacing:0.04em;text-align:center}
+.topbar strong{color:var(--amber);font-weight:600;letter-spacing:0.18em;text-transform:uppercase;margin-right:10px}
+.nav{background:#fff;border-bottom:1px solid var(--hairline);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.logo{font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-0.005em}
+.logo .tag{font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--amber);letter-spacing:0.16em;text-transform:uppercase;margin-left:14px;border-left:1px solid var(--hairline);padding-left:14px}
+.nav-links{display:flex;gap:28px;font-size:13px;font-weight:500;flex-wrap:wrap}
+.nav-links a:hover{color:var(--amber)}
+.hero{background:var(--hero-bg);padding:80px 32px 64px}
+.hero-inner{max-width:1100px;margin:0 auto}
+.hero-eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:18px}
+.hero h1{font-family:var(--font-display);font-size:54px;font-weight:600;line-height:1.05;letter-spacing:-0.01em;max-width:880px;margin:0 0 22px}
+.hero p.lede{font-size:18px;color:var(--near-black);line-height:1.6;max-width:760px;margin:0 0 24px}
+.hero p.sub{font-size:14px;color:var(--mid-grey);max-width:720px}
+.hero p.sub strong{color:var(--near-black);font-weight:600}
+.anchor-strip{background:#fff;border-bottom:1px solid var(--hairline);padding:14px 32px;position:sticky;top:0;z-index:50;display:flex;gap:24px;flex-wrap:wrap;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;color:var(--mid-grey)}
+.anchor-strip a{padding:6px 0;border-bottom:2px solid transparent;transition:all 0.15s}
+.anchor-strip a:hover{color:var(--near-black);border-bottom-color:var(--amber)}
+.anchor-strip .label{color:rgba(26,26,24,0.35)}
+section.cards{padding:64px 32px 32px;border-bottom:1px solid var(--hairline)}
+.cards-inner{max-width:1280px;margin:0 auto}
+.cards-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:30px;padding-bottom:16px;border-bottom:2px solid var(--near-black);flex-wrap:wrap;gap:14px}
+.cards-eye{font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+.cards-h{font-family:var(--font-display);font-size:32px;font-weight:600;line-height:1.15}
+.cards-sub{font-size:13px;color:var(--mid-grey);max-width:560px;line-height:1.6}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media(max-width:980px){.grid-3,.grid-2{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--hairline);border-radius:4px;padding:24px 22px;display:flex;flex-direction:column;gap:12px;transition:all 0.15s}
+.card:hover{border-color:var(--amber);box-shadow:0 4px 12px rgba(26,26,24,0.06);transform:translateY(-2px)}
+.badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;padding:3px 8px;border-radius:2px;width:fit-content;background:var(--amber-bg);color:var(--amber)}
+.badge.red{background:rgba(192,57,43,0.08);color:var(--vk-red)}
+.badge.grey{background:rgba(26,26,24,0.07);color:var(--near-black)}
+.badge.tbd{background:rgba(26,26,24,0.07);color:var(--mid-grey);border:1px dashed var(--mid-grey)}
+.card h3{font-family:var(--font-display);font-size:20px;font-weight:600;line-height:1.25}
+.card p{font-size:13px;color:var(--mid-grey);line-height:1.55}
+.card .arrow{font-size:13px;font-weight:600;color:var(--amber);margin-top:auto;padding-top:8px}
+.card.dim{opacity:0.6}
+.source-strip{background:var(--off-white);padding:32px;border-bottom:1px solid var(--hairline)}
+.source-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:980px){.source-inner{grid-template-columns:1fr}}
+.source-card{background:#fff;border:1px solid var(--hairline);border-left:3px solid var(--amber);padding:18px 22px;border-radius:0 3px 3px 0}
+.source-card .label{font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--mid-grey);margin-bottom:6px}
+.source-card .name{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:6px}
+.source-card .url{font-size:12px;color:var(--mid-grey);font-family:monospace;word-break:break-all}
+.source-card .url a{color:var(--vk-red)}
+footer{background:var(--near-black);color:rgba(255,255,255,0.7);padding:40px 32px;font-size:13px;text-align:center}
+footer strong{color:#fff;font-weight:600}
+footer .meta{font-size:12px;color:rgba(255,255,255,0.4);margin-top:10px}
+</style>
+</head>
+<body>
+<div class="topbar"><strong>VK Redesign Final</strong> One entry point. Pick what you need. Built for AJ, the team, and incoming agency.</div>
+<header class="nav">
+  <div class="logo">VINTAGE KING<span class="tag">Vintage Pro Audio</span></div>
+  <nav class="nav-links">
+    <a href="#templates">Templates</a><a href="#headers">Headers</a><a href="#category">Category &amp; Product</a><a href="#sections">Section Buffet</a><a href="#docs">Docs</a><a href="#content">All Pages</a>
+  </nav>
+</header>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eye">Buffet Dashboard · One entry point</div>
+    <h1>Pick a template. Pick a header. Pick your sections. Ship.</h1>
+    <p class="lede">Every layout, header, value strip, and built page distilled into one organized demo. No more hunting across 60+ files.</p>
+    <p class="sub">Slogan: <strong>Vintage Pro Audio</strong> (replaces "Pro Audio Outfitter"). Minimum font: 12px everywhere. Single mega menu. Three templates, three headers, one product page, one category system, one section buffet you mark Keep / Kill / Maybe.</p>
+  </div>
+</section>
+<nav class="anchor-strip">
+  <span class="label">Jump to:</span>
+  <a href="#templates">Templates</a><a href="#headers">Headers</a><a href="#category">Category</a><a href="#product">Product</a><a href="#sections">Section Buffet</a><a href="#value-strips">Value Strips</a><a href="#docs">Style Guide</a><a href="#mega">Mega Menu</a><a href="#core">Core Ecommerce</a><a href="#content">All Content</a>
+</nav>
+
+<section class="cards" id="templates">
+  <div class="cards-inner">
+    <div class="cards-head">
+      <div><div class="cards-eye">01 · Page Templates</div><h2 class="cards-h">Three secondary-page templates. Pick one per page.</h2></div>
+      <p class="cards-sub">Every secondary page (about, careers, hall of fame, programs) is built from one of these three. Mix-match sections from the buffet inside each.</p>
+    </div>
+    <div class="grid-3">
+      <a class="card" href="secondary/secondary-template-1.html"><span class="badge tbd">T1 · Editorial Light</span><h3>Editorial Light</h3><p>Light hero (#EDE8E2), amber accent, photo-forward. Use for: About, Make Your Mark, Careers, PLAYBACK, anniversary.</p><span class="arrow">Open template →</span></a>
+      <a class="card" href="secondary/secondary-template-2.html"><span class="badge tbd">T2 · Deep Article</span><h3>Deep Article</h3><p>Long-form editorial, white background, product hero, spec panel, timeline, FAQ. Use for: Hall of Fame articles (Neve 1073, Fairchild, U47, etc).</p><span class="arrow">Open template →</span></a>
+      <a class="card" href="secondary/secondary-template-3.html"><span class="badge tbd">T3 · Program / Service</span><h3>Program / Service</h3><p>Light hero, 3-step process, what-we-buy grid, form CTA. Use for: Trade Program, Studio Pros, Audio Consultants, Section 179, Warranty.</p><span class="arrow">Open template →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="cards" id="headers">
+  <div class="cards-inner">
+    <div class="cards-head">
+      <div><div class="cards-eye">02 · Category Page Headers</div><h2 class="cards-h">Three header variants. Pick per category context.</h2></div>
+      <p class="cards-sub">Same body grid + filters. Different header above. One system.</p>
+    </div>
+    <div class="grid-3">
+      <a class="card" href="headers/header-1-default.html"><span class="badge tbd">H1 · Default</span><h3>Default Dark Strip</h3><p>Dark band hero, no image, headline + lede + 2 CTAs. Daily driver for every category landing.</p><span class="arrow">Open header →</span></a>
+      <a class="card" href="headers/header-2-spotlight.html"><span class="badge tbd">H2 · Spotlight</span><h3>Spotlight 50/50</h3><p>Dark 50/50 hero, co-op pill, big featured photo right. Brand spotlights and partner weeks.</p><span class="arrow">Open header →</span></a>
+      <a class="card" href="headers/header-3-editorial.html"><span class="badge tbd">H3 · Editorial</span><h3>Editorial 6-Grid</h3><p>Light hero with 6-grid product preview. Drops, campaigns, staff picks.</p><span class="arrow">Open header →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="cards" id="category">
+  <div class="cards-inner">
+    <div class="cards-head">
+      <div><div class="cards-eye">03 · Category &amp; Product</div><h2 class="cards-h">One canonical category page. One canonical product page.</h2></div>
+      <p class="cards-sub">The category page accepts any of the 3 headers above. The product page is fixed.</p>
+    </div>
+    <div class="grid-2">
+      <a class="card" href="category/microphones.html"><span class="badge red">Category</span><h3>Microphones — Category PLP</h3><p>Filters · pill quick filters · 3-up product grid · trust strip. Swap headers via the 3 variants above.</p><span class="arrow">Open category →</span></a>
+      <a class="card" href="product/neumann-u47.html" id="product"><span class="badge red">Product</span><h3>Neumann U47 — Product Page</h3><p>Gallery · price · spec · co-op · related. Single product page pattern for the whole catalog.</p><span class="arrow">Open product →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="cards" id="sections" style="background:var(--off-white)">
+  <div class="cards-inner">
+    <div class="cards-head">
+      <div><div class="cards-eye">04 · Section Buffet</div><h2 class="cards-h">Every body section. Mark Keep / Kill / Maybe.</h2></div>
+      <p class="cards-sub">Walk this with the team once. Mark winners. Round 2 deletes the losers and refines the keepers.</p>
+    </div>
+    <div class="grid-2">
+      <a class="card" href="section-buffet.html" style="border-left:3px solid var(--amber)"><span class="badge">Decision tool</span><h3>Section Buffet — Pick what stays</h3><p>Heroes · Trust strips · Process strips · Card grids · Quote rails · Stat blocks · Forms · Footers. Side-by-side gallery with Keep / Kill / Maybe markers.</p><span class="arrow">Open the buffet →</span></a>
+      <a class="card" href="value-strips/value-strip-options.html" id="value-strips" style="border-left:3px solid var(--amber)"><span class="badge">Decision tool</span><h3>Value Strips — 6 variants side-by-side</h3><p>Current secondary-page strip is too quiet. Compare 6 alternatives (icon, amber circle, photo tile, pill bar, etc). Pick 1–2, kill the rest.</p><span class="arrow">Open value strips →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="cards" id="docs">
+  <div class="cards-inner">
+    <div class="cards-head">
+      <div><div class="cards-eye">05 · Documentation</div><h2 class="cards-h">Slim style guide. Layout reference. Read before editing.</h2></div>
+      <p class="cards-sub">Style guide is intentionally thin: only colors, type, spacing, no-go list. Layout patterns live separately.</p>
+    </div>
+    <div class="grid-2">
+      <a class="card" href="style-guide.html"><span class="badge">Reference</span><h3>Style Guide</h3><p>Colors · type scale · spacing · pricing rules · no-go list. Min font 12px enforced. No "Pro Audio Outfitter" anywhere.</p><span class="arrow">Open style guide →</span></a>
+      <a class="card" href="page-layouts.html"><span class="badge">Reference</span><h3>Page Layouts</h3><p>Visual catalog of every layout pattern (heroes, sections, page types) with when-to-use rules.</p><span class="arrow">Open layouts →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="cards" id="mega">
+  <div class="cards-inner">
+    <div class="cards-head">
+      <div><div class="cards-eye">06 · Mega Menu &amp; Core Ecommerce</div><h2 class="cards-h">One mega menu. Ten core ecommerce screens.</h2></div>
+      <p class="cards-sub">Direct extracts from the locked source repo. No edits, no variants — these are the canonical files.</p>
+    </div>
+    <div class="grid-2">
+      <a class="card" href="mega-menu/mega-menu-final.html"><span class="badge red">Mega Menu</span><h3>The One Mega Menu</h3><p>Final desktop mega menu. Six parent categories. Ask button hover dropdown (Live Chat / Callback / Video Chat).</p><span class="arrow">Open mega menu →</span></a>
+      <a class="card" href="core/index.html" id="core"><span class="badge red">Core Ecommerce</span><h3>10 Core Screens (Index)</h3><p>Homepage · Category · Product · FAQ · Demo Deals · Sell or Trade · Studio Installs · Tech Shop · Financing · Open Box.</p><span class="arrow">Open core index →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="cards" id="content">
+  <div class="cards-inner">
+    <div class="cards-head">
+      <div><div class="cards-eye">07 · All Built Content Pages</div><h2 class="cards-h">Every secondary page that's been built. Organized.</h2></div>
+      <p class="cards-sub">All built secondary marketing pages from the old repo. Each adopts one of the 3 templates above.</p>
+    </div>
+    <div class="grid-2">
+      <a class="card" href="content/index.html"><span class="badge">Index</span><h3>Content Page Index</h3><p>About · Hall of Fame · Make Your Mark · PLAYBACK · Careers · Programs · Hall of Fame deep articles · Promotions · Policies.</p><span class="arrow">Open content index →</span></a>
+      <a class="card dim" href="https://barreletics.github.io/vk-secondary-pages/navigator.html" target="_blank"><span class="badge grey">Source repo</span><h3>Old repo navigator (archive view)</h3><p>The original 60+ file repo with v1/v2 dupes. Frozen. Source of truth for raw content. New repo cherry-picks from here.</p><span class="arrow">Open old navigator →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="source-strip">
+  <div class="source-inner">
+    <div class="source-card"><div class="label">Source repo · Secondary content</div><div class="name">vk-secondary-pages</div><div class="url"><a href="https://github.com/barreletics/vk-secondary-pages" target="_blank">github.com/barreletics/vk-secondary-pages</a><br>Tag baseline: <code>pre-buffet-repo-2026-04-21</code></div></div>
+    <div class="source-card"><div class="label">Source repo · Core demo + mega menu (locked)</div><div class="name">vintage-king-redesign</div><div class="url"><a href="https://github.com/barreletics/vintage-king-redesign" target="_blank">github.com/barreletics/vintage-king-redesign</a><br>Tag baseline: <code>pre-buffet-repo-2026-04-21</code></div></div>
+  </div>
+</section>
+
+<footer>
+  <div><strong>VK Redesign Final</strong> · Vintage Pro Audio · One entry point</div>
+  <div class="meta">Built April 2026 · barreletics/vk-redesign-final · Internal demo</div>
+</footer>
+</body>
+</html>
