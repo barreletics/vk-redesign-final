@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Value Strip Options — 11 variants | VK Redesign Final</title>
-<meta name="description" content="11 value-strip variants side by side. Pick 1-2 keepers. Kill the rest. Includes 4 proven patterns from the main prototype.">
+<title>Value Strip Options — 12 variants | VK Redesign Final</title>
+<meta name="description" content="12 value-strip variants side by side. Pick 1-2 keepers. Kill the rest. Includes 5 proven patterns from the main prototype.">
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -117,10 +117,18 @@ section.opt{padding:40px 32px;border-bottom:1px solid var(--hairline)}
 .v11 strong{display:block;font-family:var(--font-display);font-size:17px;font-weight:700;color:#fff;margin-bottom:6px}
 .v11 small{display:block;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6}
 
+/* V12 — Trust strip with RED icon circles (core ecommerce only) */
+.v12{background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.v12 .row{max-width:1280px;margin:0 auto;padding:28px 32px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.v12 .item{display:flex;gap:14px;align-items:flex-start}
+.v12 .ic{width:40px;height:40px;background:var(--vk-red);border-radius:50%;display:grid;place-items:center;color:#fff;flex-shrink:0;box-shadow:0 0 0 3px rgba(192,57,43,0.10)}
+.v12 .meta strong{display:block;font-size:14px;font-weight:600;margin-bottom:3px;color:var(--near-black)}
+.v12 .meta small{font-size:12px;color:var(--mid-grey);line-height:1.5}
+
 @media(max-width:780px){
   .v7 .row,.v9 .row,.v10 .row{grid-template-columns:repeat(2,1fr)}
   .v7 .item:nth-child(2),.v9 .item:nth-child(2),.v10 .item:nth-child(2){border-right:0}
-  .v1 .row,.v2 .row,.v3 .row,.v4 .row,.v6 .row,.v8 .row,.v11 .row{grid-template-columns:repeat(2,1fr)}
+  .v1 .row,.v2 .row,.v3 .row,.v4 .row,.v6 .row,.v8 .row,.v11 .row,.v12 .row{grid-template-columns:repeat(2,1fr)}
 }
 
 footer{background:var(--near-black);color:rgba(255,255,255,0.7);padding:36px 32px;text-align:center;font-size:13px}
@@ -130,18 +138,18 @@ footer a{color:var(--amber)}
 </style>
 </head>
 <body>
-<div class="topbar"><a href="../index.html" class="back">← Dashboard</a><span><strong>Value Strip Options</strong> — 11 variants. Pick 1-2 keepers, kill the rest.</span></div>
+<div class="topbar"><a href="../index.html" class="back">← Dashboard</a><span><strong>Value Strip Options</strong> — 12 variants. Pick 1-2 keepers, kill the rest.</span></div>
 
 <section class="hero">
   <div class="hero-inner">
     <div class="eye">Decision tool</div>
     <h1>Value strip options — pick the keepers.</h1>
-    <p>The current strip on most secondary pages (variant 1) is too quiet. Compare 10 alternatives — including 4 proven patterns pulled from the main prototype. Flag what you want to standardize on.</p>
+    <p>The current strip on most secondary pages (variant 1) is too quiet. Compare 11 alternatives — including 5 proven patterns pulled from the main prototype. Flag what you want to standardize on.</p>
   </div>
 </section>
 
 <section class="opt"><div class="opt-inner">
-  <div class="summary"><strong>AJ's recommendation:</strong> Kill V1 (plain text). Standardize on V7 (credential bar — proven on Sell or Trade) or V10 (warm-grey credential, amber labels) for hero landing pages. V8 (trust strip with icons) for daily-driver post-hero spots. V11 (dark) closes the page above footer. V2-V6 and V9 are alternates.</div>
+  <div class="summary"><strong>AJ's recommendation:</strong> Kill V1 (plain text). Standardize on V7 (credential bar — proven on Sell or Trade) or V10 (warm-grey credential, amber labels) for hero landing pages. V8 (trust strip with amber icons) for daily-driver post-hero spots on secondary pages. V12 (trust strip with red icons) for the equivalent on core ecommerce pages. V11 (dark) closes the page above footer. V2-V6 and V9 are alternates.</div>
 
   <div class="opt-head">
     <div class="opt-meta"><h2>V1 — Plain text 4-col</h2><p class="when"><strong>Currently on most secondary pages.</strong> Functional but flat. Hard to scan. No visual anchor.</p></div>
@@ -240,8 +248,21 @@ footer a{color:var(--amber)}
   </div></div></div>
 </div></section>
 
+<section class="opt" style="background:var(--off-white)"><div class="opt-inner">
+  <div class="opt-head">
+    <div class="opt-meta"><h2>V12 — Trust strip with RED icon circles (core ecommerce)</h2><p class="when"><strong>Same shape as V8 — but with red icon circles instead of amber.</strong> Use on core ecommerce screens (homepage, category, product, cart, checkout, FAQ, Open Box) where amber would clash with the red CTAs. Solid red circles with a subtle red glow halo + near-black headline + grey sub-line.</p></div>
+    <span class="tag rec">Recommended · core ecommerce daily driver</span>
+  </div>
+  <div class="preview"><div class="code-note">.value-strip-trust-red · white bg · 4 red svg circles · headline + sub-line</div><div class="v12"><div class="row">
+    <div class="item"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div><div class="meta"><strong>Free Shipping Over $99</strong><small>Lower 48 states · same-day on orders by 4PM ET</small></div></div>
+    <div class="item"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="meta"><strong>VK Warranty Included</strong><small>Serviced by our in-house expert technicians</small></div></div>
+    <div class="item"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div><div class="meta"><strong>0% Financing, 48 Mo</strong><small>On qualifying purchases with VK Credit Card</small></div></div>
+    <div class="item"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="meta"><strong>Talk to an Expert</strong><small>Real engineers · real studio experience</small></div></div>
+  </div></div></div>
+</div></section>
+
 <footer>
-  <p>Value Strip Options · 11 variants · <a href="../index.html">Back to Dashboard</a> · <a href="../section-buffet.html">Section Buffet</a></p>
+  <p>Value Strip Options · 12 variants · <a href="../index.html">Back to Dashboard</a> · <a href="../section-buffet.html">Section Buffet</a></p>
 </footer>
 </body>
 </html>
