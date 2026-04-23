@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Category Layouts Buffet — 4 layouts | VK Redesign Final</title>
+<meta name="description" content="4 category / PLP layouts. Default, Spotlight 50/50, Editorial 6-grid, Filter Demo. Each links to a real built PLP.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--vk-red:#C0392B;--amber:#D4860A;--amber-bg:#F5E6C8;--near-black:#1A1A18;--warm-white:#FDFCFB;--off-white:#F7F5F2;--mid-grey:#6B6B68;--hairline:rgba(26,26,24,0.08);--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--warm-white);color:var(--near-black);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.topbar{background:var(--near-black);color:#fff;padding:10px 24px;font-size:12px;display:flex;align-items:center;gap:14px}
+.topbar .back{background:var(--vk-red);color:#fff;padding:7px 14px;border-radius:3px;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase}
+.topbar strong{color:#fff;font-weight:600}
+.page-hero{background:#EDE8E2;padding:48px 32px}
+.page-hero-inner{max-width:1080px;margin:0 auto}
+.page-hero .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.page-hero h1{font-family:var(--font-display);font-size:38px;font-weight:600;line-height:1.05;margin-bottom:14px;max-width:780px}
+.page-hero p{font-size:16px;color:var(--near-black);max-width:760px}
+.layouts{padding:48px 32px}
+.layouts-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.card{background:#fff;border:1px solid var(--hairline);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.card .preview{background:var(--off-white);padding:18px;border-bottom:1px solid var(--hairline);min-height:280px;display:flex;flex-direction:column;gap:10px}
+.silh{background:rgba(26,26,24,0.10);border-radius:3px}
+.silh.tall{height:60px}
+.silh.short{width:60%;height:14px}
+.silh.line{height:14px}
+.silh.dark{background:var(--near-black)}
+.silh.split{display:grid;grid-template-columns:1fr 1fr;gap:10px;height:auto;padding:0;background:transparent}
+.silh.split>*{height:80px;border-radius:3px}
+.silh.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;height:auto;padding:0;background:transparent}
+.silh.grid3>*{height:60px;background:rgba(26,26,24,0.10);border-radius:3px}
+.silh.grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;height:auto;padding:0;background:transparent}
+.silh.grid6>*{height:50px;background:rgba(26,26,24,0.10);border-radius:3px}
+.silh.grid6 .feature{grid-column:span 2;background:linear-gradient(135deg,#cfc8be,#9c9489)}
+.silh.split-large{display:grid;grid-template-columns:1.1fr 1fr;gap:10px;height:auto;padding:0;background:transparent}
+.silh.split-large>*{height:120px;border-radius:3px}
+.silh.split-large .img{background:linear-gradient(135deg,#cfc8be,#9c9489)}
+.silh.split-large .copy{background:rgba(26,26,24,0.06);display:flex;flex-direction:column;justify-content:center;padding:10px;gap:6px}
+.silh.split-large .copy .l{height:8px;background:rgba(26,26,24,0.20);border-radius:2px}
+.silh.split-large .copy .l.short{width:55%}
+.silh.filters{display:grid;grid-template-columns:200px 1fr;gap:10px;height:auto;padding:0;background:transparent}
+.silh.filters .panel{height:160px;background:rgba(26,26,24,0.06);border-radius:3px;padding:8px;display:flex;flex-direction:column;gap:5px}
+.silh.filters .panel .l{height:8px;background:rgba(26,26,24,0.20);border-radius:2px}
+.silh.filters .panel .l.short{width:60%}
+.silh.filters .grid{height:160px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:6px}
+.silh.filters .grid>*{background:rgba(26,26,24,0.10);border-radius:3px}
+.card .meta{padding:20px 22px;flex:1;display:flex;flex-direction:column}
+.card .code{font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+.card h2{font-family:var(--font-display);font-size:22px;font-weight:600;margin-bottom:8px;line-height:1.15}
+.card p{font-size:14px;color:var(--mid-grey);margin-bottom:14px;flex:1}
+.card .cta{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--amber);color:#fff;padding:9px 14px;font-size:11px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;border-radius:3px}
+.btn.ghost{background:transparent;color:var(--near-black);border:1px solid var(--hairline)}
+footer{background:var(--near-black);color:rgba(255,255,255,0.7);padding:32px;text-align:center;font-size:13px}
+footer a{color:var(--amber)}
+@media(max-width:880px){.layouts-inner{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="topbar"><a href="../index.html" class="back">← Dashboard</a><span><strong>Category Layouts Buffet</strong> · 4 layouts · live PLPs linked</span></div>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eye">Buffet · Category / PLP layouts</div>
+    <h1>4 PLP layouts. Pick by category type.</h1>
+    <p>Every category page picks one of these 4 layouts. Default for most. Spotlight for marquee categories with a hero product. Editorial for story-led collections. Filter demo for deep, multi-axis taxonomies.</p>
+  </div>
+</section>
+
+<section class="layouts"><div class="layouts-inner">
+  <div class="card">
+    <div class="preview">
+      <div class="silh tall"></div>
+      <div class="silh short"></div>
+      <div class="silh grid3"><div></div><div></div><div></div></div>
+      <div class="silh grid3"><div></div><div></div><div></div></div>
+    </div>
+    <div class="meta">
+      <div class="code">C1 · Default PLP</div>
+      <h2>Default — dark strip + 3-up grid.</h2>
+      <p>Dark band hero, no image, headline + lede + 2 CTAs. 3-up product grid below with sticky filter bar. <strong>Daily driver — use unless you have a reason not to.</strong></p>
+      <div class="cta">
+        <a class="btn" href="https://barreletics.github.io/vk-secondary-pages/microphones-plp-default.html" target="_blank">Open live PLP →</a>
+        <a class="btn ghost" href="microphones.html">Local copy</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="preview">
+      <div class="silh split-large"><div class="img"></div><div class="copy"><div class="l"></div><div class="l short"></div><div class="l short"></div></div></div>
+      <div class="silh grid3"><div></div><div></div><div></div></div>
+      <div class="silh grid3"><div></div><div></div><div></div></div>
+    </div>
+    <div class="meta">
+      <div class="code">C2 · Spotlight 50/50</div>
+      <h2>Spotlight — split hero (image right) + grid.</h2>
+      <p>Hero is 50/50: copy left, hero product photo right. Use on marquee categories where you have a strong hero photo (Microphones, Outboard, Monitors).</p>
+      <div class="cta">
+        <a class="btn" href="https://barreletics.github.io/vk-secondary-pages/microphones-plp-spotlight.html" target="_blank">Open live PLP →</a>
+        <a class="btn ghost" href="https://barreletics.github.io/vk-secondary-pages/microphones-plp-spotlight-compact.html" target="_blank">Compact variant</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="preview">
+      <div class="silh tall"></div>
+      <div class="silh grid6"><div class="feature"></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="silh dark line"></div>
+      <div class="silh grid3"><div></div><div></div><div></div></div>
+    </div>
+    <div class="meta">
+      <div class="code">C3 · Editorial 6-grid</div>
+      <h2>Editorial — 6-grid with feature tile + interruption.</h2>
+      <p>Mixed grid: a wide feature tile (span 2) + 4 standard tiles, then a full-bleed dark editorial interruption block, then more grid. For story-led collections (Vintage, Open Box drops, curated edits).</p>
+      <div class="cta">
+        <a class="btn" href="https://barreletics.github.io/vk-secondary-pages/microphones-plp-spotlight-compact-font-lab.html" target="_blank">Open live PLP →</a>
+        <a class="btn ghost" href="../core/index.html" target="_blank">Open Box pattern</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="preview">
+      <div class="silh tall"></div>
+      <div class="silh filters"><div class="panel"><div class="l"></div><div class="l short"></div><div class="l short"></div><div class="l"></div><div class="l short"></div><div class="l short"></div></div><div class="grid"><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+    </div>
+    <div class="meta">
+      <div class="code">C4 · Filter Demo</div>
+      <h2>Filter demo — left filter panel + dense grid.</h2>
+      <p>200px sticky left filter rail with multi-axis facets (brand, era, condition, price, format). Dense grid right. For deep taxonomies where filtering is the primary user action (Vintage Search, full Microphone catalog).</p>
+      <div class="cta">
+        <a class="btn" href="microphones.html">Open local PLP →</a>
+        <a class="btn ghost" href="../index.html">More TBD</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<footer>
+  Category Layouts Buffet · 4 layouts · <a href="../index.html">Dashboard</a> · <a href="../headers/index.html">Headers Buffet</a> · <a href="../section-buffet.html">Section Buffet</a>
+</footer>
+</body>
+</html>

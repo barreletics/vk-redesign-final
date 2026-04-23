@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Type Test — Editorial vs Retail (Conversion A/B) | VK Redesign Final</title>
+<meta name="description" content="Side-by-side: Playfair (editorial) vs DM Sans (retail) on product names. Same PLP card grid + PDP buy box. Pick the conversion winner.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--vk-red:#C0392B;--amber:#D4860A;--amber-bg:#F5E6C8;--near-black:#1A1A18;--warm-white:#FDFCFB;--off-white:#F7F5F2;--mid-grey:#6B6B68;--hairline:rgba(26,26,24,0.08);--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--warm-white);color:var(--near-black);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.topbar{background:var(--near-black);color:#fff;padding:10px 24px;font-size:12px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.topbar .back{background:var(--vk-red);color:#fff;padding:7px 14px;border-radius:3px;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase}
+.topbar strong{color:#fff;font-weight:600}
+.page-hero{background:#EDE8E2;padding:48px 32px}
+.page-hero-inner{max-width:1080px;margin:0 auto}
+.page-hero .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.page-hero h1{font-family:var(--font-display);font-size:38px;font-weight:600;line-height:1.05;margin-bottom:14px;max-width:780px}
+.page-hero p{font-size:16px;color:var(--near-black);max-width:760px;margin-bottom:8px}
+
+.rules{background:#fff;padding:28px 32px;border-bottom:1px solid var(--hairline)}
+.rules-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.rule{background:var(--off-white);padding:18px 22px;border-radius:4px;border-left:3px solid var(--amber)}
+.rule h3{font-family:var(--font-display);font-size:17px;font-weight:600;margin-bottom:6px}
+.rule p{font-size:13px;color:var(--mid-grey)}
+.rule strong{color:var(--near-black);font-weight:600}
+
+section.test{padding:40px 32px;border-bottom:1px solid var(--hairline)}
+.test-inner{max-width:1480px;margin:0 auto}
+.test-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:22px;padding-bottom:14px;border-bottom:2px solid var(--near-black);flex-wrap:wrap;gap:14px}
+.test-head .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+.test-head h2{font-family:var(--font-display);font-size:26px;font-weight:600;line-height:1.15}
+.test-head p{font-size:13px;color:var(--mid-grey);max-width:480px}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:980px){.split{grid-template-columns:1fr}}
+.col{background:#fff;border:1px solid var(--hairline);border-radius:6px;overflow:hidden}
+.col-head{padding:16px 20px;border-bottom:1px solid var(--hairline);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.col-head .label{font-family:var(--font-display);font-size:18px;font-weight:600}
+.col-head .label small{display:block;font-family:var(--font-body);font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--amber);margin-bottom:3px}
+.col-head .pill{font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;padding:4px 10px;border-radius:3px}
+.col-head .pill.A{background:var(--amber-bg);color:var(--amber)}
+.col-head .pill.B{background:rgba(46,125,50,0.10);color:#2E7D32}
+.col-body{padding:22px;background:var(--off-white)}
+
+/* PLP Card Grid */
+.plp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.pcard{background:#fff;border:1px solid var(--hairline);border-radius:4px;overflow:hidden}
+.pcard .img{height:140px;background:linear-gradient(135deg,#cfc8be,#9c9489)}
+.pcard .body{padding:14px}
+.pcard .brand{font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;color:var(--mid-grey);margin-bottom:6px}
+.pcard .price{font-family:var(--font-body);font-size:15px;font-weight:500;color:var(--near-black);margin-top:8px}
+.pcard .price .compare{color:var(--mid-grey);text-decoration:line-through;font-weight:400;margin-left:6px;font-size:13px}
+
+/* Variant A — Editorial Playfair on names */
+.A .pcard .name{font-family:var(--font-display);font-size:16px;font-weight:600;line-height:1.25;color:var(--near-black);min-height:42px}
+
+/* Variant B — Retail DM Sans on names */
+.B .pcard .name{font-family:var(--font-body);font-size:15px;font-weight:500;line-height:1.3;color:var(--near-black);min-height:42px}
+
+/* PDP Buy Box */
+.pdp{background:#fff;display:grid;grid-template-columns:1.1fr 1fr;gap:24px;padding:22px}
+.pdp .gallery{height:280px;background:linear-gradient(135deg,#cfc8be,#9c9489);border-radius:4px}
+.pdp .buy .crumb{font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;color:var(--mid-grey);margin-bottom:10px}
+.pdp .buy .brand{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+.pdp .buy .price{font-family:var(--font-body);font-size:26px;font-weight:500;color:var(--near-black);margin:12px 0 4px}
+.pdp .buy .price .compare{color:var(--mid-grey);text-decoration:line-through;font-weight:400;margin-left:8px;font-size:18px}
+.pdp .buy .stock{font-size:12px;color:#2E7D32;font-weight:600;margin-bottom:14px}
+.pdp .buy .btn{display:block;width:100%;background:var(--vk-red);color:#fff;padding:14px;font-size:13px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;border-radius:3px;border:0;text-align:center;margin-bottom:8px;cursor:pointer}
+.pdp .buy .btn.ghost{background:transparent;color:var(--near-black);border:1px solid var(--hairline)}
+.pdp .buy .trust{font-size:11px;color:var(--mid-grey);margin-top:14px;line-height:1.6}
+@media(max-width:680px){.pdp{grid-template-columns:1fr}}
+
+.A .pdp .buy .name{font-family:var(--font-display);font-size:30px;font-weight:600;line-height:1.1}
+.B .pdp .buy .name{font-family:var(--font-body);font-size:24px;font-weight:600;line-height:1.2;letter-spacing:-0.005em}
+
+/* HOF Editorial header */
+.hof{background:var(--near-black);color:#fff;padding:48px 28px;text-align:center;border-radius:4px}
+.hof .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.hof p{font-size:13px;color:rgba(255,255,255,0.65);max-width:520px;margin:8px auto 0;line-height:1.6}
+.A .hof h2{font-family:var(--font-display);font-size:34px;font-weight:600;line-height:1.1;max-width:600px;margin:0 auto}
+.B .hof h2{font-family:var(--font-body);font-size:28px;font-weight:600;line-height:1.15;max-width:600px;margin:0 auto;letter-spacing:-0.01em}
+
+/* Decision panel */
+.decision{background:#fff;padding:36px 32px;border-bottom:1px solid var(--hairline)}
+.decision-inner{max-width:1080px;margin:0 auto;background:var(--amber-bg);padding:24px 28px;border-radius:6px;border-left:4px solid var(--amber)}
+.decision h3{font-family:var(--font-display);font-size:22px;font-weight:600;margin-bottom:10px}
+.decision p{font-size:14px;color:var(--near-black);margin-bottom:8px;line-height:1.65}
+.decision .vote{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+.decision .vote a{display:inline-block;background:var(--near-black);color:#fff;padding:11px 18px;font-size:11px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;border-radius:3px}
+.decision .vote a.amber{background:var(--amber)}
+.decision .vote a.green{background:#2E7D32}
+
+footer{background:var(--near-black);color:rgba(255,255,255,0.7);padding:32px;text-align:center;font-size:13px}
+footer a{color:var(--amber)}
+</style>
+</head>
+<body>
+<div class="topbar"><a href="index.html" class="back">← Dashboard</a><span><strong>Type Test · Editorial vs Retail</strong> — same content. Different fonts on product names. Pick the conversion winner.</span></div>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eye">Decision tool · Conversion A/B</div>
+    <h1>Editorial Playfair vs Retail DM Sans on product names.</h1>
+    <p>Three identical surfaces (PLP card grid · PDP buy box · HOF editorial hero) shown side by side. Variant A keeps Playfair on product names — the current "editorial / Apple-quiet" approach. Variant B switches product names to DM Sans — the "retail / Sweetwater" approach. Body, prices, and buttons stay identical in both.</p>
+    <p style="font-size:14px;color:var(--mid-grey)"><strong>Locked rules either way</strong> — Pricing &amp; numbers always DM Sans 500. Buttons always DM Sans 600 uppercase. Eyebrows always DM Sans uppercase 12px. The only thing that moves is the product name itself.</p>
+  </div>
+</section>
+
+<section class="rules">
+  <div class="rules-inner">
+    <div class="rule"><h3>Variant A — Editorial (current)</h3><p><strong>Playfair Display</strong> on product names + section titles. <strong>DM Sans</strong> on body, prices, buttons. Brand voice = pro-audio heritage, story-led, "this gear has history."</p></div>
+    <div class="rule"><h3>Variant B — Retail (proposed)</h3><p><strong>DM Sans</strong> on product names + body + prices + buttons. Playfair only on H1 / hero / HOF article titles. Brand voice = clean, fast, scannable, conversion-led.</p></div>
+  </div>
+</section>
+
+<section class="test">
+  <div class="test-inner">
+    <div class="test-head">
+      <div><div class="eye">Surface 1 / 3</div><h2>PLP — product card grid</h2></div>
+      <p>The most consequential surface for conversion. Users scan 20+ names per minute on PLP.</p>
+    </div>
+    <div class="split">
+      <div class="col A"><div class="col-head"><div class="label"><small>Variant A</small>Editorial · Playfair on names</div><span class="pill A">Current</span></div>
+        <div class="col-body"><div class="plp-grid">
+          <div class="pcard"><div class="img"></div><div class="body"><div class="brand">Neumann</div><div class="name">U 47 FET Large-Diaphragm Condenser</div><div class="price">$3,995 <span class="compare">$4,295</span></div></div></div>
+          <div class="pcard"><div class="img"></div><div class="body"><div class="brand">Universal Audio</div><div class="name">Apollo x8p Heritage Edition</div><div class="price">$3,599</div></div></div>
+          <div class="pcard"><div class="img"></div><div class="body"><div class="brand">Neve</div><div class="name">1073OPX 8-Channel Mic Preamp</div><div class="price">$5,299</div></div></div>
+          <div class="pcard"><div class="img"></div><div class="body"><div class="brand">Coles</div><div class="name">4038 Studio Ribbon Microphone</div><div class="price">$1,895</div></div></div>
+        </div></div>
+      </div>
+      <div class="col B"><div class="col-head"><div class="label"><small>Variant B</small>Retail · DM Sans on names</div><span class="pill B">Proposed</span></div>
+        <div class="col-body"><div class="plp-grid">
+          <div class="pcard"><div class="img"></div><div class="body"><div class="brand">Neumann</div><div class="name">U 47 FET Large-Diaphragm Condenser</div><div class="price">$3,995 <span class="compare">$4,295</span></div></div></div>
+          <div class="pcard"><div class="img"></div><div class="body"><div class="brand">Universal Audio</div><div class="name">Apollo x8p Heritage Edition</div><div class="price">$3,599</div></div></div>
+          <div class="pcard"><div class="img"></div><div class="body"><div class="brand">Neve</div><div class="name">1073OPX 8-Channel Mic Preamp</div><div class="price">$5,299</div></div></div>
+          <div class="pcard"><div class="img"></div><div class="body"><div class="brand">Coles</div><div class="name">4038 Studio Ribbon Microphone</div><div class="price">$1,895</div></div></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="test" style="background:var(--off-white)">
+  <div class="test-inner">
+    <div class="test-head">
+      <div><div class="eye">Surface 2 / 3</div><h2>PDP — product page buy box</h2></div>
+      <p>The decision moment. Where the user types in their card. Clarity matters more than character.</p>
+    </div>
+    <div class="split">
+      <div class="col A"><div class="col-head"><div class="label"><small>Variant A</small>Editorial · Playfair on name</div><span class="pill A">Current</span></div>
+        <div class="col-body"><div class="pdp"><div class="gallery"></div><div class="buy">
+          <div class="crumb">Microphones / Condenser / Neumann</div>
+          <div class="brand">Neumann</div>
+          <div class="name">U 47 FET — Large Diaphragm Condenser</div>
+          <div class="price">$3,995 <span class="compare">$4,295</span></div>
+          <div class="stock">In stock — ships today</div>
+          <button class="btn">Add to cart</button>
+          <button class="btn ghost">Talk to an Expert</button>
+          <p class="trust">Free shipping over $99 · VK Warranty included · 30-day returns · 0% financing for 48 months</p>
+        </div></div></div>
+      </div>
+      <div class="col B"><div class="col-head"><div class="label"><small>Variant B</small>Retail · DM Sans on name</div><span class="pill B">Proposed</span></div>
+        <div class="col-body"><div class="pdp"><div class="gallery"></div><div class="buy">
+          <div class="crumb">Microphones / Condenser / Neumann</div>
+          <div class="brand">Neumann</div>
+          <div class="name">U 47 FET — Large Diaphragm Condenser</div>
+          <div class="price">$3,995 <span class="compare">$4,295</span></div>
+          <div class="stock">In stock — ships today</div>
+          <button class="btn">Add to cart</button>
+          <button class="btn ghost">Talk to an Expert</button>
+          <p class="trust">Free shipping over $99 · VK Warranty included · 30-day returns · 0% financing for 48 months</p>
+        </div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="test">
+  <div class="test-inner">
+    <div class="test-head">
+      <div><div class="eye">Surface 3 / 3</div><h2>HOF / heritage article — editorial hero</h2></div>
+      <p>The story-led surface. SEO + authority. Where character matters more than scan-speed.</p>
+    </div>
+    <div class="split">
+      <div class="col A"><div class="col-head"><div class="label"><small>Variant A</small>Editorial · Playfair on title</div><span class="pill A">Current</span></div>
+        <div class="col-body"><div class="hof"><div class="eye">Hall of Fame · Microphones</div><h2>The Neumann U47 — the voice of recorded music.</h2><p>The microphone that captured Sinatra, the Beatles, and a thousand records you know by heart.</p></div></div>
+      </div>
+      <div class="col B"><div class="col-head"><div class="label"><small>Variant B</small>Retail · DM Sans on title</div><span class="pill B">Proposed</span></div>
+        <div class="col-body"><div class="hof"><div class="eye">Hall of Fame · Microphones</div><h2>The Neumann U47 — the voice of recorded music.</h2><p>The microphone that captured Sinatra, the Beatles, and a thousand records you know by heart.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="decision"><div class="decision-inner">
+  <h3>How to decide — quick rule of thumb</h3>
+  <p><strong>If conversion &gt; brand voice:</strong> pick Variant B (retail / DM Sans on names). Sweetwater, Sweetwater, Reverb, Thomann all do this. Easier to scan. Faster decisions. Better for paid traffic.</p>
+  <p><strong>If brand voice &gt; conversion lift on PLP:</strong> pick Variant A (editorial / Playfair on names). What you have today. Stronger differentiation. Pro-audio heritage feel. Closer to Apple / NYT product pages.</p>
+  <p><strong>Hybrid (AJ's recommendation):</strong> Variant B on PLP and PDP (where conversion lives) + Variant A on HOF, gear heritage articles, About, and program landing pages (where story lives). Best of both — and matches the spec rule that <em>numbers and prices are always DM Sans 500</em>.</p>
+  <div class="vote">
+    <a href="mailto:?subject=Type+vote+Variant+A&body=Vote%3A+Variant+A+(Editorial+%C2%B7+Playfair+on+names)" class="amber">Vote A — Editorial</a>
+    <a href="mailto:?subject=Type+vote+Variant+B&body=Vote%3A+Variant+B+(Retail+%C2%B7+DM+Sans+on+names)" class="green">Vote B — Retail</a>
+    <a href="mailto:?subject=Type+vote+Hybrid&body=Vote%3A+Hybrid+(B+on+PLP%2FPDP%2C+A+on+HOF%2Fheritage)">Vote Hybrid (default)</a>
+  </div>
+</div></section>
+
+<footer>
+  Type Test · A/B · 3 surfaces · <a href="index.html">Dashboard</a> · <a href="style-guide.html">Style Guide</a> · <a href="content/index.html">Content Index</a>
+</footer>
+</body>
+</html>

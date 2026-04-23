@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Headers Buffet — 4 hero families | VK Redesign Final</title>
+<meta name="description" content="All hero/header families available in the VK system, previewed inline and bucketed by page type (Secondary content vs PLP / category).">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--vk-red:#C0392B;--amber:#D4860A;--amber-bg:#F5E6C8;--near-black:#1A1A18;--warm-white:#FDFCFB;--off-white:#F7F5F2;--mid-grey:#6B6B68;--hairline:rgba(26,26,24,0.08);--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--warm-white);color:var(--near-black);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.topbar{background:var(--near-black);color:#fff;padding:10px 24px;font-size:12px;display:flex;align-items:center;gap:14px}
+.topbar .back{background:var(--vk-red);color:#fff;padding:7px 14px;border-radius:3px;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase}
+.topbar strong{color:#fff;font-weight:600}
+.page-hero{background:#EDE8E2;padding:48px 32px}
+.page-hero-inner{max-width:1080px;margin:0 auto}
+.page-hero .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.page-hero h1{font-family:var(--font-display);font-size:38px;font-weight:600;line-height:1.05;margin-bottom:14px;max-width:780px}
+.page-hero p{font-size:16px;color:var(--near-black);max-width:760px}
+.bucket-head{background:var(--near-black);color:#fff;padding:28px 32px}
+.bucket-head .inner{max-width:1280px;margin:0 auto}
+.bucket-head h2{font-family:var(--font-display);font-size:22px;font-weight:600}
+.bucket-head p{font-size:13px;color:rgba(255,255,255,0.65);margin-top:4px}
+.opt{padding:36px 32px;border-bottom:1px solid var(--hairline)}
+.opt-inner{max-width:1280px;margin:0 auto}
+.opt-head{display:flex;justify-content:space-between;align-items:start;margin-bottom:14px;gap:16px;flex-wrap:wrap}
+.opt-meta h3{font-family:var(--font-display);font-size:20px;font-weight:600;margin-bottom:4px}
+.opt-meta .when{font-size:13px;color:var(--mid-grey);max-width:640px}
+.opt-meta .when strong{color:var(--near-black);font-weight:600}
+.tag{font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;padding:4px 10px;border-radius:3px;width:fit-content}
+.tag.sec{background:var(--amber-bg);color:var(--amber)}
+.tag.plp{background:rgba(192,57,43,0.08);color:var(--vk-red)}
+.tag.both{background:rgba(46,125,50,0.10);color:#2E7D32}
+.preview{border:1px solid var(--hairline);border-radius:4px;overflow:hidden}
+.code-note{background:var(--off-white);padding:10px 18px;font-size:12px;color:var(--mid-grey);font-family:monospace;border-bottom:1px solid var(--hairline)}
+
+/* H1 — Split product (PLP / category) */
+.h1{display:grid;grid-template-columns:1.1fr 1fr;background:var(--off-white);min-height:280px}
+.h1 .copy{padding:40px;display:flex;flex-direction:column;justify-content:center}
+.h1 .copy .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.h1 .copy h2{font-family:var(--font-display);font-size:32px;font-weight:600;line-height:1.1;margin-bottom:8px}
+.h1 .copy p{font-size:14px;color:var(--mid-grey);max-width:380px}
+.h1 .img{background:linear-gradient(135deg,#cfc8be,#9c9489);min-height:280px}
+
+/* H2 — Centered light (secondary content) */
+.h2{background:#EDE8E2;padding:48px 32px;text-align:center;border-top:1px solid var(--hairline)}
+.h2 .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.h2 h2{font-family:var(--font-display);font-size:34px;font-weight:600;line-height:1.1;margin-bottom:8px;max-width:680px;margin-left:auto;margin-right:auto}
+.h2 p{font-size:14px;color:var(--mid-grey);max-width:560px;margin:0 auto}
+
+/* H3 — Full dark editorial (heritage / HOF) */
+.h3{background:var(--near-black);padding:60px 32px;text-align:center;color:#fff}
+.h3 .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.h3 h2{font-family:var(--font-display);font-size:36px;font-weight:600;line-height:1.1;margin-bottom:10px;max-width:720px;margin-left:auto;margin-right:auto}
+.h3 p{font-size:14px;color:rgba(255,255,255,0.65);max-width:560px;margin:0 auto}
+
+/* H4 — Photo BG overlay (drop / promo / campaign) */
+.h4{position:relative;min-height:280px;display:flex;align-items:flex-end;background:linear-gradient(135deg,#3a342d,#1a1a18);padding:36px 32px;color:#fff;overflow:hidden}
+.h4::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,0.55) 100%)}
+.h4 .copy{position:relative;z-index:1;max-width:600px}
+.h4 .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.h4 h2{font-family:var(--font-display);font-size:34px;font-weight:600;line-height:1.05;margin-bottom:8px}
+.h4 p{font-size:14px;color:rgba(255,255,255,0.85);max-width:480px}
+
+footer{background:var(--near-black);color:rgba(255,255,255,0.7);padding:32px;text-align:center;font-size:13px}
+footer a{color:var(--amber)}
+.ref{margin-top:14px;font-size:12px;color:var(--mid-grey)}
+.ref a{color:var(--amber);text-decoration:underline}
+
+@media(max-width:780px){.h1{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="topbar"><a href="../index.html" class="back">← Dashboard</a><span><strong>Headers Buffet</strong> · 4 hero families · bucketed by page type</span></div>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eye">Buffet · Headers</div>
+    <h1>4 hero families. Pick by page type.</h1>
+    <p>One underlying header library — used differently depending on whether the page is a category / PLP, a secondary content page, or a heritage / editorial story. Tags below show which bucket each header belongs to.</p>
+  </div>
+</section>
+
+<div class="bucket-head"><div class="inner"><h2>Bucket 1 · Headers for PLP / category pages</h2><p>Used on category landings, sub-category landings, and filter PLPs. Every PLP picks one of these.</p></div></div>
+
+<section class="opt"><div class="opt-inner">
+  <div class="opt-head"><div class="opt-meta"><h3>H1 — Split product (50/50 image right)</h3><p class="when"><strong>Default PLP header.</strong> Headline + lede on left, hero product image on right. Use on every category landing page where you have a hero photo. Pulled from <code>microphones-plp-spotlight</code> and main prototype.</p></div><span class="tag plp">PLP / category</span></div>
+  <div class="preview"><div class="code-note">.hero-split · 50/50 grid · copy left, image right · 280-360px tall</div><div class="h1"><div class="copy"><div class="eye">Microphones</div><h2>Microphones — vintage and modern.</h2><p>Studio standards from Neumann, Telefunken, AKG, Coles, RCA. Every unit hand-tested by VK techs.</p></div><div class="img"></div></div></div>
+  <div class="ref">Live: <a href="https://barreletics.github.io/vk-secondary-pages/microphones-plp-spotlight.html" target="_blank">microphones-plp-spotlight.html</a> · <a href="https://barreletics.github.io/vk-secondary-pages/microphones-plp-default.html" target="_blank">microphones-plp-default.html</a></div>
+</div></section>
+
+<section class="opt" style="background:var(--off-white)"><div class="opt-inner">
+  <div class="opt-head"><div class="opt-meta"><h3>H2 — Centered light (no image)</h3><p class="when"><strong>Secondary PLP header.</strong> Centered headline on warm-light background. Use on PLPs without a hero photo (Used Gear, Open Box, Demo Deals overflow). Quick to ship — no image dependency.</p></div><span class="tag plp">PLP / category</span></div>
+  <div class="preview"><div class="code-note">.hero-centered-light · #EDE8E2 bg · centered · 48-60px padding</div><div class="h2"><div class="eye">Used Gear</div><h2>Used pro audio — vetted, warrantied, ready to ship.</h2><p>Every used piece is bench-checked by VK and ships with a written VK warranty.</p></div></div>
+  <div class="ref">Pattern source: lab variants in old repo · also used on FAQ &amp; policy pages.</div>
+</div></section>
+
+<div class="bucket-head"><div class="inner"><h2>Bucket 2 · Headers for secondary content pages</h2><p>Used on Hall of Fame, Studio Installs, Sell or Trade, Tech Shop, Financing, Gear Heritage articles, and program landing pages.</p></div></div>
+
+<section class="opt"><div class="opt-inner">
+  <div class="opt-head"><div class="opt-meta"><h3>H2 — Centered light (also works here)</h3><p class="when"><strong>Daily-driver secondary header.</strong> Same H2 above. The default for every program / service landing page (Sell or Trade, Tech Shop, Financing, Studio Installs).</p></div><span class="tag both">Both buckets</span></div>
+  <div class="preview"><div class="code-note">.hero-centered-light · re-use of H2 above</div><div class="h2"><div class="eye">Tech Shop</div><h2>Sound is the only spec. We service every era.</h2><p>30+ years repairing pro-audio gear. Free written estimate on every intake.</p></div></div>
+  <div class="ref">Live: <a href="https://barreletics.github.io/vk-secondary-pages/sell-or-trade.html" target="_blank">sell-or-trade.html</a> · <a href="https://barreletics.github.io/vk-secondary-pages/tech-shop.html" target="_blank">tech-shop.html</a> · <a href="https://barreletics.github.io/vk-secondary-pages/financing.html" target="_blank">financing.html</a></div>
+</div></section>
+
+<section class="opt" style="background:var(--off-white)"><div class="opt-inner">
+  <div class="opt-head"><div class="opt-meta"><h3>H3 — Full dark editorial</h3><p class="when"><strong>Heritage / Hall of Fame / deep article header.</strong> Near-black background, white serif headline, amber eyebrow. Use on long-form content where authority matters more than conversion.</p></div><span class="tag sec">Secondary · editorial only</span></div>
+  <div class="preview"><div class="code-note">.hero-dark-editorial · near-black bg · white centered serif · 60px padding</div><div class="h3"><div class="eye">Hall of Fame · Microphones</div><h2>The Neumann U47 — the voice of recorded music.</h2><p>The microphone that captured Sinatra, the Beatles, and a thousand records you know by heart.</p></div></div>
+  <div class="ref">Live: <a href="https://barreletics.github.io/vk-secondary-pages/neumann-u47.html" target="_blank">neumann-u47.html</a> · use sparingly — at most once per page.</div>
+</div></section>
+
+<section class="opt"><div class="opt-inner">
+  <div class="opt-head"><div class="opt-meta"><h3>H4 — Photo background overlay</h3><p class="when"><strong>Promo / drop / campaign header.</strong> Full-bleed photo with dark gradient overlay, copy bottom-left. Use on time-bound promo landings (Demo Deals, Open Box drops, holiday campaigns). Requires real photo.</p></div><span class="tag both">Both buckets · campaign use</span></div>
+  <div class="preview"><div class="code-note">.hero-photo-overlay · full-bleed photo · gradient overlay · copy bottom-left</div><div class="h4"><div class="copy"><div class="eye">Open Box · Live Now</div><h2>Open Box gear — up to 50% off retail.</h2><p>Every unit VK-tested, full warranty, ships same day. Inventory updated daily.</p></div></div></div>
+  <div class="ref">Pattern source: Open Box editorial 2x2 in main prototype · Demo Deals page.</div>
+</div></section>
+
+<footer>
+  Headers Buffet · 4 families · 2 buckets · <a href="../index.html">Dashboard</a> · <a href="../section-buffet.html">Section Buffet</a> · <a href="../value-strips/value-strip-options.html">Value Strips</a>
+</footer>
+</body>
+</html>
