@@ -3,197 +3,278 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>VK Redesign — Buffet Dashboard | Vintage Pro Audio</title>
-<meta name="description" content="One entry point for the Vintage King redesign demo. 5 templates, 4 headers, 4 category layouts, 11 value strips, 1 mega menu, every built page organized.">
+<title>VK Redesign — Roadmap to Heaven | Vintage Pro Audio</title>
+<meta name="description" content="One entry point. Read the playbook. See the work. Decide the open calls. Hand off to the agency.">
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--vk-red:#C0392B;--amber:#D4860A;--amber-bg:#F5E6C8;--near-black:#1A1A18;--warm-white:#FDFCFB;--off-white:#F7F5F2;--mid-grey:#6B6B68;--hairline:rgba(26,26,24,0.08);--hero-bg:#EDE8E2;--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',sans-serif}
+:root{--vk-red:#C0392B;--amber:#D4860A;--amber-bg:#F5E6C8;--near-black:#1A1A18;--warm-white:#FDFCFB;--off-white:#F7F5F2;--mid-grey:#6B6B68;--hairline:rgba(26,26,24,0.08);--hero-bg:#EDE8E2;--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',sans-serif;--font-mono:'JetBrains Mono',Menlo,monospace}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{font-family:var(--font-body);background:var(--warm-white);color:var(--near-black);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-.topbar{background:var(--near-black);color:#fff;padding:8px 24px;font-size:12px;letter-spacing:0.04em;text-align:center}
+
+.topbar{background:var(--near-black);color:#fff;padding:9px 24px;font-size:12px;letter-spacing:0.04em;text-align:center}
 .topbar strong{color:var(--amber);font-weight:600;letter-spacing:0.18em;text-transform:uppercase;margin-right:10px}
 .nav{background:#fff;border-bottom:1px solid var(--hairline);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
 .logo{font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-0.005em}
 .logo .tag{font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--amber);letter-spacing:0.16em;text-transform:uppercase;margin-left:14px;border-left:1px solid var(--hairline);padding-left:14px}
 .nav-links{display:flex;gap:28px;font-size:13px;font-weight:500;flex-wrap:wrap}
 .nav-links a:hover{color:var(--amber)}
-.hero{background:var(--hero-bg);padding:80px 32px 64px}
+
+.hero{background:var(--hero-bg);padding:80px 32px 60px}
 .hero-inner{max-width:1100px;margin:0 auto}
-.hero-eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:18px}
-.hero h1{font-family:var(--font-display);font-size:54px;font-weight:600;line-height:1.05;letter-spacing:-0.01em;max-width:880px;margin:0 0 22px}
-.hero p.lede{font-size:18px;color:var(--near-black);line-height:1.6;max-width:760px;margin:0 0 24px}
-.hero p.sub{font-size:14px;color:var(--mid-grey);max-width:720px}
+.hero-eye{font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:18px}
+.hero h1{font-family:var(--font-display);font-size:60px;font-weight:600;line-height:1.02;letter-spacing:-0.01em;max-width:920px;margin:0 0 22px}
+.hero p.lede{font-size:19px;color:var(--near-black);line-height:1.55;max-width:780px;margin:0 0 24px}
+.hero p.sub{font-size:14px;color:var(--mid-grey);max-width:760px}
 .hero p.sub strong{color:var(--near-black);font-weight:600}
-.anchor-strip{background:#fff;border-bottom:1px solid var(--hairline);padding:14px 32px;position:sticky;top:0;z-index:50;display:flex;gap:24px;flex-wrap:wrap;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;color:var(--mid-grey)}
-.anchor-strip a{padding:6px 0;border-bottom:2px solid transparent;transition:all 0.15s}
-.anchor-strip a:hover{color:var(--near-black);border-bottom-color:var(--amber)}
-.anchor-strip .label{color:rgba(26,26,24,0.35)}
-section.cards{padding:64px 32px 32px;border-bottom:1px solid var(--hairline)}
-.cards-inner{max-width:1280px;margin:0 auto}
-.cards-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:30px;padding-bottom:16px;border-bottom:2px solid var(--near-black);flex-wrap:wrap;gap:14px}
-.cards-eye{font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
-.cards-h{font-family:var(--font-display);font-size:32px;font-weight:600;line-height:1.15}
-.cards-sub{font-size:13px;color:var(--mid-grey);max-width:560px;line-height:1.6}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-@media(max-width:980px){.grid-3,.grid-2{grid-template-columns:1fr}}
-.card{background:#fff;border:1px solid var(--hairline);border-radius:4px;padding:24px 22px;display:flex;flex-direction:column;gap:12px;transition:all 0.15s}
-.card:hover{border-color:var(--amber);box-shadow:0 4px 12px rgba(26,26,24,0.06);transform:translateY(-2px)}
-.badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;padding:3px 8px;border-radius:2px;width:fit-content;background:var(--amber-bg);color:var(--amber)}
-.badge.red{background:rgba(192,57,43,0.08);color:var(--vk-red)}
-.badge.grey{background:rgba(26,26,24,0.07);color:var(--near-black)}
-.badge.tbd{background:rgba(26,26,24,0.07);color:var(--mid-grey);border:1px dashed var(--mid-grey)}
-.card h3{font-family:var(--font-display);font-size:20px;font-weight:600;line-height:1.25}
-.card p{font-size:13px;color:var(--mid-grey);line-height:1.55}
-.card .arrow{font-size:13px;font-weight:600;color:var(--amber);margin-top:auto;padding-top:8px}
-.card.dim{opacity:0.6}
-.source-strip{background:var(--off-white);padding:32px;border-bottom:1px solid var(--hairline)}
-.source-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px}
-@media(max-width:980px){.source-inner{grid-template-columns:1fr}}
-.source-card{background:#fff;border:1px solid var(--hairline);border-left:3px solid var(--amber);padding:18px 22px;border-radius:0 3px 3px 0}
-.source-card .label{font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--mid-grey);margin-bottom:6px}
-.source-card .name{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:6px}
-.source-card .url{font-size:12px;color:var(--mid-grey);font-family:monospace;word-break:break-all}
-.source-card .url a{color:var(--vk-red)}
-footer{background:var(--near-black);color:rgba(255,255,255,0.7);padding:40px 32px;font-size:13px;text-align:center}
+
+.roadmap{background:#fff;padding:36px 32px;border-bottom:1px solid var(--hairline)}
+.roadmap-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:center;font-family:var(--font-mono);font-size:11px;color:var(--mid-grey);text-transform:uppercase;letter-spacing:0.10em}
+.rm-step{display:flex;align-items:center;gap:10px}
+.rm-step .num{background:var(--amber);color:#fff;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:12px;flex-shrink:0}
+.rm-step strong{color:var(--near-black);font-weight:600;display:block;margin-bottom:2px;font-size:11px;letter-spacing:0.10em}
+.rm-step small{font-family:var(--font-body);font-size:11px;color:var(--mid-grey);text-transform:none;letter-spacing:0;line-height:1.4;display:block}
+@media(max-width:880px){.roadmap-inner{grid-template-columns:1fr;gap:14px}}
+
+section.zone{padding:64px 32px;border-bottom:1px solid var(--hairline)}
+.zone-inner{max-width:1280px;margin:0 auto}
+.zone-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:28px;padding-bottom:14px;border-bottom:2px solid var(--near-black);flex-wrap:wrap;gap:14px}
+.zone-eye{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:0.10em;color:var(--amber);margin-bottom:6px;text-transform:uppercase}
+.zone-h{font-family:var(--font-display);font-size:34px;font-weight:600;line-height:1.1;letter-spacing:-0.005em}
+.zone-sub{font-size:14px;color:var(--mid-grey);max-width:520px;line-height:1.6}
+
+/* HERO TILE — single big card for "READ FIRST" */
+.hero-tile{background:linear-gradient(135deg,#1a1a18 0%,#2c2c2a 100%);color:#fff;border-radius:8px;padding:48px;display:grid;grid-template-columns:1.4fr 1fr;gap:36px;align-items:center;overflow:hidden;position:relative}
+.hero-tile::before{content:"";position:absolute;top:0;right:0;width:300px;height:300px;background:radial-gradient(circle,rgba(212,134,10,0.20),transparent 70%);pointer-events:none}
+.hero-tile .badge{display:inline-block;background:var(--amber);color:#fff;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:5px 12px;border-radius:3px;margin-bottom:18px}
+.hero-tile h3{font-family:var(--font-display);font-size:38px;font-weight:600;line-height:1.1;margin-bottom:14px}
+.hero-tile p{font-size:15px;color:rgba(255,255,255,0.75);margin-bottom:18px;line-height:1.6;max-width:520px}
+.hero-tile .meta{font-size:12px;color:rgba(255,255,255,0.5);font-family:var(--font-mono);margin-bottom:24px}
+.hero-tile .cta{display:inline-block;background:var(--amber);color:#fff;padding:14px 22px;font-size:13px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;border-radius:3px}
+.hero-tile .cta:hover{background:#b87308}
+.hero-tile .toc{position:relative;z-index:1}
+.hero-tile .toc h4{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.hero-tile .toc ol{list-style:none;padding:0;counter-reset:step;font-size:13px;color:rgba(255,255,255,0.85)}
+.hero-tile .toc li{counter-increment:step;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.10);display:flex;gap:12px}
+.hero-tile .toc li:last-child{border-bottom:0}
+.hero-tile .toc li::before{content:counter(step,decimal-leading-zero);font-family:var(--font-mono);font-size:11px;color:var(--amber);font-weight:600}
+@media(max-width:880px){.hero-tile{grid-template-columns:1fr;padding:32px}.hero-tile h3{font-size:28px}}
+
+/* SEE THE WORK — 2 big cards */
+.see-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(max-width:880px){.see-grid{grid-template-columns:1fr}}
+.see-card{background:#fff;border:1px solid var(--hairline);border-radius:6px;padding:32px;display:flex;flex-direction:column;gap:14px;transition:all 0.2s}
+.see-card:hover{border-color:var(--amber);box-shadow:0 6px 20px rgba(26,26,24,0.06);transform:translateY(-2px)}
+.see-card .label{font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--amber);letter-spacing:0.10em;text-transform:uppercase}
+.see-card h3{font-family:var(--font-display);font-size:24px;font-weight:600;line-height:1.2}
+.see-card p{font-size:14px;color:var(--mid-grey);line-height:1.6;flex:1}
+.see-card .stats{display:flex;gap:24px;padding:14px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.see-card .stat{font-family:var(--font-display);font-size:24px;font-weight:600;color:var(--near-black);line-height:1}
+.see-card .stat small{display:block;font-family:var(--font-body);font-size:11px;font-weight:500;letter-spacing:0.10em;text-transform:uppercase;color:var(--mid-grey);margin-top:5px}
+.see-card .arrow{font-size:13px;font-weight:700;color:var(--amber);letter-spacing:0.06em;text-transform:uppercase;margin-top:auto}
+
+/* DECIDE — 3 cards in row, color-coded */
+.decide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:980px){.decide-grid{grid-template-columns:1fr}}
+.dec{background:#fff;border:1px solid var(--hairline);border-top:4px solid var(--amber);border-radius:6px;padding:26px;display:flex;flex-direction:column;gap:12px;transition:all 0.2s}
+.dec:hover{box-shadow:0 4px 16px rgba(26,26,24,0.06);transform:translateY(-2px)}
+.dec .num{font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--amber);letter-spacing:0.10em;text-transform:uppercase}
+.dec h3{font-family:var(--font-display);font-size:20px;font-weight:600;line-height:1.2}
+.dec p{font-size:13px;color:var(--mid-grey);line-height:1.55;flex:1}
+.dec .meta{font-family:var(--font-mono);font-size:11px;color:var(--mid-grey);background:var(--off-white);padding:6px 10px;border-radius:3px;width:fit-content}
+.dec .arrow{font-size:13px;font-weight:700;color:var(--amber);letter-spacing:0.06em;text-transform:uppercase;margin-top:6px}
+
+/* REFERENCE — small grid, demoted */
+.ref-zone{background:var(--off-white);padding:48px 32px;border-bottom:1px solid var(--hairline)}
+.ref-inner{max-width:1280px;margin:0 auto}
+.ref-head{margin-bottom:22px;display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--hairline);padding-bottom:12px}
+.ref-head .eye{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:0.10em;color:var(--mid-grey);text-transform:uppercase;margin-bottom:4px}
+.ref-head h2{font-family:var(--font-display);font-size:22px;font-weight:600}
+.ref-head p{font-size:13px;color:var(--mid-grey);max-width:480px;line-height:1.55}
+.ref-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:880px){.ref-grid{grid-template-columns:repeat(2,1fr)}}
+.ref-card{background:#fff;border:1px solid var(--hairline);border-radius:4px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;font-size:13px}
+.ref-card:hover{border-color:var(--amber)}
+.ref-card .label{font-family:var(--font-mono);font-size:10px;font-weight:600;color:var(--amber);letter-spacing:0.08em;text-transform:uppercase}
+.ref-card .name{font-family:var(--font-display);font-size:14px;font-weight:600}
+.ref-card .desc{font-size:11px;color:var(--mid-grey);line-height:1.5}
+
+footer{background:var(--near-black);color:rgba(255,255,255,0.7);padding:48px 32px;font-size:13px;text-align:center}
 footer strong{color:#fff;font-weight:600}
-footer .meta{font-size:12px;color:rgba(255,255,255,0.4);margin-top:10px}
+footer .links{margin-top:14px;display:flex;justify-content:center;gap:22px;flex-wrap:wrap;font-size:12px}
+footer .links a{color:var(--amber)}
+footer .meta{font-size:11px;color:rgba(255,255,255,0.4);margin-top:14px;font-family:var(--font-mono)}
 </style>
 </head>
 <body>
-<div class="topbar"><strong>VK Redesign Final</strong> One entry point. Pick what you need. Built for AJ, the team, and incoming agency.</div>
+
+<div class="topbar"><strong>VK Redesign Final</strong> One entry point. Read the playbook. See the work. Decide the open calls.</div>
+
 <header class="nav">
   <div class="logo">VINTAGE KING<span class="tag">Vintage Pro Audio</span></div>
   <nav class="nav-links">
-    <a href="#templates">Templates</a><a href="#headers">Headers</a><a href="#category">Category &amp; Product</a><a href="#sections">Section Buffet</a><a href="#docs">Docs</a><a href="#content">All Pages</a>
+    <a href="#read">Read first</a>
+    <a href="#see">See the work</a>
+    <a href="#decide">Decide</a>
+    <a href="#ref">Reference</a>
   </nav>
 </header>
+
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-eye">Buffet Dashboard · One entry point</div>
-    <h1>Pick a template. Pick a header. Pick your sections. Ship.</h1>
-    <p class="lede">Every layout, header, value strip, and built page distilled into one organized demo. No more hunting across 60+ files.</p>
-    <p class="sub">Slogan: <strong>Vintage Pro Audio</strong> (replaces "Pro Audio Outfitter"). Minimum font: 12px everywhere. Single mega menu. <strong>5 secondary templates · 4 header families · 4 category layouts · 11 value strips · 1 product page · 1 mega menu</strong> · plus a section buffet you mark Keep / Kill / Maybe.</p>
-  </div>
-</section>
-<nav class="anchor-strip">
-  <span class="label">Jump to:</span>
-  <a href="#templates">Templates</a><a href="#headers">Headers</a><a href="#category">Category</a><a href="#product">Product</a><a href="#sections">Section Buffet</a><a href="#value-strips">Value Strips</a><a href="#docs">Style Guide</a><a href="#mega">Mega Menu</a><a href="#core">Core Ecommerce</a><a href="#content">All Content</a>
-</nav>
-
-<section class="cards" id="templates">
-  <div class="cards-inner">
-    <div class="cards-head">
-      <div><div class="cards-eye">01 · Secondary Templates</div><h2 class="cards-h">Five secondary-page templates. Pick by purpose.</h2></div>
-      <p class="cards-sub">Every secondary page (program, service, heritage, promo, policy) maps to one of these 5 templates. Each template links to live built examples. <a href="secondary/index.html" style="color:var(--amber);font-weight:600">Open the templates buffet →</a></p>
-    </div>
-    <div class="grid-3">
-      <a class="card" href="secondary/index.html"><span class="badge">T1 · Editorial Light</span><h3>Editorial Light</h3><p>Light hero, image-led marketing landing. Use for: Sell or Trade, Tech Shop, Studio Installs.</p><span class="arrow">Open in buffet →</span></a>
-      <a class="card" href="secondary/index.html"><span class="badge">T2 · Deep Article</span><h3>Deep Article</h3><p>Dark editorial hero, long-form, related-gear shop CTA. Use for: Hall of Fame, gear heritage articles.</p><span class="arrow">Open in buffet →</span></a>
-      <a class="card" href="secondary/index.html"><span class="badge">T3 · Program / Service</span><h3>Program / Service</h3><p>Credential strip + 3-step + pricing + FAQ. Use for: Financing, VK Pro, Section 179, Warranty.</p><span class="arrow">Open in buffet →</span></a>
-      <a class="card" href="secondary/index.html"><span class="badge">T4 · Promo / Drop</span><h3>Promo / Drop</h3><p>Photo-overlay hero + 2x2 editorial + urgency CTA. Use for: Demo Deals, Open Box drops, holiday campaigns.</p><span class="arrow">Open in buffet →</span></a>
-      <a class="card" href="secondary/index.html"><span class="badge">T5 · Policy / Long-form</span><h3>Policy / Long-form</h3><p>Centered light hero, 2-col TOC + body. Use for: Shipping, Returns, Privacy, Terms, Support.</p><span class="arrow">Open in buffet →</span></a>
-      <a class="card" href="content/index.html" style="border-left:3px solid var(--amber)"><span class="badge">All examples</span><h3>All built content pages</h3><p>Every secondary page that's been built, organized by template. The full catalog.</p><span class="arrow">Open content index →</span></a>
-    </div>
+    <div class="hero-eye">Roadmap to heaven · One entry point</div>
+    <h1>Read it. See it. Decide. Ship it.</h1>
+    <p class="lede">Three things to do, in this exact order. The playbook tells the team how to build. The work shows everything that already exists. The decisions unblock the agency handoff.</p>
+    <p class="sub"><strong>Slogan:</strong> Vintage Pro Audio. <strong>Min font:</strong> 12px. <strong>System:</strong> Playfair Display + DM Sans. <strong>Accents:</strong> amber on secondary, red on core. Everything else lives in the playbook.</p>
   </div>
 </section>
 
-<section class="cards" id="headers">
-  <div class="cards-inner">
-    <div class="cards-head">
-      <div><div class="cards-eye">02 · Headers Buffet</div><h2 class="cards-h">Four hero families. Bucketed by page type.</h2></div>
-      <p class="cards-sub">One header library — used differently depending on whether the page is PLP / category, secondary content, or editorial. <a href="headers/index.html" style="color:var(--amber);font-weight:600">Open the headers buffet →</a></p>
+<div class="roadmap">
+  <div class="roadmap-inner">
+    <div class="rm-step"><div class="num">1</div><div><strong>Read the playbook</strong><small>10 min · the rules + system + checklists</small></div></div>
+    <div class="rm-step"><div class="num">2</div><div><strong>See the work</strong><small>page index + content catalog</small></div></div>
+    <div class="rm-step"><div class="num">3</div><div><strong>Decide 3 open calls</strong><small>type · strip · section keepers</small></div></div>
+    <div class="rm-step"><div class="num">4</div><div><strong>Hand off to agency</strong><small>repo + playbook + spreadsheet</small></div></div>
+  </div>
+</div>
+
+<section class="zone" id="read">
+  <div class="zone-inner">
+    <div class="zone-head">
+      <div><div class="zone-eye">01 · Read this first</div><h2 class="zone-h">The single document the team reads before touching anything.</h2></div>
+      <p class="zone-sub">Linear, 10-minute read. Every locked rule, every template, header, layout, strip, color, and SEO requirement — in the order you'd touch them on a real page.</p>
     </div>
-    <div class="grid-2">
-      <a class="card" href="headers/index.html" style="border-left:3px solid var(--amber)"><span class="badge red">Bucket · PLP / category</span><h3>Headers for PLP / category pages</h3><p>H1 · Split product (50/50 image right) · daily driver. H2 · Centered light · no-image PLPs.</p><span class="arrow">Open buffet →</span></a>
-      <a class="card" href="headers/index.html" style="border-left:3px solid var(--amber)"><span class="badge">Bucket · Secondary content</span><h3>Headers for secondary content pages</h3><p>H2 · Centered light (also). H3 · Full dark editorial (HOF / heritage). H4 · Photo BG overlay (promo / drop).</p><span class="arrow">Open buffet →</span></a>
-    </div>
+    <a class="hero-tile" href="build-playbook.html">
+      <div>
+        <span class="badge">Single source of truth</span>
+        <h3>VK Build Playbook.</h3>
+        <p>Every rule, every system pick, every checklist — consolidated into one linear doc. Replaces the old style guide, page-layouts reference, and CLAUDE.md briefing as the front door for the team and incoming agency.</p>
+        <div class="meta">build-playbook.html · 11 sections · ~10 min</div>
+        <span class="cta">Open the playbook →</span>
+      </div>
+      <div class="toc">
+        <h4>What's inside</h4>
+        <ol>
+          <li>The 6 locked rules</li>
+          <li>Page-build rhythm (7 zones)</li>
+          <li>Pick a template (T1–T5)</li>
+          <li>Pick a header (H1–H4)</li>
+          <li>Pick a PLP layout (C1–C4)</li>
+          <li>Pick a value strip</li>
+          <li>Typography lock</li>
+          <li>Color tokens</li>
+          <li>SEO / GEO / AI signals</li>
+          <li>Handoff conventions</li>
+          <li>3 open decisions</li>
+        </ol>
+      </div>
+    </a>
   </div>
 </section>
 
-<section class="cards" id="category">
-  <div class="cards-inner">
-    <div class="cards-head">
-      <div><div class="cards-eye">03 · Category &amp; Product</div><h2 class="cards-h">Four PLP layouts. One canonical product page.</h2></div>
-      <p class="cards-sub">Pick the right PLP layout for the category type. <a href="category/index.html" style="color:var(--amber);font-weight:600">Open the category layouts buffet →</a></p>
+<section class="zone" id="see" style="background:var(--warm-white)">
+  <div class="zone-inner">
+    <div class="zone-head">
+      <div><div class="zone-eye">02 · See the work</div><h2 class="zone-h">Every page that exists. Two views — pick the one the team uses.</h2></div>
+      <p class="zone-sub">The spreadsheet is the audit-friendly tabbed view (Excel / Google Sheets). The content index is the clickable catalog with live links. Same data, two surfaces.</p>
     </div>
-    <div class="grid-3">
-      <a class="card" href="category/index.html"><span class="badge red">C1 · Default</span><h3>Default PLP</h3><p>Dark strip + 3-up grid + sticky filter bar. Daily driver — use unless you have a reason not to.</p><span class="arrow">Open in buffet →</span></a>
-      <a class="card" href="category/index.html"><span class="badge red">C2 · Spotlight 50/50</span><h3>Spotlight PLP</h3><p>Split hero (image right) + grid. Marquee categories with a strong hero photo.</p><span class="arrow">Open in buffet →</span></a>
-      <a class="card" href="category/index.html"><span class="badge red">C3 · Editorial 6-grid</span><h3>Editorial PLP</h3><p>6-grid with feature tile + dark editorial interruption. Story-led collections (Vintage, curated edits).</p><span class="arrow">Open in buffet →</span></a>
-      <a class="card" href="category/index.html"><span class="badge red">C4 · Filter Demo</span><h3>Filter Demo PLP</h3><p>Sticky left filter rail + dense grid. Deep taxonomies where filtering is the primary action.</p><span class="arrow">Open in buffet →</span></a>
-      <a class="card" href="product/neumann-u47.html" id="product" style="border-left:3px solid var(--amber)"><span class="badge red">Product</span><h3>Neumann U47 — Product Page</h3><p>Gallery · price · spec · co-op · related. Single product page pattern for the whole catalog.</p><span class="arrow">Open product →</span></a>
-      <a class="card" href="type-test.html" style="border-left:3px solid var(--amber)"><span class="badge">Decision tool</span><h3>Type Test — Editorial vs Retail</h3><p>A/B comparison: Playfair on product names (editorial) vs DM Sans (retail). Pick the conversion winner.</p><span class="arrow">Open type test →</span></a>
-    </div>
-  </div>
-</section>
-
-<section class="cards" id="sections" style="background:var(--off-white)">
-  <div class="cards-inner">
-    <div class="cards-head">
-      <div><div class="cards-eye">04 · Section Buffet</div><h2 class="cards-h">Every body section. Mark Keep / Kill / Maybe.</h2></div>
-      <p class="cards-sub">Walk this with the team once. Mark winners. Round 2 deletes the losers and refines the keepers.</p>
-    </div>
-    <div class="grid-2">
-      <a class="card" href="section-buffet.html" style="border-left:3px solid var(--amber)"><span class="badge">Decision tool</span><h3>Section Buffet — Pick what stays</h3><p>Heroes · Trust strips · Process strips · Card grids · Quote rails · Stat blocks · Forms · Footers. Side-by-side gallery with Keep / Kill / Maybe markers.</p><span class="arrow">Open the buffet →</span></a>
-      <a class="card" href="value-strips/value-strip-options.html" id="value-strips" style="border-left:3px solid var(--amber)"><span class="badge">Decision tool</span><h3>Value Strips — 11 variants side-by-side</h3><p>Compare 11 strip variants including 4 proven patterns pulled from the locked main prototype (V7 credential, V8 trust icons, V9/V10 warm-grey credential, V11 dark pre-footer). Pick 1–2, kill the rest.</p><span class="arrow">Open value strips →</span></a>
-    </div>
-  </div>
-</section>
-
-<section class="cards" id="docs">
-  <div class="cards-inner">
-    <div class="cards-head">
-      <div><div class="cards-eye">05 · Documentation</div><h2 class="cards-h">Slim style guide. Layout reference. Read before editing.</h2></div>
-      <p class="cards-sub">Style guide is intentionally thin: only colors, type, spacing, no-go list. Layout patterns live separately.</p>
-    </div>
-    <div class="grid-2">
-      <a class="card" href="style-guide.html"><span class="badge">Reference</span><h3>Style Guide</h3><p>Colors · type scale · spacing · pricing rules · no-go list. Min font 12px enforced. No "Pro Audio Outfitter" anywhere.</p><span class="arrow">Open style guide →</span></a>
-      <a class="card" href="page-layouts.html"><span class="badge">Reference</span><h3>Page Layouts</h3><p>Visual catalog of every layout pattern (heroes, sections, page types) with when-to-use rules.</p><span class="arrow">Open layouts →</span></a>
-    </div>
-  </div>
-</section>
-
-<section class="cards" id="mega">
-  <div class="cards-inner">
-    <div class="cards-head">
-      <div><div class="cards-eye">06 · Mega Menu &amp; Core Ecommerce</div><h2 class="cards-h">One mega menu. Ten core ecommerce screens.</h2></div>
-      <p class="cards-sub">Direct extracts from the locked source repo. No edits, no variants — these are the canonical files.</p>
-    </div>
-    <div class="grid-2">
-      <a class="card" href="mega-menu/mega-menu-final.html"><span class="badge red">Mega Menu</span><h3>The One Mega Menu</h3><p>Final desktop mega menu. Six parent categories. Ask button hover dropdown (Live Chat / Callback / Video Chat).</p><span class="arrow">Open mega menu →</span></a>
-      <a class="card" href="core/index.html" id="core"><span class="badge red">Core Ecommerce</span><h3>10 Core Screens (Index)</h3><p>Homepage · Category · Product · FAQ · Demo Deals · Sell or Trade · Studio Installs · Tech Shop · Financing · Open Box.</p><span class="arrow">Open core index →</span></a>
+    <div class="see-grid">
+      <a class="see-card" href="https://github.com/barreletics/vk-secondary-pages/raw/main/vk-resources-inventory.xlsx" download>
+        <div class="label">Spreadsheet · Excel / Google Sheets</div>
+        <h3>Page inventory spreadsheet.</h3>
+        <p>Every built resource with template assignment, header used, status (built / placeholder / TBD), live URL, source file, and comments. Multi-tab — one per template family. The audit-friendly view.</p>
+        <div class="stats">
+          <div class="stat">96<small>rows</small></div>
+          <div class="stat">9<small>tabs</small></div>
+          <div class="stat">10<small>columns</small></div>
+        </div>
+        <span class="arrow">Download xlsx →</span>
+      </a>
+      <a class="see-card" href="content/index.html">
+        <div class="label">Web index · clickable catalog</div>
+        <h3>Content page index.</h3>
+        <p>Every built secondary page organized by template family. Click straight through to the live page. The clickable equivalent of the spreadsheet — same data, faster to navigate.</p>
+        <div class="stats">
+          <div class="stat">5<small>templates</small></div>
+          <div class="stat">19<small>HOF articles</small></div>
+          <div class="stat">60+<small>secondary pages</small></div>
+        </div>
+        <span class="arrow">Open content index →</span>
+      </a>
     </div>
   </div>
 </section>
 
-<section class="cards" id="content">
-  <div class="cards-inner">
-    <div class="cards-head">
-      <div><div class="cards-eye">07 · All Built Content Pages</div><h2 class="cards-h">Every secondary page that's been built. Organized.</h2></div>
-      <p class="cards-sub">All built secondary marketing pages from the old repo. Each adopts one of the 3 templates above.</p>
+<section class="zone" id="decide" style="background:var(--off-white)">
+  <div class="zone-inner">
+    <div class="zone-head">
+      <div><div class="zone-eye">03 · Decide</div><h2 class="zone-h">Three open calls before agency handoff. Walk these in order.</h2></div>
+      <p class="zone-sub">Each has a dedicated decision tool. These three votes unblock global type, strip, and section choices for every future page.</p>
     </div>
-    <div class="grid-2">
-      <a class="card" href="content/index.html"><span class="badge">Index</span><h3>Content Page Index</h3><p>About · Hall of Fame · Make Your Mark · PLAYBACK · Careers · Programs · Hall of Fame deep articles · Promotions · Policies.</p><span class="arrow">Open content index →</span></a>
-      <a class="card dim" href="https://barreletics.github.io/vk-secondary-pages/navigator.html" target="_blank"><span class="badge grey">Source repo</span><h3>Old repo navigator (archive view)</h3><p>The original 60+ file repo with v1/v2 dupes. Frozen. Source of truth for raw content. New repo cherry-picks from here.</p><span class="arrow">Open old navigator →</span></a>
+    <div class="decide-grid">
+      <a class="dec" href="type-test.html">
+        <div class="num">Decision 01</div>
+        <h3>Typography — product names.</h3>
+        <p>Editorial Playfair (current) vs Retail DM Sans (Sweetwater) vs Hybrid (B on PLP/PDP, A on HOF). Side-by-side A/B across PLP grid, PDP buy box, and HOF hero.</p>
+        <span class="meta">type-test.html · 3 surfaces</span>
+        <span class="arrow">Vote on type →</span>
+      </a>
+      <a class="dec" href="value-strips/value-strip-options.html">
+        <div class="num">Decision 02</div>
+        <h3>Value strip — pick the keepers.</h3>
+        <p>11 variants on the picker. Recommended: V7 or V10 as landing-page default + V8 daily-driver + V11 above footer. Confirm the kill list.</p>
+        <span class="meta">11 variants · 4 recommended</span>
+        <span class="arrow">Pick strips →</span>
+      </a>
+      <a class="dec" href="section-buffet.html">
+        <div class="num">Decision 03</div>
+        <h3>Section buffet — Keep / Maybe / Kill.</h3>
+        <p>Walk every body-section variant once. Mark winners. Round 2 deletes the losers and the new repo ships only the keepers.</p>
+        <span class="meta">section-buffet.html · 9 sections</span>
+        <span class="arrow">Mark sections →</span>
+      </a>
     </div>
   </div>
 </section>
 
-<section class="source-strip">
-  <div class="source-inner">
-    <div class="source-card"><div class="label">Source repo · Secondary content</div><div class="name">vk-secondary-pages</div><div class="url"><a href="https://github.com/barreletics/vk-secondary-pages" target="_blank">github.com/barreletics/vk-secondary-pages</a><br>Tag baseline: <code>pre-buffet-repo-2026-04-21</code></div></div>
-    <div class="source-card"><div class="label">Source repo · Core demo + mega menu (locked)</div><div class="name">vintage-king-redesign</div><div class="url"><a href="https://github.com/barreletics/vintage-king-redesign" target="_blank">github.com/barreletics/vintage-king-redesign</a><br>Tag baseline: <code>pre-buffet-repo-2026-04-21</code></div></div>
+<section class="ref-zone" id="ref">
+  <div class="ref-inner">
+    <div class="ref-head">
+      <div><div class="eye">04 · Reference</div><h2>Reference library — buffets, slim guides, locked sources.</h2></div>
+      <p>Optional reading. The playbook is the front door — these are the deeper-dive comparison surfaces. Keep accessible, don't lead with them.</p>
+    </div>
+    <div class="ref-grid">
+      <a class="ref-card" href="secondary/index.html"><div class="label">Buffet</div><div class="name">Templates buffet</div><div class="desc">5 templates · live examples per template</div></a>
+      <a class="ref-card" href="headers/index.html"><div class="label">Buffet</div><div class="name">Headers buffet</div><div class="desc">4 hero families · bucketed by page type</div></a>
+      <a class="ref-card" href="category/index.html"><div class="label">Buffet</div><div class="name">PLP layouts buffet</div><div class="desc">4 PLP layouts · live PLPs linked</div></a>
+      <a class="ref-card" href="product/neumann-u47.html"><div class="label">PDP</div><div class="name">Product page pattern</div><div class="desc">Neumann U47 · canonical PDP</div></a>
+      <a class="ref-card" href="style-guide.html"><div class="label">Spec</div><div class="name">Style guide (slim)</div><div class="desc">Colors · type · spacing · no-go list</div></a>
+      <a class="ref-card" href="page-layouts.html"><div class="label">Spec</div><div class="name">Page layouts catalog</div><div class="desc">Visual catalog of every layout pattern</div></a>
+      <a class="ref-card" href="mega-menu/mega-menu-final.html"><div class="label">Locked</div><div class="name">Mega menu (canonical)</div><div class="desc">Single mega menu · 6 parent categories</div></a>
+      <a class="ref-card" href="core/index.html"><div class="label">Locked source</div><div class="name">10 core ecommerce screens</div><div class="desc">Deep links into the locked main prototype</div></a>
+      <a class="ref-card" href="https://github.com/barreletics/vk-secondary-pages" target="_blank"><div class="label">Source repo</div><div class="name">vk-secondary-pages</div><div class="desc">All 60+ secondary HTML files</div></a>
+      <a class="ref-card" href="https://github.com/barreletics/vintage-king-redesign" target="_blank"><div class="label">Source repo · locked</div><div class="name">vintage-king-redesign</div><div class="desc">Core single-file prototype</div></a>
+      <a class="ref-card" href="https://barreletics.github.io/vk-secondary-pages/navigator.html" target="_blank"><div class="label">Inventory</div><div class="name">Old repo navigator</div><div class="desc">Original 60+ file visual inventory</div></a>
+      <a class="ref-card" href="https://github.com/barreletics/vk-redesign-final" target="_blank"><div class="label">Source repo</div><div class="name">vk-redesign-final (this)</div><div class="desc">GitHub source for this dashboard</div></a>
+    </div>
   </div>
 </section>
 
 <footer>
-  <div><strong>VK Redesign Final</strong> · Vintage Pro Audio · One entry point</div>
-  <div class="meta">Built April 2026 · barreletics/vk-redesign-final · Internal demo</div>
+  <div><strong>VK Redesign Final</strong> · Vintage Pro Audio · Roadmap to heaven · Single entry point</div>
+  <div class="links">
+    <a href="build-playbook.html">Playbook</a>
+    <a href="content/index.html">Content index</a>
+    <a href="type-test.html">Type test</a>
+    <a href="value-strips/value-strip-options.html">Strip picker</a>
+    <a href="section-buffet.html">Section buffet</a>
+    <a href="style-guide.html">Style guide</a>
+  </div>
+  <div class="meta">Updated April 2026 · barreletics/vk-redesign-final · Internal demo</div>
 </footer>
+
 </body>
 </html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>VK Build Playbook — Read this first | Vintage Pro Audio</title>
+<meta name="description" content="The single document the team and incoming agency reads before touching any VK page. Locked rules, page rhythm, templates, headers, layouts, strips, type, color, SEO, and handoff conventions. 10-minute read.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --vk-red:#C0392B;--amber:#D4860A;--amber-bg:#F5E6C8;--near-black:#1A1A18;
+  --warm-white:#FDFCFB;--off-white:#F7F5F2;--mid-grey:#6B6B68;
+  --hairline:rgba(26,26,24,0.08);--hero-bg:#EDE8E2;
+  --good:#2E7D32;--bad:#C0392B;--maybe:#D4860A;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'DM Sans',sans-serif;
+  --font-mono:'JetBrains Mono',Menlo,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{font-family:var(--font-body);background:var(--warm-white);color:var(--near-black);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+.topbar{background:var(--near-black);color:#fff;padding:10px 24px;font-size:12px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;position:sticky;top:0;z-index:60}
+.topbar .back{background:var(--vk-red);color:#fff;padding:7px 14px;border-radius:3px;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase}
+.topbar strong{color:#fff;font-weight:600}
+.topbar .pill{background:var(--amber);color:#fff;padding:4px 10px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-left:auto}
+
+.hero{background:var(--hero-bg);padding:64px 32px}
+.hero-inner{max-width:920px;margin:0 auto}
+.hero .eye{font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
+.hero h1{font-family:var(--font-display);font-size:54px;font-weight:600;line-height:1.04;letter-spacing:-0.01em;margin-bottom:18px}
+.hero .lede{font-size:18px;color:var(--near-black);margin-bottom:14px;max-width:760px;line-height:1.6}
+.hero .meta{font-size:13px;color:var(--mid-grey);max-width:720px}
+.hero .meta strong{color:var(--near-black);font-weight:600}
+
+.toc{background:#fff;border-bottom:1px solid var(--hairline);padding:18px 32px;position:sticky;top:36px;z-index:55}
+.toc-inner{max-width:920px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px 22px;font-size:11px;letter-spacing:0.10em;text-transform:uppercase;font-weight:600;color:var(--mid-grey)}
+.toc-inner .label{color:rgba(26,26,24,0.35)}
+.toc-inner a{padding:4px 0;border-bottom:2px solid transparent;transition:all 0.15s}
+.toc-inner a:hover{color:var(--near-black);border-bottom-color:var(--amber)}
+
+main{padding:0 32px}
+section{max-width:920px;margin:0 auto;padding:64px 0;border-bottom:1px solid var(--hairline)}
+section:last-of-type{border-bottom:0}
+.sec-num{font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:0.06em;color:var(--amber);margin-bottom:8px}
+section h2{font-family:var(--font-display);font-size:34px;font-weight:600;line-height:1.1;margin-bottom:14px;letter-spacing:-0.01em}
+section .sub{font-size:16px;color:var(--mid-grey);max-width:720px;margin-bottom:30px;line-height:1.6}
+section .sub strong{color:var(--near-black);font-weight:600}
+section h3{font-family:var(--font-display);font-size:20px;font-weight:600;margin:24px 0 8px;line-height:1.25}
+section h4{font-family:var(--font-body);font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid-grey);margin:18px 0 8px}
+section p{margin-bottom:12px}
+section p strong{font-weight:600;color:var(--near-black)}
+section ul,section ol{padding-left:20px;margin-bottom:14px}
+section li{margin-bottom:6px}
+section code{font-family:var(--font-mono);font-size:13px;background:var(--off-white);padding:1px 6px;border-radius:3px;color:var(--vk-red)}
+
+/* Rule cards */
+.rules{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+.rule{background:var(--off-white);border-left:3px solid var(--amber);padding:18px 20px;border-radius:0 4px 4px 0}
+.rule .num{font-family:var(--font-mono);font-size:11px;color:var(--amber);font-weight:600;letter-spacing:0.08em}
+.rule h4{font-family:var(--font-display);font-size:17px;font-weight:600;margin:6px 0 6px;letter-spacing:0;color:var(--near-black);text-transform:none}
+.rule p{font-size:13px;color:var(--mid-grey);margin:0;line-height:1.55}
+.rule p strong{color:var(--near-black)}
+@media(max-width:680px){.rules{grid-template-columns:1fr}}
+
+/* Page rhythm timeline */
+.rhythm{margin-top:18px;border:1px solid var(--hairline);border-radius:6px;overflow:hidden}
+.rhythm-row{display:grid;grid-template-columns:60px 1fr 200px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--hairline);font-size:13px}
+.rhythm-row:last-child{border-bottom:0}
+.rhythm-row .step{font-family:var(--font-mono);font-size:12px;color:var(--amber);font-weight:600}
+.rhythm-row .name{font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--near-black)}
+.rhythm-row .name small{display:block;font-family:var(--font-body);font-size:12px;color:var(--mid-grey);font-weight:400;margin-top:3px}
+.rhythm-row .swatch{display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;color:var(--mid-grey)}
+.rhythm-row .swatch .chip{width:18px;height:18px;border-radius:3px;border:1px solid var(--hairline)}
+@media(max-width:680px){.rhythm-row{grid-template-columns:50px 1fr;gap:10px}.rhythm-row .swatch{grid-column:span 2;margin-top:4px}}
+
+/* Pick cards (templates / headers / layouts / strips) */
+.picks{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+.pick{background:#fff;border:1px solid var(--hairline);border-radius:6px;padding:18px 20px;display:flex;flex-direction:column;gap:8px}
+.pick.lead{border:2px solid var(--amber);background:linear-gradient(180deg,#fffaf0 0%,#fff 30%)}
+.pick .code{font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--amber);letter-spacing:0.08em}
+.pick.lead .code{color:var(--vk-red)}
+.pick h4{font-family:var(--font-display);font-size:17px;font-weight:600;letter-spacing:0;color:var(--near-black);text-transform:none;margin:0}
+.pick .when{font-size:13px;color:var(--mid-grey);line-height:1.55}
+.pick .when strong{color:var(--near-black);font-weight:600}
+.pick .ex{font-size:12px;color:var(--near-black);background:var(--off-white);padding:8px 10px;border-radius:3px;margin-top:auto}
+.pick .ex strong{font-weight:600;display:block;font-size:10px;color:var(--amber);letter-spacing:0.10em;text-transform:uppercase;margin-bottom:3px}
+.pick .ex a{color:var(--vk-red);text-decoration:underline}
+@media(max-width:680px){.picks{grid-template-columns:1fr}}
+
+/* Color tokens */
+.tokens{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+.token{background:#fff;border:1px solid var(--hairline);border-radius:4px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.token .chip{height:50px;border-radius:3px;border:1px solid var(--hairline)}
+.token .name{font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--near-black)}
+.token .hex{font-family:var(--font-mono);font-size:10px;color:var(--mid-grey)}
+.token .use{font-size:11px;color:var(--mid-grey);line-height:1.4}
+@media(max-width:680px){.tokens{grid-template-columns:repeat(2,1fr)}}
+
+/* Bad/good rows */
+.diff{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.diff .col{padding:14px 16px;border-radius:4px;font-size:13px;line-height:1.55}
+.diff .col.bad{background:rgba(192,57,43,0.06);border-left:3px solid var(--bad)}
+.diff .col.good{background:rgba(46,125,50,0.06);border-left:3px solid var(--good)}
+.diff .col strong{display:block;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px;font-weight:700}
+.diff .col.bad strong{color:var(--bad)}
+.diff .col.good strong{color:var(--good)}
+@media(max-width:680px){.diff{grid-template-columns:1fr}}
+
+/* Checklist */
+.checklist{background:var(--off-white);border-radius:6px;padding:20px 24px;margin-top:18px;border-left:3px solid var(--amber)}
+.checklist h4{margin-top:0}
+.checklist ul{list-style:none;padding-left:0}
+.checklist li{padding:6px 0 6px 26px;position:relative;font-size:14px;border-bottom:1px solid rgba(26,26,24,0.05)}
+.checklist li:last-child{border-bottom:0}
+.checklist li::before{content:"";position:absolute;left:0;top:11px;width:14px;height:14px;border:1.5px solid var(--mid-grey);border-radius:3px}
+
+/* Decision callout */
+.decide{background:var(--amber-bg);border-left:4px solid var(--amber);padding:22px 26px;border-radius:0 6px 6px 0;margin-top:18px}
+.decide h4{font-family:var(--font-display);font-size:18px;font-weight:600;margin:0 0 8px;letter-spacing:0;color:var(--near-black);text-transform:none}
+.decide p{font-size:14px;color:var(--near-black);margin:0 0 8px}
+.decide .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.decide .links a{display:inline-block;background:var(--near-black);color:#fff;padding:9px 14px;font-size:11px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;border-radius:3px}
+.decide .links a.amber{background:var(--amber)}
+
+/* Filename rules */
+.filename{font-family:var(--font-mono);background:var(--off-white);padding:10px 14px;border-radius:4px;font-size:13px;border-left:3px solid var(--amber);margin:8px 0}
+.filename .lbl{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:4px}
+
+/* Code-style schema box */
+.schema{background:var(--near-black);color:#e0e0e0;padding:18px 20px;border-radius:6px;font-family:var(--font-mono);font-size:12px;line-height:1.7;margin:14px 0;overflow-x:auto;white-space:pre}
+.schema .key{color:#7fb3d5}
+.schema .str{color:#f5d76e}
+.schema .com{color:#777;font-style:italic}
+
+footer{background:var(--near-black);color:rgba(255,255,255,0.7);padding:48px 32px;text-align:center;font-size:13px}
+footer a{color:var(--amber)}
+footer .meta{font-size:12px;color:rgba(255,255,255,0.4);margin-top:10px}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="index.html" class="back">← Dashboard</a>
+  <span><strong>VK Build Playbook</strong> · Read this first · 10-minute read</span>
+  <span class="pill">Single source of truth</span>
+</div>
+
+<section class="hero" style="border-bottom:0;padding:80px 32px 56px;max-width:none">
+  <div class="hero-inner">
+    <div class="eye">Roadmap · Single deliverable</div>
+    <h1>The VK build playbook.</h1>
+    <p class="lede">Every locked rule, every template, every header, every PLP layout, every value strip — in the order you'd touch them on a real page. Read this once. Build everything from it. No buffet hunting.</p>
+    <p class="meta"><strong>Audience:</strong> any team member, designer, or incoming agency developer. <strong>Scope:</strong> all secondary pages and the PLP / PDP system. <strong>Out of scope:</strong> homepage / cart / checkout — those live in the locked main prototype (see Reference).</p>
+  </div>
+</section>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <span class="label">Jump:</span>
+    <a href="#rules">01 Rules</a>
+    <a href="#rhythm">02 Rhythm</a>
+    <a href="#templates">03 Templates</a>
+    <a href="#headers">04 Headers</a>
+    <a href="#plp">05 PLP</a>
+    <a href="#strips">06 Strips</a>
+    <a href="#type">07 Type</a>
+    <a href="#color">08 Color</a>
+    <a href="#seo">09 SEO/GEO</a>
+    <a href="#handoff">10 Handoff</a>
+    <a href="#decide">11 Decide</a>
+  </div>
+</nav>
+
+<main>
+
+<section id="rules">
+  <div class="sec-num">01 / 11</div>
+  <h2>The 6 locked rules.</h2>
+  <p class="sub">These never change. If a design proposal breaks any of these, it gets rejected before it gets reviewed. <strong>Memorize them.</strong></p>
+  <div class="rules">
+    <div class="rule"><div class="num">RULE 01</div><h4>Minimum font size 12px — everywhere.</h4><p>No 8/9/10/11px text anywhere in CSS or inline. Eyebrows, badges, footnotes, captions all sit at 12px minimum. Pricing and numbers always render in DM Sans 500.</p></div>
+    <div class="rule"><div class="num">RULE 02</div><h4>Slogan is "Vintage Pro Audio."</h4><p>"Pro Audio Outfitter" is retired. Do not bring it back to any header, footer, or marketing copy. The single tagline visible to users is <strong>Vintage Pro Audio</strong>.</p></div>
+    <div class="rule"><div class="num">RULE 03</div><h4>Amber on secondary, red on core.</h4><p><code>--amber #D4860A</code> is the accent for every secondary page (eyebrows, CTAs, accent lines). <code>--vk-red #C0392B</code> is reserved for core ecommerce screens (homepage, category, product, cart, checkout, FAQ) and the global nav chrome.</p></div>
+    <div class="rule"><div class="num">RULE 04</div><h4>Pricing is always DM Sans 500, never Playfair.</h4><p>Numbers don't get stylized. Prices, stock counts, ratings, durations, year labels, mileage — all DM Sans, font-weight 500, color <code>--near-black</code>. Playfair on a price is an instant reject.</p></div>
+    <div class="rule"><div class="num">RULE 05</div><h4>Single mega menu. Six parent categories max.</h4><p>One mega menu file is the source of truth: <code>mega-menu/mega-menu-final.html</code>. Six parents (Microphones / Outboard / Monitors / Software / Used &amp; Vintage / Studio Services). Don't add a seventh. Don't ship a second variant.</p></div>
+    <div class="rule"><div class="num">RULE 06</div><h4>No dark heroes on secondary pages.</h4><p>Every secondary page starts with a <strong>light hero (#EDE8E2)</strong>. At most one dark accent block per page (<code>#2C2C2A</code>) for a quote or stat — never the first section. Dark editorial heroes (H3) are reserved for HOF and gear-heritage articles only.</p></div>
+  </div>
+  <div class="diff">
+    <div class="col bad"><strong>Bad</strong>"Pro Audio Outfitter · Since 1993" wordmark · 11px eyebrow · Playfair $3,495 price · red CTA on Sell or Trade · dark hero on About page.</div>
+    <div class="col good"><strong>Good</strong>"Vintage Pro Audio" wordmark · 12px eyebrow · DM Sans 500 $3,495 price · amber CTA on Sell or Trade · light #EDE8E2 hero on About page.</div>
+  </div>
+</section>
+
+<section id="rhythm">
+  <div class="sec-num">02 / 11</div>
+  <h2>Page-build rhythm — the 7-zone order.</h2>
+  <p class="sub">Every secondary page follows this exact section order. Background colors alternate so the page breathes. No two adjacent sections share the same background.</p>
+  <div class="rhythm">
+    <div class="rhythm-row"><div class="step">01</div><div class="name">Hero<small>Eyebrow + headline + lede + 1-2 CTAs. Light, warm, amber accent.</small></div><div class="swatch"><div class="chip" style="background:#EDE8E2"></div>#EDE8E2</div></div>
+    <div class="rhythm-row"><div class="step">02</div><div class="name">Strip / credential bar<small>Value strip — V7, V10 default; V8 for daily-driver. Thin, no padding.</small></div><div class="swatch"><div class="chip" style="background:#FDFCFB"></div>warm-white</div></div>
+    <div class="rhythm-row"><div class="step">03</div><div class="name">Grid / cards<small>3-up or 4-up cards on subtle off-white. White cards, 1px hairline gap.</small></div><div class="swatch"><div class="chip" style="background:#F7F5F2"></div>off-white</div></div>
+    <div class="rhythm-row"><div class="step">04</div><div class="name">Content / body<small>Long-form. White background. Dark text. Pull-quotes optional.</small></div><div class="swatch"><div class="chip" style="background:#fff"></div>#FFFFFF</div></div>
+    <div class="rhythm-row"><div class="step">05</div><div class="name">CTA / form<small>Light hero color again. White inputs. Amber primary button. Red focus border.</small></div><div class="swatch"><div class="chip" style="background:#EDE8E2"></div>#EDE8E2</div></div>
+    <div class="rhythm-row"><div class="step">06</div><div class="name">Values bar<small>Program-exclusive benefits only. Never repeat what's in the topbar.</small></div><div class="swatch"><div class="chip" style="background:#F7F5F2"></div>off-white</div></div>
+    <div class="rhythm-row"><div class="step">07</div><div class="name">Footer<small>Standard global footer. Never customized per page.</small></div><div class="swatch"><div class="chip" style="background:#1A1A18"></div>near-black</div></div>
+  </div>
+</section>
+
+<section id="templates">
+  <div class="sec-num">03 / 11</div>
+  <h2>Pick a template.</h2>
+  <p class="sub">Every secondary page maps to one of <strong>5 templates</strong>. Pick by purpose, not preference. Each template has 2-3 live built examples to copy from. <a href="secondary/index.html" style="color:var(--vk-red);text-decoration:underline">Open the templates buffet</a> to compare side-by-side.</p>
+
+  <div class="picks">
+    <div class="pick lead"><div class="code">T1 · EDITORIAL LIGHT</div><h4>Image-led marketing landing.</h4><p class="when"><strong>Use when</strong> launching a new program / collection landing that needs to convert visitors quickly and doesn't have long-form content.</p><div class="ex"><strong>Live examples</strong>sell-or-trade · tech-shop · studio-installations</div></div>
+    <div class="pick"><div class="code">T2 · DEEP ARTICLE</div><h4>Long-form heritage / Hall of Fame.</h4><p class="when"><strong>Use when</strong> writing a 2,000–3,000 word story-led page where authority and SEO matter more than fast conversion. Dark editorial hero (H3).</p><div class="ex"><strong>Live examples</strong>hall-of-fame · neumann-u47 · neve-1073-guide</div></div>
+    <div class="pick"><div class="code">T3 · PROGRAM / SERVICE</div><h4>3-step process + pricing transparency.</h4><p class="when"><strong>Use when</strong> describing a paid program / service / financing offer where the visitor needs to understand <em>how it works</em> and <em>what it costs</em>.</p><div class="ex"><strong>Live examples</strong>financing · vk-pro · trade-program · warranty</div></div>
+    <div class="pick"><div class="code">T4 · PROMO / DROP</div><h4>Time-bound campaign landing.</h4><p class="when"><strong>Use when</strong> you have a time-bound offer or limited inventory drop and the page needs urgency cues + photo-led hero (H4).</p><div class="ex"><strong>Live examples</strong>demo-deals · open-box · black-friday · ua-promotions</div></div>
+    <div class="pick"><div class="code">T5 · POLICY / LONG-FORM</div><h4>Utility, no hero photo.</h4><p class="when"><strong>Use when</strong> writing a policy / terms / FAQ / support / contact page where users come with a specific question and need to find the answer fast.</p><div class="ex"><strong>Live examples</strong>shipping-policy · returns · privacy-policy · faq</div></div>
+    <div class="pick"><div class="code">— DECIDING?</div><h4>Match by content shape, not topic.</h4><p class="when">Long story → T2. Process you charge for → T3. Time-bound → T4. Legal / policy → T5. Everything else → T1.</p><div class="ex"><strong>If unsure</strong>Default to T1 Editorial Light. It's the most flexible and matches the section rhythm above.</div></div>
+  </div>
+</section>
+
+<section id="headers">
+  <div class="sec-num">04 / 11</div>
+  <h2>Pick a header.</h2>
+  <p class="sub"><strong>4 hero families</strong>, bucketed by page type. PLP / category pages pick from H1 or H2. Secondary content pages pick from H2, H3, or H4. <a href="headers/index.html" style="color:var(--vk-red);text-decoration:underline">Open the headers buffet</a> for inline previews.</p>
+
+  <h4 style="margin-top:30px">Bucket 1 · PLP / category headers</h4>
+  <div class="picks">
+    <div class="pick lead"><div class="code">H1 · SPLIT PRODUCT</div><h4>Default PLP — copy left, hero photo right.</h4><p class="when"><strong>Use on</strong> every category landing where you have a strong hero photo. 50/50 split, 280–360px tall.</p></div>
+    <div class="pick"><div class="code">H2 · CENTERED LIGHT</div><h4>Secondary PLP — no image needed.</h4><p class="when"><strong>Use on</strong> PLPs without a hero photo (Used Gear, Open Box overflow). Quick to ship.</p></div>
+  </div>
+
+  <h4 style="margin-top:30px">Bucket 2 · Secondary content headers</h4>
+  <div class="picks">
+    <div class="pick lead"><div class="code">H2 · CENTERED LIGHT</div><h4>Daily-driver for every program / service page.</h4><p class="when"><strong>Use on</strong> Sell or Trade, Tech Shop, Financing, Studio Installs. Most of T1 and T3 use this.</p></div>
+    <div class="pick"><div class="code">H3 · FULL DARK EDITORIAL</div><h4>HOF / heritage / deep article only.</h4><p class="when"><strong>Use on</strong> Hall of Fame articles and gear heritage long-form. Near-black bg, white serif headline. Sparingly — at most one per page.</p></div>
+    <div class="pick"><div class="code">H4 · PHOTO BG OVERLAY</div><h4>Promo / drop / campaign.</h4><p class="when"><strong>Use on</strong> time-bound promo landings (Demo Deals, Open Box drops, holiday). Requires real photo.</p></div>
+    <div class="pick"><div class="code">— RULE</div><h4>One header per page. No exceptions.</h4><p class="when">Don't stack two heroes. Don't follow a hero with a second hero in disguise (giant photo banner). The next section is always a strip, grid, or content block.</p></div>
+  </div>
+</section>
+
+<section id="plp">
+  <div class="sec-num">05 / 11</div>
+  <h2>Pick a PLP layout.</h2>
+  <p class="sub"><strong>4 PLP layouts</strong>, picked by category type. Default for most. Spotlight for marquee. Editorial for story-led. Filter Demo for deep taxonomies. <a href="category/index.html" style="color:var(--vk-red);text-decoration:underline">Open the category buffet</a>.</p>
+  <div class="picks">
+    <div class="pick lead"><div class="code">C1 · DEFAULT</div><h4>Dark strip + 3-up grid + sticky filters.</h4><p class="when"><strong>Daily driver.</strong> Use unless you have a specific reason not to.</p></div>
+    <div class="pick"><div class="code">C2 · SPOTLIGHT 50/50</div><h4>Split hero (image right) + grid.</h4><p class="when"><strong>Use on</strong> marquee categories (Microphones, Outboard, Monitors) where you have a strong hero product photo.</p></div>
+    <div class="pick"><div class="code">C3 · EDITORIAL 6-GRID</div><h4>Mixed grid + dark editorial interruption.</h4><p class="when"><strong>Use on</strong> story-led collections (Vintage, Open Box drops, curated edits). Inspired by the Open Box pattern.</p></div>
+    <div class="pick"><div class="code">C4 · FILTER DEMO</div><h4>Sticky left filter rail + dense grid.</h4><p class="when"><strong>Use on</strong> deep taxonomies where filtering is the primary user action (Vintage Search, full Microphone catalog).</p></div>
+  </div>
+</section>
+
+<section id="strips">
+  <div class="sec-num">06 / 11</div>
+  <h2>Pick a value strip.</h2>
+  <p class="sub"><strong>11 strip variants exist</strong> — but only 4 are recommended. The rest are alternates or flagged for kill. <a href="value-strips/value-strip-options.html" style="color:var(--vk-red);text-decoration:underline">Open the strip picker</a> to compare side-by-side.</p>
+  <div class="picks">
+    <div class="pick lead"><div class="code">V7 / V10 · CREDENTIAL BAR</div><h4>Default for landing pages.</h4><p class="when">4-stat with big Playfair numbers + small amber labels. V7 = off-white, V10 = warm-grey. Pulled from the locked main prototype. Strongest VK pattern by a mile.</p></div>
+    <div class="pick lead"><div class="code">V8 · TRUST STRIP w/ ICONS</div><h4>Daily-driver post-hero.</h4><p class="when">SVG icon circles + headline + sub-line. Best post-hero placement on PLP and secondary marketing landings.</p></div>
+    <div class="pick"><div class="code">V11 · DARK PRE-FOOTER</div><h4>Trust closer above the footer.</h4><p class="when">Near-black bg, white Playfair titles, grey body. Closes the page with serious trust language right before footer.</p></div>
+    <div class="pick"><div class="code">V9 · WARM-GREY · RED LABELS</div><h4>Core ecommerce only.</h4><p class="when">Same V7 pattern but with red labels. Use when red is the page accent (Open Box, core PLP / PDP).</p></div>
+    <div class="pick"><div class="code">— FLAGGED FOR KILL</div><h4>V1 (plain text 4-col).</h4><p class="when">Currently on most secondary pages. Too quiet, no visual anchor. Replace with V7 or V10 on next pass.</p></div>
+    <div class="pick"><div class="code">— ALTERNATES (use sparingly)</div><h4>V2, V3, V4, V5, V6.</h4><p class="when">Acceptable but lower priority. Don't introduce on new pages unless V7/V8/V10/V11 don't fit the context.</p></div>
+  </div>
+</section>
+
+<section id="type">
+  <div class="sec-num">07 / 11</div>
+  <h2>Typography lock.</h2>
+  <p class="sub">Two fonts. That's it. Anything else (Roboto, Inter, system-ui) is a reject. The only open question is which font carries product names — currently in test.</p>
+
+  <h3>The two fonts</h3>
+  <ul>
+    <li><strong>Playfair Display</strong> — display + headings. H1, H2, H3, hero titles, HOF article titles, large stats. 400 / 500 / 600 / 700.</li>
+    <li><strong>DM Sans</strong> — body + utility. Body copy, eyebrows, labels, navigation, buttons, <strong>all numbers and prices</strong>. 300 / 400 / 500 / 600 / 700.</li>
+  </ul>
+
+  <h3>Type scale</h3>
+  <ul>
+    <li>H1 hero: Playfair 48–56px / 600 / line-height 1.05</li>
+    <li>H2 section: Playfair 32–40px / 600 / line-height 1.1</li>
+    <li>H3 sub-section: Playfair 18–22px / 600</li>
+    <li>Body: DM Sans 13–17px / 400 / line-height 1.6</li>
+    <li>Eyebrow: DM Sans 12px / 700 / 0.18–0.22em letter-spacing / uppercase / amber</li>
+    <li>Pricing: DM Sans 500 / near-black / never Playfair</li>
+    <li>Button: DM Sans 600 / 13px / 0.06em letter-spacing / uppercase</li>
+  </ul>
+
+  <h3>Open question — product names</h3>
+  <div class="decide">
+    <h4>Editorial Playfair vs Retail DM Sans on product names.</h4>
+    <p>The conversion-vs-character call. Variant A keeps Playfair on product names (current). Variant B switches to DM Sans (more retail / Sweetwater-like). The hybrid recommendation: B on PLP / PDP, A on HOF / heritage.</p>
+    <div class="links">
+      <a href="type-test.html" class="amber">Open type test → vote</a>
+    </div>
+  </div>
+</section>
+
+<section id="color">
+  <div class="sec-num">08 / 11</div>
+  <h2>Color tokens.</h2>
+  <p class="sub">8 tokens cover the entire system. If a value isn't here, it doesn't ship.</p>
+  <div class="tokens">
+    <div class="token"><div class="chip" style="background:#C0392B"></div><div class="name">--vk-red</div><div class="hex">#C0392B</div><div class="use">Core ecommerce CTAs, nav chrome, cart badge, form focus borders.</div></div>
+    <div class="token"><div class="chip" style="background:#D4860A"></div><div class="name">--amber</div><div class="hex">#D4860A</div><div class="use">All secondary-page accents (CTAs, eyebrows, accent lines, list bullets).</div></div>
+    <div class="token"><div class="chip" style="background:#1A1A18"></div><div class="name">--near-black</div><div class="hex">#1A1A18</div><div class="use">Body text, dark backgrounds, footer.</div></div>
+    <div class="token"><div class="chip" style="background:#F5E6C8"></div><div class="name">--amber-bg</div><div class="hex">#F5E6C8</div><div class="use">Credential bars, info boxes, decision callouts.</div></div>
+    <div class="token"><div class="chip" style="background:#EDE8E2"></div><div class="name">hero / CTA bg</div><div class="hex">#EDE8E2</div><div class="use">Hero background and CTA section bg on every secondary page.</div></div>
+    <div class="token"><div class="chip" style="background:#FDFCFB"></div><div class="name">--warm-white</div><div class="hex">#FDFCFB</div><div class="use">Primary page background, credential strips.</div></div>
+    <div class="token"><div class="chip" style="background:#F7F5F2"></div><div class="name">--off-white</div><div class="hex">#F7F5F2</div><div class="use">Section backgrounds where you want subtle separation.</div></div>
+    <div class="token"><div class="chip" style="background:#6B6B68"></div><div class="name">--mid-grey</div><div class="hex">#6B6B68</div><div class="use">Secondary text, captions, sub-lines, mute states.</div></div>
+  </div>
+  <h4 style="margin-top:24px">Banned values</h4>
+  <ul>
+    <li><code>#fde8e6</code> — reads pinkish on uncalibrated screens. Use <code>rgba(26,26,24,0.07)</code> for neutral pills.</li>
+    <li><code>rgba(192,57,43,0.04–0.08)</code> as a standalone background — looks pinkish. Use <code>--off-white</code>.</li>
+    <li>Roboto, Inter, system-ui, anything that isn't Playfair Display or DM Sans.</li>
+    <li>Any font size below 12px in CSS or inline HTML.</li>
+  </ul>
+</section>
+
+<section id="seo">
+  <div class="sec-num">09 / 11</div>
+  <h2>SEO / GEO / AI-agent signals.</h2>
+  <p class="sub">Every page ships with the same 5 signals. No exceptions — these are how AI agents (ChatGPT, Perplexity, Google SGE) understand and cite VK content.</p>
+
+  <div class="checklist">
+    <h4>Per-page checklist</h4>
+    <ul>
+      <li>Title tag in format <code>[Page Name] — [Benefit Hook] | Vintage King</code></li>
+      <li>Meta description, 140–160 characters, action-oriented (verb-led)</li>
+      <li>One JSON-LD block (Service, HowTo, FAQPage, Article, JobPosting, or Product)</li>
+      <li><code>class="speakable"</code> on the hero <code>&lt;p&gt;</code> for Google SGE</li>
+      <li>Canonical URL + Open Graph image (1200×630, branded)</li>
+    </ul>
+  </div>
+
+  <h3>JSON-LD pick by template</h3>
+  <ul>
+    <li><strong>T1 Editorial Light</strong> → <code>Service</code> schema</li>
+    <li><strong>T2 Deep Article</strong> → <code>Article</code> + <code>BreadcrumbList</code></li>
+    <li><strong>T3 Program / Service</strong> → <code>Service</code> + <code>HowTo</code> for the 3-step process</li>
+    <li><strong>T4 Promo / Drop</strong> → <code>Offer</code> + <code>Product</code> aggregation</li>
+    <li><strong>T5 Policy / Long-form</strong> → <code>FAQPage</code> if Q&amp;A; otherwise <code>WebPage</code></li>
+  </ul>
+
+  <h3>Boilerplate</h3>
+  <div class="schema">&lt;script type=<span class="str">"application/ld+json"</span>&gt;
+{
+  <span class="key">"@context"</span>: <span class="str">"https://schema.org"</span>,
+  <span class="key">"@type"</span>: <span class="str">"Service"</span>,
+  <span class="key">"name"</span>: <span class="str">"VK Tech Shop"</span>,
+  <span class="key">"provider"</span>: { <span class="key">"@type"</span>: <span class="str">"Organization"</span>, <span class="key">"name"</span>: <span class="str">"Vintage King"</span> },
+  <span class="key">"areaServed"</span>: <span class="str">"US"</span>,
+  <span class="key">"serviceType"</span>: <span class="str">"Pro audio repair and restoration"</span>
+}
+&lt;/script&gt;</div>
+</section>
+
+<section id="handoff">
+  <div class="sec-num">10 / 11</div>
+  <h2>Handoff conventions.</h2>
+  <p class="sub">Filename rules, repo boundaries, and what the agency / dev team needs from us before they start.</p>
+
+  <h3>Filenames</h3>
+  <div class="filename"><span class="lbl">Secondary pages</span>kebab-case · descriptive · no version suffix in production · e.g. <code>tech-shop.html</code>, <code>sell-or-trade.html</code></div>
+  <div class="filename"><span class="lbl">PLPs</span><code>[category]-plp-[layout].html</code> · e.g. <code>microphones-plp-default.html</code>, <code>microphones-plp-spotlight.html</code></div>
+  <div class="filename"><span class="lbl">PDPs</span><code>[brand]-[model].html</code> · e.g. <code>neumann-u47.html</code>, <code>neve-1073.html</code></div>
+  <div class="filename"><span class="lbl">HOF / gear heritage</span><code>[brand]-[model]-guide.html</code> or <code>[brand]-[model].html</code> · e.g. <code>neve-1073-guide.html</code></div>
+
+  <h3>Repo boundaries</h3>
+  <ul>
+    <li><strong>vk-redesign-final</strong> (this repo) — guidelines, buffet, decision tools, single source of truth for the system. Read-only for the agency.</li>
+    <li><strong>vk-secondary-pages</strong> — all 60+ standalone secondary HTML files + navigator inventory. Where the agency does the secondary-page build.</li>
+    <li><strong>vintage-king-redesign</strong> — locked single-file prototype with all 10 core ecommerce screens + mega menu. Do not edit. Pattern source only.</li>
+  </ul>
+
+  <h3>What the team needs from us before build starts</h3>
+  <div class="checklist">
+    <h4>Pre-build deliverables</h4>
+    <ul>
+      <li>Type-test decision (Variant A / B / Hybrid) — locks product-name font</li>
+      <li>Final value-strip pick (V7 vs V10 as default) — locks landing-page strip</li>
+      <li>Section-buffet pass (Keep / Maybe / Kill marked) — locks the body section library</li>
+      <li>Real photography spec for V4 strip + H4 hero (resolutions, aspect ratios)</li>
+      <li>Section 179 figures for current tax year</li>
+    </ul>
+  </div>
+</section>
+
+<section id="decide">
+  <div class="sec-num">11 / 11</div>
+  <h2>Decide — three open calls before agency handoff.</h2>
+  <p class="sub">These three decisions block everything else. Each has a dedicated tool. Walk the team through them in this order.</p>
+
+  <div class="decide">
+    <h4>1. Typography — product name font.</h4>
+    <p>Editorial Playfair (current) vs Retail DM Sans (Sweetwater-like) vs Hybrid (B on PLP/PDP, A on HOF). Vote on the type-test page.</p>
+    <div class="links"><a href="type-test.html" class="amber">Open type test →</a></div>
+  </div>
+
+  <div class="decide">
+    <h4>2. Value strip — pick the keepers.</h4>
+    <p>11 variants on the picker. AJ recommends V7 or V10 as the landing-page default + V8 for daily-driver post-hero + V11 above footer. Confirm and kill the rest.</p>
+    <div class="links"><a href="value-strips/value-strip-options.html" class="amber">Open strip picker →</a></div>
+  </div>
+
+  <div class="decide">
+    <h4>3. Section buffet — Keep / Maybe / Kill.</h4>
+    <p>Walk every body-section variant once. Mark winners. Round 2 deletes the losers and the new repo ships only the keepers.</p>
+    <div class="links"><a href="section-buffet.html" class="amber">Open section buffet →</a></div>
+  </div>
+
+  <h3 style="margin-top:36px">Then</h3>
+  <ol>
+    <li>Lock the 3 decisions above.</li>
+    <li>Apply the type pick globally across HOF + PLP + PDP.</li>
+    <li>Migrate the live secondary pages into the new repo, batched by template family (T2 HOF first — biggest set).</li>
+    <li>Archive everything that didn't make the keep list.</li>
+    <li>Hand the new repo + this playbook + the inventory spreadsheet to the agency.</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <div><strong>VK Build Playbook</strong> · Vintage Pro Audio · Read this first · Single source of truth</div>
+  <div class="meta">Updated April 2026 · <a href="index.html">Dashboard</a> · <a href="style-guide.html">Style Guide</a> · <a href="content/index.html">Page Index</a> · <a href="https://github.com/barreletics/vk-redesign-final" target="_blank">GitHub</a></div>
+</footer>
+
+</body>
+</html>
