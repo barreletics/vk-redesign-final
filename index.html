@@ -294,6 +294,28 @@ code{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:12px;backgr
 .cmpbody .v11 small{font-size:12px;color:var(--near-black);line-height:1.55}
 .cmpbody .v11 small em{font-style:normal;color:var(--mid-grey)}
 
+/* V7b — warm-grey credential · big Playfair number + vertical dividers + amber uppercase label (Sell or Trade / Tech Shop / Studio Installs signature) */
+.cmpbody .v7b{background:#E8E3DC;border-top:2px solid #D0C9C0;border-bottom:2px solid #D0C9C0}
+.cmpbody .v7b .row{max-width:1280px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:repeat(4,1fr)}
+.cmpbody .v7b .item{padding:32px 16px;text-align:center;border-right:1px solid rgba(26,26,24,0.10)}
+.cmpbody .v7b .item:last-child{border-right:0}
+.cmpbody .v7b .num{font-family:var(--font-display);font-size:38px;font-weight:600;color:var(--near-black);line-height:1;padding-bottom:12px;border-bottom:1px solid rgba(26,26,24,0.10);margin-bottom:12px;letter-spacing:-0.01em}
+.cmpbody .v7b .label{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber)}
+
+/* V8d — numbered amber-circle stepper on full amber bg */
+.cmpbody .v8d{background:var(--amber-bg);padding:32px 28px}
+.cmpbody .v8d .row{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.cmpbody .v8d .item{display:flex;gap:14px;align-items:flex-start}
+.cmpbody .v8d .num{width:38px;height:38px;background:var(--amber);color:#fff;border-radius:50%;display:grid;place-items:center;font-family:var(--font-display);font-weight:600;font-size:16px;flex-shrink:0;box-shadow:0 0 0 3px rgba(212,134,10,0.15)}
+.cmpbody .v8d .meta strong{display:block;font-size:13px;font-weight:600;margin-bottom:2px;color:var(--near-black)}
+.cmpbody .v8d .meta small{font-size:11px;color:rgba(26,26,24,0.62);line-height:1.55}
+
+/* V8e — pill row with amber check prefix (PLP sub-hero, smallest check mark) */
+.cmpbody .v8e{background:#fff;padding:18px 28px;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.cmpbody .v8e .row{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.cmpbody .v8e .pill{background:var(--off-white);padding:7px 14px;border-radius:30px;font-size:12px;font-weight:500;border:1px solid var(--hairline);color:var(--near-black)}
+.cmpbody .v8e .pill:before{content:"✓\00a0";color:var(--amber);font-weight:700;margin-right:3px}
+
 /* V12 — red icon trust strip (core ecommerce) */
 .cmpbody .v12{background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
 .cmpbody .v12 .row{max-width:1280px;margin:0 auto;padding:24px 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
@@ -533,7 +555,8 @@ table.pgs td.lnk a{font-size:12px}
   .wrap{padding:32px 24px 60px}
   .cmpbody .h2-split,.cmpbody .h5-5050,.cmpbody .h8-svc-inner,.cmpbody .rel,.cmpbody .fifty,.cmpbody .spotlight{grid-template-columns:1fr}
   .cmpbody .pgrid{grid-template-columns:repeat(2,1fr)}
-  .cmpbody .stats,.cmpbody .stats2,.cmpbody .feat,.cmpbody .steps,.cmpbody .v8 .row,.cmpbody .v8b .row,.cmpbody .v8c .row,.cmpbody .v12 .row,.cmpbody .strip-row,.cmpbody .v4-row{grid-template-columns:repeat(2,1fr)}
+  .cmpbody .stats,.cmpbody .stats2,.cmpbody .feat,.cmpbody .steps,.cmpbody .v7b .row,.cmpbody .v8 .row,.cmpbody .v8b .row,.cmpbody .v8c .row,.cmpbody .v8d .row,.cmpbody .v12 .row,.cmpbody .strip-row,.cmpbody .v4-row{grid-template-columns:repeat(2,1fr)}
+  .cmpbody .v7b .item:nth-child(2){border-right:0}
   .cmpbody .timeline{grid-template-columns:repeat(2,1fr)}.cmpbody .timeline:before{display:none}
   .cmpbody .vkfooter .row{grid-template-columns:repeat(2,1fr)}
   .cmpbody .gallery{grid-template-columns:repeat(2,1fr)}
@@ -569,7 +592,7 @@ table.pgs td.lnk a{font-size:12px}
     <a href="#h9" class="lvl2">H9 · Utility</a>
 
     <div class="grp">Components — Strips</div>
-    <a href="#strips" class="lvl2">All strips (14)</a>
+    <a href="#strips" class="lvl2">All strips (17)</a>
 
     <div class="grp">Components — Body (Secondary)</div>
     <a href="#body-sec" class="lvl2">All sections (16)</a>
@@ -828,8 +851,8 @@ table.pgs td.lnk a{font-size:12px}
 <!-- ============= STRIPS ============= -->
 <section class="docsec" id="strips">
   <div class="wrap">
-    <h2 class="sech"><span class="num">06</span>Strips — 14 variants</h2>
-    <p class="sechd">Cross-cutting modules that sit between sections. Three distinct trust-strip families so pages don't feel repetitive: <strong>V8</strong> amber checkmark circle (secondary default), <strong>V8b</strong> amber line-art icons — truck / shield / dollar / tools (when a real icon set reads better than a checkmark), <strong>V8c</strong> editorial dividing-line credential (no icons, amber vertical dividers, print feel), <strong>V12</strong> red checkmark circle (core ecommerce only). V1 is the quietest (plain + small red line-icons). V7 is the credential-bar pattern for service pages. V11 is the pre-footer amber Playfair stat.</p>
+    <h2 class="sech"><span class="num">06</span>Strips — 17 variants</h2>
+    <p class="sechd">Cross-cutting modules between sections. Six distinct trust-strip families so no two pages feel alike: <strong>V7b</strong> warm-grey credential with big Playfair numbers + vertical dividers + amber uppercase labels (the VK signature — Sell or Trade / Tech Shop / Studio Installs), <strong>V8</strong> amber checkmark circle (secondary default), <strong>V8b</strong> amber line-art icons (truck / shield / dollar / tools), <strong>V8c</strong> editorial dividing-line credential (no icons, amber verticals), <strong>V8d</strong> numbered amber stepper (1 · 2 · 3 · 4, most branded), <strong>V8e</strong> pill row with small amber ✓ prefix (quietest, under-hero on PLP), <strong>V12</strong> red checkmark circle (core ecommerce only). V1 is plain + small red line-icons. V11 is the pre-footer amber Playfair stat.</p>
   </div>
   <div class="wrap full">
 
@@ -928,6 +951,35 @@ table.pgs td.lnk a{font-size:12px}
       <div class="item"><div class="meta"><span class="n">Support</span><strong>Real human expert</strong><small>Chat, phone, video — under 3 min</small></div></div>
     </div></div></div>
     <div class="cmpcap"><strong>Use on:</strong> About, editorial, policy pages where a quieter credential fits the page voice. No icons at all — amber category label above the claim, amber vertical dividers between columns. Reads like print.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">V7b</span><span class="ttl"><strong>Warm-grey credential · big Playfair numbers + vertical dividers + amber uppercase labels</strong> — the VK signature pattern (Sell or Trade / Tech Shop / Studio Installs / Financing)</span></div>
+    <div class="cmpbody"><div class="v7b"><div class="row">
+      <div class="item"><div class="num">30+ Years</div><div class="label">Buying Pro Audio</div></div>
+      <div class="item"><div class="num">24 Hr</div><div class="label">Offer Guarantee</div></div>
+      <div class="item"><div class="num">Same Day</div><div class="label">Trade Credit Applied</div></div>
+      <div class="item"><div class="num">We Pay</div><div class="label">All Shipping Costs</div></div>
+    </div></div></div>
+    <div class="cmpcap"><strong>Use on:</strong> Sell or Trade, Trade Program, Tech Shop, Studio Installs, Financing, About. The credential bar with the most VK brand equity — warm-grey <code>#E8E3DC</code>, vertical dividers between 4 columns, big Playfair headline number above a thin rule, amber uppercase label below. Labels live <strong>above-the-line</strong> with the number on top, which is the "items up above with dividing lines" pattern. Proven on the locked main prototype.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">V8d</span><span class="ttl"><strong>Numbered amber stepper · 1 · 2 · 3 · 4</strong> — full amber background, most branded variant</span></div>
+    <div class="cmpbody"><div class="v8d"><div class="row">
+      <div class="item"><div class="num">1</div><div class="meta"><strong>Free Shipping</strong><small>Orders over $99</small></div></div>
+      <div class="item"><div class="num">2</div><div class="meta"><strong>VK Warranty</strong><small>Every item covered</small></div></div>
+      <div class="item"><div class="num">3</div><div class="meta"><strong>0% Financing</strong><small>Up to 36 months</small></div></div>
+      <div class="item"><div class="num">4</div><div class="meta"><strong>Hand-Tested</strong><small>By VK technicians</small></div></div>
+    </div></div></div>
+    <div class="cmpcap"><strong>Use on:</strong> hero landing pages where you want the strongest visual presence. Full <code>var(--amber-bg)</code> background + filled amber number circles (Playfair 1-2-3-4). Use sparingly so it stays special — pair with a dark hero above. This is the "one, two, three, and all that" variant.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">V8e</span><span class="ttl"><strong>Pill row · small amber checks</strong> — quietest, single-line, under-hero on PLP</span></div>
+    <div class="cmpbody"><div class="v8e"><div class="row">
+      <div class="pill">Free Shipping over $99</div>
+      <div class="pill">VK Warranty</div>
+      <div class="pill">0% Financing</div>
+      <div class="pill">Hand-Tested</div>
+      <div class="pill">Authorized Dealer</div>
+      <div class="pill">Expert Support</div>
+    </div></div></div>
+    <div class="cmpcap"><strong>Use on:</strong> directly under a PLP hero where filters need to win attention. Each pill carries a smaller amber ✓ prefix — the quietest trust-strip variant in the system. Works well when V8/V8b/V8d would fight the content below.</div></div>
 
     <div class="cmp"><div class="cmphd"><span class="id">V9</span><span class="ttl"><strong>Quote / testimonial strip</strong> — social proof</span></div>
     <div class="cmpbody"><div class="v9">"Vintage King is the only place I trust to find a clean U 47."<small>— Mike Shipley · Mix engineer</small></div></div>
