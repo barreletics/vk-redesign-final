@@ -3,300 +3,1234 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>VK Redesign — Roadmap to Heaven | Vintage Pro Audio</title>
-<meta name="description" content="One entry point. Read the playbook. See the work. Decide the open calls. Hand off to the agency.">
+<title>VK Design System — single source of truth</title>
+<meta name="description" content="VK Design System. One page. Rules, type, color, components, pages. Scroll top to bottom or jump from the left.">
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--vk-red:#C0392B;--amber:#D4860A;--amber-bg:#F5E6C8;--near-black:#1A1A18;--warm-white:#FDFCFB;--off-white:#F7F5F2;--mid-grey:#6B6B68;--hairline:rgba(26,26,24,0.08);--hero-bg:#EDE8E2;--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',sans-serif;--font-mono:'JetBrains Mono',Menlo,monospace}
+/* ============================================================
+   DOC CHROME — Inter system sans, plain document feel
+   ============================================================ */
+:root{
+  --vk-red:#C0392B;
+  --amber:#D4860A;
+  --amber-bg:#F5E6C8;
+  --near-black:#1A1A18;
+  --warm-white:#FDFCFB;
+  --off-white:#F7F5F2;
+  --mid-grey:#6B6B68;
+  --hairline:rgba(26,26,24,0.08);
+  --hairline-strong:rgba(26,26,24,0.16);
+  --doc-text:#1f1f1d;
+  --doc-link:#0f62fe;
+  --doc-bg:#fff;
+  --side-bg:#fafafa;
+  --code-bg:#f4f4f4;
+  --font-doc:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'DM Sans',sans-serif;
+}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{font-family:var(--font-body);background:var(--warm-white);color:var(--near-black);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{font-family:var(--font-doc);background:var(--doc-bg);color:var(--doc-text);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--doc-link);text-decoration:none}
+a:hover{text-decoration:underline}
 
-.topbar{background:var(--near-black);color:#fff;padding:9px 24px;font-size:12px;letter-spacing:0.04em;text-align:center}
-.topbar strong{color:var(--amber);font-weight:600;letter-spacing:0.18em;text-transform:uppercase;margin-right:10px}
-.nav{background:#fff;border-bottom:1px solid var(--hairline);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
-.logo{font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-0.005em}
-.logo .tag{font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--amber);letter-spacing:0.16em;text-transform:uppercase;margin-left:14px;border-left:1px solid var(--hairline);padding-left:14px}
-.nav-links{display:flex;gap:28px;font-size:13px;font-weight:500;flex-wrap:wrap}
-.nav-links a:hover{color:var(--amber)}
+.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
 
-.hero{background:var(--hero-bg);padding:80px 32px 60px}
-.hero-inner{max-width:1100px;margin:0 auto}
-.hero-eye{font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:18px}
-.hero h1{font-family:var(--font-display);font-size:60px;font-weight:600;line-height:1.02;letter-spacing:-0.01em;max-width:920px;margin:0 0 22px}
-.hero p.lede{font-size:19px;color:var(--near-black);line-height:1.55;max-width:780px;margin:0 0 24px}
-.hero p.sub{font-size:14px;color:var(--mid-grey);max-width:760px}
-.hero p.sub strong{color:var(--near-black);font-weight:600}
+/* ---- Sidebar ---- */
+aside{background:var(--side-bg);border-right:1px solid var(--hairline);padding:24px 0;position:sticky;top:0;height:100vh;overflow-y:auto;font-size:13px}
+aside .brand{padding:0 22px 18px;border-bottom:1px solid var(--hairline);margin-bottom:14px}
+aside .brand .ttl{font-weight:700;font-size:14px;color:var(--near-black);letter-spacing:-0.01em}
+aside .brand .meta{font-size:11px;color:var(--mid-grey);margin-top:4px;letter-spacing:0.02em}
+aside nav{padding:0 12px}
+aside nav .grp{font-size:10px;font-weight:700;color:var(--mid-grey);text-transform:uppercase;letter-spacing:0.10em;padding:14px 10px 6px}
+aside nav a{display:block;padding:5px 10px;color:#3a3a36;border-radius:3px;font-size:13px;line-height:1.4;text-decoration:none}
+aside nav a:hover{background:#eee;color:var(--near-black);text-decoration:none}
+aside nav a.lvl2{padding-left:22px;font-size:12px;color:var(--mid-grey)}
+aside .foot{padding:16px 22px;font-size:11px;color:var(--mid-grey);border-top:1px solid var(--hairline);margin-top:18px}
+aside .foot a{font-size:11px}
 
-.roadmap{background:#fff;padding:36px 32px;border-bottom:1px solid var(--hairline)}
-.roadmap-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:center;font-family:var(--font-mono);font-size:11px;color:var(--mid-grey);text-transform:uppercase;letter-spacing:0.10em}
-.rm-step{display:flex;align-items:center;gap:10px}
-.rm-step .num{background:var(--amber);color:#fff;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:12px;flex-shrink:0}
-.rm-step strong{color:var(--near-black);font-weight:600;display:block;margin-bottom:2px;font-size:11px;letter-spacing:0.10em}
-.rm-step small{font-family:var(--font-body);font-size:11px;color:var(--mid-grey);text-transform:none;letter-spacing:0;line-height:1.4;display:block}
-@media(max-width:880px){.roadmap-inner{grid-template-columns:1fr;gap:14px}}
+/* ---- Main column ---- */
+main{padding:0;background:var(--doc-bg);max-width:none;overflow-x:hidden}
+.wrap{max-width:1100px;margin:0;padding:48px 56px 80px}
+.wrap.full{max-width:none;padding:0}
 
-section.zone{padding:64px 32px;border-bottom:1px solid var(--hairline)}
-.zone-inner{max-width:1280px;margin:0 auto}
-.zone-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:28px;padding-bottom:14px;border-bottom:2px solid var(--near-black);flex-wrap:wrap;gap:14px}
-.zone-eye{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:0.10em;color:var(--amber);margin-bottom:6px;text-transform:uppercase}
-.zone-h{font-family:var(--font-display);font-size:34px;font-weight:600;line-height:1.1;letter-spacing:-0.005em}
-.zone-sub{font-size:14px;color:var(--mid-grey);max-width:520px;line-height:1.6}
+/* Page title */
+h1.docttl{font-family:var(--font-doc);font-size:32px;font-weight:700;letter-spacing:-0.015em;line-height:1.1;color:var(--near-black);margin-bottom:14px}
+.docsub{font-size:15px;color:var(--mid-grey);max-width:720px;margin-bottom:28px;line-height:1.6}
+.docsub strong{color:var(--near-black);font-weight:600}
 
-/* HERO TILE — single big card for "READ FIRST" */
-.hero-tile{background:linear-gradient(135deg,#1a1a18 0%,#2c2c2a 100%);color:#fff;border-radius:8px;padding:48px;display:grid;grid-template-columns:1.4fr 1fr;gap:36px;align-items:center;overflow:hidden;position:relative}
-.hero-tile::before{content:"";position:absolute;top:0;right:0;width:300px;height:300px;background:radial-gradient(circle,rgba(212,134,10,0.20),transparent 70%);pointer-events:none}
-.hero-tile .badge{display:inline-block;background:var(--amber);color:#fff;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:5px 12px;border-radius:3px;margin-bottom:18px}
-.hero-tile h3{font-family:var(--font-display);font-size:38px;font-weight:600;line-height:1.1;margin-bottom:14px}
-.hero-tile p{font-size:15px;color:rgba(255,255,255,0.75);margin-bottom:18px;line-height:1.6;max-width:520px}
-.hero-tile .meta{font-size:12px;color:rgba(255,255,255,0.5);font-family:var(--font-mono);margin-bottom:24px}
-.hero-tile .cta{display:inline-block;background:var(--amber);color:#fff;padding:14px 22px;font-size:13px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;border-radius:3px}
-.hero-tile .cta:hover{background:#b87308}
-.hero-tile .toc{position:relative;z-index:1}
-.hero-tile .toc h4{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
-.hero-tile .toc ol{list-style:none;padding:0;counter-reset:step;font-size:13px;color:rgba(255,255,255,0.85)}
-.hero-tile .toc li{counter-increment:step;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.10);display:flex;gap:12px}
-.hero-tile .toc li:last-child{border-bottom:0}
-.hero-tile .toc li::before{content:counter(step,decimal-leading-zero);font-family:var(--font-mono);font-size:11px;color:var(--amber);font-weight:600}
-@media(max-width:880px){.hero-tile{grid-template-columns:1fr;padding:32px}.hero-tile h3{font-size:28px}}
+/* Section headings */
+section.docsec{padding:48px 0;border-top:1px solid var(--hairline)}
+section.docsec:first-of-type{border-top:0;padding-top:0}
+section.docsec > .wrap{padding-top:0;padding-bottom:0}
+h2.sech{font-family:var(--font-doc);font-size:22px;font-weight:700;letter-spacing:-0.01em;color:var(--near-black);margin-bottom:6px}
+h2.sech .num{color:var(--mid-grey);font-weight:500;font-size:14px;margin-right:10px;letter-spacing:0}
+.sechd{font-size:14px;color:var(--mid-grey);max-width:680px;margin-bottom:28px;line-height:1.6}
 
-/* SEE THE WORK — 3 big cards */
-.see-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-@media(max-width:1080px){.see-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:780px){.see-grid{grid-template-columns:1fr}}
-.see-card{background:#fff;border:1px solid var(--hairline);border-radius:6px;padding:32px;display:flex;flex-direction:column;gap:14px;transition:all 0.2s}
-.see-card:hover{border-color:var(--amber);box-shadow:0 6px 20px rgba(26,26,24,0.06);transform:translateY(-2px)}
-.see-card .label{font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--amber);letter-spacing:0.10em;text-transform:uppercase}
-.see-card h3{font-family:var(--font-display);font-size:24px;font-weight:600;line-height:1.2}
-.see-card p{font-size:14px;color:var(--mid-grey);line-height:1.6;flex:1}
-.see-card .stats{display:flex;gap:24px;padding:14px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
-.see-card .stat{font-family:var(--font-display);font-size:24px;font-weight:600;color:var(--near-black);line-height:1}
-.see-card .stat small{display:block;font-family:var(--font-body);font-size:11px;font-weight:500;letter-spacing:0.10em;text-transform:uppercase;color:var(--mid-grey);margin-top:5px}
-.see-card .arrow{font-size:13px;font-weight:700;color:var(--amber);letter-spacing:0.06em;text-transform:uppercase;margin-top:auto}
+h3.subh{font-family:var(--font-doc);font-size:16px;font-weight:600;color:var(--near-black);margin:32px 0 10px;letter-spacing:-0.005em}
+p{font-size:14px;color:var(--doc-text);margin-bottom:10px;max-width:720px}
+ul.doclist{list-style:none;padding:0;margin:0 0 16px}
+ul.doclist li{padding:6px 0 6px 18px;border-bottom:1px solid var(--hairline);position:relative;font-size:14px;color:var(--doc-text);max-width:780px}
+ul.doclist li:before{content:"·";position:absolute;left:6px;top:6px;color:var(--mid-grey);font-weight:700}
+ul.doclist li strong{color:var(--near-black);font-weight:600}
+ul.doclist.nums{counter-reset:n}
+ul.doclist.nums li{counter-increment:n;padding-left:32px}
+ul.doclist.nums li:before{content:counter(n,decimal-leading-zero);font-family:var(--font-doc);font-size:11px;font-weight:700;color:var(--amber);left:0;top:8px}
 
-/* DECIDE — 3 cards in row, color-coded */
-.decide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-@media(max-width:980px){.decide-grid{grid-template-columns:1fr}}
-.dec{background:#fff;border:1px solid var(--hairline);border-top:4px solid var(--amber);border-radius:6px;padding:26px;display:flex;flex-direction:column;gap:12px;transition:all 0.2s}
-.dec:hover{box-shadow:0 4px 16px rgba(26,26,24,0.06);transform:translateY(-2px)}
-.dec .num{font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--amber);letter-spacing:0.10em;text-transform:uppercase}
-.dec h3{font-family:var(--font-display);font-size:20px;font-weight:600;line-height:1.2}
-.dec p{font-size:13px;color:var(--mid-grey);line-height:1.55;flex:1}
-.dec .meta{font-family:var(--font-mono);font-size:11px;color:var(--mid-grey);background:var(--off-white);padding:6px 10px;border-radius:3px;width:fit-content}
-.dec .arrow{font-size:13px;font-weight:700;color:var(--amber);letter-spacing:0.06em;text-transform:uppercase;margin-top:6px}
+code{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:12px;background:var(--code-bg);padding:1px 6px;border-radius:3px;color:var(--near-black)}
 
-/* REFERENCE — small grid, demoted */
-.ref-zone{background:var(--off-white);padding:48px 32px;border-bottom:1px solid var(--hairline)}
-.ref-inner{max-width:1280px;margin:0 auto}
-.ref-head{margin-bottom:22px;display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--hairline);padding-bottom:12px}
-.ref-head .eye{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:0.10em;color:var(--mid-grey);text-transform:uppercase;margin-bottom:4px}
-.ref-head h2{font-family:var(--font-display);font-size:22px;font-weight:600}
-.ref-head p{font-size:13px;color:var(--mid-grey);max-width:480px;line-height:1.55}
-.ref-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-@media(max-width:880px){.ref-grid{grid-template-columns:repeat(2,1fr)}}
-.ref-card{background:#fff;border:1px solid var(--hairline);border-radius:4px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;font-size:13px}
-.ref-card:hover{border-color:var(--amber)}
-.ref-card .label{font-family:var(--font-mono);font-size:10px;font-weight:600;color:var(--amber);letter-spacing:0.08em;text-transform:uppercase}
-.ref-card .name{font-family:var(--font-display);font-size:14px;font-weight:600}
-.ref-card .desc{font-size:11px;color:var(--mid-grey);line-height:1.5}
+/* ---- Color swatches ---- */
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:8px;max-width:780px}
+.sw{border:1px solid var(--hairline);border-radius:4px;overflow:hidden;background:#fff}
+.sw .chip{height:60px;width:100%}
+.sw .meta{padding:8px 10px;font-size:12px}
+.sw .name{font-weight:600;color:var(--near-black);font-size:12px}
+.sw .hex{color:var(--mid-grey);font-family:'SF Mono',Menlo,Monaco,monospace;font-size:11px;margin-top:2px}
+.sw .use{font-size:11px;color:var(--mid-grey);margin-top:4px;line-height:1.4}
 
-footer{background:var(--near-black);color:rgba(255,255,255,0.7);padding:48px 32px;font-size:13px;text-align:center}
-footer strong{color:#fff;font-weight:600}
-footer .links{margin-top:14px;display:flex;justify-content:center;gap:22px;flex-wrap:wrap;font-size:12px}
-footer .links a{color:var(--amber)}
-footer .meta{font-size:11px;color:rgba(255,255,255,0.4);margin-top:14px;font-family:var(--font-mono)}
+/* ---- Type spec rows ---- */
+.typerow{display:grid;grid-template-columns:1fr 2fr;gap:32px;padding:14px 0;border-top:1px solid var(--hairline);align-items:baseline;max-width:920px}
+.typerow:first-of-type{border-top:0}
+.typerow .lbl{font-size:12px;font-weight:600;color:var(--near-black)}
+.typerow .lbl small{display:block;font-weight:400;color:var(--mid-grey);font-size:11px;margin-top:2px;font-family:'SF Mono',Menlo,Monaco,monospace}
+.typerow .smp{color:var(--near-black)}
+
+/* ---- Component preview block ----
+   The doc chrome is Inter. Each component preview is wrapped in
+   .cmp which gives it a thin border, an id label, and a caption.
+   The component itself uses the actual VK CSS (Playfair + DM Sans). */
+.cmp{margin:18px 0 28px;border:1px solid var(--hairline-strong);border-radius:5px;background:#fff;overflow:hidden}
+.cmp .cmphd{display:flex;justify-content:space-between;align-items:baseline;padding:10px 14px;background:#fafafa;border-bottom:1px solid var(--hairline);font-size:12px;flex-wrap:wrap;gap:10px}
+.cmp .cmphd .id{font-family:'SF Mono',Menlo,Monaco,monospace;font-size:11px;color:var(--near-black);font-weight:600}
+.cmp .cmphd .ttl{color:var(--mid-grey);font-size:12px;flex:1;margin-left:10px;min-width:200px}
+.cmp .cmphd .ttl strong{color:var(--near-black);font-weight:600}
+.cmp .cmphd .lk{font-size:11px;color:var(--doc-link);font-weight:500}
+.cmp .cmpbody{position:relative}
+.cmp .cmpcap{padding:8px 14px;background:#fafafa;border-top:1px solid var(--hairline);font-size:11px;color:var(--mid-grey);line-height:1.5}
+.cmp .cmpcap strong{color:var(--near-black);font-weight:600}
+.cmp .cmpcap a{font-size:11px}
+
+/* All component CSS inside .cmpbody uses VK system. We isolate by
+   prefixing with .cmpbody to avoid bleeding into doc chrome. */
+.cmpbody{font-family:var(--font-body);color:var(--near-black);font-size:14px;line-height:1.55}
+.cmpbody *{box-sizing:border-box}
+.cmpbody a{color:inherit;text-decoration:none}
+
+/* ============================================================
+   COMPONENT CSS (real VK system, scoped under .cmpbody)
+   ============================================================ */
+
+/* === HEROES === */
+.cmpbody .h1-plp{background:#EDE8E2;padding:48px 36px;text-align:center}
+.cmpbody .h1-plp .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.cmpbody .h1-plp h2{font-family:var(--font-display);font-size:38px;font-weight:600;line-height:1.05;margin-bottom:12px}
+.cmpbody .h1-plp p{font-size:14px;color:var(--mid-grey);max-width:620px;margin:0 auto;line-height:1.6}
+.cmpbody .h1-plp .count{font-size:12px;color:var(--mid-grey);margin-top:14px;font-weight:500}
+
+.cmpbody .h2-split{display:grid;grid-template-columns:1.1fr 0.9fr;background:#fff;min-height:340px}
+.cmpbody .h2-split .body{padding:40px 32px;display:flex;flex-direction:column;justify-content:center}
+.cmpbody .h2-split .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.cmpbody .h2-split h2{font-family:var(--font-display);font-size:40px;font-weight:600;line-height:1.05;margin-bottom:12px}
+.cmpbody .h2-split h2 em{font-style:italic;color:var(--vk-red)}
+.cmpbody .h2-split p{font-size:14px;color:var(--mid-grey);max-width:440px;line-height:1.6;margin-bottom:18px}
+.cmpbody .h2-split .actions{display:flex;gap:8px;flex-wrap:wrap}
+.cmpbody .btn-red{background:var(--vk-red);color:#fff;padding:11px 20px;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;border-radius:3px;display:inline-block}
+.cmpbody .btn-amber{background:var(--amber);color:#fff;padding:11px 20px;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;border-radius:3px;display:inline-block}
+.cmpbody .btn-ghost{background:transparent;color:var(--near-black);border:1px solid var(--near-black);padding:10px 20px;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;border-radius:3px;display:inline-block}
+.cmpbody .h2-split .img{background:linear-gradient(135deg,#cfc8be,#9c9489);display:grid;place-items:center}
+.cmpbody .h2-split .featured{background:rgba(0,0,0,0.55);color:#fff;padding:16px 20px;border-radius:3px;text-align:center}
+.cmpbody .h2-split .featured .lbl{font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber);margin-bottom:5px}
+.cmpbody .h2-split .featured .name{font-family:var(--font-display);font-size:16px;font-weight:600;margin-bottom:3px}
+.cmpbody .h2-split .featured .price{font-size:13px;color:#fff;font-weight:500}
+
+.cmpbody .h3-dark{background:var(--near-black);color:#fff;padding:42px 36px;text-align:center}
+.cmpbody .h3-dark .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.cmpbody .h3-dark h2{font-family:var(--font-display);font-size:38px;font-weight:600;line-height:1.05;margin-bottom:10px}
+.cmpbody .h3-dark .div{width:50px;height:2px;background:var(--amber);margin:12px auto 14px}
+.cmpbody .h3-dark p{font-size:14px;color:rgba(255,255,255,0.75);max-width:560px;margin:0 auto;line-height:1.6}
+
+.cmpbody .h4-sec{background:#EDE8E2;padding:56px 36px;text-align:center}
+.cmpbody .h4-sec .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.cmpbody .h4-sec h2{font-family:var(--font-display);font-size:42px;font-weight:600;line-height:1.05;margin-bottom:14px;max-width:720px;margin-left:auto;margin-right:auto}
+.cmpbody .h4-sec p{font-size:15px;color:var(--near-black);max-width:600px;margin:0 auto 18px;line-height:1.6}
+
+.cmpbody .h5-5050{background:#EDE8E2;display:grid;grid-template-columns:1fr 1fr;min-height:380px}
+.cmpbody .h5-5050 .body{padding:40px 32px;display:flex;flex-direction:column;justify-content:center}
+.cmpbody .h5-5050 .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.cmpbody .h5-5050 h2{font-family:var(--font-display);font-size:38px;font-weight:600;line-height:1.05;margin-bottom:12px}
+.cmpbody .h5-5050 p{font-size:14px;color:var(--near-black);max-width:440px;line-height:1.6;margin-bottom:18px}
+.cmpbody .h5-5050 .actions{display:flex;gap:8px;flex-wrap:wrap}
+.cmpbody .h5-5050 .img{background:linear-gradient(135deg,#cfc8be,#9c9489)}
+
+.cmpbody .h6-hof{background:var(--near-black);color:#fff;padding:64px 36px;text-align:center;min-height:420px;display:grid;place-items:center;position:relative}
+.cmpbody .h6-hof:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 0%,rgba(0,0,0,0.55) 90%)}
+.cmpbody .h6-hof .inner{position:relative;z-index:2;max-width:740px}
+.cmpbody .h6-hof .crumb{font-size:11px;color:rgba(255,255,255,0.55);letter-spacing:0.08em;margin-bottom:16px}
+.cmpbody .h6-hof .eye{font-size:11px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.cmpbody .h6-hof h2{font-family:var(--font-display);font-size:42px;font-weight:600;line-height:1.05;margin-bottom:14px}
+.cmpbody .h6-hof h2 em{font-style:italic;color:var(--amber)}
+.cmpbody .h6-hof p{font-size:15px;color:rgba(255,255,255,0.75);max-width:560px;margin:0 auto;line-height:1.6}
+.cmpbody .h6-hof .meta{font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:0.06em;margin-top:18px}
+.cmpbody .h6-hof .meta strong{color:rgba(255,255,255,0.75);font-weight:500}
+
+.cmpbody .h7-photo{position:relative;min-height:420px;background:linear-gradient(135deg,#3a3a36,#1a1a18);display:grid;align-items:end;color:#fff}
+.cmpbody .h7-photo:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,0.75) 100%)}
+.cmpbody .h7-photo .body{position:relative;z-index:2;padding:36px 36px 40px;max-width:680px}
+.cmpbody .h7-photo .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.cmpbody .h7-photo h2{font-family:var(--font-display);font-size:40px;font-weight:600;line-height:1.05;margin-bottom:12px}
+.cmpbody .h7-photo p{font-size:14px;color:rgba(255,255,255,0.85);max-width:520px;line-height:1.6;margin-bottom:18px}
+
+.cmpbody .h8-svc{background:#EDE8E2;padding:48px 36px}
+.cmpbody .h8-svc-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+.cmpbody .h8-svc .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.cmpbody .h8-svc h2{font-family:var(--font-display);font-size:40px;font-weight:600;line-height:1.05;margin-bottom:12px}
+.cmpbody .h8-svc p{font-size:14px;color:var(--near-black);max-width:480px;line-height:1.6;margin-bottom:18px}
+.cmpbody .h8-svc .actions{display:flex;gap:8px;flex-wrap:wrap}
+.cmpbody .h8-svc .img{background:linear-gradient(135deg,#cfc8be,#9c9489);min-height:240px;border-radius:3px}
+
+.cmpbody .h9-util{background:#fff;padding:28px 36px;border-bottom:1px solid var(--hairline)}
+.cmpbody .h9-util .crumb{font-size:11px;color:var(--mid-grey);margin-bottom:6px}
+.cmpbody .h9-util h2{font-family:var(--font-display);font-size:26px;font-weight:600;margin-bottom:6px}
+.cmpbody .h9-util p{font-size:13px;color:var(--mid-grey);max-width:620px}
+
+/* === STRIPS === */
+.cmpbody .strip-base{padding:18px 28px;background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.cmpbody .strip-row{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+
+/* V1 — plain 4-up text */
+.cmpbody .v1-item{font-size:12px;color:var(--near-black);text-align:center;line-height:1.5}
+.cmpbody .v1-item strong{display:block;font-weight:600;font-size:13px;margin-bottom:3px}
+
+/* V2 — bullet inline */
+.cmpbody .v2{padding:14px 28px;text-align:center;background:#EDE8E2;font-size:12px;color:var(--near-black)}
+.cmpbody .v2 span{display:inline-block;margin:0 14px}
+.cmpbody .v2 strong{font-weight:600}
+
+/* V3 — divider 3-up */
+.cmpbody .v3{padding:18px 28px;background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.cmpbody .v3-row{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:0;text-align:center}
+.cmpbody .v3-item{padding:8px 18px;border-right:1px solid var(--hairline);font-size:12px;color:var(--near-black)}
+.cmpbody .v3-item:last-child{border-right:0}
+.cmpbody .v3-item strong{display:block;font-weight:600;font-size:13px;margin-bottom:3px}
+
+/* V4 — checkmark icons */
+.cmpbody .v4{padding:18px 28px;background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.cmpbody .v4-row{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.cmpbody .v4-item{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--near-black)}
+.cmpbody .v4-item:before{content:"✓";color:var(--amber);font-weight:700;font-size:14px;flex-shrink:0}
+
+/* V5 — 2-up large */
+.cmpbody .v5{padding:24px 28px;background:#EDE8E2;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.cmpbody .v5-row{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px;text-align:center}
+.cmpbody .v5-item .num{font-family:var(--font-display);font-size:30px;color:var(--amber);font-weight:600;margin-bottom:4px}
+.cmpbody .v5-item small{font-size:12px;color:var(--near-black)}
+
+/* V6 — banner with CTA */
+.cmpbody .v6{padding:14px 28px;background:var(--near-black);color:#fff;text-align:center;font-size:12px}
+.cmpbody .v6 strong{color:var(--amber);font-weight:600;margin-right:8px;letter-spacing:0.08em}
+.cmpbody .v6 a{color:#fff;border-bottom:1px solid var(--amber);font-weight:500;margin-left:10px}
+
+/* V7 — credential bar (canonical) */
+.cmpbody .v7{padding:14px 28px;background:var(--amber-bg);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);text-align:center;font-size:12px;color:var(--near-black)}
+.cmpbody .v7 span{margin:0 14px;display:inline-block;font-weight:500}
+.cmpbody .v7 span strong{color:var(--near-black);font-weight:700;margin-right:5px}
+
+/* V8 — amber circle icon strip */
+.cmpbody .v8{background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.cmpbody .v8 .row{max-width:1280px;margin:0 auto;padding:24px 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.cmpbody .v8 .item{display:flex;gap:12px;align-items:flex-start}
+.cmpbody .v8 .ic{width:36px;height:36px;background:var(--amber);border-radius:50%;display:grid;place-items:center;color:#fff;flex-shrink:0;font-size:14px;font-weight:700;box-shadow:0 0 0 3px rgba(212,134,10,0.10)}
+.cmpbody .v8 .meta strong{display:block;font-size:13px;font-weight:600;margin-bottom:2px;color:var(--near-black)}
+.cmpbody .v8 .meta small{font-size:11px;color:var(--mid-grey);line-height:1.5}
+
+/* V9 — quote/testimonial strip */
+.cmpbody .v9{padding:28px;background:var(--off-white);text-align:center;font-style:italic;color:var(--near-black);font-family:var(--font-display);font-size:18px;line-height:1.4;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.cmpbody .v9 small{display:block;font-style:normal;font-family:var(--font-body);font-size:11px;color:var(--mid-grey);margin-top:8px;letter-spacing:0.08em;text-transform:uppercase}
+
+/* V10 — landing-page hero credential (light) */
+.cmpbody .v10{background:#EDE8E2;padding:18px 28px;text-align:center;font-size:12px;color:var(--near-black)}
+.cmpbody .v10 span{margin:0 14px;display:inline-block}
+.cmpbody .v10 span:before{content:"●";color:var(--amber);margin-right:6px;font-size:9px;vertical-align:middle}
+
+/* V11 — pre-footer trust bar */
+.cmpbody .v11{padding:24px 28px;background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.cmpbody .v11 .row{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center}
+.cmpbody .v11 strong{display:block;font-family:var(--font-display);font-size:18px;color:var(--near-black);font-weight:600;margin-bottom:4px}
+.cmpbody .v11 small{font-size:11px;color:var(--mid-grey);line-height:1.5}
+
+/* V12 — red icon trust strip (core ecommerce) */
+.cmpbody .v12{background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.cmpbody .v12 .row{max-width:1280px;margin:0 auto;padding:24px 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.cmpbody .v12 .item{display:flex;gap:12px;align-items:flex-start}
+.cmpbody .v12 .ic{width:36px;height:36px;background:var(--vk-red);border-radius:50%;display:grid;place-items:center;color:#fff;flex-shrink:0;font-size:14px;font-weight:700;box-shadow:0 0 0 3px rgba(192,57,43,0.10)}
+.cmpbody .v12 .meta strong{display:block;font-size:13px;font-weight:600;margin-bottom:2px;color:var(--near-black)}
+.cmpbody .v12 .meta small{font-size:11px;color:var(--mid-grey);line-height:1.5}
+
+/* === BODY · SECONDARY === */
+.cmpbody .secbg{background:var(--off-white);padding:0}
+
+/* B-A 3-step process */
+.cmpbody .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:36px 32px;background:#fff}
+.cmpbody .step .n{font-family:var(--font-display);font-size:42px;color:var(--amber);font-weight:600;line-height:1;margin-bottom:10px}
+.cmpbody .step h4{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:6px}
+.cmpbody .step p{font-size:13px;color:var(--mid-grey);line-height:1.55}
+
+/* B-B editorial 2x2 */
+.cmpbody .edgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(26,26,24,0.08);padding:1px}
+.cmpbody .edcard{background:#fff;display:flex;flex-direction:column}
+.cmpbody .edcard .img{aspect-ratio:16/10;background:linear-gradient(135deg,#cfc8be,#9c9489)}
+.cmpbody .edcard:nth-child(2) .img{background:linear-gradient(135deg,#3a3a36,#1a1a18)}
+.cmpbody .edcard:nth-child(3) .img{background:linear-gradient(135deg,#e0d8cc,#b8ad9f)}
+.cmpbody .edcard .body{padding:18px 22px}
+.cmpbody .edcard .eye{font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+.cmpbody .edcard h4{font-family:var(--font-display);font-size:18px;font-weight:600;line-height:1.2;margin-bottom:6px}
+.cmpbody .edcard p{font-size:12px;color:var(--mid-grey);line-height:1.55}
+
+/* B-C feature cards 3-up */
+.cmpbody .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:36px 32px;background:#fff}
+.cmpbody .ftcard{background:var(--off-white);padding:22px;border-radius:4px}
+.cmpbody .ftcard .icbox{width:36px;height:36px;background:var(--amber);border-radius:6px;color:#fff;display:grid;place-items:center;font-weight:700;margin-bottom:10px}
+.cmpbody .ftcard h4{font-family:var(--font-display);font-size:16px;font-weight:600;margin-bottom:6px}
+.cmpbody .ftcard p{font-size:12px;color:var(--mid-grey);line-height:1.55}
+
+/* B-D pull quote */
+.cmpbody .pullq{padding:48px 36px;background:#fff;text-align:center;font-family:var(--font-display);font-size:24px;line-height:1.3;color:var(--near-black);font-style:italic;font-weight:400}
+.cmpbody .pullq:before,.cmpbody .pullq:after{color:var(--amber)}
+.cmpbody .pullq small{display:block;font-style:normal;font-family:var(--font-body);font-size:11px;color:var(--mid-grey);margin-top:12px;letter-spacing:0.10em;text-transform:uppercase;font-weight:600}
+
+/* B-E dark stat block 4-up */
+.cmpbody .stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--near-black);color:#fff;padding:36px 28px;text-align:center;gap:0}
+.cmpbody .stat{padding:0 18px;border-right:1px solid rgba(255,255,255,0.10)}
+.cmpbody .stat:last-child{border-right:0}
+.cmpbody .stat .n{font-family:var(--font-display);font-size:36px;font-weight:600;color:var(--amber);line-height:1;margin-bottom:6px}
+.cmpbody .stat small{font-size:11px;color:rgba(255,255,255,0.65);letter-spacing:0.06em;line-height:1.4;display:block}
+
+/* B-F FAQ accordion */
+.cmpbody .faqlist{padding:24px 32px;background:#fff}
+.cmpbody .faqlist .qa{border-bottom:1px solid var(--hairline);padding:14px 0}
+.cmpbody .faqlist .q{font-family:var(--font-doc);font-size:14px;font-weight:600;color:var(--near-black);display:flex;justify-content:space-between;cursor:pointer}
+.cmpbody .faqlist .q:after{content:"+";color:var(--amber);font-weight:400;font-size:18px}
+.cmpbody .faqlist .a{font-size:13px;color:var(--mid-grey);line-height:1.6;margin-top:8px;max-width:680px}
+
+/* B-G CTA + email form */
+.cmpbody .ctaform{background:#EDE8E2;padding:40px 32px;text-align:center}
+.cmpbody .ctaform .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.cmpbody .ctaform h3{font-family:var(--font-display);font-size:28px;font-weight:600;margin-bottom:8px;max-width:620px;margin-left:auto;margin-right:auto}
+.cmpbody .ctaform p{font-size:13px;color:var(--mid-grey);max-width:560px;margin:0 auto 16px;line-height:1.6}
+.cmpbody .ctaform .row{display:grid;grid-template-columns:1fr auto;gap:8px;max-width:480px;margin:0 auto}
+.cmpbody .ctaform input{padding:12px 14px;border:1px solid var(--hairline-strong);background:#fff;font-size:14px;font-family:var(--font-body);border-radius:3px}
+
+/* B-H related gear */
+.cmpbody .rel{display:grid;grid-template-columns:1fr 1.4fr;background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);min-height:240px}
+.cmpbody .rel .img{background:linear-gradient(135deg,#cfc8be,#9c9489)}
+.cmpbody .rel .body{padding:32px 28px;display:flex;flex-direction:column;justify-content:center}
+.cmpbody .rel .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.cmpbody .rel h4{font-family:var(--font-display);font-size:24px;font-weight:600;margin-bottom:8px}
+.cmpbody .rel p{font-size:13px;color:var(--mid-grey);line-height:1.6;margin-bottom:14px;max-width:480px}
+
+/* B-I 50/50 image + text */
+.cmpbody .fifty{display:grid;grid-template-columns:1fr 1fr;background:#fff;min-height:340px}
+.cmpbody .fifty .img{background:linear-gradient(135deg,#cfc8be,#9c9489)}
+.cmpbody .fifty .body{padding:36px 32px;display:flex;flex-direction:column;justify-content:center}
+.cmpbody .fifty .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.cmpbody .fifty h3{font-family:var(--font-display);font-size:26px;font-weight:600;margin-bottom:10px}
+.cmpbody .fifty p{font-size:13px;color:var(--mid-grey);line-height:1.6;max-width:440px;margin-bottom:14px}
+
+/* B-J dark accent */
+.cmpbody .dark{background:#2C2C2A;padding:42px 32px;text-align:center;color:#fff}
+.cmpbody .dark .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.cmpbody .dark h3{font-family:var(--font-display);font-size:26px;font-weight:600;line-height:1.2;max-width:680px;margin:0 auto 10px}
+.cmpbody .dark p{font-size:14px;color:rgba(255,255,255,0.65);max-width:580px;margin:0 auto;line-height:1.6}
+
+/* B-K 20/80 split */
+.cmpbody .split8020{display:grid;grid-template-columns:20% 80%;background:#fff;min-height:280px;gap:1px;background:rgba(26,26,24,0.08);padding:1px}
+.cmpbody .split8020 .narrow{background:linear-gradient(135deg,#cfc8be,#9c9489)}
+.cmpbody .split8020 .wide{background:#fff;padding:28px 32px;display:flex;flex-direction:column;justify-content:center}
+.cmpbody .split8020 .wide .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.cmpbody .split8020 .wide h3{font-family:var(--font-display);font-size:22px;font-weight:600;margin-bottom:8px}
+.cmpbody .split8020 .wide p{font-size:13px;color:var(--mid-grey);line-height:1.6;margin-bottom:12px;max-width:520px}
+
+/* B-L single large image */
+.cmpbody .bigimg{position:relative;height:420px;background:linear-gradient(135deg,#3a3a36,#1a1a18);display:grid;place-items:center;color:#fff;text-align:center;overflow:hidden}
+.cmpbody .bigimg:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.10),rgba(0,0,0,0.55))}
+.cmpbody .bigimg .inner{position:relative;z-index:2;max-width:680px;padding:0 32px}
+.cmpbody .bigimg .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.cmpbody .bigimg h3{font-family:var(--font-display);font-size:34px;font-weight:600;line-height:1.1;margin-bottom:12px}
+.cmpbody .bigimg p{font-size:14px;color:rgba(255,255,255,0.80);line-height:1.6;max-width:560px;margin:0 auto}
+.cmpbody .bigimg .cap{position:absolute;bottom:14px;right:18px;z-index:2;font-size:10px;color:rgba(255,255,255,0.55);letter-spacing:0.06em}
+
+/* B-M gallery 4-up */
+.cmpbody .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(26,26,24,0.08);padding:1px}
+.cmpbody .gallery .tile{aspect-ratio:1/1;background:linear-gradient(135deg,#cfc8be,#9c9489)}
+.cmpbody .gallery .tile:nth-child(2){background:linear-gradient(135deg,#3a3a36,#1a1a18)}
+.cmpbody .gallery .tile:nth-child(3){background:linear-gradient(135deg,#e0d8cc,#b8ad9f)}
+.cmpbody .gallery .tile:nth-child(4){background:linear-gradient(135deg,#5a5550,#2a2520)}
+
+/* B-N video block */
+.cmpbody .vid{position:relative;height:380px;background:#1a1a18;display:grid;place-items:center;cursor:pointer}
+.cmpbody .vid:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(80,75,70,0.55),rgba(20,15,10,0.85))}
+.cmpbody .vid .play{position:relative;z-index:2;width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.95);display:grid;place-items:center;box-shadow:0 12px 40px rgba(0,0,0,0.30)}
+.cmpbody .vid .play:after{content:"";width:0;height:0;border-style:solid;border-width:12px 0 12px 20px;border-color:transparent transparent transparent var(--vk-red);margin-left:5px}
+.cmpbody .vid .meta{position:absolute;bottom:22px;left:26px;z-index:2;color:#fff}
+.cmpbody .vid .meta .eye{font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber);margin-bottom:5px}
+.cmpbody .vid .meta h4{font-family:var(--font-display);font-size:18px;font-weight:600}
+
+/* B-O timeline */
+.cmpbody .timeline{padding:28px 24px;background:#fff;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.cmpbody .timeline:before{content:"";position:absolute;top:54px;left:32px;right:32px;height:2px;background:var(--amber);opacity:0.30}
+.cmpbody .timeline .pt{padding:0 12px;position:relative}
+.cmpbody .timeline .pt .yr{font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--amber);margin-bottom:8px;position:relative;z-index:2;background:#fff;display:inline-block;padding-right:8px}
+.cmpbody .timeline .pt .dot{position:absolute;top:42px;left:12px;width:12px;height:12px;border-radius:50%;background:var(--amber);border:3px solid #fff;z-index:3}
+.cmpbody .timeline .pt h5{font-family:var(--font-display);font-size:14px;font-weight:600;margin:16px 0 5px}
+.cmpbody .timeline .pt p{font-size:11px;color:var(--mid-grey);line-height:1.55}
+
+/* === BODY · PLP === */
+/* P-A canonical filter pattern */
+.cmpbody .cathead{padding:22px 22px 18px;background:#fff;border-bottom:1px solid var(--hairline)}
+.cmpbody .cathead .crumb{font-size:11px;color:var(--mid-grey);margin-bottom:6px}
+.cmpbody .cathead h3{font-family:var(--font-display);font-size:26px;font-weight:600;line-height:1.1;margin-bottom:4px}
+.cmpbody .cathead .count{font-size:12px;color:var(--mid-grey);font-weight:500}
+.cmpbody .cathead .lede{font-size:12px;color:var(--mid-grey);margin-top:8px;max-width:680px;line-height:1.55}
+.cmpbody .fbar{padding:12px 22px;background:#fff;display:flex;gap:8px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--hairline)}
+.cmpbody .chip{font-size:11px;padding:6px 12px;border:1px solid var(--hairline-strong);border-radius:18px;color:var(--near-black);background:#fff;white-space:nowrap}
+.cmpbody .chip.red{background:var(--vk-red);color:#fff;border-color:var(--vk-red);font-weight:600}
+.cmpbody .chip.more{color:var(--vk-red);border-color:var(--vk-red);font-weight:600;background:#fff}
+.cmpbody .fbar .sort{margin-left:auto;font-size:11px;color:var(--mid-grey)}
+.cmpbody .fbar .sort select{font-size:11px;padding:4px 8px;border:1px solid var(--hairline-strong);background:#fff}
+.cmpbody .fpanel{padding:20px 22px;background:var(--off-white);border-bottom:1px solid var(--hairline)}
+.cmpbody .fpanel .ftabs{display:flex;gap:14px;font-size:11px;font-weight:600;color:var(--mid-grey);margin-bottom:12px;border-bottom:1px solid var(--hairline);padding-bottom:8px}
+.cmpbody .fpanel .ftabs span{padding:4px 0;cursor:pointer;letter-spacing:0.04em;text-transform:uppercase}
+.cmpbody .fpanel .ftabs span.act{color:var(--near-black);border-bottom:2px solid var(--vk-red);padding-bottom:6px;margin-bottom:-9px}
+.cmpbody .fpanel .fchips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.cmpbody .fpanel .seeall{font-size:11px;color:var(--vk-red);font-weight:600;border-bottom:1px solid var(--vk-red);padding-bottom:1px}
+
+/* P-A quick row (second inline line, middot-separated text links) */
+.cmpbody .qrow{padding:10px 22px 12px;font-size:12px;color:var(--mid-grey);display:flex;flex-wrap:wrap;align-items:center;line-height:1.6;background:#fff;border-bottom:1px solid var(--hairline)}
+.cmpbody .qrow .qlbl{font-weight:600;color:var(--near-black);margin-right:10px;letter-spacing:0.02em}
+.cmpbody .qrow a{color:var(--mid-grey);padding:2px 0}
+.cmpbody .qrow a:hover{color:var(--near-black)}
+.cmpbody .qrow .qsep{color:rgba(26,26,24,0.22);margin:0 10px}
+
+/* P-A meta row (count bold + sort/view right) */
+.cmpbody .mrow{display:flex;flex-wrap:wrap;align-items:center;gap:20px;padding:14px 22px;background:#fff;border-bottom:1px solid var(--hairline);font-size:12px;color:var(--near-black)}
+.cmpbody .mrow .mcount{color:var(--mid-grey)}
+.cmpbody .mrow .mcount strong{color:var(--near-black);font-weight:600}
+.cmpbody .mrow .mright{margin-left:auto;display:inline-flex;gap:20px;align-items:center}
+.cmpbody .mrow .minline{display:inline-flex;align-items:center;gap:6px;color:var(--mid-grey)}
+.cmpbody .mrow .minline strong{color:var(--near-black);font-weight:600}
+.cmpbody .mrow .minline .msep{color:rgba(26,26,24,0.22);margin:0 4px}
+
+/* P-D product grid */
+.cmpbody .pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding:16px 22px;background:#fff;border-bottom:1px solid var(--hairline)}
+.cmpbody .pcard{padding:14px;border-right:1px solid var(--hairline)}
+.cmpbody .pcard:last-child{border-right:0}
+.cmpbody .pcard .pimg{aspect-ratio:1/1;background:linear-gradient(135deg,#e8e3db,#cfc8be);margin-bottom:10px}
+.cmpbody .pcard .brand{font-size:10px;color:var(--mid-grey);font-weight:500;letter-spacing:0.10em;text-transform:uppercase;margin-bottom:3px}
+.cmpbody .pcard .name{font-family:var(--font-body);font-size:13px;font-weight:500;line-height:1.3;color:var(--near-black);min-height:34px;margin-bottom:6px}
+.cmpbody .pcard .price{font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--near-black)}
+.cmpbody .pcard .stock{font-size:10px;color:#2E7D32;font-weight:500;margin-top:3px;text-transform:uppercase;letter-spacing:0.06em}
+
+/* P-E buyer's guide card */
+.cmpbody .bguide{background:#EDE8E2;padding:18px 22px;display:flex;gap:18px;align-items:center;border-bottom:1px solid var(--hairline)}
+.cmpbody .bguide .lbl{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);flex-shrink:0}
+.cmpbody .bguide .div{width:1px;height:32px;background:var(--hairline-strong);flex-shrink:0}
+.cmpbody .bguide .meta{flex:1}
+.cmpbody .bguide .meta h4{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:3px}
+.cmpbody .bguide .meta p{font-size:12px;color:var(--mid-grey)}
+.cmpbody .bguide .lk{background:var(--near-black);color:#fff;padding:10px 18px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border-radius:3px;flex-shrink:0}
+
+/* P-F co-op */
+.cmpbody .coop{padding:14px 22px;background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);text-align:center;font-size:12px;color:var(--mid-grey)}
+.cmpbody .coop strong{color:var(--near-black);font-weight:600;margin:0 14px}
+
+/* P-G pagination */
+.cmpbody .pag{padding:18px 22px;background:#fff;text-align:center;border-bottom:1px solid var(--hairline)}
+.cmpbody .pag .more{display:inline-block;background:transparent;color:var(--near-black);padding:10px 22px;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;border:1px solid var(--near-black);border-radius:3px;margin-bottom:8px}
+.cmpbody .pag small{display:block;font-size:11px;color:var(--mid-grey)}
+
+/* P-H spotlight 50/50 */
+.cmpbody .spotlight{display:grid;grid-template-columns:1fr 1fr;background:var(--near-black);color:#fff;min-height:280px}
+.cmpbody .spotlight .img{background:linear-gradient(135deg,#3a3a36,#1a1a18)}
+.cmpbody .spotlight .body{padding:32px;display:flex;flex-direction:column;justify-content:center}
+.cmpbody .spotlight .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.cmpbody .spotlight h3{font-family:var(--font-display);font-size:28px;font-weight:600;line-height:1.1;margin-bottom:10px}
+.cmpbody .spotlight p{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.6;margin-bottom:14px;max-width:440px}
+
+/* === FOOTER === */
+.cmpbody .vkfooter{background:var(--near-black);color:#fff;padding:36px 32px}
+.cmpbody .vkfooter .row{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr) 1.5fr;gap:28px}
+.cmpbody .vkfooter h5{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+.cmpbody .vkfooter ul{list-style:none;padding:0;margin:0}
+.cmpbody .vkfooter li{padding:4px 0;font-size:12px;color:rgba(255,255,255,0.65);line-height:1.5}
+.cmpbody .vkfooter .sub{font-size:12px;color:rgba(255,255,255,0.65);line-height:1.5;margin-bottom:12px}
+.cmpbody .vkfooter input{width:100%;padding:9px 12px;font-size:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:#fff;border-radius:3px;font-family:var(--font-body)}
+.cmpbody .vkfooter .legal{max-width:1280px;margin:24px auto 0;padding-top:18px;border-top:1px solid rgba(255,255,255,0.10);font-size:11px;color:rgba(255,255,255,0.45);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+/* ============================================================
+   PAGES table
+   ============================================================ */
+.pgsec{margin-top:8px}
+.pgsec h3.subh{margin-bottom:6px}
+table.pgs{width:100%;border-collapse:collapse;margin-bottom:24px;max-width:980px}
+table.pgs th{text-align:left;padding:10px 12px;font-size:11px;font-weight:600;color:var(--mid-grey);text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid var(--hairline-strong);background:#fafafa}
+table.pgs td{padding:10px 12px;font-size:13px;border-bottom:1px solid var(--hairline);vertical-align:top}
+table.pgs td.name{font-weight:500;color:var(--near-black);width:38%}
+table.pgs td.tpl{font-family:'SF Mono',Menlo,Monaco,monospace;font-size:11px;color:var(--mid-grey);width:14%}
+table.pgs td.st{font-size:11px;width:14%}
+table.pgs td.st .b{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase}
+table.pgs td.st .b.ok{background:#E8F5E9;color:#2E7D32}
+table.pgs td.st .b.lk{background:#FFF3E0;color:#E65100}
+table.pgs td.st .b.tbd{background:#F5F5F5;color:var(--mid-grey)}
+table.pgs td.lnk a{font-size:12px}
+
+@media (max-width:920px){
+  .app{grid-template-columns:1fr}
+  aside{position:static;height:auto;max-height:none;border-right:0;border-bottom:1px solid var(--hairline)}
+  .wrap{padding:32px 24px 60px}
+  .cmpbody .h2-split,.cmpbody .h5-5050,.cmpbody .h8-svc-inner,.cmpbody .rel,.cmpbody .fifty,.cmpbody .spotlight{grid-template-columns:1fr}
+  .cmpbody .pgrid{grid-template-columns:repeat(2,1fr)}
+  .cmpbody .stats,.cmpbody .feat,.cmpbody .steps,.cmpbody .v8 .row,.cmpbody .v12 .row,.cmpbody .strip-row,.cmpbody .v4-row{grid-template-columns:repeat(2,1fr)}
+  .cmpbody .timeline{grid-template-columns:repeat(2,1fr)}.cmpbody .timeline:before{display:none}
+  .cmpbody .vkfooter .row{grid-template-columns:repeat(2,1fr)}
+  .cmpbody .gallery{grid-template-columns:repeat(2,1fr)}
+}
 </style>
 </head>
 <body>
+<div class="app">
 
-<div class="topbar"><strong>VK Redesign Final</strong> One entry point. Read the playbook. See the work. Decide the open calls.</div>
+<aside>
+  <div class="brand">
+    <div class="ttl">VK Design System</div>
+    <div class="meta">Vintage Pro Audio · v1 · Apr 2026</div>
+  </div>
+  <nav>
+    <div class="grp">System</div>
+    <a href="#overview">Overview</a>
+    <a href="#rules">Rules</a>
+    <a href="#color">Color</a>
+    <a href="#type">Typography</a>
+    <a href="#spacing">Spacing</a>
 
-<header class="nav">
-  <div class="logo">VINTAGE KING<span class="tag">Vintage Pro Audio</span></div>
-  <nav class="nav-links">
-    <a href="#read">Read first</a>
-    <a href="#see">See the work</a>
-    <a href="#decide">Decide</a>
-    <a href="#ref">Reference</a>
+    <div class="grp">Components — Heroes</div>
+    <a href="#heroes" class="lvl2">All heroes (9)</a>
+    <a href="#h1" class="lvl2">H1 · PLP centered light</a>
+    <a href="#h2" class="lvl2">H2 · PLP split product</a>
+    <a href="#h3" class="lvl2">H3 · PLP dark band</a>
+    <a href="#h4" class="lvl2">H4 · Secondary centered</a>
+    <a href="#h5" class="lvl2">H5 · Secondary 50/50</a>
+    <a href="#h6" class="lvl2">H6 · HOF dark editorial</a>
+    <a href="#h7" class="lvl2">H7 · Photo overlay</a>
+    <a href="#h8" class="lvl2">H8 · Service / program</a>
+    <a href="#h9" class="lvl2">H9 · Utility</a>
+
+    <div class="grp">Components — Strips</div>
+    <a href="#strips" class="lvl2">All strips (12)</a>
+
+    <div class="grp">Components — Body (Secondary)</div>
+    <a href="#body-sec" class="lvl2">All sections (15)</a>
+
+    <div class="grp">Components — Body (PLP)</div>
+    <a href="#body-plp" class="lvl2">All sections (8)</a>
+
+    <div class="grp">Components — Footer</div>
+    <a href="#footer-cmp" class="lvl2">VK footer (canonical)</a>
+
+    <div class="grp">Pages</div>
+    <a href="#pages">All built pages</a>
+    <a href="#pg-shop" class="lvl2">Shop · PLP &amp; PDP</a>
+    <a href="#pg-learn" class="lvl2">Learn · HOF</a>
+    <a href="#pg-services" class="lvl2">Services / Programs</a>
+    <a href="#pg-policy" class="lvl2">Policy / Long-form</a>
+    <a href="#pg-core" class="lvl2">Core ecommerce screens</a>
   </nav>
-</header>
+  <div class="foot">
+    Source: <a href="https://github.com/barreletics/vk-redesign-final" target="_blank">github.com/barreletics/vk-redesign-final</a><br>
+    Archive (older surfaces): <a href="archive/index.html">/archive</a>
+  </div>
+</aside>
 
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-eye">Roadmap to heaven · One entry point</div>
-    <h1>Read it. See it. Decide. Ship it.</h1>
-    <p class="lede">Three things to do, in this exact order. The playbook tells the team how to build. The work shows everything that already exists. The decisions unblock the agency handoff.</p>
-    <p class="sub"><strong>Slogan:</strong> Vintage Pro Audio. <strong>Min font:</strong> 12px. <strong>System:</strong> Playfair Display + DM Sans. <strong>Accents:</strong> amber on secondary, red on core. Everything else lives in the playbook.</p>
+<main>
+
+<!-- OVERVIEW -->
+<section class="docsec" id="overview">
+  <div class="wrap">
+    <h1 class="docttl">VK Design System</h1>
+    <p class="docsub">One page. Top to bottom. The left nav jumps between sections. The right column is the spec. Every component shown below is rendered with the actual VK CSS — what you see is what ships. Live built pages are linked under each component and listed in <a href="#pages">Pages</a>.</p>
+    <p class="docsub" style="margin-bottom:0"><strong>Read order:</strong> Rules → Type → Color → Components → Pages. <strong>Min font:</strong> 12px everywhere. <strong>Slogan:</strong> Vintage Pro Audio.</p>
   </div>
 </section>
 
-<div class="roadmap">
-  <div class="roadmap-inner">
-    <div class="rm-step"><div class="num">1</div><div><strong>Read the playbook</strong><small>10 min · the rules + system + checklists</small></div></div>
-    <div class="rm-step"><div class="num">2</div><div><strong>See the work</strong><small>page index + content catalog</small></div></div>
-    <div class="rm-step"><div class="num">3</div><div><strong>Decide 3 open calls</strong><small>type · strip · section keepers</small></div></div>
-    <div class="rm-step"><div class="num">4</div><div><strong>Hand off to agency</strong><small>repo + playbook + spreadsheet</small></div></div>
+<!-- RULES -->
+<section class="docsec" id="rules">
+  <div class="wrap">
+    <h2 class="sech"><span class="num">01</span>Rules</h2>
+    <p class="sechd">The locked rules. These do not get debated per page.</p>
+    <ul class="doclist nums">
+      <li><strong>One mega menu.</strong> Single canonical mega menu across the entire site. No legacy second menu. 6 parent categories.</li>
+      <li><strong>Section rhythm.</strong> Every page goes nav → hero (light) → strip → body sections → CTA → footer. Max one dark section per page.</li>
+      <li><strong>Light heroes only.</strong> All secondary pages start with a light hero (<code>#EDE8E2</code>). Dark heroes reserved for HOF / heritage articles and Vintage / Open Box PLPs.</li>
+      <li><strong>Min font 12px.</strong> Nothing below 12px anywhere — CSS or inline.</li>
+      <li><strong>Pricing in DM Sans 500.</strong> Never Playfair on numbers or prices. Conversion rule.</li>
+      <li><strong>Slogan: Vintage Pro Audio.</strong> Replaces "Pro Audio Outfitter" everywhere.</li>
+    </ul>
+
+    <h3 class="subh">Banned</h3>
+    <ul class="doclist">
+      <li><code>#fde8e6</code> — too pinkish on uncalibrated screens. Use <code>rgba(26,26,24,0.07)</code> for neutral pills.</li>
+      <li><code>rgba(192,57,43,0.04–0.08)</code> as a standalone background — looks pinkish. Use <code>var(--off-white)</code> or <code>rgba(26,26,24,0.04–0.08)</code>.</li>
+      <li>HTML entities (<code>&amp;amp;</code> etc.) in visible UI text.</li>
+      <li>Playfair Display on prices or numbers.</li>
+      <li>"Free Shipping" or "0% Financing" as value-strip headlines (already in topbar).</li>
+      <li>References to "showroom" / "visit us" / city offices — VK has no physical retail locations.</li>
+    </ul>
   </div>
+</section>
+
+<!-- COLOR -->
+<section class="docsec" id="color">
+  <div class="wrap">
+    <h2 class="sech"><span class="num">02</span>Color</h2>
+    <p class="sechd">Six tokens. Red is reserved for core ecommerce + nav chrome. Amber is the secondary-page accent. Everything else is neutral.</p>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#C0392B"></div><div class="meta"><div class="name">VK Red</div><div class="hex">#C0392B</div><div class="use">Core ecommerce CTAs · nav chrome · cart badge · form focus</div></div></div>
+      <div class="sw"><div class="chip" style="background:#D4860A"></div><div class="meta"><div class="name">Amber</div><div class="hex">#D4860A</div><div class="use">All secondary-page accents · eyebrows · CTAs · accent lines</div></div></div>
+      <div class="sw"><div class="chip" style="background:#F5E6C8"></div><div class="meta"><div class="name">Amber bg</div><div class="hex">#F5E6C8</div><div class="use">Credential bar (V7) · info boxes · highlight wells</div></div></div>
+      <div class="sw"><div class="chip" style="background:#1A1A18"></div><div class="meta"><div class="name">Near-black</div><div class="hex">#1A1A18</div><div class="use">All body text · dark moments · footer</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FDFCFB;border:1px solid #eee"></div><div class="meta"><div class="name">Warm white</div><div class="hex">#FDFCFB</div><div class="use">Default body / page bg</div></div></div>
+      <div class="sw"><div class="chip" style="background:#F7F5F2"></div><div class="meta"><div class="name">Off-white</div><div class="hex">#F7F5F2</div><div class="use">Section bg · card grid bg · subtle wells</div></div></div>
+      <div class="sw"><div class="chip" style="background:#EDE8E2"></div><div class="meta"><div class="name">Hero bg</div><div class="hex">#EDE8E2</div><div class="use">Light hero bg (H1, H4, H5, H8) · CTA section bg</div></div></div>
+      <div class="sw"><div class="chip" style="background:#6B6B68"></div><div class="meta"><div class="name">Mid-grey</div><div class="hex">#6B6B68</div><div class="use">Lede / secondary text · meta lines · captions</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TYPE -->
+<section class="docsec" id="type">
+  <div class="wrap">
+    <h2 class="sech"><span class="num">03</span>Typography</h2>
+    <p class="sechd">Two families. Playfair Display for headlines. DM Sans for everything else, including all numbers and prices. Inter is used only inside this documentation page (chrome).</p>
+
+    <h3 class="subh">Playfair Display — headlines, product names, large editorial moments</h3>
+    <div class="typerow"><div class="lbl">H1 — display<small>56–60 / 600</small></div><div class="smp" style="font-family:var(--font-display);font-size:48px;font-weight:600;line-height:1.05">The Neumann U 47</div></div>
+    <div class="typerow"><div class="lbl">H2 — section<small>34–42 / 600</small></div><div class="smp" style="font-family:var(--font-display);font-size:34px;font-weight:600;line-height:1.1">Hand-selected vintage gear</div></div>
+    <div class="typerow"><div class="lbl">H3 — sub<small>22–28 / 600</small></div><div class="smp" style="font-family:var(--font-display);font-size:24px;font-weight:600;line-height:1.2">How we inspect every piece</div></div>
+    <div class="typerow"><div class="lbl">H4 — card<small>16–18 / 600</small></div><div class="smp" style="font-family:var(--font-display);font-size:18px;font-weight:600;line-height:1.2">Shipped within 24 hours</div></div>
+
+    <h3 class="subh">DM Sans — body, UI, all numbers + prices</h3>
+    <div class="typerow"><div class="lbl">Body lg<small>16 / 400</small></div><div class="smp" style="font-family:var(--font-body);font-size:16px;line-height:1.6">Vintage King is the world's leading recording equipment retailer with deep expertise in microphones, preamps, compressors, monitors, and outboard.</div></div>
+    <div class="typerow"><div class="lbl">Body<small>14 / 400</small></div><div class="smp" style="font-family:var(--font-body);font-size:14px;line-height:1.6">All used and vintage gear is inspected by a certified VK technician before listing. Our 30-day VK Warranty applies.</div></div>
+    <div class="typerow"><div class="lbl">Body sm<small>12 / 400</small></div><div class="smp" style="font-family:var(--font-body);font-size:12px;color:var(--mid-grey);line-height:1.55">Free shipping over $99. Authorized dealer for 200+ brands. Trade-in your gear toward any purchase.</div></div>
+    <div class="typerow"><div class="lbl">Eyebrow<small>11–12 / 700 / 0.18em</small></div><div class="smp" style="font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber)">Hall of Fame · The Originals</div></div>
+    <div class="typerow"><div class="lbl">Price<small>14–16 / 600 · DM Sans only</small></div><div class="smp" style="font-family:var(--font-body);font-size:16px;font-weight:600;color:var(--near-black)">$3,595.00</div></div>
+    <div class="typerow"><div class="lbl">Button<small>11–12 / 600 / 0.10em</small></div><div class="smp"><span style="display:inline-block;background:var(--vk-red);color:#fff;padding:11px 22px;font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;border-radius:3px">Add to cart</span></div></div>
+
+    <h3 class="subh">Color injection rule (locked)</h3>
+    <p>Inside Playfair headlines, one or two words can be highlighted in <span style="color:var(--vk-red);font-style:italic;font-family:var(--font-display);font-weight:600">red italic</span> (core ecommerce) or <span style="color:var(--amber);font-style:italic;font-family:var(--font-display);font-weight:600">amber italic</span> (secondary). Use sparingly — one phrase per headline maximum.</p>
+  </div>
+</section>
+
+<!-- SPACING -->
+<section class="docsec" id="spacing">
+  <div class="wrap">
+    <h2 class="sech"><span class="num">04</span>Spacing</h2>
+    <p class="sechd">Use the 4-px scale. Section padding for the canonical section types is fixed.</p>
+    <ul class="doclist">
+      <li><strong>Scale:</strong> 4 · 8 · 12 · 14 · 18 · 22 · 28 · 32 · 40 · 48 · 56 · 64 · 80 · 96 px</li>
+      <li><strong>Hero padding:</strong> 56–80 px top/bottom · 32–40 px sides</li>
+      <li><strong>Body section padding:</strong> 36–48 px top/bottom · 28–32 px sides</li>
+      <li><strong>Strip padding:</strong> 14–24 px top/bottom · 28 px sides</li>
+      <li><strong>Card padding:</strong> 18–22 px</li>
+      <li><strong>Container max-width:</strong> 1280 px (PLP grids), 1100 px (text-heavy), 720 px (long-form line-length)</li>
+      <li><strong>Hairline borders:</strong> <code>rgba(26,26,24,0.08)</code></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============= HEROES ============= -->
+<section class="docsec" id="heroes">
+  <div class="wrap">
+    <h2 class="sech"><span class="num">05</span>Heroes — 9 variants</h2>
+    <p class="sechd">Each rendered at full width below. PLP heroes (H1–H3) sit above the canonical filter pattern. Secondary heroes (H4–H7) anchor content pages. H8 is for service / program pages. H9 is utility only.</p>
+  </div>
+  <div class="wrap full">
+
+    <div class="cmp" id="h1">
+      <div class="cmphd"><span class="id">H1</span><span class="ttl"><strong>PLP centered light</strong> — default for category / collection / search-results</span><a class="lk" href="https://barreletics.github.io/vk-secondary-pages/microphones-plp-default.html" target="_blank">Live: microphones-plp-default ↗</a></div>
+      <div class="cmpbody"><div class="h1-plp">
+        <div class="eye">Microphones · 843 products</div>
+        <h2>Microphones</h2>
+        <p>Condenser, dynamic, ribbon, and tube mics from Neumann, Telefunken, Coles, AKG, Royer, Shure, and 60+ more brands.</p>
+        <div class="count">843 products · all in stock today</div>
+      </div></div>
+      <div class="cmpcap"><strong>Use on:</strong> every standard PLP. Light <code>#EDE8E2</code>, amber eyebrow, Playfair H1, count + lede underneath.</div>
+    </div>
+
+    <div class="cmp" id="h2">
+      <div class="cmphd"><span class="id">H2</span><span class="ttl"><strong>PLP split product</strong> — homepage and high-priority drops</span><a class="lk" href="https://barreletics.github.io/vintage-king-redesign/" target="_blank">Live: core homepage ↗</a></div>
+      <div class="cmpbody"><div class="h2-split">
+        <div class="body"><div class="eye">New Arrivals · Spring 2026</div><h2>Built for the way <em>you</em> make sound.</h2><p>The finest new, used, and vintage pro audio gear — curated by people who've spent their careers inside the world's best studios.</p><div class="actions"><a class="btn-red" href="#">Shop new arrivals</a><a class="btn-ghost" href="#">Talk to an expert</a></div></div>
+        <div class="img"><div class="featured"><div class="lbl">Featured Piece</div><div class="name">Neumann U 87 Ai</div><div class="price">$3,595</div></div></div>
+      </div></div>
+      <div class="cmpcap"><strong>Use on:</strong> homepage, NAMM landing, Black Friday landing. Body left, featured product right with overlay caption.</div>
+    </div>
+
+    <div class="cmp" id="h3">
+      <div class="cmphd"><span class="id">H3</span><span class="ttl"><strong>PLP dark editorial band</strong> — Vintage / Open Box / Demo Deals</span><span class="lk">Pattern from Open Box page in core prototype</span></div>
+      <div class="cmpbody"><div class="h3-dark">
+        <div class="eye">Vintage · Hand-selected</div>
+        <h2>Pro audio gear with provenance.</h2>
+        <div class="div"></div>
+        <p>Every vintage piece comes with the original session log, the technician's notes, and 32 years of trust behind the price tag.</p>
+      </div></div>
+      <div class="cmpcap"><strong>Use on:</strong> Vintage, Open Box, Demo Deals. Counts as the page's dark moment.</div>
+    </div>
+
+    <div class="cmp" id="h4">
+      <div class="cmphd"><span class="id">H4</span><span class="ttl"><strong>Secondary centered light</strong> — default for secondary content pages</span><a class="lk" href="https://barreletics.github.io/vk-secondary-pages/section-179.html" target="_blank">Live: section-179 ↗</a></div>
+      <div class="cmpbody"><div class="h4-sec">
+        <div class="eye">Section 179 · 2025 Tax Year</div>
+        <h2>Write off up to $1,160,000 in studio gear this year.</h2>
+        <p>Section 179 lets working studios deduct the full purchase price of qualifying equipment. We've helped 600+ studios put it to work. Here's how.</p>
+        <a class="btn-amber" href="#">Calculate my deduction</a>
+      </div></div>
+      <div class="cmpcap"><strong>Use on:</strong> policy pages, program landings, sale teasers, NAMM, Back to School. Most secondary pages.</div>
+    </div>
+
+    <div class="cmp" id="h5">
+      <div class="cmphd"><span class="id">H5</span><span class="ttl"><strong>Secondary 50/50 light + image</strong> — when you have real photography</span><a class="lk" href="https://barreletics.github.io/vk-secondary-pages/make-your-mark.html" target="_blank">Live: make-your-mark ↗</a></div>
+      <div class="cmpbody"><div class="h5-5050">
+        <div class="body"><div class="eye">Make Your Mark · 2026</div><h2>The artists shaping the next 10 years of recorded sound.</h2><p>Six engineers. Six signal chains. The gear they reach for first — and why.</p><div class="actions"><a class="btn-amber" href="#">Read the series</a><a class="btn-ghost" href="#">See the gear</a></div></div>
+        <div class="img"></div>
+      </div></div>
+      <div class="cmpcap"><strong>Use on:</strong> Make Your Mark, Playback, Audio Consultants, Studio Pros. Body left, full-bleed image right.</div>
+    </div>
+
+    <div class="cmp" id="h6">
+      <div class="cmphd"><span class="id">H6</span><span class="ttl"><strong>HOF / heritage editorial dark</strong> — reserved for HOF + gear heritage</span><a class="lk" href="https://barreletics.github.io/vk-secondary-pages/neumann-u47.html" target="_blank">Live: neumann-u47 ↗</a></div>
+      <div class="cmpbody"><div class="h6-hof">
+        <div class="inner">
+          <div class="crumb">Hall of Fame · Microphones</div>
+          <div class="eye">Hall of Fame · The Originals</div>
+          <h2>The Neumann U 47 — the <em>voice</em> of recorded music.</h2>
+          <p>The microphone that captured Sinatra, the Beatles, and a thousand records you know by heart. The story of how a 1949 design rewrote the rules of pop production.</p>
+          <div class="meta">By <strong>VK Editorial</strong> · 8 min read · Updated Mar 2026</div>
+        </div>
+      </div></div>
+      <div class="cmpcap"><strong>Use on:</strong> HOF articles + gear heritage deep articles. Counts as the page's dark moment. Also live on neve-1073, la-2a, urei-1176, fairchild-660-670, telefunken-ela-m-251.</div>
+    </div>
+
+    <div class="cmp" id="h7">
+      <div class="cmphd"><span class="id">H7</span><span class="ttl"><strong>Photo background overlay</strong> — drop launches and brand co-op</span><a class="lk" href="https://barreletics.github.io/vk-secondary-pages/universal-audio-promotions-v2.html" target="_blank">Live: ua-promotions ↗</a></div>
+      <div class="cmpbody"><div class="h7-photo">
+        <div class="body"><div class="eye">Drop · Limited</div><h2>Universal Audio Apollo Heritage Edition.</h2><p>Six remastered classics. One interface. Three days to claim your spot before the next drop disappears.</p><a class="btn-amber" href="#">Reserve yours</a></div>
+      </div></div>
+      <div class="cmpcap"><strong>Use on:</strong> brand drops, NAMM launches, big editorial moments where the photo is the headline. Counts as the page's dark moment.</div>
+    </div>
+
+    <div class="cmp" id="h8">
+      <div class="cmphd"><span class="id">H8</span><span class="ttl"><strong>Service / Program</strong> — Sell or Trade, Trade Program, Studio Installations</span><a class="lk" href="https://barreletics.github.io/vk-secondary-pages/audio-consultants.html" target="_blank">Live: audio-consultants ↗</a></div>
+      <div class="cmpbody"><div class="h8-svc"><div class="h8-svc-inner">
+        <div class="body"><div class="eye">Sell or Trade · No phone trees</div><h2>Send us your gear. Get a real offer in 24 hours.</h2><p>Our buyers respond with a firm cash or trade-credit number — not an algorithm. Free prepaid shipping. Fast payouts. 32 years doing this right.</p><div class="actions"><a class="btn-amber" href="#">Start my quote</a><a class="btn-ghost" href="#">How it works</a></div></div>
+        <div class="img"></div>
+      </div></div></div>
+      <div class="cmpcap"><strong>Use on:</strong> Sell or Trade, Trade Program, Audio Consultants, Studio Installations, Tech Shop, Section 179. Pair with strip V7 underneath.</div>
+    </div>
+
+    <div class="cmp" id="h9">
+      <div class="cmphd"><span class="id">H9</span><span class="ttl"><strong>Utility / search results</strong> — search, account, FAQ landing</span><span class="lk">Utility only — never on marketing pages</span></div>
+      <div class="cmpbody"><div class="h9-util">
+        <div class="crumb">Search results for "neumann u47"</div>
+        <h2>17 results for "neumann u47"</h2>
+        <p>Showing all microphones, microphone accessories, and Hall of Fame articles matching your query.</p>
+      </div></div>
+      <div class="cmpcap"><strong>Use on:</strong> search results, account pages, FAQ landing. Compact white. No marketing copy.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============= STRIPS ============= -->
+<section class="docsec" id="strips">
+  <div class="wrap">
+    <h2 class="sech"><span class="num">06</span>Strips — 12 variants</h2>
+    <p class="sechd">Cross-cutting modules that sit between sections. Recommended starters: <strong>V7</strong> (credential bar, default for service pages), <strong>V8</strong> (amber-icon trust strip, default for secondary), <strong>V11</strong> (above the footer), <strong>V12</strong> (red-icon trust strip, core ecommerce only).</p>
+  </div>
+  <div class="wrap full">
+
+    <div class="cmp"><div class="cmphd"><span class="id">V1</span><span class="ttl"><strong>Plain 4-up text</strong> — quietest option</span></div>
+    <div class="cmpbody"><div class="strip-base"><div class="strip-row">
+      <div class="v1-item"><strong>Free shipping over $99</strong>Continental US</div>
+      <div class="v1-item"><strong>30-day returns</strong>VK Warranty included</div>
+      <div class="v1-item"><strong>0% financing available</strong>On orders over $499</div>
+      <div class="v1-item"><strong>Authorized dealer</strong>For 200+ brands</div>
+    </div></div></div>
+    <div class="cmpcap"><strong>Use on:</strong> low-priority secondary pages where the strip is reference, not a sell.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">V2</span><span class="ttl"><strong>Inline bullet</strong> — one line, light bg</span></div>
+    <div class="cmpbody"><div class="v2"><span><strong>32 years</strong> in pro audio</span> · <span>Authorized dealer for <strong>200+ brands</strong></span> · <span><strong>VK Tech Inspected</strong></span> · <span><strong>30-day VK Warranty</strong></span></div></div>
+    <div class="cmpcap"><strong>Use on:</strong> sub-credential under hero, light pages. Compact.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">V3</span><span class="ttl"><strong>3-up dividers</strong> — print-doc feel</span></div>
+    <div class="cmpbody"><div class="v3"><div class="v3-row">
+      <div class="v3-item"><strong>32 years</strong>In pro audio</div>
+      <div class="v3-item"><strong>200+ brands</strong>Authorized dealer</div>
+      <div class="v3-item"><strong>30-day warranty</strong>VK-backed</div>
+    </div></div></div>
+    <div class="cmpcap"><strong>Use on:</strong> About / Careers / policy pages. Editorial feel.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">V4</span><span class="ttl"><strong>Checkmark icons</strong> — feature checklist</span></div>
+    <div class="cmpbody"><div class="v4"><div class="v4-row">
+      <div class="v4-item">VK Tech Inspected</div>
+      <div class="v4-item">30-day VK Warranty</div>
+      <div class="v4-item">Free expert consultation</div>
+      <div class="v4-item">Trade-in toward any purchase</div>
+    </div></div></div>
+    <div class="cmpcap"><strong>Use on:</strong> service pages where benefits are the pitch.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">V5</span><span class="ttl"><strong>2-up large stat</strong> — hero credential</span></div>
+    <div class="cmpbody"><div class="v5"><div class="v5-row">
+      <div class="v5-item"><div class="num">32 yrs</div><small>Building studios for the world's best engineers</small></div>
+      <div class="v5-item"><div class="num">600+</div><small>Studios served by our installation team since 2002</small></div>
+    </div></div></div>
+    <div class="cmpcap"><strong>Use on:</strong> hero-replacement on About, milestone pages. Big numbers, big claim.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">V6</span><span class="ttl"><strong>Dark banner with CTA</strong> — promotional</span></div>
+    <div class="cmpbody"><div class="v6"><strong>NAMM 2026 ·</strong> First look at the new Universal Audio Apollo line. <a href="#">See the lineup →</a></div></div>
+    <div class="cmpcap"><strong>Use on:</strong> top-of-page announcement strips. Time-bound only — remove after expiry.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">V7</span><span class="ttl"><strong>Credential bar (canonical)</strong> — service page default</span></div>
+    <div class="cmpbody"><div class="v7"><span><strong>32 yrs</strong>in pro audio</span><span><strong>200+ brands</strong>authorized dealer</span><span><strong>VK Tech Inspected</strong></span><span><strong>30-day VK Warranty</strong></span></div></div>
+    <div class="cmpcap"><strong>Use on:</strong> Sell or Trade, Trade Program, Audio Consultants, Studio Installations, Section 179, Tech Shop. The default credential bar.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">V8</span><span class="ttl"><strong>Amber circle icons</strong> — secondary daily-driver</span></div>
+    <div class="cmpbody"><div class="v8"><div class="row">
+      <div class="item"><div class="ic">✓</div><div class="meta"><strong>Free expert consultation</strong><small>30-min sessions with a VK consultant — by appointment</small></div></div>
+      <div class="item"><div class="ic">✓</div><div class="meta"><strong>32-year track record</strong><small>Built audio chains for 600+ pro studios since 1993</small></div></div>
+      <div class="item"><div class="ic">✓</div><div class="meta"><strong>Authorized for 200+ brands</strong><small>Direct relationships with manufacturers + first-year warranty</small></div></div>
+      <div class="item"><div class="ic">✓</div><div class="meta"><strong>VK Warranty on all used gear</strong><small>30 days on every piece. Tech-inspected before listing.</small></div></div>
+    </div></div></div>
+    <div class="cmpcap"><strong>Use on:</strong> daily-driver trust strip on most secondary pages. Amber icons, body copy underneath.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">V9</span><span class="ttl"><strong>Quote / testimonial strip</strong> — social proof</span></div>
+    <div class="cmpbody"><div class="v9">"Vintage King is the only place I trust to find a clean U 47."<small>— Mike Shipley · Mix engineer</small></div></div>
+    <div class="cmpcap"><strong>Use on:</strong> About, HOF articles, service pages where one quote does the heavy lifting.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">V10</span><span class="ttl"><strong>Landing-page hero credential</strong> — light bg, no icons</span></div>
+    <div class="cmpbody"><div class="v10"><span>32 years in pro audio</span><span>200+ brands</span><span>VK Tech Inspected</span><span>30-day warranty</span></div></div>
+    <div class="cmpcap"><strong>Use on:</strong> directly under landing-page heroes when the hero already does the heavy lifting and you want a quiet credential line.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">V11</span><span class="ttl"><strong>Pre-footer trust bar</strong> — Playfair stat</span></div>
+    <div class="cmpbody"><div class="v11"><div class="row">
+      <div><strong>32 years</strong><small>Building studios for the world's best engineers, since 1993</small></div>
+      <div><strong>200+ brands</strong><small>Direct authorized dealer · first-year manufacturer warranty</small></div>
+      <div><strong>30-day VK Warranty</strong><small>On every piece. Used or new. Tech-inspected before listing.</small></div>
+    </div></div></div>
+    <div class="cmpcap"><strong>Use on:</strong> directly above the footer on most pages. Editorial closer.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">V12</span><span class="ttl"><strong>Red icon trust strip</strong> — core ecommerce only</span></div>
+    <div class="cmpbody"><div class="v12"><div class="row">
+      <div class="item"><div class="ic">✓</div><div class="meta"><strong>Free shipping over $99</strong><small>Continental US · Most orders ship same business day</small></div></div>
+      <div class="item"><div class="ic">✓</div><div class="meta"><strong>30-day VK Warranty</strong><small>On every piece. Used, new, vintage. No exceptions.</small></div></div>
+      <div class="item"><div class="ic">✓</div><div class="meta"><strong>0% financing available</strong><small>On orders over $499 · Apply at checkout</small></div></div>
+      <div class="item"><div class="ic">✓</div><div class="meta"><strong>Free expert support</strong><small>Talk to a real VK consultant — chat, phone, video</small></div></div>
+    </div></div></div>
+    <div class="cmpcap"><strong>Use on:</strong> homepage, category, product, cart, checkout. Red icons reserved for core ecommerce surfaces.</div></div>
+
+  </div>
+</section>
+
+<!-- ============= BODY · SECONDARY ============= -->
+<section class="docsec" id="body-sec">
+  <div class="wrap">
+    <h2 class="sech"><span class="num">07</span>Body sections — Secondary (15 variants)</h2>
+    <p class="sechd">Every block that can sit between hero and footer on a secondary content page. Mix freely — but stay in section rhythm and respect the "max one dark block per page" rule.</p>
+  </div>
+  <div class="wrap full">
+
+    <div class="cmp"><div class="cmphd"><span class="id">B-A</span><span class="ttl"><strong>3-step process</strong> — Sell or Trade pattern</span></div>
+    <div class="cmpbody"><div class="steps">
+      <div class="step"><div class="n">01</div><h4>Tell us what you have</h4><p>Submit a quick form with serial numbers and condition photos. Takes about 4 minutes.</p></div>
+      <div class="step"><div class="n">02</div><h4>Get your offer</h4><p>Our buyers respond within one business day with a firm cash or trade-credit number.</p></div>
+      <div class="step"><div class="n">03</div><h4>Ship for free, get paid fast</h4><p>We send a prepaid label. Once your gear arrives and clears inspection, you get paid.</p></div>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> Sell or Trade, Trade Program, Audio Consultants, Studio Installations. Always 3 steps.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">B-B</span><span class="ttl"><strong>Editorial 2×2</strong> — large image cards</span></div>
+    <div class="cmpbody"><div class="edgrid">
+      <div class="edcard"><div class="img"></div><div class="body"><div class="eye">Hall of Fame</div><h4>The Neumann U 47</h4><p>The microphone that captured Sinatra and the Beatles. The story of a 1949 design that rewrote pop production.</p></div></div>
+      <div class="edcard"><div class="img"></div><div class="body"><div class="eye">Studio Pros</div><h4>Inside Studio A · Detroit</h4><p>32 years of sessions in one room. Three Grammy mixes. The console where it all happened — and the gear that lived through it.</p></div></div>
+      <div class="edcard"><div class="img"></div><div class="body"><div class="eye">Make Your Mark</div><h4>The artists shaping pop in 2026</h4><p>Six engineers. Six signal chains. The gear they reach for first — and why.</p></div></div>
+      <div class="edcard"><div class="img"></div><div class="body"><div class="eye">Buyer's Guide</div><h4>How to pick a vocal condenser</h4><p>The 5-minute primer. Polar patterns, tube vs FET, when to spring for a vintage U 47.</p></div></div>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> About, HOF landing, gear heritage articles, Make Your Mark, NAMM landing.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">B-C</span><span class="ttl"><strong>Feature cards 3-up</strong> — icon + headline + body</span></div>
+    <div class="cmpbody"><div class="feat">
+      <div class="ftcard"><div class="icbox">★</div><h4>Tech-inspected</h4><p>Every used piece passes through a tech who has serviced and recorded with the same model.</p></div>
+      <div class="ftcard"><div class="icbox">↻</div><h4>30-day VK Warranty</h4><p>Returns are free. Service is in-house. We back every piece for 30 days, no questions.</p></div>
+      <div class="ftcard"><div class="icbox">⚡</div><h4>Fast payout</h4><p>Cash hits your account 1–2 business days after gear arrives and clears inspection.</p></div>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> service pages, program detail blocks. Always 3 cards.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">B-D</span><span class="ttl"><strong>Pull quote</strong> — single editorial moment</span></div>
+    <div class="cmpbody"><div class="pullq">"Vintage King doesn't sell you a microphone. They sell you the right microphone for the song you're trying to record."<small>— Joe Chiccarelli · Producer / Engineer</small></div></div>
+    <div class="cmpcap"><strong>Use on:</strong> HOF articles, About, Make Your Mark, Studio Pros. One per page.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">B-E</span><span class="ttl"><strong>Dark stat block 4-up</strong> — counts as the page's dark moment</span></div>
+    <div class="cmpbody"><div class="stats">
+      <div class="stat"><div class="n">32</div><small>Years in pro audio</small></div>
+      <div class="stat"><div class="n">600+</div><small>Studios installed since 2002</small></div>
+      <div class="stat"><div class="n">200+</div><small>Authorized brands</small></div>
+      <div class="stat"><div class="n">$2.1B</div><small>In gear placed since 1993</small></div>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> About, service pages, Trade Program. Always 4 stats. Counts as the dark moment.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">B-F</span><span class="ttl"><strong>FAQ accordion</strong> — 6–8 rows</span></div>
+    <div class="cmpbody"><div class="faqlist">
+      <div class="qa"><div class="q">How fast do I get an offer?<span></span></div></div>
+      <div class="qa"><div class="q">Do you cover shipping?<span></span></div></div>
+      <div class="qa"><div class="q">What if my gear fails inspection?<span></span></div><div class="a">If something doesn't match the photos or specs you submitted, we'll call you. You can accept the revised offer or have the gear shipped back free.</div></div>
+      <div class="qa"><div class="q">Cash or trade credit — which gets more?<span></span></div></div>
+      <div class="qa"><div class="q">Do you buy modular synths and DAW controllers?<span></span></div></div>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> service pages, policy pages, anywhere objections need handling.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">B-G</span><span class="ttl"><strong>CTA + email form</strong> — page-end conversion</span></div>
+    <div class="cmpbody"><div class="ctaform">
+      <div class="eye">Stay in the loop</div>
+      <h3>Get the new arrivals email — sent every Tuesday.</h3>
+      <p>Vintage finds, new gear, and what our techs are excited about. Curated. No spam.</p>
+      <div class="row"><input type="email" placeholder="you@studio.com"><a class="btn-amber" href="#">Subscribe</a></div>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> bottom of nearly every page. Same form, different headline per context.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">B-H</span><span class="ttl"><strong>Related gear · shop CTA</strong> — image + body + CTA</span></div>
+    <div class="cmpbody"><div class="rel">
+      <div class="img"></div>
+      <div class="body"><div class="eye">Shop the gear</div><h4>Modern Neumann U 47s in stock now.</h4><p>Browse all in-stock U 47 FET and U 47 fet i variants — new, used, and vintage. Plus the Wunder, Telefunken, and Soundelux variants in the same family.</p><a class="btn-amber" href="#">See all U 47s →</a></div>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> bottom of HOF / heritage articles to push readers from editorial to commerce.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">B-I</span><span class="ttl"><strong>50/50 image + text</strong> — symmetrical content block</span></div>
+    <div class="cmpbody"><div class="fifty">
+      <div class="img"></div>
+      <div class="body"><div class="eye">How we inspect</div><h3>Every used piece goes through a tech first.</h3><p>Not a quality-control checkbox. A working engineer who has serviced and recorded with the same model puts hands on every unit before it gets listed.</p><a href="#" style="color:var(--vk-red);font-weight:600;border-bottom:2px solid var(--amber);font-size:12px;letter-spacing:0.10em;text-transform:uppercase;padding-bottom:2px;align-self:flex-start">Inside the Tech Lab →</a></div>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> About, service pages, anywhere a single image and a single claim work together.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">B-J</span><span class="ttl"><strong>Dark accent block</strong> — single dark moment, max one per page</span></div>
+    <div class="cmpbody"><div class="dark">
+      <div class="eye">Why we built it this way</div>
+      <h3>Pro audio is the only category where used and new live on the same shelf.</h3>
+      <p>Most retail pretends used gear is a discount. We treat it like a category. Tech-inspected. Warrantied. Searchable next to the new boxes.</p>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> About, manifesto pages, brand-voice moments. Counts as the page's dark moment.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">B-K</span><span class="ttl"><strong>20/80 image split</strong> — narrow mood image + wide body</span></div>
+    <div class="cmpbody"><div class="split8020">
+      <div class="narrow"></div>
+      <div class="wide"><div class="eye">What we believe</div><h3>Gear should be inspected by people who actually use it.</h3><p>Every used unit on this site goes through a tech who has serviced and recorded with the same model. That's the gap between "tested" and "VK Tech Inspected."</p><a href="#" style="color:var(--near-black);font-size:12px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;border-bottom:2px solid var(--amber);padding-bottom:2px;align-self:flex-start">How we inspect →</a></div>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> About sub-sections, program detail blocks. Image is decorative — body carries the message.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">B-L</span><span class="ttl"><strong>Single large image (full bleed)</strong> — editorial moment, counts as the dark block</span></div>
+    <div class="cmpbody"><div class="bigimg">
+      <div class="inner"><div class="eye">Inside Studio A</div><h3>The room that shaped a generation of records.</h3><p>32 years of sessions. Three Grammy-nominated mixes. The console where it all happened — and the gear that lived through it.</p></div>
+      <span class="cap">Detroit · 2024 · photo: J. Mercer</span>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> middle of HOF articles, About, Make Your Mark, Playback. Counts as the page's dark moment.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">B-M</span><span class="ttl"><strong>Image gallery 4-up</strong> — visual breath</span></div>
+    <div class="cmpbody"><div class="gallery">
+      <div class="tile"></div><div class="tile"></div><div class="tile"></div><div class="tile"></div>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> About, HOF article galleries, Studio Pros, Make Your Mark.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">B-N</span><span class="ttl"><strong>Video block</strong> — one per page max</span></div>
+    <div class="cmpbody"><div class="vid">
+      <div class="play"></div>
+      <div class="meta"><div class="eye">Studio Tour · 4 min</div><h4>Inside The Vintage Lab — every signal chain explained.</h4></div>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> studio walkthroughs, tech demos, install case studies, founder interviews.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">B-O</span><span class="ttl"><strong>Heritage timeline</strong> — 4 horizontal points</span></div>
+    <div class="cmpbody"><div class="timeline">
+      <div class="pt"><span class="yr">1949</span><span class="dot"></span><h5>The original U 47</h5><p>Neumann ships the first large-diaphragm tube condenser. Sinatra picks it up the next year.</p></div>
+      <div class="pt"><span class="yr">1969</span><span class="dot"></span><h5>The FET arrives</h5><p>Solid-state replaces the VF14 tube. Same capsule, no warm-up, same mythic sound.</p></div>
+      <div class="pt"><span class="yr">1986</span><span class="dot"></span><h5>The reissue era</h5><p>Telefunken, Wunder, and Soundelux start chasing the original.</p></div>
+      <div class="pt"><span class="yr">2024</span><span class="dot"></span><h5>The modern lineup</h5><p>Neumann's U 87 Ai and U 47 FET ship daily from VK. Originals still hit auctions at $25k+.</p></div>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> HOF gear pages, About. Drop to 2x2 on mobile.</div></div>
+
+  </div>
+</section>
+
+<!-- ============= BODY · PLP ============= -->
+<section class="docsec" id="body-plp">
+  <div class="wrap">
+    <h2 class="sech"><span class="num">08</span>Body sections — PLP (8 variants)</h2>
+    <p class="sechd">The canonical PLP composition is built from these blocks: cathead → filter chip bar → expanded filter panel → buyer's guide card → product grid → load more. Spotlight 50/50 is an optional dark interrupt. Co-op brand pill block is optional above the cathead.</p>
+  </div>
+  <div class="wrap full">
+
+    <div class="cmp" id="p-a"><div class="cmphd"><span class="id">P-A</span><span class="ttl"><strong>Canonical filter pattern</strong> — cathead + pill row + quick row (inline) + meta row + expanded panel</span><a class="lk" href="https://barreletics.github.io/vk-secondary-pages/microphones-plp-default.html" target="_blank">Live: microphones-plp-default ↗</a></div>
+    <div class="cmpbody">
+      <div class="cathead">
+        <div class="crumb">Home · Recording · Microphones</div>
+        <h3>Microphones</h3>
+        <p class="lede">The most curated mic selection in pro audio. New, used, and vintage. Hand-tested by VK engineers. Backed by VK Warranty.</p>
+      </div>
+      <div class="fbar">
+        <span class="chip">Brand</span>
+        <span class="chip">Type</span>
+        <span class="chip">Polar Pattern</span>
+        <span class="chip">Application</span>
+        <span class="chip">Price</span>
+        <span class="chip">Condition</span>
+        <span class="chip more">More Filters →</span>
+      </div>
+      <div class="qrow">
+        <span class="qlbl">Quick:</span>
+        <a href="#">Studio</a><span class="qsep">·</span>
+        <a href="#">Live</a><span class="qsep">·</span>
+        <a href="#">Broadcast</a><span class="qsep">·</span>
+        <a href="#">Vintage</a><span class="qsep">·</span>
+        <a href="#">Under $500</a><span class="qsep">·</span>
+        <a href="#">0% financing</a>
+      </div>
+      <div class="mrow">
+        <div class="mcount"><strong>2,847</strong> microphones</div>
+        <div class="mright">
+          <div class="minline">Sort: <strong>Featured ▾</strong></div>
+          <div class="minline">View: <strong>Grid</strong> <span class="msep">·</span> <a href="#" style="color:var(--mid-grey)">List</a></div>
+        </div>
+      </div>
+      <div class="fpanel">
+        <div class="ftabs"><span class="act">Brand</span><span>Type</span><span>Polar Pattern</span><span>Application</span><span>Price</span><span>Condition</span></div>
+        <div class="fchips">
+          <span class="chip">Neumann (84)</span>
+          <span class="chip">Telefunken (32)</span>
+          <span class="chip">AKG (61)</span>
+          <span class="chip">Royer (18)</span>
+          <span class="chip">Shure (47)</span>
+          <span class="chip">Coles (9)</span>
+          <span class="chip">Sennheiser (38)</span>
+          <span class="chip">Audio-Technica (52)</span>
+          <a href="#" class="seeall">See all 120+ brands →</a>
+        </div>
+      </div>
+    </div>
+    <div class="cmpcap"><strong>Use on:</strong> every PLP. Canonical order: cathead (crumb + H1 + lede) → pill row (6 filters + red <code>More Filters →</code>) → <strong>quick row</strong> (inline middot text links — Studio · Live · Broadcast · Vintage · Under $500 · 0% financing) → meta row (count bold + Sort / View right) → expanded panel when a pill is tapped.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">P-B</span><span class="ttl"><strong>Intent-tag chip row</strong> — alternate / landing variant</span></div>
+    <div class="cmpbody"><div class="fbar">
+      <span class="chip">Tube</span>
+      <span class="chip">Condenser</span>
+      <span class="chip">Ribbon</span>
+      <span class="chip">Vintage</span>
+      <span class="chip">Under $1k</span>
+      <span class="chip">Open Box</span>
+      <span class="chip">In stock today</span>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> landing / sale pages where big tap-target chips beat text links. P-A's quick row is the default on every PLP — use P-B only on editorial landing pages.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">P-C</span><span class="ttl"><strong>Sort + result count bar</strong> — compact result meta</span></div>
+    <div class="cmpbody"><div class="fbar">
+      <span style="font-size:12px;color:var(--mid-grey)">Showing 1–24 of 843</span>
+      <span class="sort">Sort by <select><option>Featured</option><option>Newest</option></select></span>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> deep-paginated PLPs where users need to know where they are.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">P-D</span><span class="ttl"><strong>Product card grid 4-up</strong> — canonical PLP product card</span></div>
+    <div class="cmpbody"><div class="pgrid">
+      <div class="pcard"><div class="pimg"></div><div class="brand">Neumann</div><div class="name">U 87 Ai · Multi-pattern condenser</div><div class="price">$3,595.00</div><div class="stock">In stock today</div></div>
+      <div class="pcard"><div class="pimg"></div><div class="brand">Telefunken</div><div class="name">ELA M 251 · Tube condenser</div><div class="price">$10,995.00</div><div class="stock">In stock today</div></div>
+      <div class="pcard"><div class="pimg"></div><div class="brand">Coles</div><div class="name">4038 · Studio ribbon · pair</div><div class="price">$2,495.00</div><div class="stock">In stock today</div></div>
+      <div class="pcard"><div class="pimg"></div><div class="brand">Royer</div><div class="name">R-121 · Active ribbon</div><div class="price">$1,395.00</div><div class="stock">In stock today</div></div>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> every PLP. Brand (DM Sans 10/uppercase) → name (DM Sans 13/500) → price (DM Sans 13/600) → stock badge (green 10).</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">P-E</span><span class="ttl"><strong>Buyer's guide card</strong> — between filters and grid</span></div>
+    <div class="cmpbody"><div class="bguide">
+      <span class="lbl">Buying Guide</span>
+      <span class="div"></span>
+      <div class="meta"><h4>Microphone Buying Guide</h4><p>Condenser vs. Dynamic vs. Ribbon — how to choose the right mic for your studio</p></div>
+      <a href="#" class="lk">Read the Guide →</a>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> Microphones, Compressors, Preamps PLPs. Sits between the filter bar and the product grid.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">P-F</span><span class="ttl"><strong>Co-op brand pill block</strong> — sub-brand surfacing</span></div>
+    <div class="cmpbody"><div class="coop">Shop by brand: <strong>Neumann</strong> · <strong>Telefunken</strong> · <strong>AKG</strong> · <strong>Royer</strong> · <strong>Shure</strong> · <strong>Sennheiser</strong> · <strong>Audio-Technica</strong></div></div>
+    <div class="cmpcap"><strong>Use on:</strong> top of PLP for SEO + brand discovery. Optional. Above the cathead.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">P-G</span><span class="ttl"><strong>Pagination · load more</strong> — UX-optimized infinite scroll</span></div>
+    <div class="cmpbody"><div class="pag">
+      <a href="#" class="more">Load more</a>
+      <small>Showing 24 of 843</small>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> bottom of every PLP. Always paginated under the hood for crawler indexing.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">P-H</span><span class="ttl"><strong>Spotlight 50/50</strong> — dark editorial interrupt every 8–12 products</span></div>
+    <div class="cmpbody"><div class="spotlight">
+      <div class="img"></div>
+      <div class="body"><div class="eye">Spotlight · This week</div><h3>Why our techs are pre-ordering the new UA Apollo.</h3><p>Six remastered Universal Audio classics in one interface. The first new Apollo in three years.</p><a href="#" style="color:var(--amber);font-weight:600;font-size:12px;letter-spacing:0.10em;text-transform:uppercase;border-bottom:2px solid var(--amber);padding-bottom:2px;align-self:flex-start">Read why →</a></div>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> drop launches, brand-of-the-month, NAMM coverage. Counts as the page's dark moment.</div></div>
+
+  </div>
+</section>
+
+<!-- ============= FOOTER ============= -->
+<section class="docsec" id="footer-cmp">
+  <div class="wrap">
+    <h2 class="sech"><span class="num">09</span>Footer (canonical)</h2>
+    <p class="sechd">One footer across the entire site. Same composition on every page. Newsletter signup column on the right.</p>
+  </div>
+  <div class="wrap full">
+
+    <div class="cmp"><div class="cmphd"><span class="id">F1</span><span class="ttl"><strong>VK footer</strong> — canonical, every page</span></div>
+    <div class="cmpbody"><div class="vkfooter">
+      <div class="row">
+        <div><h5>Shop</h5><ul><li>Microphones</li><li>Preamps</li><li>Compressors</li><li>Outboard</li><li>Vintage</li><li>Open Box</li></ul></div>
+        <div><h5>Services</h5><ul><li>Sell or Trade</li><li>Trade Program</li><li>Audio Consultants</li><li>Studio Installations</li><li>Tech Shop</li><li>Section 179</li></ul></div>
+        <div><h5>Learn</h5><ul><li>Hall of Fame</li><li>Buyer's Guides</li><li>Make Your Mark</li><li>Playback</li><li>Studio Pros</li></ul></div>
+        <div><h5>Support</h5><ul><li>Returns</li><li>Shipping</li><li>Warranty</li><li>FAQ</li><li>Contact</li><li>Careers</li></ul></div>
+        <div><h5>Stay in the loop</h5><div class="sub">New arrivals, vintage finds, and what our techs are excited about.</div><input type="email" placeholder="you@studio.com"></div>
+      </div>
+      <div class="legal">
+        <span>© 2026 Vintage King · Vintage Pro Audio · Made in Detroit</span>
+        <span>Privacy · Terms · Accessibility</span>
+      </div>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> every page. No variants. Newsletter column always present.</div></div>
+
+  </div>
+</section>
+
+<!-- ============= PAGES ============= -->
+<section class="docsec" id="pages">
+  <div class="wrap">
+    <h2 class="sech"><span class="num">10</span>Pages — every built page</h2>
+    <p class="sechd">Every page that exists right now. Status: <strong>Built</strong> = live and reviewed. <strong>Locked</strong> = lives in the core single-file prototype, deep-link only. <strong>TBD</strong> = planned, not built. Click any name to open the live page.</p>
+
+    <div class="pgsec" id="pg-shop">
+      <h3 class="subh">Shop · PLP &amp; PDP</h3>
+      <table class="pgs">
+        <thead><tr><th>Name</th><th>Template</th><th>Status</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Homepage</td><td class="tpl">Core</td><td class="st"><span class="b lk">Locked</span></td><td class="lnk"><a href="https://barreletics.github.io/vintage-king-redesign/" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Microphones (PLP · default)</td><td class="tpl">C1</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/microphones-plp-default.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Microphones (PLP · spotlight 50/50)</td><td class="tpl">C2</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/microphones-plp-spotlight.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Microphones (PLP · editorial 6-grid)</td><td class="tpl">C3</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/microphones-plp-editorial.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Microphones (PLP · filter-forward)</td><td class="tpl">C4</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/microphones-plp-spotlight-compact.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Category PLP (core)</td><td class="tpl">Core</td><td class="st"><span class="b lk">Locked</span></td><td class="lnk"><a href="https://barreletics.github.io/vintage-king-redesign/" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Open Box (PLP)</td><td class="tpl">Core</td><td class="st"><span class="b lk">Locked</span></td><td class="lnk"><a href="https://barreletics.github.io/vintage-king-redesign/" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Demo Deals (PLP)</td><td class="tpl">Core</td><td class="st"><span class="b lk">Locked</span></td><td class="lnk"><a href="https://barreletics.github.io/vintage-king-redesign/" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Neumann U 47 FET (PDP)</td><td class="tpl">PDP</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/neumann-u47-fet-v2.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Coles 4038 (PDP)</td><td class="tpl">PDP</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/coles-4038-v2.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">UA Apollo x (PDP)</td><td class="tpl">PDP</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/universal-audio-apollo-x-v2.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Neve 1081 (PDP)</td><td class="tpl">PDP</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/neve-1081-v2.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Telefunken ELA M 251 (PDP)</td><td class="tpl">PDP</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/telefunken-ela-m-251-v2.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Universal Audio 175B (PDP)</td><td class="tpl">PDP</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/universal-audio-175b-v2.html" target="_blank">Live ↗</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pgsec" id="pg-learn">
+      <h3 class="subh">Learn · Hall of Fame + buyer's guides</h3>
+      <table class="pgs">
+        <thead><tr><th>Name</th><th>Template</th><th>Status</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Hall of Fame (landing)</td><td class="tpl">T2</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/hall-of-fame.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Neumann U 47 (article)</td><td class="tpl">T2</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/neumann-u47.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Neumann U 67 (article)</td><td class="tpl">T2</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/neumann-u67.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Neve 1073 (article)</td><td class="tpl">T2</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/neve-1073.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Neve 1073 buyer's guide</td><td class="tpl">T2</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/neve-1073-guide-v2.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">LA-2A (article)</td><td class="tpl">T2</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/la-2a.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">UREI 1176 (article)</td><td class="tpl">T2</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/urei-1176.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Fairchild 660/670 (article)</td><td class="tpl">T2</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/fairchild-660-670.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Telefunken V72/V76 (article)</td><td class="tpl">T2</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/tab-telefunken-v72-v76-v2.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Neumann mic comparison</td><td class="tpl">T2</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/neumann-mic-comparison.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Recording at home</td><td class="tpl">T2</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/recording-at-home.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Live sound how-to</td><td class="tpl">T2</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/live-sound-how.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Multi-room recording studios</td><td class="tpl">T2</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/multi-room-recording-studios-v2.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Classic studios gone modern</td><td class="tpl">T2</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/classic-studios-gone-modern.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Make Your Mark</td><td class="tpl">T1</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/make-your-mark.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Playback</td><td class="tpl">T1</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/playback.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">25 Years of Pro Audio</td><td class="tpl">T2</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/25-years-of-pro-audio-v2.html" target="_blank">Live ↗</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pgsec" id="pg-services">
+      <h3 class="subh">Services / Programs</h3>
+      <table class="pgs">
+        <thead><tr><th>Name</th><th>Template</th><th>Status</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Sell or Trade</td><td class="tpl">Core</td><td class="st"><span class="b lk">Locked</span></td><td class="lnk"><a href="https://barreletics.github.io/vintage-king-redesign/" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Trade Program</td><td class="tpl">T3</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/trade-program.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Audio Consultants</td><td class="tpl">T3</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/audio-consultants.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Studio Professionals</td><td class="tpl">T3</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/studio-professionals.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Section 179 (Tax)</td><td class="tpl">T3</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/section-179.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">VK Credit Card</td><td class="tpl">T3</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/vk-credit-card.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Tech Shop</td><td class="tpl">Core</td><td class="st"><span class="b lk">Locked</span></td><td class="lnk"><a href="https://barreletics.github.io/vintage-king-redesign/" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Studio Installations</td><td class="tpl">Core</td><td class="st"><span class="b lk">Locked</span></td><td class="lnk"><a href="https://barreletics.github.io/vintage-king-redesign/" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Financing</td><td class="tpl">Core</td><td class="st"><span class="b lk">Locked</span></td><td class="lnk"><a href="https://barreletics.github.io/vintage-king-redesign/" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">UA Promotions (drop)</td><td class="tpl">T4</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/universal-audio-promotions-v2.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Avid Pro Tools Trade-In</td><td class="tpl">T4</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/avid-pro-tools-trade-in-v2.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Avid S4 Control Surface</td><td class="tpl">T4</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/avid-s4-control-surface-configurations-v2.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Avid S6 Control Surface</td><td class="tpl">T4</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/avid-s6-control-surface-configurations-v2.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Back to School (sale)</td><td class="tpl">T1</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/back-to-school-v2.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Black Friday Microphone Deals</td><td class="tpl">T1</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/black-friday-microphone-deals-v2.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">New at NAMM · Microphones</td><td class="tpl">T1</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/new-at-namm-microphones-v2.html" target="_blank">Live ↗</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pgsec" id="pg-policy">
+      <h3 class="subh">Policy / Long-form / About</h3>
+      <table class="pgs">
+        <thead><tr><th>Name</th><th>Template</th><th>Status</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td class="name">About</td><td class="tpl">T2</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/about-v2.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Careers</td><td class="tpl">T5</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/careers.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Returns</td><td class="tpl">T5</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/returns-v2.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Shipping Policy</td><td class="tpl">T5</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/shipping-policy-v2.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Privacy Policy</td><td class="tpl">T5</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/privacy-policy-v2.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Warranty</td><td class="tpl">T5</td><td class="st"><span class="b ok">Built</span></td><td class="lnk"><a href="https://barreletics.github.io/vk-secondary-pages/warranty.html" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">FAQ</td><td class="tpl">Core</td><td class="st"><span class="b lk">Locked</span></td><td class="lnk"><a href="https://barreletics.github.io/vintage-king-redesign/" target="_blank">Live ↗</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pgsec" id="pg-core">
+      <h3 class="subh">Core ecommerce screens · single-file prototype</h3>
+      <p class="docsub" style="font-size:13px;margin-bottom:14px">10 transactional screens live inside one locked single-file prototype. Deep-link only — do not edit from this repo.</p>
+      <table class="pgs">
+        <thead><tr><th>Name</th><th>Template</th><th>Status</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Homepage</td><td class="tpl">Core · #home</td><td class="st"><span class="b lk">Locked</span></td><td class="lnk"><a href="https://barreletics.github.io/vintage-king-redesign/#home" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Category</td><td class="tpl">Core · #category</td><td class="st"><span class="b lk">Locked</span></td><td class="lnk"><a href="https://barreletics.github.io/vintage-king-redesign/#category" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Product</td><td class="tpl">Core · #product</td><td class="st"><span class="b lk">Locked</span></td><td class="lnk"><a href="https://barreletics.github.io/vintage-king-redesign/#product" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">FAQ</td><td class="tpl">Core · #faq</td><td class="st"><span class="b lk">Locked</span></td><td class="lnk"><a href="https://barreletics.github.io/vintage-king-redesign/#faq" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Demo Deals</td><td class="tpl">Core · #deals</td><td class="st"><span class="b lk">Locked</span></td><td class="lnk"><a href="https://barreletics.github.io/vintage-king-redesign/#deals" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Sell or Trade</td><td class="tpl">Core · #sell</td><td class="st"><span class="b lk">Locked</span></td><td class="lnk"><a href="https://barreletics.github.io/vintage-king-redesign/#sell" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Studio Installations</td><td class="tpl">Core · #studio</td><td class="st"><span class="b lk">Locked</span></td><td class="lnk"><a href="https://barreletics.github.io/vintage-king-redesign/#studio" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Tech Shop</td><td class="tpl">Core · #techshop</td><td class="st"><span class="b lk">Locked</span></td><td class="lnk"><a href="https://barreletics.github.io/vintage-king-redesign/#techshop" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Financing</td><td class="tpl">Core · #fin-page</td><td class="st"><span class="b lk">Locked</span></td><td class="lnk"><a href="https://barreletics.github.io/vintage-king-redesign/#fin-page" target="_blank">Live ↗</a></td></tr>
+          <tr><td class="name">Open Box</td><td class="tpl">Core · #openbox</td><td class="st"><span class="b lk">Locked</span></td><td class="lnk"><a href="https://barreletics.github.io/vintage-king-redesign/#openbox" target="_blank">Live ↗</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+</main>
 </div>
-
-<section class="zone" id="read">
-  <div class="zone-inner">
-    <div class="zone-head">
-      <div><div class="zone-eye">01 · Read this first</div><h2 class="zone-h">The single document the team reads before touching anything.</h2></div>
-      <p class="zone-sub">Linear, 10-minute read. Every locked rule, every template, header, layout, strip, color, and SEO requirement — in the order you'd touch them on a real page.</p>
-    </div>
-    <a class="hero-tile" href="build-playbook.html">
-      <div>
-        <span class="badge">Single source of truth</span>
-        <h3>VK Build Playbook.</h3>
-        <p>Every rule, every system pick, every checklist — consolidated into one linear doc. Replaces the old style guide, page-layouts reference, and CLAUDE.md briefing as the front door for the team and incoming agency.</p>
-        <div class="meta">build-playbook.html · 11 sections · ~10 min</div>
-        <span class="cta">Open the playbook →</span>
-      </div>
-      <div class="toc">
-        <h4>What's inside</h4>
-        <ol>
-          <li>The 6 locked rules</li>
-          <li>Page-build rhythm (7 zones)</li>
-          <li>Pick a template (T1–T5)</li>
-          <li>Pick a header (H1–H4)</li>
-          <li>Pick a PLP layout (C1–C4)</li>
-          <li>Pick a value strip</li>
-          <li>Typography lock</li>
-          <li>Color tokens</li>
-          <li>SEO / GEO / AI signals</li>
-          <li>Handoff conventions</li>
-          <li>3 open decisions</li>
-        </ol>
-      </div>
-    </a>
-  </div>
-</section>
-
-<section class="zone" id="see" style="background:var(--warm-white)">
-  <div class="zone-inner">
-    <div class="zone-head">
-      <div><div class="zone-eye">02 · See the work</div><h2 class="zone-h">Every page that exists. Two views — pick the one the team uses.</h2></div>
-      <p class="zone-sub">The spreadsheet is the audit-friendly tabbed view (Excel / Google Sheets). The content index is the clickable catalog with live links. Same data, two surfaces.</p>
-    </div>
-    <div class="see-grid">
-      <a class="see-card" href="page-layouts.html">
-        <div class="label">Visual catalog · wireframes + live</div>
-        <h3>Page layouts catalog.</h3>
-        <p>Every layout shown as a labeled wireframe + when-to-use + live example link. 5 secondary templates (T1–T5) + 4 PLP layouts (C1–C4) + canonical PDP + custom-build template. Start here to understand the system visually.</p>
-        <div class="stats">
-          <div class="stat">5<small>templates</small></div>
-          <div class="stat">4<small>PLP layouts</small></div>
-          <div class="stat">+PDP<small>+ custom</small></div>
-        </div>
-        <span class="arrow">Open layouts catalog →</span>
-      </a>
-      <a class="see-card" href="content/index.html">
-        <div class="label">Web index · clickable catalog</div>
-        <h3>Content page index.</h3>
-        <p>Every built secondary page organized by template family. Click straight through to the live page. The clickable equivalent of the spreadsheet — same data, faster to navigate.</p>
-        <div class="stats">
-          <div class="stat">5<small>templates</small></div>
-          <div class="stat">19<small>HOF articles</small></div>
-          <div class="stat">60+<small>secondary pages</small></div>
-        </div>
-        <span class="arrow">Open content index →</span>
-      </a>
-      <a class="see-card" href="mobile/index.html">
-        <div class="label">Mobile · 375 px previews</div>
-        <h3>Mobile preview gallery.</h3>
-        <p>Every major page type rendered in a 375 px iframe so you can see how it collapses without opening 30 tabs. Phone-frame mockups grouped by dashboard / secondary / PLP / PDP / policy.</p>
-        <div class="stats">
-          <div class="stat">17<small>page types</small></div>
-          <div class="stat">5<small>buckets</small></div>
-          <div class="stat">375<small>px width</small></div>
-        </div>
-        <span class="arrow">Open mobile gallery →</span>
-      </a>
-    </div>
-    <div style="margin-top:18px;padding:14px 18px;background:var(--off-white);border-left:3px solid var(--amber);font-size:13px;color:var(--mid-grey);max-width:1280px;border-radius:3px">
-      <strong style="color:var(--near-black);font-weight:600">Audit / handoff:</strong> the same data also lives in the <a href="https://github.com/barreletics/vk-secondary-pages/raw/main/vk-resources-inventory.xlsx" download style="color:var(--vk-red);font-weight:500;border-bottom:1px solid var(--hairline)">page inventory spreadsheet</a> (Excel · 96 rows · 9 tabs · 10 columns) for Google Sheets import.
-    </div>
-  </div>
-</section>
-
-<section class="zone" id="decide" style="background:var(--off-white)">
-  <div class="zone-inner">
-    <div class="zone-head">
-      <div><div class="zone-eye">03 · Decide</div><h2 class="zone-h">Three open calls before agency handoff. Walk these in order.</h2></div>
-      <p class="zone-sub">Each has a dedicated decision tool. These three votes unblock global type, strip, and section choices for every future page.</p>
-    </div>
-    <div class="decide-grid">
-      <a class="dec" href="type-test.html">
-        <div class="num">Decision 01</div>
-        <h3>Typography — product names.</h3>
-        <p>3-way: Editorial Playfair (A) vs Retail DM Sans (B) vs Hybrid DM Sans + amber word injection (C — recommended). Side-by-side across PLP grid, PDP buy box, and HOF hero.</p>
-        <span class="meta">type-test.html · 3 variants × 3 surfaces</span>
-        <span class="arrow">Vote on type →</span>
-      </a>
-      <a class="dec" href="value-strips/value-strip-options.html">
-        <div class="num">Decision 02</div>
-        <h3>Value strip — pick the keepers.</h3>
-        <p>12 variants on the picker. Recommended: V7 or V10 as landing-page default + V8 amber daily-driver (secondary) + V12 red daily-driver (core ecommerce) + V11 above footer. Confirm the kill list.</p>
-        <span class="meta">12 variants · 5 recommended</span>
-        <span class="arrow">Pick strips →</span>
-      </a>
-      <a class="dec" href="section-buffet.html">
-        <div class="num">Decision 03</div>
-        <h3>Section buffet — 5 rooms, no overlap.</h3>
-        <p>One component library, organized by usage context. Heroes catalog (9 variants), secondary body (15), PLP body (8), strips (12). Walk each room. Mark Keep / Maybe / Kill.</p>
-        <span class="meta">section-buffet.html · 5 rooms · 44 patterns</span>
-        <span class="arrow">Open the buffet →</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<section class="ref-zone" id="ref">
-  <div class="ref-inner">
-    <div class="ref-head">
-      <div><div class="eye">04 · Reference</div><h2>Reference library — buffets, slim guides, locked sources.</h2></div>
-      <p>Optional reading. The playbook is the front door — these are the deeper-dive comparison surfaces. Keep accessible, don't lead with them.</p>
-    </div>
-    <div class="ref-grid">
-      <a class="ref-card" href="heroes/index.html"><div class="label">Catalog</div><div class="name">Heroes catalog</div><div class="desc">9 hero variants · 3 buckets · when-to-use</div></a>
-      <a class="ref-card" href="page-layouts.html"><div class="label">Catalog</div><div class="name">Page layouts catalog</div><div class="desc">Wireframe + when-to-use + live per layout</div></a>
-      <a class="ref-card" href="mobile/index.html"><div class="label">Catalog</div><div class="name">Mobile previews</div><div class="desc">17 page types at 375 px · phone frames</div></a>
-      <a class="ref-card" href="section-buffet.html"><div class="label">Buffet hub</div><div class="name">Section buffet (5 rooms)</div><div class="desc">All sections · pick from menu</div></a>
-      <a class="ref-card" href="buffet/secondary-body.html"><div class="label">Buffet room</div><div class="name">Secondary body sections</div><div class="desc">15 patterns · keep / maybe / kill</div></a>
-      <a class="ref-card" href="buffet/plp-body.html"><div class="label">Buffet room</div><div class="name">PLP body sections</div><div class="desc">8 patterns · canonical filter inside</div></a>
-      <a class="ref-card" href="value-strips/value-strip-options.html"><div class="label">Buffet room</div><div class="name">Strip picker</div><div class="desc">12 strip variants · 5 recommended</div></a>
-      <a class="ref-card" href="secondary/index.html"><div class="label">Buffet room</div><div class="name">Templates room</div><div class="desc">5 templates · live examples per template</div></a>
-      <a class="ref-card" href="category/index.html"><div class="label">Buffet room</div><div class="name">PLP layouts room</div><div class="desc">4 PLP layouts · live PLPs linked</div></a>
-      <a class="ref-card" href="product/neumann-u47.html"><div class="label">PDP</div><div class="name">Product page pattern</div><div class="desc">Neumann U47 · canonical PDP</div></a>
-      <a class="ref-card" href="style-guide.html"><div class="label">Spec</div><div class="name">Style guide (slim)</div><div class="desc">Colors · type · spacing · no-go list</div></a>
-      <a class="ref-card" href="mega-menu/mega-menu-final.html"><div class="label">Locked</div><div class="name">Mega menu (canonical)</div><div class="desc">Single mega menu · 6 parent categories</div></a>
-      <a class="ref-card" href="core/index.html"><div class="label">Locked source</div><div class="name">10 core ecommerce screens</div><div class="desc">Deep links into the locked main prototype</div></a>
-      <a class="ref-card" href="content/index.html"><div class="label">Index</div><div class="name">Content page index</div><div class="desc">All 60+ secondary pages by template</div></a>
-      <a class="ref-card" href="https://github.com/barreletics/vk-secondary-pages" target="_blank"><div class="label">Source repo</div><div class="name">vk-secondary-pages</div><div class="desc">All 60+ secondary HTML files</div></a>
-      <a class="ref-card" href="https://github.com/barreletics/vk-redesign-final" target="_blank"><div class="label">Source repo</div><div class="name">vk-redesign-final (this)</div><div class="desc">GitHub source for this dashboard</div></a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div><strong>VK Redesign Final</strong> · Vintage Pro Audio · Roadmap to heaven · Single entry point</div>
-  <div class="links">
-    <a href="build-playbook.html">Playbook</a>
-    <a href="page-layouts.html">Page layouts</a>
-    <a href="heroes/index.html">Heroes</a>
-    <a href="mobile/index.html">Mobile</a>
-    <a href="content/index.html">Content index</a>
-    <a href="type-test.html">Type test</a>
-    <a href="value-strips/value-strip-options.html">Strip picker</a>
-    <a href="section-buffet.html">Section buffet</a>
-    <a href="style-guide.html">Style guide</a>
-  </div>
-  <div class="meta">Updated April 2026 · barreletics/vk-redesign-final · Internal demo</div>
-</footer>
-
 </body>
 </html>
