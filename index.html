@@ -505,6 +505,32 @@ code{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:12px;backgr
 .cmpbody .bguide .meta p{font-size:12px;color:var(--mid-grey)}
 .cmpbody .bguide .lk{background:var(--near-black);color:#fff;padding:10px 18px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border-radius:3px;flex-shrink:0}
 
+/* P-E2 buyer's guide — blue info full strip (from live pages/category, pages/faq, pages/openbox) */
+.cmpbody .bguide-blue{background:#EEF4FF;border-left:4px solid #2563EB;border-radius:0 3px 3px 0;padding:16px 22px;display:flex;gap:18px;align-items:center;margin:14px 22px;flex-wrap:wrap}
+.cmpbody .bguide-blue .lbl{font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#2563EB;flex-shrink:0}
+.cmpbody .bguide-blue .div{width:1px;height:28px;background:rgba(26,26,24,0.14);flex-shrink:0}
+.cmpbody .bguide-blue .meta{flex:1;min-width:220px}
+.cmpbody .bguide-blue .meta h4{font-size:14px;font-weight:500;color:var(--near-black);line-height:1.35;margin-bottom:2px}
+.cmpbody .bguide-blue .meta p{font-size:12px;color:var(--mid-grey);line-height:1.5}
+.cmpbody .bguide-blue .lk{font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--vk-red);white-space:nowrap;flex-shrink:0}
+
+/* P-E3 buyer's guide — dark full strip */
+.cmpbody .bguide-dark{background:var(--near-black);color:#fff;padding:22px 26px;display:flex;gap:22px;align-items:center;margin:14px 22px;border-radius:3px;flex-wrap:wrap}
+.cmpbody .bguide-dark .lbl{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);flex-shrink:0}
+.cmpbody .bguide-dark .div{width:1px;height:34px;background:rgba(255,255,255,0.18);flex-shrink:0}
+.cmpbody .bguide-dark .meta{flex:1;min-width:240px}
+.cmpbody .bguide-dark .meta h4{font-family:var(--font-display);font-size:19px;font-weight:600;color:#fff;margin-bottom:4px;letter-spacing:-0.005em}
+.cmpbody .bguide-dark .meta p{font-size:12px;color:rgba(255,255,255,0.62);line-height:1.55}
+.cmpbody .bguide-dark .lk{background:var(--amber);color:#fff;padding:10px 18px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border-radius:3px;flex-shrink:0}
+
+/* P-E4 buyer's guide — split 2-up (two guides side-by-side) */
+.cmpbody .bguide-split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 22px}
+.cmpbody .bguide-split .card{background:#EDE8E2;border-radius:4px;padding:18px 20px;display:flex;flex-direction:column;gap:8px}
+.cmpbody .bguide-split .card .lbl{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber)}
+.cmpbody .bguide-split .card h4{font-family:var(--font-display);font-size:17px;font-weight:600;margin-bottom:2px;line-height:1.2}
+.cmpbody .bguide-split .card p{font-size:12px;color:var(--mid-grey);line-height:1.55;flex:1}
+.cmpbody .bguide-split .card .lk{font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;color:var(--near-black);border-bottom:2px solid var(--amber);padding-bottom:2px;align-self:flex-start;margin-top:4px}
+
 /* P-F co-op */
 .cmpbody .coop{padding:14px 22px;background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);text-align:center;font-size:12px;color:var(--mid-grey)}
 .cmpbody .coop strong{color:var(--near-black);font-weight:600;margin:0 14px}
@@ -556,6 +582,7 @@ table.pgs td.lnk a{font-size:12px}
   .cmpbody .h2-split,.cmpbody .h5-5050,.cmpbody .h8-svc-inner,.cmpbody .rel,.cmpbody .fifty,.cmpbody .spotlight{grid-template-columns:1fr}
   .cmpbody .pgrid{grid-template-columns:repeat(2,1fr)}
   .cmpbody .stats,.cmpbody .stats2,.cmpbody .feat,.cmpbody .steps,.cmpbody .v7b .row,.cmpbody .v8 .row,.cmpbody .v8b .row,.cmpbody .v8c .row,.cmpbody .v8d .row,.cmpbody .v12 .row,.cmpbody .strip-row,.cmpbody .v4-row{grid-template-columns:repeat(2,1fr)}
+  .cmpbody .bguide-split{grid-template-columns:1fr}
   .cmpbody .v7b .item:nth-child(2){border-right:0}
   .cmpbody .timeline{grid-template-columns:repeat(2,1fr)}.cmpbody .timeline:before{display:none}
   .cmpbody .vkfooter .row{grid-template-columns:repeat(2,1fr)}
@@ -598,7 +625,7 @@ table.pgs td.lnk a{font-size:12px}
     <a href="#body-sec" class="lvl2">All sections (16)</a>
 
     <div class="grp">Components — Body (PLP)</div>
-    <a href="#body-plp" class="lvl2">All sections (8)</a>
+    <a href="#body-plp" class="lvl2">All sections (11)</a>
 
     <div class="grp">Components — Footer</div>
     <a href="#footer-cmp" class="lvl2">VK footer (canonical)</a>
@@ -1152,8 +1179,8 @@ table.pgs td.lnk a{font-size:12px}
 <!-- ============= BODY · PLP ============= -->
 <section class="docsec" id="body-plp">
   <div class="wrap">
-    <h2 class="sech"><span class="num">08</span>Body sections — PLP (8 variants)</h2>
-    <p class="sechd">The canonical PLP composition is built from these blocks: cathead → filter chip bar → expanded filter panel → buyer's guide card → product grid → load more. Spotlight 50/50 is an optional dark interrupt. Co-op brand pill block is optional above the cathead.</p>
+    <h2 class="sech"><span class="num">08</span>Body sections — PLP (11 variants)</h2>
+    <p class="sechd">The canonical PLP composition is built from these blocks: cathead → filter chip bar → expanded filter panel → buyer's guide card → product grid → load more. Spotlight 50/50 is an optional dark interrupt. Co-op brand pill block is optional above the cathead. Four buyer's-guide variants now — amber warm-white (<strong>P-E</strong>, default), blue info (<strong>P-E2</strong>, from live core ecommerce pages), dark editorial (<strong>P-E3</strong>, counts as dark block), split 2-up (<strong>P-E4</strong>, for PLPs where two guides help).</p>
   </div>
   <div class="wrap full">
 
@@ -1234,14 +1261,49 @@ table.pgs td.lnk a{font-size:12px}
     </div></div>
     <div class="cmpcap"><strong>Use on:</strong> every PLP. Brand (DM Sans 10/uppercase) → name (DM Sans 13/500) → price (DM Sans 13/600) → stock badge (green 10).</div></div>
 
-    <div class="cmp"><div class="cmphd"><span class="id">P-E</span><span class="ttl"><strong>Buyer's guide card</strong> — between filters and grid</span></div>
+    <div class="cmp"><div class="cmphd"><span class="id">P-E</span><span class="ttl"><strong>Buyer's guide card · amber warm-white</strong> — the default, between filters and grid</span></div>
     <div class="cmpbody"><div class="bguide">
       <span class="lbl">Buying Guide</span>
       <span class="div"></span>
       <div class="meta"><h4>Microphone Buying Guide</h4><p>Condenser vs. Dynamic vs. Ribbon — how to choose the right mic for your studio</p></div>
       <a href="#" class="lk">Read the Guide →</a>
     </div></div>
-    <div class="cmpcap"><strong>Use on:</strong> Microphones, Compressors, Preamps PLPs. Sits between the filter bar and the product grid.</div></div>
+    <div class="cmpcap"><strong>Use on:</strong> Microphones, Compressors, Preamps PLPs. Default variant — warm-white <code>#EDE8E2</code>, amber label, Playfair title, near-black button.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">P-E2</span><span class="ttl"><strong>Buyer's guide card · blue info variant</strong> — pulled from live category / faq / openbox / techshop pages</span><a class="lk" href="https://barreletics.github.io/vk-secondary-pages/pages/category.html" target="_blank">Live: pages/category ↗</a></div>
+    <div class="cmpbody"><div class="bguide-blue">
+      <span class="lbl">Buying Guide</span>
+      <span class="div"></span>
+      <div class="meta"><h4>Microphone Buying Guide</h4><p>Condenser vs. Dynamic vs. Ribbon — how to choose the right mic for your studio</p></div>
+      <a href="#" class="lk">Read the Guide →</a>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> Core ecommerce PLPs and FAQ — pale blue <code>#EEF4FF</code>, 4px blue <code>#2563EB</code> left border, small blue uppercase label, DM Sans title, red text-only CTA. This is the "info" color — reserved for helpful / educational content, not commercial. Blue is the only non-red/amber color allowed on these surfaces per the locked token system.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">P-E3</span><span class="ttl"><strong>Buyer's guide card · dark variant</strong> — counts as the page's dark moment on PLPs that skip the 50/50 spotlight</span></div>
+    <div class="cmpbody"><div class="bguide-dark">
+      <span class="lbl">Buying Guide</span>
+      <span class="div"></span>
+      <div class="meta"><h4>Microphone Buying Guide</h4><p>Condenser vs. Dynamic vs. Ribbon — how to choose the right mic for your studio</p></div>
+      <a href="#" class="lk">Read the Guide →</a>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> PLPs where you want the buyer guide to carry editorial weight and you've skipped P-H (50/50 spotlight). Near-black card with amber label, white Playfair title, amber CTA button. <strong>Counts as the one dark block per page</strong> — do not pair with another dark block on the same PLP.</div></div>
+
+    <div class="cmp"><div class="cmphd"><span class="id">P-E4</span><span class="ttl"><strong>Buyer's guide card · split 2-up</strong> — two related guides side-by-side</span></div>
+    <div class="cmpbody"><div class="bguide-split">
+      <div class="card">
+        <span class="lbl">Buying Guide</span>
+        <h4>Microphone Buying Guide</h4>
+        <p>Condenser vs. Dynamic vs. Ribbon — how to choose the right mic for your studio.</p>
+        <a href="#" class="lk">Read the Guide →</a>
+      </div>
+      <div class="card">
+        <span class="lbl">Primer</span>
+        <h4>Polar Patterns Explained</h4>
+        <p>Cardioid, omni, figure-8, hypercardioid — what each one hears and when to use it.</p>
+        <a href="#" class="lk">Read the Primer →</a>
+      </div>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> PLPs where two guides help the shopper decide (Microphones → "Buying Guide" + "Polar Patterns"; Compressors → "Buying Guide" + "Attack/Release"; Preamps → "Buying Guide" + "Tube vs FET"). 50/50 grid, same card shape as P-E. Use instead of P-E when two guides would each get skipped in a longer full-strip.</div></div>
 
     <div class="cmp"><div class="cmphd"><span class="id">P-F</span><span class="ttl"><strong>Co-op brand pill block</strong> — sub-brand surfacing</span></div>
     <div class="cmpbody"><div class="coop">Shop by brand: <strong>Neumann</strong> · <strong>Telefunken</strong> · <strong>AKG</strong> · <strong>Royer</strong> · <strong>Shure</strong> · <strong>Sennheiser</strong> · <strong>Audio-Technica</strong></div></div>
