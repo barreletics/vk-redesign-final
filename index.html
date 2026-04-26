@@ -426,12 +426,23 @@ code{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:12px;backgr
 
 /* B-L single large image */
 .cmpbody .bigimg{position:relative;height:420px;background:linear-gradient(135deg,#3a3a36,#1a1a18);display:grid;place-items:center;color:#fff;text-align:center;overflow:hidden}
+.cmpbody .bigimg.has-photo{background-image:url(https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=2400&q=82);background-size:cover;background-position:center}
 .cmpbody .bigimg:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.10),rgba(0,0,0,0.55))}
 .cmpbody .bigimg .inner{position:relative;z-index:2;max-width:680px;padding:0 32px}
 .cmpbody .bigimg .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
 .cmpbody .bigimg h3{font-family:var(--font-display);font-size:34px;font-weight:600;line-height:1.1;margin-bottom:12px}
 .cmpbody .bigimg p{font-size:14px;color:rgba(255,255,255,0.80);line-height:1.6;max-width:560px;margin:0 auto}
 .cmpbody .bigimg .cap{position:absolute;bottom:14px;right:18px;z-index:2;font-size:10px;color:rgba(255,255,255,0.55);letter-spacing:0.06em}
+
+/* B-L2 in-page full-bleed image band (mid-body — after hero, inside article / category) */
+.cmpbody .inpage-rail{font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber);padding:10px 22px;background:var(--off-white);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.cmpbody .inpage-bleed{position:relative;min-height:520px;width:100%;overflow:hidden;background-color:#1a1a18;background-image:url(https://images.unsplash.com/photo-1511376777860-364abc75342c?auto=format&fit=crop&w=2400&q=82);background-size:cover;background-position:center}
+.cmpbody .inpage-bleed:before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.12) 45%,rgba(0,0,0,0.45) 100%)}
+.cmpbody .inpage-bleed .inpage-inner{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:28px 32px 32px;max-width:720px}
+.cmpbody .inpage-bleed .inpage-inner .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.cmpbody .inpage-bleed .inpage-inner h3{font-family:var(--font-display);font-size:28px;font-weight:600;line-height:1.1;color:#fff;margin-bottom:8px}
+.cmpbody .inpage-bleed .inpage-inner p{font-size:13px;color:rgba(255,255,255,0.82);line-height:1.55;max-width:560px;margin-bottom:12px}
+.cmpbody .inpage-bleed .inpage-cap{position:absolute;top:16px;right:18px;z-index:2;font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.06em}
 
 /* B-M gallery 4-up */
 .cmpbody .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(26,26,24,0.08);padding:1px}
@@ -634,9 +645,10 @@ table.pgs td.lnk a{font-size:12px}
     <a href="#strips" class="lvl2">All strips (17)</a>
 
     <div class="grp">Components — Body (Secondary)</div>
-    <a href="#body-sec" class="lvl2">All sections (18)</a>
+    <a href="#body-sec" class="lvl2">All sections (19)</a>
     <a href="#b-b2" class="lvl2">B-B2 · Editorial wide + 2×1</a>
     <a href="#b-p" class="lvl2">B-P · Full-bleed + 2×2 stack</a>
+    <a href="#b-l2" class="lvl2">B-L2 · In-page full-bleed band</a>
 
     <div class="grp">Components — Body (PLP)</div>
     <a href="#body-plp" class="lvl2">All sections (11)</a>
@@ -665,7 +677,7 @@ table.pgs td.lnk a{font-size:12px}
   <div class="wrap">
     <h1 class="docttl">VK Design System</h1>
     <p class="docsub">One page. Top to bottom. The left nav jumps between sections. The right column is the spec. Every component shown below is rendered with the actual VK CSS — what you see is what ships. Live built pages are linked under each component and listed in <a href="#pages">Pages</a>.</p>
-    <p class="docsub" style="margin-bottom:0"><strong>Read order:</strong> Rules → Type → Color → Components → Pages. <strong>Min font:</strong> 12px everywhere. <strong>Slogan:</strong> Vintage Pro Audio. <strong>Large editorial + 2-up:</strong> stack <a href="#b-p"><code>B-P</code></a> (520px full-bleed + <code>B-B</code> 2×2) on category landings, About, Playback — one hero frame <em>in addition to</em> the side-by-side cards.</p>
+    <p class="docsub" style="margin-bottom:0"><strong>Read order:</strong> Rules → Type → Color → Components → Pages. <strong>Min font:</strong> 12px everywhere. <strong>Slogan:</strong> Vintage Pro Audio. <strong>Mid-page full-bleed photo:</strong> <a href="#b-l2"><code>B-L2</code></a> (in-body band, not the hero). <strong>Stacked hero + 2×2:</strong> <a href="#b-p"><code>B-P</code></a>. Sample photos are Unsplash placeholders in the previews only.</p>
   </div>
 </section>
 
@@ -1058,8 +1070,8 @@ table.pgs td.lnk a{font-size:12px}
 <!-- ============= BODY · SECONDARY ============= -->
 <section class="docsec" id="body-sec">
   <div class="wrap">
-    <h2 class="sech"><span class="num">07</span>Body sections — Secondary (18 variants)</h2>
-    <p class="sechd">Every block that can sit between hero and footer on a secondary content page. Mix freely — but stay in section rhythm and respect the "max one dark block per page" rule. <strong>B-P</strong> bundles a tall full-bleed image (<code>520px</code>) with <strong>B-B</strong> 2×2 for the "one huge frame + two big photos beside each other" pattern.</p>
+    <h2 class="sech"><span class="num">07</span>Body sections — Secondary (19 variants)</h2>
+    <p class="sechd">Every block that can sit between hero and footer on a secondary content page. Mix freely — but stay in section rhythm and respect the "max one dark block per page" rule. <strong>B-L</strong> / <strong>B-P</strong> full-bleeds use sample Unsplash photos so the pattern reads instantly. <strong>B-L2</strong> is the same idea <em>in the page body</em> (rail label + left-anchored caption), not a duplicate hero. <strong>B-P</strong> stacks tall full-bleed + <strong>B-B</strong> 2×2.</p>
   </div>
   <div class="wrap full">
 
@@ -1090,9 +1102,9 @@ table.pgs td.lnk a{font-size:12px}
 
     <div class="cmp" id="b-p"><div class="cmphd"><span class="id">B-P</span><span class="ttl"><strong>Editorial stack · full-bleed image + 2×2</strong> — one tall hero frame, then four image cards</span></div>
     <div class="cmpbody"><div class="edstack">
-      <div class="bigimg">
+      <div class="bigimg has-photo">
         <div class="inner"><div class="eye">Category feature</div><h3>The signal chain every vocal session borrows from modern chart records.</h3><p>One photograph, full browser width, minimum 520px tall — then the 2×2 editorial grid continues the story below.</p></div>
-        <span class="cap">Photo: VK · 2026</span>
+        <span class="cap">Sample: Unsplash · not final art</span>
       </div>
       <div class="edgrid">
         <div class="edcard"><div class="img"></div><div class="body"><div class="eye">Hall of Fame</div><h4>The Neumann U 47</h4><p>The microphone that rewrote pop production.</p></div></div>
@@ -1101,7 +1113,7 @@ table.pgs td.lnk a{font-size:12px}
         <div class="edcard"><div class="img"></div><div class="body"><div class="eye">Buyer's Guide</div><h4>Vocal condensers</h4><p>Polar patterns and tube vs FET in five minutes.</p></div></div>
       </div>
     </div></div>
-    <div class="cmpcap"><strong>Use on:</strong> category editorial landings, About, Playback, NAMM — counts as the page's dark moment (top block only). Does not replace standalone <strong>B-L</strong> (<code>420px</code>) or <strong>B-B</strong>; this is the composed "hero photo + quadrant" recipe.</div></div>
+    <div class="cmpcap"><strong>Use on:</strong> category editorial landings, About, Playback, NAMM — counts as the page's dark moment (top block only). Top frame uses <code>.has-photo</code> (sample studio image). For a <em>mid-page</em> full-bleed without the 2×2 stack, use <strong>B-L2</strong>. Does not replace standalone <strong>B-L</strong> or <strong>B-B</strong>.</div></div>
 
     <div class="cmp"><div class="cmphd"><span class="id">B-C</span><span class="ttl"><strong>Feature cards 3-up</strong> — line-art icons + headline + body</span></div>
     <div class="cmpbody"><div class="feat">
@@ -1182,11 +1194,26 @@ table.pgs td.lnk a{font-size:12px}
     <div class="cmpcap"><strong>Use on:</strong> About sub-sections, program detail blocks. Image is decorative — body carries the message.</div></div>
 
     <div class="cmp"><div class="cmphd"><span class="id">B-L</span><span class="ttl"><strong>Single large image (full bleed)</strong> — editorial moment, counts as the dark block</span></div>
-    <div class="cmpbody"><div class="bigimg">
+    <div class="cmpbody"><div class="bigimg has-photo">
       <div class="inner"><div class="eye">Studio tour</div><h3>The room that shaped a generation of records.</h3><p>Three Grammy-nominated mixes. The console where it all happened — and the gear that lived through it.</p></div>
-      <span class="cap">Photo: J. Mercer · 2024</span>
+      <span class="cap">Sample: Unsplash · not final art</span>
     </div></div>
-    <div class="cmpcap"><strong>Use on:</strong> middle of HOF articles, About, Make Your Mark, Playback. Counts as the page's dark moment.</div></div>
+    <div class="cmpcap"><strong>Use on:</strong> middle of HOF articles, About, Make Your Mark, Playback. Counts as the page's dark moment. <code>.has-photo</code> = real JPEG for spec clarity — replace with VK photography in production.</div></div>
+
+    <div class="cmp" id="b-l2"><div class="cmphd"><span class="id">B-L2</span><span class="ttl"><strong>In-page full-bleed image band</strong> — mid-body, not the hero</span></div>
+    <div class="cmpbody">
+      <div class="inpage-rail">In-page · breaks between text sections (article, category story, Playback)</div>
+      <div class="inpage-bleed">
+        <span class="inpage-cap">Sample: Unsplash · not final art</span>
+        <div class="inpage-inner">
+          <div class="eye">Field note</div>
+          <h3>When the fader bank is the headline.</h3>
+          <p>Same full-bleed width as <strong>B-L</strong>, but placed after body copy blocks — between paragraphs, stats, or buyer guides. Left-anchored type reads as editorial continuation, not a second hero.</p>
+          <a href="#" class="btn-amber" style="display:inline-block;margin-top:4px">Continue the story →</a>
+        </div>
+      </div>
+    </div>
+    <div class="cmpcap"><strong>Use on:</strong> long-form editorial, category storytelling, Open Box–style interrupts. <code>min-height:520px</code>. Counts as dark block if you use the gradient-heavy treatment; pair with light sections above/below. Photo is a stand-in only.</div></div>
 
     <div class="cmp"><div class="cmphd"><span class="id">B-M</span><span class="ttl"><strong>Image gallery 4-up</strong> — visual breath</span></div>
     <div class="cmpbody"><div class="gallery">
