@@ -420,6 +420,10 @@ code{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:12px;backgr
 .cmpbody .split8020 .wide h3{font-family:var(--font-display);font-size:22px;font-weight:600;margin-bottom:8px}
 .cmpbody .split8020 .wide p{font-size:13px;color:var(--mid-grey);line-height:1.6;margin-bottom:12px;max-width:520px}
 
+/* B-P editorial stack: tall full-bleed image + 2×2 (category / landing) */
+.cmpbody .edstack{display:flex;flex-direction:column;gap:0;background:#fff}
+.cmpbody .edstack .bigimg{height:520px;border-bottom:1px solid var(--hairline)}
+
 /* B-L single large image */
 .cmpbody .bigimg{position:relative;height:420px;background:linear-gradient(135deg,#3a3a36,#1a1a18);display:grid;place-items:center;color:#fff;text-align:center;overflow:hidden}
 .cmpbody .bigimg:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.10),rgba(0,0,0,0.55))}
@@ -462,10 +466,10 @@ code{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:12px;backgr
 .cmpbody .cathead .count{font-size:12px;color:var(--mid-grey);font-weight:500}
 .cmpbody .cathead .lede{font-size:12px;color:var(--mid-grey);margin-top:8px;max-width:680px;line-height:1.55}
 .cmpbody .fbar{padding:12px 22px;background:#fff;display:flex;gap:8px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--hairline)}
-.cmpbody .fbar-pills{display:flex;flex-wrap:wrap;gap:8px;align-items:center;flex:1;min-width:0}
+.cmpbody .fbar-pills{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .cmpbody .chip{font-size:11px;padding:6px 12px;border:1px solid var(--hairline-strong);border-radius:18px;color:var(--near-black);background:#fff;white-space:nowrap}
 .cmpbody .chip.red{background:var(--vk-red);color:#fff;border-color:var(--vk-red);font-weight:600}
-.cmpbody .chip.more{background:var(--vk-red);color:#fff;border-color:var(--vk-red);font-weight:600;margin-left:auto;flex-shrink:0}
+.cmpbody .chip.more{background:var(--vk-red);color:#fff;border-color:var(--vk-red);font-weight:600;flex-shrink:0}
 .cmpbody .chip.more:hover{opacity:0.92}
 .cmpbody .fbar .sort{margin-left:auto;font-size:11px;color:var(--mid-grey)}
 .cmpbody .fbar .sort select{font-size:11px;padding:4px 8px;border:1px solid var(--hairline-strong);background:#fff}
@@ -477,14 +481,11 @@ code{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:12px;backgr
 .cmpbody .fpanel .seeall{font-size:11px;color:var(--vk-red);font-weight:600;border-bottom:1px solid var(--vk-red);padding-bottom:1px}
 
 /* P-A quick row (second inline line, middot-separated text links) */
-.cmpbody .qrow{padding:10px 22px 12px;font-size:12px;color:var(--mid-grey);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;line-height:1.6;background:#fff;border-bottom:1px solid var(--hairline)}
-.cmpbody .qrow .qleft{display:flex;flex-wrap:wrap;align-items:center}
+.cmpbody .qrow{padding:10px 22px 12px;font-size:12px;color:var(--mid-grey);display:flex;flex-wrap:wrap;align-items:center;gap:0;line-height:1.6;background:#fff;border-bottom:1px solid var(--hairline)}
 .cmpbody .qrow .qlbl{font-weight:600;color:var(--near-black);margin-right:10px;letter-spacing:0.02em}
 .cmpbody .qrow a{color:var(--mid-grey);padding:2px 0}
 .cmpbody .qrow a:hover{color:var(--near-black)}
 .cmpbody .qrow .qsep{color:rgba(26,26,24,0.22);margin:0 10px}
-.cmpbody .qrow .qclear{font-size:12px;font-weight:600;color:var(--vk-red);white-space:nowrap;letter-spacing:0.04em}
-.cmpbody .qrow .qclear:hover{color:var(--near-black)}
 
 /* P-A meta row (count bold + sort/view right) */
 .cmpbody .mrow{display:flex;flex-wrap:wrap;align-items:center;gap:20px;padding:14px 22px;background:#fff;border-bottom:1px solid var(--hairline);font-size:12px;color:var(--near-black)}
@@ -633,8 +634,9 @@ table.pgs td.lnk a{font-size:12px}
     <a href="#strips" class="lvl2">All strips (17)</a>
 
     <div class="grp">Components — Body (Secondary)</div>
-    <a href="#body-sec" class="lvl2">All sections (17)</a>
+    <a href="#body-sec" class="lvl2">All sections (18)</a>
     <a href="#b-b2" class="lvl2">B-B2 · Editorial wide + 2×1</a>
+    <a href="#b-p" class="lvl2">B-P · Full-bleed + 2×2 stack</a>
 
     <div class="grp">Components — Body (PLP)</div>
     <a href="#body-plp" class="lvl2">All sections (11)</a>
@@ -663,7 +665,7 @@ table.pgs td.lnk a{font-size:12px}
   <div class="wrap">
     <h1 class="docttl">VK Design System</h1>
     <p class="docsub">One page. Top to bottom. The left nav jumps between sections. The right column is the spec. Every component shown below is rendered with the actual VK CSS — what you see is what ships. Live built pages are linked under each component and listed in <a href="#pages">Pages</a>.</p>
-    <p class="docsub" style="margin-bottom:0"><strong>Read order:</strong> Rules → Type → Color → Components → Pages. <strong>Min font:</strong> 12px everywhere. <strong>Slogan:</strong> Vintage Pro Audio.</p>
+    <p class="docsub" style="margin-bottom:0"><strong>Read order:</strong> Rules → Type → Color → Components → Pages. <strong>Min font:</strong> 12px everywhere. <strong>Slogan:</strong> Vintage Pro Audio. <strong>Large editorial + 2-up:</strong> stack <a href="#b-p"><code>B-P</code></a> (520px full-bleed + <code>B-B</code> 2×2) on category landings, About, Playback — one hero frame <em>in addition to</em> the side-by-side cards.</p>
   </div>
 </section>
 
@@ -1056,8 +1058,8 @@ table.pgs td.lnk a{font-size:12px}
 <!-- ============= BODY · SECONDARY ============= -->
 <section class="docsec" id="body-sec">
   <div class="wrap">
-    <h2 class="sech"><span class="num">07</span>Body sections — Secondary (17 variants)</h2>
-    <p class="sechd">Every block that can sit between hero and footer on a secondary content page. Mix freely — but stay in section rhythm and respect the "max one dark block per page" rule.</p>
+    <h2 class="sech"><span class="num">07</span>Body sections — Secondary (18 variants)</h2>
+    <p class="sechd">Every block that can sit between hero and footer on a secondary content page. Mix freely — but stay in section rhythm and respect the "max one dark block per page" rule. <strong>B-P</strong> bundles a tall full-bleed image (<code>520px</code>) with <strong>B-B</strong> 2×2 for the "one huge frame + two big photos beside each other" pattern.</p>
   </div>
   <div class="wrap full">
 
@@ -1085,6 +1087,21 @@ table.pgs td.lnk a{font-size:12px}
       <div class="edcard"><div class="img"></div><div class="body"><div class="eye">Buyer's Guide</div><h4>Tube vs FET condensers</h4><p>Five minutes to a short list.</p></div></div>
     </div></div>
     <div class="cmpcap"><strong>Use on:</strong> About landing, Playback index, NAMM recap — one double-wide image card (two column-widths) plus two supporting tiles.</div></div>
+
+    <div class="cmp" id="b-p"><div class="cmphd"><span class="id">B-P</span><span class="ttl"><strong>Editorial stack · full-bleed image + 2×2</strong> — one tall hero frame, then four image cards</span></div>
+    <div class="cmpbody"><div class="edstack">
+      <div class="bigimg">
+        <div class="inner"><div class="eye">Category feature</div><h3>The signal chain every vocal session borrows from modern chart records.</h3><p>One photograph, full browser width, minimum 520px tall — then the 2×2 editorial grid continues the story below.</p></div>
+        <span class="cap">Photo: VK · 2026</span>
+      </div>
+      <div class="edgrid">
+        <div class="edcard"><div class="img"></div><div class="body"><div class="eye">Hall of Fame</div><h4>The Neumann U 47</h4><p>The microphone that rewrote pop production.</p></div></div>
+        <div class="edcard"><div class="img"></div><div class="body"><div class="eye">Studio</div><h4>Classic tracking rooms</h4><p>Consoles, monitors, and the gear that lived through the hits.</p></div></div>
+        <div class="edcard"><div class="img"></div><div class="body"><div class="eye">Make Your Mark</div><h4>Engineers on the rise</h4><p>Six signal chains they reach for first.</p></div></div>
+        <div class="edcard"><div class="img"></div><div class="body"><div class="eye">Buyer's Guide</div><h4>Vocal condensers</h4><p>Polar patterns and tube vs FET in five minutes.</p></div></div>
+      </div>
+    </div></div>
+    <div class="cmpcap"><strong>Use on:</strong> category editorial landings, About, Playback, NAMM — counts as the page's dark moment (top block only). Does not replace standalone <strong>B-L</strong> (<code>420px</code>) or <strong>B-B</strong>; this is the composed "hero photo + quadrant" recipe.</div></div>
 
     <div class="cmp"><div class="cmphd"><span class="id">B-C</span><span class="ttl"><strong>Feature cards 3-up</strong> — line-art icons + headline + body</span></div>
     <div class="cmpbody"><div class="feat">
@@ -1166,8 +1183,8 @@ table.pgs td.lnk a{font-size:12px}
 
     <div class="cmp"><div class="cmphd"><span class="id">B-L</span><span class="ttl"><strong>Single large image (full bleed)</strong> — editorial moment, counts as the dark block</span></div>
     <div class="cmpbody"><div class="bigimg">
-      <div class="inner"><div class="eye">Inside Studio A</div><h3>The room that shaped a generation of records.</h3><p>32 years of sessions. Three Grammy-nominated mixes. The console where it all happened — and the gear that lived through it.</p></div>
-      <span class="cap">Detroit · 2024 · photo: J. Mercer</span>
+      <div class="inner"><div class="eye">Studio tour</div><h3>The room that shaped a generation of records.</h3><p>Three Grammy-nominated mixes. The console where it all happened — and the gear that lived through it.</p></div>
+      <span class="cap">Photo: J. Mercer · 2024</span>
     </div></div>
     <div class="cmpcap"><strong>Use on:</strong> middle of HOF articles, About, Make Your Mark, Playback. Counts as the page's dark moment.</div></div>
 
@@ -1219,11 +1236,10 @@ table.pgs td.lnk a{font-size:12px}
         <span class="chip">Application</span>
         <span class="chip">Price</span>
         <span class="chip">Condition</span>
-        </div>
         <span class="chip more">More Filters →</span>
+        </div>
       </div>
       <div class="qrow">
-        <div class="qleft">
         <span class="qlbl">Quick:</span>
         <a href="#">Studio</a><span class="qsep">·</span>
         <a href="#">Live</a><span class="qsep">·</span>
@@ -1231,8 +1247,6 @@ table.pgs td.lnk a{font-size:12px}
         <a href="#">Vintage</a><span class="qsep">·</span>
         <a href="#">Under $500</a><span class="qsep">·</span>
         <a href="#">0% financing</a>
-        </div>
-        <a href="#" class="qclear">Clear all</a>
       </div>
       <div class="mrow">
         <div class="mcount"><strong>2,847</strong> microphones</div>
@@ -1256,7 +1270,7 @@ table.pgs td.lnk a{font-size:12px}
         </div>
       </div>
     </div>
-    <div class="cmpcap"><strong>Use on:</strong> every PLP. Canonical order: cathead (crumb + H1 + lede) → pill row (6 filters in a flex group + solid red <code>More Filters →</code> flush right, same as <a href="https://barreletics.github.io/vk-secondary-pages/microphones-plp-spotlight.html" target="_blank">microphones-plp-spotlight ↗</a>) → <strong>quick row</strong> (Quick: links left · <code>Clear all</code> red, right) → meta row (count bold + Sort / View right) → expanded panel when a pill is tapped.</div></div>
+    <div class="cmpcap"><strong>Use on:</strong> every PLP. Canonical order: cathead (crumb + H1 + lede) → pill row (six filter chips + solid red <code>More Filters →</code> immediately after, same 8px gap — not pushed to the far edge) → <strong>quick row</strong> (Quick: + middot links) → meta row (count bold + Sort / View right) → expanded panel (<code>See all brands →</code> lives here, not on the quick row).</div></div>
 
     <div class="cmp"><div class="cmphd"><span class="id">P-B</span><span class="ttl"><strong>Intent-tag chip row</strong> — alternate / landing variant</span></div>
     <div class="cmpbody"><div class="fbar">
