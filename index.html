@@ -260,20 +260,23 @@ code{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:12px;backgr
 .cmpbody .v8 .meta strong{display:block;font-size:13px;font-weight:600;margin-bottom:2px;color:var(--near-black)}
 .cmpbody .v8 .meta small{font-size:11px;color:var(--mid-grey);line-height:1.5}
 
-/* V8b — amber icon strip (3-up large, longer subline) */
+/* V8b — amber LINE-ART icons (no filled circle) · 4-up */
 .cmpbody .v8b{background:var(--off-white);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
-.cmpbody .v8b .row{max-width:1100px;margin:0 auto;padding:32px 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.cmpbody .v8b .item{display:flex;gap:16px;align-items:flex-start}
-.cmpbody .v8b .ic{width:48px;height:48px;background:var(--amber);border-radius:50%;display:grid;place-items:center;color:#fff;flex-shrink:0;font-size:18px;font-weight:700;box-shadow:0 0 0 4px rgba(212,134,10,0.12)}
-.cmpbody .v8b .meta strong{display:block;font-family:var(--font-display);font-size:16px;font-weight:600;margin-bottom:5px;color:var(--near-black)}
-.cmpbody .v8b .meta small{font-size:12px;color:var(--mid-grey);line-height:1.65}
+.cmpbody .v8b .row{max-width:1280px;margin:0 auto;padding:30px 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.cmpbody .v8b .item{display:flex;gap:14px;align-items:flex-start}
+.cmpbody .v8b .ic{width:32px;height:32px;flex-shrink:0;color:var(--amber);stroke:var(--amber);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+.cmpbody .v8b .meta strong{display:block;font-size:13px;font-weight:600;margin-bottom:3px;color:var(--near-black)}
+.cmpbody .v8b .meta small{font-size:12px;color:var(--mid-grey);line-height:1.55}
 
-/* V8c — amber icon strip (6-up compact, one-line labels) */
+/* V8c — dividing-line credential · editorial minimal, no icons */
 .cmpbody .v8c{background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
-.cmpbody .v8c .row{max-width:1280px;margin:0 auto;padding:18px 28px;display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
-.cmpbody .v8c .item{display:flex;gap:8px;align-items:center}
-.cmpbody .v8c .ic{width:22px;height:22px;background:var(--amber);border-radius:50%;display:grid;place-items:center;color:#fff;flex-shrink:0;font-size:10px;font-weight:700}
-.cmpbody .v8c .meta{font-size:11px;font-weight:600;color:var(--near-black);line-height:1.3}
+.cmpbody .v8c .row{max-width:1100px;margin:0 auto;padding:28px 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.cmpbody .v8c .item{padding:0 22px;border-right:1px solid rgba(212,134,10,0.32);text-align:left}
+.cmpbody .v8c .item:last-child{border-right:0}
+.cmpbody .v8c .item:first-child{padding-left:0}
+.cmpbody .v8c .meta .n{font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:0.18em;color:var(--amber);text-transform:uppercase;display:block;margin-bottom:6px}
+.cmpbody .v8c .meta strong{display:block;font-size:13px;font-weight:600;margin-bottom:3px;color:var(--near-black)}
+.cmpbody .v8c .meta small{font-size:12px;color:var(--mid-grey);line-height:1.55;display:block}
 
 /* V9 — quote/testimonial strip */
 .cmpbody .v9{padding:28px;background:var(--off-white);text-align:center;font-style:italic;color:var(--near-black);font-family:var(--font-display);font-size:18px;line-height:1.4;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
@@ -530,7 +533,7 @@ table.pgs td.lnk a{font-size:12px}
   .wrap{padding:32px 24px 60px}
   .cmpbody .h2-split,.cmpbody .h5-5050,.cmpbody .h8-svc-inner,.cmpbody .rel,.cmpbody .fifty,.cmpbody .spotlight{grid-template-columns:1fr}
   .cmpbody .pgrid{grid-template-columns:repeat(2,1fr)}
-  .cmpbody .stats,.cmpbody .feat,.cmpbody .steps,.cmpbody .v8 .row,.cmpbody .v12 .row,.cmpbody .strip-row,.cmpbody .v4-row{grid-template-columns:repeat(2,1fr)}
+  .cmpbody .stats,.cmpbody .stats2,.cmpbody .feat,.cmpbody .steps,.cmpbody .v8 .row,.cmpbody .v8b .row,.cmpbody .v8c .row,.cmpbody .v12 .row,.cmpbody .strip-row,.cmpbody .v4-row{grid-template-columns:repeat(2,1fr)}
   .cmpbody .timeline{grid-template-columns:repeat(2,1fr)}.cmpbody .timeline:before{display:none}
   .cmpbody .vkfooter .row{grid-template-columns:repeat(2,1fr)}
   .cmpbody .gallery{grid-template-columns:repeat(2,1fr)}
@@ -826,7 +829,7 @@ table.pgs td.lnk a{font-size:12px}
 <section class="docsec" id="strips">
   <div class="wrap">
     <h2 class="sech"><span class="num">06</span>Strips — 14 variants</h2>
-    <p class="sechd">Cross-cutting modules that sit between sections. Recommended starters: <strong>V1</strong> (plain + small red line-icons, subtle), <strong>V7</strong> (credential bar, default for service pages), <strong>V8</strong> (amber-icon trust strip, default for secondary — with <strong>V8b</strong> 3-up large and <strong>V8c</strong> 6-up compact variants), <strong>V11</strong> (pre-footer, amber Playfair stat), <strong>V12</strong> (red-icon trust strip, core ecommerce only).</p>
+    <p class="sechd">Cross-cutting modules that sit between sections. Three distinct trust-strip families so pages don't feel repetitive: <strong>V8</strong> amber checkmark circle (secondary default), <strong>V8b</strong> amber line-art icons — truck / shield / dollar / tools (when a real icon set reads better than a checkmark), <strong>V8c</strong> editorial dividing-line credential (no icons, amber vertical dividers, print feel), <strong>V12</strong> red checkmark circle (core ecommerce only). V1 is the quietest (plain + small red line-icons). V7 is the credential-bar pattern for service pages. V11 is the pre-footer amber Playfair stat.</p>
   </div>
   <div class="wrap full">
 
@@ -896,24 +899,35 @@ table.pgs td.lnk a{font-size:12px}
     </div></div></div>
     <div class="cmpcap"><strong>Use on:</strong> daily-driver trust strip on most secondary pages. Amber icons, body copy underneath.</div></div>
 
-    <div class="cmp"><div class="cmphd"><span class="id">V8b</span><span class="ttl"><strong>Amber circle icons · 3-up large</strong> — hero-adjacent credential, longer subline</span></div>
+    <div class="cmp"><div class="cmphd"><span class="id">V8b</span><span class="ttl"><strong>Amber line-art icons · 4-up</strong> — different icon set per item, no checkmark</span></div>
     <div class="cmpbody"><div class="v8b"><div class="row">
-      <div class="item"><div class="ic">✓</div><div class="meta"><strong>Hand-tested by VK engineers</strong><small>Every used or vintage piece passes through a working engineer who has serviced and recorded with that exact model.</small></div></div>
-      <div class="item"><div class="ic">✓</div><div class="meta"><strong>Backed by VK Warranty</strong><small>30 days on every piece — new, used, or vintage. No exceptions, no asterisks, no upsell.</small></div></div>
-      <div class="item"><div class="ic">✓</div><div class="meta"><strong>Real human on the line</strong><small>Call, chat, or video chat with a VK consultant — never a bot, never a phone tree. Average response under 3 minutes.</small></div></div>
+      <div class="item">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M3 7h12v9H3zM15 10h4l2 3v3h-6zM5 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+        <div class="meta"><strong>Free shipping over $99</strong><small>Continental US · most orders ship same-day</small></div>
+      </div>
+      <div class="item">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.5 8-8 9-4.5-1-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div class="meta"><strong>30-day VK Warranty</strong><small>Every used, new, or vintage piece — covered</small></div>
+      </div>
+      <div class="item">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M12 3v18M7 7h7a3 3 0 1 1 0 6H9a3 3 0 1 0 0 6h8"/></svg>
+        <div class="meta"><strong>0% financing available</strong><small>On orders over $499 · apply in one minute</small></div>
+      </div>
+      <div class="item">
+        <svg class="ic" viewBox="0 0 24 24"><circle cx="7" cy="17" r="2"/><path d="M14 17h7l-2-7H3l2 7h2M14 17l-4-10-3-2"/><path d="M6 10l4-3"/></svg>
+        <div class="meta"><strong>VK Tech Inspected</strong><small>Working engineers test every piece before it ships</small></div>
+      </div>
     </div></div></div>
-    <div class="cmpcap"><strong>Use on:</strong> directly below a light hero on About / service pages when the credential is the page's second hook. Bigger icons, Playfair sub-headline, two-line body copy.</div></div>
+    <div class="cmpcap"><strong>Use on:</strong> when you want a real icon set instead of a row of checkmarks. Line-art amber icons — truck / shield / dollar / tools. Visually distinct from V8 but sits on the same surface rhythm. The early-redesign "simple red-line icon" trust-strip reference, in amber.</div></div>
 
-    <div class="cmp"><div class="cmphd"><span class="id">V8c</span><span class="ttl"><strong>Amber circle icons · 6-up compact</strong> — dense pre-footer trust</span></div>
+    <div class="cmp"><div class="cmphd"><span class="id">V8c</span><span class="ttl"><strong>Dividing-line credential</strong> — editorial minimal, no icons, amber verticals</span></div>
     <div class="cmpbody"><div class="v8c"><div class="row">
-      <div class="item"><div class="ic">✓</div><div class="meta">Free shipping $99+</div></div>
-      <div class="item"><div class="ic">✓</div><div class="meta">30-day warranty</div></div>
-      <div class="item"><div class="ic">✓</div><div class="meta">0% financing</div></div>
-      <div class="item"><div class="ic">✓</div><div class="meta">VK Tech Inspected</div></div>
-      <div class="item"><div class="ic">✓</div><div class="meta">Authorized dealer</div></div>
-      <div class="item"><div class="ic">✓</div><div class="meta">Expert support</div></div>
+      <div class="item"><div class="meta"><span class="n">Shipping</span><strong>Free over $99</strong><small>Continental US · most orders same-day</small></div></div>
+      <div class="item"><div class="meta"><span class="n">Warranty</span><strong>30-day VK Warranty</strong><small>Every piece, no exceptions</small></div></div>
+      <div class="item"><div class="meta"><span class="n">Financing</span><strong>0% up to 36 months</strong><small>Orders over $499</small></div></div>
+      <div class="item"><div class="meta"><span class="n">Support</span><strong>Real human expert</strong><small>Chat, phone, video — under 3 min</small></div></div>
     </div></div></div>
-    <div class="cmpcap"><strong>Use on:</strong> directly above the footer on pages that already carry a larger credential earlier. Single-line labels, tight spacing, quiet signal.</div></div>
+    <div class="cmpcap"><strong>Use on:</strong> About, editorial, policy pages where a quieter credential fits the page voice. No icons at all — amber category label above the claim, amber vertical dividers between columns. Reads like print.</div></div>
 
     <div class="cmp"><div class="cmphd"><span class="id">V9</span><span class="ttl"><strong>Quote / testimonial strip</strong> — social proof</span></div>
     <div class="cmpbody"><div class="v9">"Vintage King is the only place I trust to find a clean U 47."<small>— Mike Shipley · Mix engineer</small></div></div>
