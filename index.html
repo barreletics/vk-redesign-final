@@ -119,6 +119,38 @@ code{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:12px;backgr
 .cmpbody *{box-sizing:border-box}
 .cmpbody a{color:inherit;text-decoration:none}
 
+/* Empty image wells — centered "Photo" (preview placeholders; omit on .has-photo) */
+.cmpbody .img:empty,.cmpbody .pimg:empty,.cmpbody .split8020 .narrow:empty,.cmpbody .gallery .tile:empty{position:relative}
+.cmpbody .img:empty::after,.cmpbody .pimg:empty::after,.cmpbody .split8020 .narrow:empty::after,.cmpbody .gallery .tile:empty::after{
+  content:"Photo";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:rgba(26,26,24,0.26);
+  pointer-events:none;
+  z-index:2;
+}
+.cmpbody .edcard:nth-child(2) .img:empty::after,.cmpbody .edcard-wide .img:empty::after,.cmpbody .h6-hof .img:empty::after,.cmpbody .spotlight .img:empty::after{color:rgba(255,255,255,0.26)}
+.cmpbody .h7-photo::after{
+  content:"Photo";
+  position:absolute;
+  left:50%;
+  top:38%;
+  transform:translate(-50%,-50%);
+  z-index:1;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.22);
+  pointer-events:none;
+}
+
 /* ============================================================
    COMPONENT CSS (real VK system, scoped under .cmpbody)
    ============================================================ */
@@ -143,7 +175,7 @@ code{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:12px;backgr
 .cmpbody .btn-red{background:var(--vk-red);color:#fff;padding:11px 20px;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;border-radius:3px;display:inline-block}
 .cmpbody .btn-amber{background:var(--amber);color:#fff;padding:11px 20px;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;border-radius:3px;display:inline-block}
 .cmpbody .btn-ghost{background:transparent;color:var(--near-black);border:1px solid var(--near-black);padding:10px 20px;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;border-radius:3px;display:inline-block}
-.cmpbody .h2-split .img{background:linear-gradient(135deg,#cfc8be,#9c9489);display:grid;place-items:center}
+.cmpbody .h2-split .img{background:linear-gradient(135deg,#cfc8be,#9c9489);display:grid;place-items:center;position:relative}
 .cmpbody .h2-split .featured{background:rgba(0,0,0,0.55);color:#fff;padding:16px 20px;border-radius:3px;text-align:center}
 .cmpbody .h2-split .featured .lbl{font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber);margin-bottom:5px}
 .cmpbody .h2-split .featured .name{font-family:var(--font-display);font-size:16px;font-weight:600;margin-bottom:3px}
@@ -169,7 +201,7 @@ code{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:12px;backgr
 .cmpbody .h5-5050 h2{font-family:var(--font-display);font-size:42px;font-weight:600;line-height:1.05;margin-bottom:12px}
 .cmpbody .h5-5050 p{font-size:14px;color:var(--near-black);max-width:440px;line-height:1.6;margin-bottom:18px}
 .cmpbody .h5-5050 .actions{display:flex;gap:8px;flex-wrap:wrap}
-.cmpbody .h5-5050 .img{background:linear-gradient(135deg,#cfc8be,#9c9489);min-height:400px}
+.cmpbody .h5-5050 .img{background:linear-gradient(135deg,#cfc8be,#9c9489);min-height:400px;position:relative}
 
 .cmpbody .h6-hof{display:grid;grid-template-columns:1fr 1fr;min-height:460px}
 .cmpbody .h6-hof .body{background:var(--near-black);color:#fff;padding:56px 48px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
@@ -198,7 +230,7 @@ code{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:12px;backgr
 .cmpbody .h8-svc h2{font-family:var(--font-display);font-size:40px;font-weight:600;line-height:1.05;margin-bottom:12px}
 .cmpbody .h8-svc p{font-size:14px;color:var(--near-black);max-width:480px;line-height:1.6;margin-bottom:18px}
 .cmpbody .h8-svc .actions{display:flex;gap:8px;flex-wrap:wrap}
-.cmpbody .h8-svc .img{background:linear-gradient(135deg,#cfc8be,#9c9489);min-height:380px;border-radius:3px}
+.cmpbody .h8-svc .img{background:linear-gradient(135deg,#cfc8be,#9c9489);min-height:380px;border-radius:3px;position:relative}
 
 .cmpbody .h9-util{background:#fff;padding:28px 36px;border-bottom:1px solid var(--hairline)}
 .cmpbody .h9-util .crumb{font-size:11px;color:var(--mid-grey);margin-bottom:6px}
@@ -337,9 +369,9 @@ code{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:12px;backgr
 .cmpbody .edgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(26,26,24,0.08);padding:1px}
 .cmpbody .edgrid-f{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(26,26,24,0.08);padding:1px}
 .cmpbody .edgrid-f .edcard-wide{grid-column:1/-1}
-.cmpbody .edgrid-f .edcard-wide .img{aspect-ratio:2.2/1;min-height:300px;background:linear-gradient(135deg,#3a3a36,#1a1a18)}
+.cmpbody .edgrid-f .edcard-wide .img{aspect-ratio:2.2/1;min-height:300px;background:linear-gradient(135deg,#3a3a36,#1a1a18);position:relative}
 .cmpbody .edcard{background:#fff;display:flex;flex-direction:column}
-.cmpbody .edcard .img{aspect-ratio:16/10;background:linear-gradient(135deg,#cfc8be,#9c9489)}
+.cmpbody .edcard .img{aspect-ratio:16/10;background:linear-gradient(135deg,#cfc8be,#9c9489);position:relative}
 .cmpbody .edcard:nth-child(2) .img{background:linear-gradient(135deg,#3a3a36,#1a1a18)}
 .cmpbody .edcard:nth-child(3) .img{background:linear-gradient(135deg,#e0d8cc,#b8ad9f)}
 .cmpbody .edcard .body{padding:18px 22px}
@@ -392,7 +424,7 @@ code{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:12px;backgr
 
 /* B-H related gear */
 .cmpbody .rel{display:grid;grid-template-columns:1.4fr 1fr;background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);min-height:400px}
-.cmpbody .rel .img{background:linear-gradient(135deg,#cfc8be,#9c9489);min-height:320px}
+.cmpbody .rel .img{background:linear-gradient(135deg,#cfc8be,#9c9489);min-height:320px;position:relative}
 .cmpbody .rel .body{padding:32px 28px;display:flex;flex-direction:column;justify-content:center}
 .cmpbody .rel .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
 .cmpbody .rel h4{font-family:var(--font-display);font-size:24px;font-weight:600;margin-bottom:8px}
@@ -400,7 +432,7 @@ code{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:12px;backgr
 
 /* B-I 50/50 image + text */
 .cmpbody .fifty{display:grid;grid-template-columns:1fr 1.35fr;background:#fff;min-height:480px}
-.cmpbody .fifty .img{background:linear-gradient(135deg,#cfc8be,#9c9489);min-height:360px}
+.cmpbody .fifty .img{background:linear-gradient(135deg,#cfc8be,#9c9489);min-height:360px;position:relative}
 .cmpbody .fifty .body{padding:36px 32px;display:flex;flex-direction:column;justify-content:center}
 .cmpbody .fifty .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
 .cmpbody .fifty h3{font-family:var(--font-display);font-size:26px;font-weight:600;margin-bottom:10px}
@@ -414,7 +446,7 @@ code{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:12px;backgr
 
 /* B-K 20/80 split */
 .cmpbody .split8020{display:grid;grid-template-columns:20% 80%;background:#fff;min-height:280px;gap:1px;background:rgba(26,26,24,0.08);padding:1px}
-.cmpbody .split8020 .narrow{background:linear-gradient(135deg,#cfc8be,#9c9489)}
+.cmpbody .split8020 .narrow{background:linear-gradient(135deg,#cfc8be,#9c9489);position:relative}
 .cmpbody .split8020 .wide{background:#fff;padding:28px 32px;display:flex;flex-direction:column;justify-content:center}
 .cmpbody .split8020 .wide .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
 .cmpbody .split8020 .wide h3{font-family:var(--font-display);font-size:22px;font-weight:600;margin-bottom:8px}
@@ -446,7 +478,7 @@ code{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:12px;backgr
 
 /* B-M gallery 4-up */
 .cmpbody .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(26,26,24,0.08);padding:1px}
-.cmpbody .gallery .tile{aspect-ratio:1/1;background:linear-gradient(135deg,#cfc8be,#9c9489)}
+.cmpbody .gallery .tile{aspect-ratio:1/1;background:linear-gradient(135deg,#cfc8be,#9c9489);position:relative}
 .cmpbody .gallery .tile:nth-child(2){background:linear-gradient(135deg,#3a3a36,#1a1a18)}
 .cmpbody .gallery .tile:nth-child(3){background:linear-gradient(135deg,#e0d8cc,#b8ad9f)}
 .cmpbody .gallery .tile:nth-child(4){background:linear-gradient(135deg,#5a5550,#2a2520)}
@@ -511,7 +543,7 @@ code{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:12px;backgr
 .cmpbody .pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding:16px 22px;background:#fff;border-bottom:1px solid var(--hairline)}
 .cmpbody .pcard{padding:14px;border-right:1px solid var(--hairline)}
 .cmpbody .pcard:last-child{border-right:0}
-.cmpbody .pcard .pimg{aspect-ratio:1/1;background:linear-gradient(135deg,#e8e3db,#cfc8be);margin-bottom:10px}
+.cmpbody .pcard .pimg{aspect-ratio:1/1;background:linear-gradient(135deg,#e8e3db,#cfc8be);margin-bottom:10px;position:relative}
 .cmpbody .pcard .brand{font-size:10px;color:var(--mid-grey);font-weight:500;letter-spacing:0.10em;text-transform:uppercase;margin-bottom:3px}
 .cmpbody .pcard .name{font-family:var(--font-body);font-size:13px;font-weight:500;line-height:1.3;color:var(--near-black);min-height:34px;margin-bottom:6px}
 .cmpbody .pcard .price{font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--near-black)}
@@ -563,7 +595,7 @@ code{font-family:'SF Mono',Menlo,Monaco,Consolas,monospace;font-size:12px;backgr
 
 /* P-H spotlight 50/50 */
 .cmpbody .spotlight{display:grid;grid-template-columns:1fr 1.28fr;background:var(--near-black);color:#fff;min-height:440px}
-.cmpbody .spotlight .img{background:linear-gradient(135deg,#3a3a36,#1a1a18);min-height:280px}
+.cmpbody .spotlight .img{background:linear-gradient(135deg,#3a3a36,#1a1a18);min-height:280px;position:relative}
 .cmpbody .spotlight .body{padding:36px 40px;display:flex;flex-direction:column;justify-content:center}
 .cmpbody .spotlight .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
 .cmpbody .spotlight h3{font-family:var(--font-display);font-size:32px;font-weight:600;line-height:1.08;margin-bottom:10px}
