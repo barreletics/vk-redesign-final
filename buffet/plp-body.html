@@ -40,23 +40,35 @@ section.opt{padding:36px 32px;border-bottom:1px solid var(--hairline)}
 .preview{background:#fff;border:1px solid var(--hairline);border-radius:4px;overflow:hidden}
 .code-note{background:var(--off-white);padding:10px 16px;font-size:12px;color:var(--mid-grey);border-bottom:1px solid var(--hairline);font-family:'SF Mono',Menlo,Monaco,monospace}
 
-/* P-A — Filter rail (sticky left column) */
-.frame{display:grid;grid-template-columns:240px 1fr;background:#fff;min-height:380px}
-.frail{border-right:1px solid var(--hairline);padding:18px 16px;background:var(--off-white)}
-.frail h4{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid-grey);margin:18px 0 8px;padding-bottom:6px;border-bottom:1px solid var(--hairline)}
-.frail h4:first-child{margin-top:0}
-.frail label{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:13px;cursor:pointer}
-.frail label input{accent-color:var(--vk-red)}
-.fbody{padding:18px 22px}
-.fbody .crumb{font-size:11px;color:var(--mid-grey);margin-bottom:6px}
-.fbody h3{font-family:var(--font-display);font-size:22px;font-weight:600}
+/* P-A — Filter rail (canonical PLP pattern from main prototype) */
+.cathead{padding:24px 22px;background:#fff;border-bottom:1px solid var(--hairline)}
+.cathead .crumb{font-size:12px;color:var(--mid-grey);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.cathead .crumb a{color:var(--mid-grey)}
+.cathead h3{font-family:var(--font-display);font-size:28px;font-weight:600;line-height:1.1;margin-bottom:4px}
+.cathead .count{font-size:13px;color:var(--mid-grey);font-weight:500}
+.cathead .lede{font-size:13px;color:var(--mid-grey);margin-top:8px;max-width:680px;line-height:1.55}
+.fbar{padding:14px 22px;background:#fff;display:flex;gap:8px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--hairline)}
+.chip{font-size:12px;padding:7px 14px;border:1px solid var(--hairline);border-radius:18px;cursor:pointer;color:var(--near-black);background:#fff;font-family:var(--font-body);white-space:nowrap}
+.chip.red-active{background:var(--vk-red);color:#fff;border-color:var(--vk-red);font-weight:600}
+.chip.more{color:var(--vk-red);border-color:var(--vk-red);font-weight:500;background:none}
+.chip-div{width:1px;height:18px;background:var(--hairline);margin:0 4px;flex-shrink:0}
+.fbar .sort{margin-left:auto;font-size:13px;color:var(--mid-grey);display:flex;align-items:center;gap:8px}
+.fbar .sort select{font-family:var(--font-body);font-size:13px;padding:6px 26px 6px 10px;border:1px solid var(--hairline);border-radius:3px;background:#fff;cursor:pointer}
+.fpanel{background:var(--off-white);padding:16px 22px;border-bottom:1px solid var(--hairline)}
+.fpanel .ftabs{display:flex;gap:0;border-bottom:1px solid var(--hairline);margin:-16px -22px 14px}
+.fpanel .ftab{padding:11px 18px;font-size:12px;font-weight:600;letter-spacing:0.06em;color:var(--mid-grey);background:none;border:0;cursor:pointer;border-bottom:2px solid transparent}
+.fpanel .ftab.active{color:var(--near-black);border-bottom-color:var(--vk-red)}
+.fpanel .frow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.fpanel .seemore{font-size:12px;font-weight:500;color:var(--vk-red);background:none;border:0;cursor:pointer;padding:4px 4px;white-space:nowrap;text-decoration:none}
 
 /* P-B — Quick filter pills (horizontal) */
 .pills{padding:18px 22px;background:#fff;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .pills .lbl{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid-grey);margin-right:8px}
 .pill{font-size:12px;padding:7px 14px;border:1px solid var(--hairline);border-radius:18px;cursor:pointer;color:var(--near-black);background:#fff}
 .pill.active{background:var(--near-black);color:#fff;border-color:var(--near-black)}
+.pill.red-active{background:var(--vk-red);color:#fff;border-color:var(--vk-red);font-weight:600}
 .pill.amber{background:var(--amber-bg);border-color:var(--amber);color:var(--amber);font-weight:600}
+.pill.more{color:var(--vk-red);border-color:var(--vk-red);font-weight:500;background:none}
 
 /* P-C — Sort + result count bar */
 .sortbar{padding:14px 22px;background:#fff;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);display:flex;justify-content:space-between;align-items:center;font-size:13px}
@@ -78,11 +90,13 @@ section.opt{padding:36px 32px;border-bottom:1px solid var(--hairline)}
 .pcard .price{font-family:var(--font-body);font-size:14px;font-weight:500;color:var(--near-black)}
 .pcard .price .compare{color:var(--mid-grey);text-decoration:line-through;font-weight:400;margin-left:6px;font-size:12px}
 
-/* P-E — Buyer's guide card (between filter and grid) */
-.bguide{background:#EDE8E2;padding:22px 24px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;border-radius:4px;margin:14px 22px}
-.bguide .meta .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
-.bguide .meta h4{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:4px}
-.bguide .meta p{font-size:13px;color:var(--mid-grey)}
+/* P-E — Buyer's guide card (canonical pattern from main prototype) */
+.bguide{background:#EDE8E2;padding:18px 22px;display:flex;align-items:center;gap:18px;border-radius:4px;margin:14px 22px;flex-wrap:wrap}
+.bguide .lbl{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber)}
+.bguide .div{width:1px;height:32px;background:rgba(212,134,10,0.3)}
+.bguide .meta{flex:1;min-width:240px}
+.bguide .meta h4{font-family:var(--font-display);font-size:17px;font-weight:600;margin-bottom:3px}
+.bguide .meta p{font-size:13px;color:var(--mid-grey);line-height:1.5}
 .bguide .lk{background:var(--near-black);color:#fff;padding:11px 18px;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;border-radius:3px;white-space:nowrap}
 
 /* P-F — Co-op / featured brand pill block */
@@ -131,30 +145,50 @@ footer a{color:var(--amber)}
 
 <section class="opt"><div class="opt-inner">
   <div class="opt-head">
-    <div class="opt-meta"><div class="id">P-A · Sticky filter rail</div><h2>Filter rail · sticky left column (240px)</h2><p>The default PLP shape. Categories + price + brand + condition + connectivity. Sticks on scroll. <strong>Required JSON-LD: BreadcrumbList + ItemList.</strong></p></div>
+    <div class="opt-meta"><div class="id">P-A · Canonical PLP filter pattern</div><h2>Filter pattern · breadcrumb + count + chip bar + expanded panel</h2><p>The locked PLP filter pattern from the main prototype. <strong>Three layers</strong>: (1) breadcrumb + H1 + product count + lede line, (2) horizontal chip bar with All/New/Used/Open Box → category chips → red <em>More Filters ↓</em> chip → sort dropdown, (3) expanded panel with tabbed filters and red <em>+ more categories →</em> / <em>+ 120 more brands →</em> see-all links. <strong>Required JSON-LD: BreadcrumbList + ItemList.</strong></p></div>
     <div class="markers" data-id="P-A"><button class="keep">Keep</button><button class="maybe">Maybe</button><button class="kill">Kill</button></div>
   </div>
-  <div class="preview"><div class="code-note">.plp-filter-rail · 240px sidebar + 1fr grid</div><div class="frame">
-    <div class="frail">
-      <div class="fbody" style="padding:0 0 14px"><div class="crumb">Microphones / Condenser</div></div>
-      <h4>Polar Pattern</h4>
-      <label><input type="checkbox" checked>Cardioid</label>
-      <label><input type="checkbox">Omnidirectional</label>
-      <label><input type="checkbox">Figure-8</label>
-      <label><input type="checkbox">Multi-pattern</label>
-      <h4>Brand</h4>
-      <label><input type="checkbox">Neumann</label>
-      <label><input type="checkbox">Telefunken</label>
-      <label><input type="checkbox">AKG</label>
-      <label><input type="checkbox">Coles</label>
-      <h4>Price</h4>
-      <label><input type="checkbox">Under $1,000</label>
-      <label><input type="checkbox">$1,000 – $5,000</label>
-      <label><input type="checkbox">$5,000 – $10,000</label>
-      <label><input type="checkbox">$10,000+</label>
+  <div class="preview"><div class="code-note">.plp-filter-canonical · breadcrumb + H1 + count + lede + chip bar + sort + expanded panel + red see-all links</div>
+    <div class="cathead">
+      <div class="crumb"><a href="#">Home</a> / <a href="#">Microphones</a></div>
+      <h3>Microphones</h3>
+      <div class="count">843 products</div>
+      <p class="lede">Condenser, dynamic, ribbon, and tube mics from Neumann, Telefunken, Coles, AKG, Royer, Shure, and 60+ more brands. Every used unit Tech-Shop inspected.</p>
     </div>
-    <div class="fbody"><h3>Condenser Microphones</h3><p style="font-size:12px;color:var(--mid-grey);margin-top:4px">— grid renders here —</p></div>
-  </div></div>
+    <div class="fbar">
+      <button class="chip red-active">All</button>
+      <button class="chip">New</button>
+      <button class="chip">Used</button>
+      <button class="chip">Open Box</button>
+      <span class="chip-div"></span>
+      <button class="chip">Condenser</button>
+      <button class="chip">Dynamic</button>
+      <button class="chip">Ribbon</button>
+      <button class="chip">Tube</button>
+      <button class="chip">Under $1,000</button>
+      <span class="chip-div"></span>
+      <button class="chip more">More Filters ↓</button>
+      <div class="sort"><span>Sort:</span><select><option>Most Popular</option><option>Price: Low–High</option><option>Price: High–Low</option><option>Newest</option><option>In Stock Today</option></select></div>
+    </div>
+    <div class="fpanel">
+      <div class="ftabs">
+        <button class="ftab active">Category</button>
+        <button class="ftab">Brand</button>
+        <button class="ftab">Price</button>
+        <button class="ftab">Availability</button>
+      </div>
+      <div class="frow">
+        <button class="chip">Condenser</button>
+        <button class="chip">Dynamic</button>
+        <button class="chip">Ribbon</button>
+        <button class="chip">Tube</button>
+        <button class="chip">Large Diaphragm</button>
+        <button class="chip">Small Diaphragm</button>
+        <button class="chip">Stereo</button>
+        <button class="seemore">+ more categories →</button>
+      </div>
+    </div>
+  </div>
 </div></section>
 
 <section class="opt"><div class="opt-inner">
@@ -205,9 +239,11 @@ footer a{color:var(--amber)}
     <div class="opt-meta"><div class="id">P-E · Buyer's guide card</div><h2>Buyer's guide card · between filters and grid</h2><p>Drops between the filter bar and the product grid. Surfaces the relevant HOF / heritage article for the category. Reads as helpful, not promotional. Strong on Microphones, Compressors, Preamps PLPs.</p></div>
     <div class="markers" data-id="P-E"><button class="keep">Keep</button><button class="maybe">Maybe</button><button class="kill">Kill</button></div>
   </div>
-  <div class="preview"><div class="code-note">.plp-buyer-guide · #EDE8E2 bg · 1fr auto · near-black button</div><div style="background:#fff;padding:14px 0"><div class="bguide">
-    <div class="meta"><div class="eye">Buyer's guide</div><h4>How to pick a vocal condenser without overspending.</h4><p>The 5-minute primer. Polar patterns, tube vs FET, when to spring for a vintage U 47.</p></div>
-    <a href="#" class="lk">Read the guide →</a>
+  <div class="preview"><div class="code-note">.plp-buyer-guide · #EDE8E2 bg · amber label + Playfair title + sub-line + near-black button</div><div style="background:#fff;padding:14px 0"><div class="bguide">
+    <span class="lbl">Buying Guide</span>
+    <span class="div"></span>
+    <div class="meta"><h4>Microphone Buying Guide</h4><p>Condenser vs. Dynamic vs. Ribbon — how to choose the right mic for your studio</p></div>
+    <a href="#" class="lk">Read the Guide →</a>
   </div></div></div>
 </div></section>
 

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Page Layouts — VK Redesign Final | Vintage Pro Audio</title>
-<meta name="description" content="The 3 secondary templates and 3 category headers visualized.">
+<title>Page Layouts Catalog — every layout, when to use, live example | VK Redesign Final</title>
+<meta name="description" content="Every page layout shown as a labeled wireframe + when to use + live example link. 5 secondary templates + 4 PLP layouts + product page + custom-build template.">
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,163 +13,459 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:var(--font-body);background:var(--warm-white);color:var(--near-black);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-.topbar{background:var(--near-black);color:#fff;padding:10px 24px;font-size:12px;display:flex;align-items:center;gap:14px}
+.topbar{background:var(--near-black);color:#fff;padding:10px 24px;font-size:12px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .topbar .back{background:var(--vk-red);color:#fff;padding:7px 14px;border-radius:3px;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase}
 .topbar strong{color:#fff;font-weight:600}
-.hero{background:#EDE8E2;padding:56px 32px}
-.hero-inner{max-width:1080px;margin:0 auto}
-.hero .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
-.hero h1{font-family:var(--font-display);font-size:40px;font-weight:600;line-height:1.05;margin-bottom:14px}
-.hero p{font-size:16px;color:var(--near-black);max-width:780px}
-section.cat{padding:56px 32px;border-bottom:1px solid var(--hairline)}
-.cat-inner{max-width:1280px;margin:0 auto}
-.cat-head{padding-bottom:14px;border-bottom:2px solid var(--near-black);margin-bottom:30px}
-.cat-eye{font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
-.cat-h{font-family:var(--font-display);font-size:30px;font-weight:600;line-height:1.15}
-.cat-sub{font-size:13px;color:var(--mid-grey);max-width:680px;line-height:1.6;margin-top:8px}
-.layouts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-@media(max-width:980px){.layouts{grid-template-columns:1fr}}
-.layout{background:#fff;border:1px solid var(--hairline);border-radius:4px;overflow:hidden}
-.layout-head{padding:14px 18px;border-bottom:1px solid var(--hairline)}
-.layout-name{font-size:14px;font-weight:600;margin-bottom:4px}
-.layout-when{font-size:12px;color:var(--mid-grey)}
-.silhouette{background:var(--off-white);padding:14px;display:flex;flex-direction:column;gap:6px;min-height:340px}
-.sil{border-radius:2px;background:#fff}
-.sil-hero-light{background:#EDE8E2;height:64px;padding:14px}
-.sil-hero-dark{background:#1A1A18;height:64px;padding:14px;color:#fff}
-.sil-hero-split{background:linear-gradient(90deg,#1A1A18 50%,#666 50%);height:80px}
-.sil-strip{background:var(--amber-bg);height:24px}
-.sil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;height:80px}
-.sil-grid div{background:#ddd;border-radius:2px}
-.sil-content{height:120px;padding:14px}
-.sil-content strong{display:block;font-family:var(--font-display);font-size:11px;height:8px;background:#333;width:60%;border-radius:1px;margin-bottom:6px}
-.sil-content small{display:block;background:#eee;height:4px;width:80%;border-radius:1px;margin-bottom:3px}
-.sil-form{background:#EDE8E2;height:60px}
-.sil-foot{background:#1A1A18;height:24px}
-.layout-foot{padding:14px 18px;border-top:1px solid var(--hairline);font-size:11px;color:var(--mid-grey);display:flex;justify-content:space-between;align-items:center}
-.layout-foot a{color:var(--vk-red);font-weight:600;font-size:12px}
-.tag{font-size:9px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;padding:3px 7px;border-radius:2px;background:var(--amber-bg);color:var(--amber)}
-footer{background:var(--near-black);color:rgba(255,255,255,0.7);padding:36px 32px;text-align:center;font-size:13px}
+
+.page-hero{background:#EDE8E2;padding:56px 32px}
+.page-hero-inner{max-width:1080px;margin:0 auto}
+.page-hero .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.page-hero h1{font-family:var(--font-display);font-size:42px;font-weight:600;line-height:1.05;margin-bottom:14px;max-width:840px}
+.page-hero p{font-size:16px;color:var(--near-black);max-width:780px;margin-bottom:8px}
+
+.bucket-nav{position:sticky;top:0;background:#fff;padding:14px 32px;border-bottom:1px solid var(--hairline);z-index:50;display:flex;gap:8px;overflow-x:auto;box-shadow:0 2px 8px rgba(26,26,24,0.04)}
+.bucket-nav a{font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:8px 14px;border:1px solid var(--hairline);border-radius:18px;color:var(--near-black);white-space:nowrap;background:#fff}
+.bucket-nav a:hover{background:var(--off-white)}
+.bucket-nav strong{font-size:11px;color:var(--mid-grey);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;align-self:center;margin-right:6px}
+
+section.bucket{padding:48px 32px;border-bottom:1px solid var(--hairline)}
+.bucket:nth-of-type(odd){background:var(--off-white)}
+.bucket-inner{max-width:1280px;margin:0 auto}
+.bucket-head{margin-bottom:30px}
+.bucket-head .id{font-family:var(--font-display);font-size:13px;font-weight:600;color:var(--amber);margin-bottom:8px;letter-spacing:0.08em}
+.bucket-head h2{font-family:var(--font-display);font-size:30px;font-weight:600;margin-bottom:8px;line-height:1.1}
+.bucket-head p{font-size:14px;color:var(--mid-grey);max-width:740px;line-height:1.6}
+
+/* Card row layout */
+.row{display:grid;grid-template-columns:300px 1fr 240px;gap:24px;background:#fff;border:1px solid var(--hairline);border-radius:6px;overflow:hidden;margin-bottom:18px;align-items:stretch}
+.row .wire{background:var(--off-white);padding:16px;display:flex;flex-direction:column;gap:4px;border-right:1px solid var(--hairline)}
+.row .meta{padding:20px 24px}
+.row .meta .id{font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber);margin-bottom:4px}
+.row .meta h3{font-family:var(--font-display);font-size:20px;font-weight:600;margin-bottom:8px;line-height:1.2}
+.row .meta .when-label{font-size:11px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:var(--mid-grey);margin-bottom:4px}
+.row .meta .when{font-size:13px;color:var(--near-black);line-height:1.55;margin-bottom:14px}
+.row .meta .recipe{font-size:12px;color:var(--mid-grey);line-height:1.6;background:var(--off-white);padding:10px 12px;border-radius:3px;border-left:2px solid var(--amber);font-family:'SF Mono',Menlo,Monaco,monospace}
+.row .meta .recipe strong{color:var(--near-black);font-weight:600;font-family:var(--font-body)}
+.row .live{background:var(--off-white);padding:18px;display:flex;flex-direction:column;gap:6px;border-left:1px solid var(--hairline)}
+.row .live .lbl{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid-grey);margin-bottom:4px}
+.row .live a{display:block;font-size:12px;font-weight:500;color:var(--vk-red);padding:8px 10px;background:#fff;border:1px solid var(--hairline);border-radius:3px}
+.row .live a:hover{background:var(--amber-bg);border-color:var(--amber)}
+.row .live a.muted{color:var(--mid-grey);background:transparent;border:0;padding:6px 10px}
+
+/* Wireframe blocks */
+.wb{padding:0;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(26,26,24,0.55);font-family:var(--font-body);text-align:center}
+.wb-nav{height:18px;background:#1a1a18;color:rgba(255,255,255,0.55);font-size:8px}
+.wb-hero-light{height:54px;background:#EDE8E2;border:1px dashed rgba(212,134,10,0.45);color:var(--amber)}
+.wb-hero-dark{height:54px;background:#2C2C2A;color:rgba(255,255,255,0.65)}
+.wb-hero-photo{height:62px;background:linear-gradient(180deg,#665e54,#2c2520);color:#fff}
+.wb-hero-split{height:54px;background:linear-gradient(90deg,#EDE8E2 60%,#cfc8be 60%);color:var(--mid-grey)}
+.wb-strip{height:14px;background:#fff;border:1px solid rgba(26,26,24,0.20);color:var(--mid-grey);font-size:8px}
+.wb-strip-amber{height:14px;background:#F5E6C8;border:1px solid var(--amber);color:var(--amber);font-size:8px;font-weight:700}
+.wb-strip-red{height:14px;background:#fff;border:1px solid var(--vk-red);color:var(--vk-red);font-size:8px;font-weight:700}
+.wb-process{height:36px;background:#fff;border:1px solid var(--hairline);color:var(--mid-grey)}
+.wb-grid{height:50px;background:#fff;border:1px solid var(--hairline);color:var(--mid-grey);background-image:linear-gradient(90deg,#fff 33%,var(--hairline) 33%,var(--hairline) 33.5%,#fff 33.5%,#fff 66.5%,var(--hairline) 66.5%,var(--hairline) 67%,#fff 67%)}
+.wb-2x2{height:62px;background:#fff;border:1px solid var(--hairline);color:var(--mid-grey);background-image:linear-gradient(90deg,#fff 50%,var(--hairline) 50%,var(--hairline) 50.5%,#fff 50.5%),linear-gradient(0deg,#fff 50%,var(--hairline) 50%,var(--hairline) 50.5%,#fff 50.5%);background-size:100% 100%, 100% 100%}
+.wb-quote{height:30px;background:#fff;border:1px solid var(--hairline);color:var(--amber);font-style:italic}
+.wb-stats{height:34px;background:#2C2C2A;color:#fff}
+.wb-faq{height:50px;background:#fff;border:1px solid var(--hairline);color:var(--mid-grey)}
+.wb-cta{height:48px;background:#EDE8E2;border:1px dashed var(--amber);color:var(--amber)}
+.wb-fifty{height:60px;background:linear-gradient(90deg,#cfc8be 50%,#EDE8E2 50%);color:var(--mid-grey)}
+.wb-image-big{height:80px;background:linear-gradient(135deg,#665e54,#2c2520);color:#fff}
+.wb-2080{height:42px;background:linear-gradient(90deg,#cfc8be 20%,#fff 20%);border:1px solid var(--hairline);color:var(--mid-grey)}
+.wb-gallery{height:32px;background:#fff;border:1px solid var(--hairline);color:var(--mid-grey);background-image:repeating-linear-gradient(90deg,transparent,transparent 24%,var(--hairline) 24%,var(--hairline) 25%)}
+.wb-video{height:54px;background:linear-gradient(135deg,#3a3a36,#1a1a18);color:#fff}
+.wb-timeline{height:32px;background:#fff;border:1px solid var(--hairline);color:var(--amber)}
+.wb-rel{height:38px;background:#fff;border:1px solid var(--hairline);color:var(--mid-grey)}
+.wb-coop{height:18px;background:#fff;border:1px solid var(--hairline);color:var(--mid-grey);font-size:8px}
+.wb-cathead{height:34px;background:#fff;border:1px solid var(--hairline);color:var(--mid-grey)}
+.wb-fbar{height:18px;background:#fff;border:1px solid var(--hairline);color:var(--vk-red);font-size:8px;font-weight:700}
+.wb-fpanel{height:30px;background:var(--off-white);border:1px solid var(--hairline);color:var(--vk-red);font-size:8px}
+.wb-bguide{height:22px;background:#EDE8E2;border:1px solid var(--amber);color:var(--amber);font-size:8px;font-weight:700}
+.wb-pgrid{height:80px;background:#fff;border:1px solid var(--hairline);color:var(--mid-grey);background-image:linear-gradient(90deg,#fff 25%,var(--hairline) 25%,var(--hairline) 25.5%,#fff 25.5%,#fff 50%,var(--hairline) 50%,var(--hairline) 50.5%,#fff 50.5%,#fff 75%,var(--hairline) 75%,var(--hairline) 75.5%,#fff 75.5%)}
+.wb-pag{height:18px;background:#fff;border:1px solid var(--hairline);color:var(--mid-grey)}
+.wb-spotlight{height:46px;background:#1a1a18;color:#fff;background:linear-gradient(90deg,#1a1a18 50%,#2C2C2A 50%)}
+.wb-pdp-buy{height:80px;background:#fff;border:1px solid var(--hairline);color:var(--mid-grey);background:linear-gradient(90deg,#cfc8be 55%,#fff 55%)}
+.wb-pdp-tabs{height:24px;background:#fff;border:1px solid var(--hairline);color:var(--mid-grey)}
+.wb-pdp-cross{height:54px;background:#fff;border:1px solid var(--hairline);color:var(--mid-grey)}
+.wb-footer{height:34px;background:#1a1a18;color:rgba(255,255,255,0.55)}
+
+footer{background:var(--near-black);color:rgba(255,255,255,0.7);padding:32px;text-align:center;font-size:13px}
 footer a{color:var(--amber)}
+
+@media(max-width:980px){
+  .row{grid-template-columns:1fr}
+  .row .wire{border-right:0;border-bottom:1px solid var(--hairline)}
+  .row .live{border-left:0;border-top:1px solid var(--hairline)}
+}
 </style>
 </head>
 <body>
-<div class="topbar"><a href="index.html" class="back">← Dashboard</a><span><strong>Page Layouts</strong> — 3 templates · 3 headers · visualized</span></div>
+<div class="topbar"><a href="index.html" class="back">← Dashboard</a><span><strong>Page Layouts Catalog</strong> — wireframe + when to use + live example for every layout.</span></div>
 
-<section class="hero">
-  <div class="hero-inner">
-    <div class="eye">Layout reference</div>
-    <h1>Three templates. Three headers. One product page. One category page.</h1>
-    <p>Every page in the site uses one of these. Section choices inside each come from <a href="section-buffet.html" style="color:var(--vk-red);text-decoration:underline">section-buffet.html</a>.</p>
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eye">Reference · Page layouts catalog</div>
+    <h1>Every page layout. Wireframe. When to use. Live example.</h1>
+    <p>The single source of truth for page composition. <strong>5 secondary templates</strong> (T1–T5), <strong>4 PLP layouts</strong> (C1–C4), <strong>1 product page</strong>, plus a <strong>custom-build template</strong> showing how to compose your own from the section buffet. Each row shows: labeled wireframe (left) · description + recipe (middle) · live links (right).</p>
+    <p style="font-size:13px;color:var(--mid-grey)"><strong>Wireframe legend:</strong> dashed amber outline = light section · solid dark fill = dark section · red label = required ecommerce module · amber label = recommended editorial module.</p>
   </div>
 </section>
 
-<section class="cat">
-  <div class="cat-inner">
-    <div class="cat-head">
-      <div class="cat-eye">A · Secondary page templates</div>
-      <h2 class="cat-h">3 templates · pick one per secondary page</h2>
-      <p class="cat-sub">All 3 share the same nav, footer, and section vocabulary. Different hero treatment + section ordering.</p>
+<nav class="bucket-nav">
+  <strong>Jump to:</strong>
+  <a href="#secondary">Secondary templates (5)</a>
+  <a href="#plp">PLP layouts (4)</a>
+  <a href="#pdp">Product page (1)</a>
+  <a href="#custom">Custom build</a>
+</nav>
+
+<!-- ========== SECONDARY TEMPLATES ========== -->
+<section class="bucket" id="secondary">
+  <div class="bucket-inner">
+    <div class="bucket-head">
+      <div class="id">SECTION 01 of 04</div>
+      <h2>Secondary templates · T1–T5</h2>
+      <p>Five locked compositions for secondary content pages. Each one is a hero family + body recipe + strip + footer. <strong>Pick one per page.</strong> Don't mix templates within a page. If your page doesn't fit — go custom (see Section 04).</p>
     </div>
-    <div class="layouts">
-      <div class="layout">
-        <div class="layout-head"><div class="layout-name">T1 · Editorial Light</div><div class="layout-when">About · Make Your Mark · Careers · PLAYBACK</div></div>
-        <div class="silhouette">
-          <div class="sil-hero-light"><div style="font-size:9px;color:var(--amber);font-weight:700;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:4px">Eyebrow</div><div style="font-family:var(--font-display);font-size:14px;font-weight:600">Headline</div></div>
-          <div class="sil sil-strip"></div>
-          <div class="sil sil-grid"><div></div><div></div><div></div></div>
-          <div class="sil sil-content"><strong></strong><small></small><small></small><small></small></div>
-          <div class="sil sil-form"></div>
-          <div class="sil sil-foot"></div>
-        </div>
-        <div class="layout-foot"><span class="tag">T1</span><a href="secondary/secondary-template-1.html">Open template →</a></div>
+
+    <div class="row">
+      <div class="wire">
+        <div class="wb wb-nav">NAV</div>
+        <div class="wb wb-hero-light">HERO H4 · Centered light</div>
+        <div class="wb wb-strip-amber">STRIP V8 · Amber trust</div>
+        <div class="wb wb-2x2">EDITORIAL 2×2 · 4 large image cards</div>
+        <div class="wb wb-process">3-STEP PROCESS</div>
+        <div class="wb wb-quote">PULL QUOTE</div>
+        <div class="wb wb-cta">CTA + email form</div>
+        <div class="wb wb-footer">FOOTER</div>
       </div>
-      <div class="layout">
-        <div class="layout-head"><div class="layout-name">T2 · Deep Article</div><div class="layout-when">Hall of Fame articles (Neve 1073, Fairchild, U47, etc)</div></div>
-        <div class="silhouette">
-          <div class="sil-hero-light"><div style="font-size:9px;color:var(--amber);font-weight:700;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:4px">HOF · Hall</div><div style="font-family:var(--font-display);font-size:14px;font-weight:600">Product H1</div></div>
-          <div class="sil" style="height:90px;background:#fff;border:1px solid var(--hairline);padding:10px"><small style="display:block;background:#eee;height:4px;width:90%;border-radius:1px;margin-bottom:3px"></small><small style="display:block;background:#eee;height:4px;width:75%;border-radius:1px;margin-bottom:3px"></small><small style="display:block;background:#eee;height:4px;width:85%;border-radius:1px;margin-bottom:3px"></small><small style="display:block;background:#eee;height:4px;width:60%;border-radius:1px"></small></div>
-          <div class="sil" style="height:50px;background:#1A1A18"></div>
-          <div class="sil sil-grid"><div></div><div></div><div></div></div>
-          <div class="sil sil-form"></div>
-          <div class="sil sil-foot"></div>
-        </div>
-        <div class="layout-foot"><span class="tag">T2</span><a href="secondary/secondary-template-2.html">Open template →</a></div>
+      <div class="meta">
+        <div class="id">T1 · EDITORIAL LIGHT</div>
+        <h3>T1 — Editorial light</h3>
+        <div class="when-label">Use when</div>
+        <div class="when">The page is story-led but light and breathable. Sale teasers, NAMM, Back to School, brand drops, season landing pages, Make Your Mark intros. <strong>No dark moments.</strong></div>
+        <div class="recipe"><strong>Recipe:</strong><br>nav → H4 hero → V8 strip → editorial 2×2 (B-B) → 3-step process (B-A) → pull quote (B-D) → CTA form (B-G) → footer</div>
       </div>
-      <div class="layout">
-        <div class="layout-head"><div class="layout-name">T3 · Program / Service</div><div class="layout-when">Trade · Studio Pros · Audio Consultants · Section 179 · Warranty</div></div>
-        <div class="silhouette">
-          <div class="sil-hero-light"><div style="font-size:9px;color:var(--amber);font-weight:700;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:4px">Program</div><div style="font-family:var(--font-display);font-size:14px;font-weight:600">Program H1</div></div>
-          <div class="sil sil-strip" style="background:#1A1A18"></div>
-          <div class="sil" style="height:70px;background:var(--amber-bg);padding:10px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;align-items:center"><div style="text-align:center;font-family:var(--font-display);color:var(--amber);font-size:14px;font-weight:600">1</div><div style="text-align:center;font-family:var(--font-display);color:var(--amber);font-size:14px;font-weight:600">2</div><div style="text-align:center;font-family:var(--font-display);color:var(--amber);font-size:14px;font-weight:600">3</div></div>
-          <div class="sil sil-grid" style="grid-template-columns:repeat(4,1fr);height:60px"><div></div><div></div><div></div><div></div></div>
-          <div class="sil sil-form"></div>
-          <div class="sil sil-foot"></div>
-        </div>
-        <div class="layout-foot"><span class="tag">T3</span><a href="secondary/secondary-template-3.html">Open template →</a></div>
+      <div class="live">
+        <div class="lbl">Live examples</div>
+        <a href="../vk-secondary-pages/back-to-school-v2.html" target="_blank">back-to-school ↗</a>
+        <a href="../vk-secondary-pages/black-friday-microphone-deals-v2.html" target="_blank">black-friday-microphone-deals ↗</a>
+        <a href="../vk-secondary-pages/new-at-namm-microphones-v2.html" target="_blank">new-at-namm-microphones ↗</a>
       </div>
     </div>
+
+    <div class="row">
+      <div class="wire">
+        <div class="wb wb-nav">NAV</div>
+        <div class="wb wb-hero-dark">HERO H6 · HOF / heritage dark</div>
+        <div class="wb wb-strip">CREDENTIAL STRIP V7</div>
+        <div class="wb wb-image-big">SINGLE LARGE IMAGE · full bleed</div>
+        <div class="wb wb-2080">20/80 IMAGE SPLIT · body right</div>
+        <div class="wb wb-timeline">HERITAGE TIMELINE · 4 points</div>
+        <div class="wb wb-quote">PULL QUOTE</div>
+        <div class="wb wb-rel">RELATED GEAR · shop CTA</div>
+        <div class="wb wb-cta">CTA + email form</div>
+        <div class="wb wb-footer">FOOTER</div>
+      </div>
+      <div class="meta">
+        <div class="id">T2 · DEEP ARTICLE (HOF)</div>
+        <h3>T2 — Deep article (HOF + gear heritage)</h3>
+        <div class="when-label">Use when</div>
+        <div class="when">Long-form, story-first, SEO-led. Hall of Fame articles, gear heritage deep dives (U47, 1073, LA-2A, 1176, Fairchild, V72, V76). <strong>One dark moment</strong> = the hero.</div>
+        <div class="recipe"><strong>Recipe:</strong><br>nav → H6 dark hero → V7 credential → single large image (B-L) → 20/80 split (B-K) → timeline (B-O) → pull quote (B-D) → related gear (B-H) → CTA form (B-G) → footer</div>
+      </div>
+      <div class="live">
+        <div class="lbl">Live examples</div>
+        <a href="../vk-secondary-pages/neumann-u47.html" target="_blank">neumann-u47 ↗</a>
+        <a href="../vk-secondary-pages/neve-1073.html" target="_blank">neve-1073 ↗</a>
+        <a href="../vk-secondary-pages/la-2a.html" target="_blank">la-2a ↗</a>
+        <a href="../vk-secondary-pages/urei-1176.html" target="_blank">urei-1176 ↗</a>
+        <a href="../vk-secondary-pages/fairchild-660-670.html" target="_blank">fairchild-660-670 ↗</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="wire">
+        <div class="wb wb-nav">NAV</div>
+        <div class="wb wb-hero-light">HERO H8 · Service / Program (light + photo)</div>
+        <div class="wb wb-strip-amber">STRIP V7 · Credential bar</div>
+        <div class="wb wb-process">3-STEP PROCESS · big amber numbers</div>
+        <div class="wb wb-2x2">FEATURE CARDS · 3-up icons</div>
+        <div class="wb wb-stats">STAT BLOCK · 4-up dark</div>
+        <div class="wb wb-faq">FAQ ACCORDION · 6-8 rows</div>
+        <div class="wb wb-cta">CTA + email form</div>
+        <div class="wb wb-footer">FOOTER</div>
+      </div>
+      <div class="meta">
+        <div class="id">T3 · PROGRAM / SERVICE</div>
+        <h3>T3 — Program / service</h3>
+        <div class="when-label">Use when</div>
+        <div class="when">The page sells a service or program with a clear conversion goal. Sell or Trade, Trade Program, Audio Consultants, Studio Installations, Tech Shop, Section 179. <strong>One dark moment</strong> = the stat block.</div>
+        <div class="recipe"><strong>Recipe:</strong><br>nav → H8 hero → V7 credential → 3-step process (B-A) → feature cards (B-C) → dark stat block (B-E) → FAQ accordion (B-F) → CTA form (B-G) → footer</div>
+      </div>
+      <div class="live">
+        <div class="lbl">Live examples</div>
+        <a href="../vk-secondary-pages/audio-consultants.html" target="_blank">audio-consultants ↗</a>
+        <a href="../vk-secondary-pages/trade-program.html" target="_blank">trade-program ↗</a>
+        <a href="../vk-secondary-pages/section-179.html" target="_blank">section-179 ↗</a>
+        <a href="../vk-secondary-pages/studio-professionals.html" target="_blank">studio-professionals ↗</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="wire">
+        <div class="wb wb-nav">NAV</div>
+        <div class="wb wb-hero-photo">HERO H7 · Photo background overlay</div>
+        <div class="wb wb-strip">CREDENTIAL STRIP V7</div>
+        <div class="wb wb-pgrid">PRODUCT GRID · 4-up curated picks</div>
+        <div class="wb wb-quote">PULL QUOTE</div>
+        <div class="wb wb-rel">RELATED GEAR · shop CTA</div>
+        <div class="wb wb-cta">CTA + email form</div>
+        <div class="wb wb-footer">FOOTER</div>
+      </div>
+      <div class="meta">
+        <div class="id">T4 · PROMOTION / DROP</div>
+        <h3>T4 — Promotion / drop</h3>
+        <div class="when-label">Use when</div>
+        <div class="when">A specific brand drop, NAMM launch, limited release, co-op campaign. Universal Audio promotions, Avid trade-in, Pro Tools migrations. <strong>One dark moment</strong> = the photo hero.</div>
+        <div class="recipe"><strong>Recipe:</strong><br>nav → H7 photo hero → V7 credential → curated 4-up product grid → pull quote (B-D) → related gear (B-H) → CTA form (B-G) → footer</div>
+      </div>
+      <div class="live">
+        <div class="lbl">Live examples</div>
+        <a href="../vk-secondary-pages/universal-audio-promotions-v2.html" target="_blank">ua-promotions ↗</a>
+        <a href="../vk-secondary-pages/avid-pro-tools-trade-in-v2.html" target="_blank">avid-pro-tools-trade-in ↗</a>
+        <a href="../vk-secondary-pages/avid-s4-control-surface-configurations-v2.html" target="_blank">avid-s4-control ↗</a>
+        <a href="../vk-secondary-pages/avid-s6-control-surface-configurations-v2.html" target="_blank">avid-s6-control ↗</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="wire">
+        <div class="wb wb-nav">NAV</div>
+        <div class="wb wb-hero-light">HERO H4 · Centered light · plain</div>
+        <div class="wb wb-strip">CREDENTIAL STRIP V7 · optional</div>
+        <div class="wb wb-faq">CONTENT BLOCK · 70ch text + sub-headings</div>
+        <div class="wb wb-faq">CONTENT BLOCK · second section</div>
+        <div class="wb wb-faq">FAQ ACCORDION · optional</div>
+        <div class="wb wb-cta">CTA + email form · optional</div>
+        <div class="wb wb-footer">FOOTER</div>
+      </div>
+      <div class="meta">
+        <div class="id">T5 · POLICY / LONG-FORM</div>
+        <h3>T5 — Policy / long-form</h3>
+        <div class="when-label">Use when</div>
+        <div class="when">Plain-text policy or info-dense pages. Returns, Shipping, Privacy, Warranty, terms, Section 179 tax detail, Open Box conditions. Optimized for legal readability. <strong>No dark moments.</strong></div>
+        <div class="recipe"><strong>Recipe:</strong><br>nav → H4 plain hero → V7 strip (optional) → text content blocks @ 70ch line-length → FAQ (optional) → CTA (optional) → footer</div>
+      </div>
+      <div class="live">
+        <div class="lbl">Live examples</div>
+        <a href="../vk-secondary-pages/returns-v2.html" target="_blank">returns ↗</a>
+        <a href="../vk-secondary-pages/shipping-policy-v2.html" target="_blank">shipping-policy ↗</a>
+        <a href="../vk-secondary-pages/privacy-policy-v2.html" target="_blank">privacy-policy ↗</a>
+        <a href="../vk-secondary-pages/warranty.html" target="_blank">warranty ↗</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<section class="cat" style="background:var(--off-white)">
-  <div class="cat-inner">
-    <div class="cat-head">
-      <div class="cat-eye">B · Category page headers</div>
-      <h2 class="cat-h">3 headers · same body · pick per context</h2>
-      <p class="cat-sub">Same product grid, filter rail, trust strip below. Header swaps based on whether it's a daily category, a brand spotlight, or a curated drop.</p>
+<!-- ========== PLP LAYOUTS ========== -->
+<section class="bucket" id="plp">
+  <div class="bucket-inner">
+    <div class="bucket-head">
+      <div class="id">SECTION 02 of 04</div>
+      <h2>PLP layouts · C1–C4</h2>
+      <p>Four locked layouts for category, collection, search-results, and editorial PLP pages. <strong>All four use the canonical filter pattern</strong> (P-A) directly below the hero — only the hero treatment and editorial interrupts vary.</p>
     </div>
-    <div class="layouts">
-      <div class="layout">
-        <div class="layout-head"><div class="layout-name">H1 · Default Dark Strip</div><div class="layout-when">Daily driver. Every category landing.</div></div>
-        <div class="silhouette">
-          <div class="sil-hero-dark"><div style="font-size:9px;color:var(--amber);font-weight:700;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:4px">Microphones</div><div style="font-family:var(--font-display);font-size:14px;font-weight:600;color:#fff">Headline</div></div>
-          <div class="sil sil-strip" style="background:#fff;border:1px solid var(--hairline);height:30px;padding:6px"></div>
-          <div class="sil sil-grid" style="height:160px"><div></div><div></div><div></div><div></div><div></div><div></div></div>
-          <div class="sil sil-foot"></div>
-        </div>
-        <div class="layout-foot"><span class="tag">H1</span><a href="headers/header-1-default.html">Open header →</a></div>
+
+    <div class="row">
+      <div class="wire">
+        <div class="wb wb-nav">NAV</div>
+        <div class="wb wb-hero-light">HERO H1 · PLP centered light</div>
+        <div class="wb wb-coop">CO-OP BRAND BANNER · optional</div>
+        <div class="wb wb-cathead">BREADCRUMB + H1 + 843 PRODUCTS + LEDE</div>
+        <div class="wb wb-fbar">FILTER CHIP BAR + RED MORE FILTERS ↓ + SORT</div>
+        <div class="wb wb-bguide">BUYER'S GUIDE CARD</div>
+        <div class="wb wb-pgrid">PRODUCT GRID · 4-up</div>
+        <div class="wb wb-pag">LOAD MORE — Showing 8 of 843</div>
+        <div class="wb wb-strip-red">STRIP V12 · Trust strip with red icons</div>
+        <div class="wb wb-footer">FOOTER</div>
       </div>
-      <div class="layout">
-        <div class="layout-head"><div class="layout-name">H2 · Spotlight 50/50</div><div class="layout-when">Brand spotlights, partner weeks.</div></div>
-        <div class="silhouette">
-          <div class="sil-hero-split"></div>
-          <div class="sil sil-strip" style="background:#fff;border:1px solid var(--hairline);height:30px;padding:6px"></div>
-          <div class="sil sil-grid" style="height:160px"><div></div><div></div><div></div><div></div><div></div><div></div></div>
-          <div class="sil sil-foot"></div>
-        </div>
-        <div class="layout-foot"><span class="tag">H2</span><a href="headers/header-2-spotlight.html">Open header →</a></div>
+      <div class="meta">
+        <div class="id">C1 · DEFAULT PLP</div>
+        <h3>C1 — Default PLP</h3>
+        <div class="when-label">Use on</div>
+        <div class="when">Every standard category, collection, sub-category, and search-results page. Microphones, Compressors, Outboard, Preamps, Headphones, etc. <strong>The locked default.</strong></div>
+        <div class="recipe"><strong>Recipe:</strong><br>nav → H1 light hero → optional co-op (P-F) → cathead breadcrumb + count + lede → canonical filter pattern (P-A) → buyer's guide (P-E) → product grid (P-D) → load more (P-G) → V12 strip → footer</div>
       </div>
-      <div class="layout">
-        <div class="layout-head"><div class="layout-name">H3 · Editorial 6-Grid</div><div class="layout-when">Curated drops, campaigns, staff picks.</div></div>
-        <div class="silhouette">
-          <div class="sil-hero-light" style="height:80px"><div style="font-size:9px;color:var(--amber);font-weight:700;letter-spacing:0.16em;text-transform:uppercase">Drops</div><div class="sil sil-grid" style="height:50px;margin-top:4px;grid-template-columns:repeat(3,1fr)"><div></div><div></div><div></div></div></div>
-          <div class="sil sil-strip" style="background:#fff;border:1px solid var(--hairline);height:30px;padding:6px"></div>
-          <div class="sil sil-grid" style="height:140px"><div></div><div></div><div></div><div></div><div></div><div></div></div>
-          <div class="sil sil-foot"></div>
-        </div>
-        <div class="layout-foot"><span class="tag">H3</span><a href="headers/header-3-editorial.html">Open header →</a></div>
+      <div class="live">
+        <div class="lbl">Live examples</div>
+        <a href="../vk-secondary-pages/microphones-plp-default.html" target="_blank">microphones-plp-default ↗</a>
+        <a href="https://barreletics.github.io/vintage-king-redesign/" target="_blank">core prototype · category ↗</a>
       </div>
     </div>
+
+    <div class="row">
+      <div class="wire">
+        <div class="wb wb-nav">NAV</div>
+        <div class="wb wb-hero-split">HERO H2 · Split product · spotlight piece</div>
+        <div class="wb wb-cathead">BREADCRUMB + H1 + COUNT + LEDE</div>
+        <div class="wb wb-fbar">FILTER CHIP BAR + RED MORE FILTERS ↓ + SORT</div>
+        <div class="wb wb-pgrid">PRODUCT GRID · 4-up · 8 products</div>
+        <div class="wb wb-spotlight">SPOTLIGHT 50/50 INTERRUPT · dark editorial</div>
+        <div class="wb wb-pgrid">PRODUCT GRID · 4-up · next 8 products</div>
+        <div class="wb wb-pag">LOAD MORE</div>
+        <div class="wb wb-footer">FOOTER</div>
+      </div>
+      <div class="meta">
+        <div class="id">C2 · SPOTLIGHT PLP</div>
+        <h3>C2 — Spotlight 50/50</h3>
+        <div class="when-label">Use on</div>
+        <div class="when">Categories that benefit from a featured-product spotlight. Drop launches, brand-of-the-month, NAMM coverage. The dark spotlight interrupts the grid every 8-12 products. <strong>Counts as the dark moment.</strong></div>
+        <div class="recipe"><strong>Recipe:</strong><br>nav → H2 split hero → cathead → filter pattern (P-A) → grid (8) → spotlight 50/50 (P-H) → grid (8) → load more → footer</div>
+      </div>
+      <div class="live">
+        <div class="lbl">Live examples</div>
+        <a href="../vk-secondary-pages/microphones-plp-spotlight.html" target="_blank">microphones-plp-spotlight ↗</a>
+        <a href="../vk-secondary-pages/microphones-plp-spotlight-compact.html" target="_blank">spotlight-compact ↗</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="wire">
+        <div class="wb wb-nav">NAV</div>
+        <div class="wb wb-hero-dark">HERO H3 · PLP dark editorial band</div>
+        <div class="wb wb-2x2">EDITORIAL 6-GRID · 6 large image picks</div>
+        <div class="wb wb-cathead">"6 picks · 2,847 mics" + RED SEE ALL LINK</div>
+        <div class="wb wb-fbar">FILTER CHIP BAR + SORT</div>
+        <div class="wb wb-pgrid">PRODUCT GRID · 4-up</div>
+        <div class="wb wb-pag">LOAD MORE</div>
+        <div class="wb wb-footer">FOOTER</div>
+      </div>
+      <div class="meta">
+        <div class="id">C3 · EDITORIAL 6-GRID</div>
+        <h3>C3 — Editorial 6-grid</h3>
+        <div class="when-label">Use on</div>
+        <div class="when">High-curation moments. Vintage, Open Box, Demo Deals, Editor's Picks, "best of" landing pages. The 6-grid picks are hand-curated; the rest of the catalog sits below. <strong>Counts as the dark moment.</strong></div>
+        <div class="recipe"><strong>Recipe:</strong><br>nav → H3 dark band → editorial 6-grid (curated picks) → "see all 2,847" red link → filter pattern → grid → load more → footer</div>
+      </div>
+      <div class="live">
+        <div class="lbl">Live examples</div>
+        <a href="../vk-secondary-pages/microphones-plp-editorial.html" target="_blank">microphones-plp-editorial ↗</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="wire">
+        <div class="wb wb-nav">NAV</div>
+        <div class="wb wb-hero-light">HERO H1 · PLP centered light · compact</div>
+        <div class="wb wb-cathead">BREADCRUMB + H1 + COUNT + LEDE</div>
+        <div class="wb wb-fbar">FILTER CHIP BAR + RED MORE FILTERS ↓</div>
+        <div class="wb wb-fpanel">EXPANDED FILTER PANEL · tabs + RED + 120 MORE BRANDS →</div>
+        <div class="wb wb-pgrid">PRODUCT GRID · 4-up</div>
+        <div class="wb wb-pag">LOAD MORE</div>
+        <div class="wb wb-footer">FOOTER</div>
+      </div>
+      <div class="meta">
+        <div class="id">C4 · FILTER-FORWARD PLP</div>
+        <h3>C4 — Filter demo (filter-forward)</h3>
+        <div class="when-label">Use on</div>
+        <div class="when">Categories with deep taxonomy where the user is hunting on specs (channel count, mic-pre count, sample rate, polar pattern). Default state opens the expanded filter panel. <strong>No dark moments.</strong></div>
+        <div class="recipe"><strong>Recipe:</strong><br>nav → H1 compact hero → cathead → filter chip bar → expanded panel (P-A row 3) with red see-all links → grid → load more → footer</div>
+      </div>
+      <div class="live">
+        <div class="lbl">Live examples</div>
+        <a href="../vk-secondary-pages/microphones-plp-spotlight-compact-font-lab.html" target="_blank">filter-demo (in lab) ↗</a>
+        <a href="https://barreletics.github.io/vintage-king-redesign/" target="_blank">core prototype filter panel ↗</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<section class="cat">
-  <div class="cat-inner">
-    <div class="cat-head">
-      <div class="cat-eye">C · Category &amp; Product</div>
-      <h2 class="cat-h">1 canonical category · 1 canonical product</h2>
-      <p class="cat-sub">The category page accepts any of the 3 headers above. The product page is fixed.</p>
+<!-- ========== PRODUCT PAGE ========== -->
+<section class="bucket" id="pdp">
+  <div class="bucket-inner">
+    <div class="bucket-head">
+      <div class="id">SECTION 03 of 04</div>
+      <h2>Product page · canonical PDP</h2>
+      <p>One canonical product page composition. The buy box stays locked; cross-sells and editorial blocks adapt by product category.</p>
     </div>
-    <div class="layouts" style="grid-template-columns:repeat(2,1fr)">
-      <div class="layout"><div class="layout-head"><div class="layout-name">Category PLP — Microphones</div><div class="layout-when">Filters · 3-up grid · trust strip</div></div><div class="silhouette"><div class="sil-hero-dark"><div style="color:#fff;font-family:var(--font-display);font-size:14px">Microphones</div></div><div class="sil sil-strip" style="background:#fff;border:1px solid var(--hairline);height:30px"></div><div class="sil sil-grid" style="height:200px"><div></div><div></div><div></div><div></div><div></div><div></div></div><div class="sil sil-foot"></div></div><div class="layout-foot"><span class="tag" style="background:rgba(192,57,43,0.08);color:var(--vk-red)">PLP</span><a href="category/microphones.html">Open category →</a></div></div>
-      <div class="layout"><div class="layout-head"><div class="layout-name">Product — Neumann U47</div><div class="layout-when">Gallery · price · spec · related</div></div><div class="silhouette"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;background:#fff;padding:14px"><div style="background:#ddd;border-radius:2px;height:140px"></div><div><div style="font-family:var(--font-display);font-size:13px;font-weight:600;height:10px;background:#333;width:80%;border-radius:1px;margin-bottom:6px"></div><div style="background:var(--amber);height:6px;width:30%;border-radius:1px;margin-bottom:8px"></div><div style="background:#eee;height:4px;width:90%;margin-bottom:3px"></div><div style="background:#eee;height:4px;width:70%;margin-bottom:8px"></div><div style="background:var(--vk-red);height:24px;width:50%;border-radius:2px"></div></div></div><div class="sil sil-grid" style="height:80px"><div></div><div></div><div></div></div><div class="sil sil-foot"></div></div><div class="layout-foot"><span class="tag" style="background:rgba(192,57,43,0.08);color:var(--vk-red)">PRODUCT</span><a href="product/neumann-u47.html">Open product →</a></div></div>
+
+    <div class="row">
+      <div class="wire">
+        <div class="wb wb-nav">NAV</div>
+        <div class="wb wb-cathead">BREADCRUMB</div>
+        <div class="wb wb-pdp-buy">GALLERY (55%) + BUY BOX (45%) · brand · name · price · stock · CTA + ghost</div>
+        <div class="wb wb-strip-amber">STRIP V8 · Trust under buy box</div>
+        <div class="wb wb-pdp-tabs">TABS · Description · Specs · What's in the box · Reviews</div>
+        <div class="wb wb-rel">PAIRS WELL WITH · 4-up cross-sell</div>
+        <div class="wb wb-2x2">EDITORIAL 2×2 · related HOF + technique articles</div>
+        <div class="wb wb-pdp-cross">RECENTLY VIEWED · 4-up</div>
+        <div class="wb wb-strip-red">STRIP V12 · Trust strip closer · red icons</div>
+        <div class="wb wb-footer">FOOTER</div>
+      </div>
+      <div class="meta">
+        <div class="id">PDP · CANONICAL</div>
+        <h3>PDP — Neumann U47 (canonical)</h3>
+        <div class="when-label">Use on</div>
+        <div class="when"><strong>Every product detail page.</strong> Locked buy-box composition. Brand → product name (DM Sans 22px per type test Variant C) → price (DM Sans 500) → stock badge → red Add to Cart + ghost Talk to an Expert.</div>
+        <div class="recipe"><strong>Recipe:</strong><br>nav → breadcrumb → gallery + buy box (55/45) → V8 trust under buy box → tabs (Desc / Specs / Box / Reviews) → pairs-well cross-sell → editorial 2×2 (HOF + technique) → recently viewed → V12 closer → footer</div>
+      </div>
+      <div class="live">
+        <div class="lbl">Live examples</div>
+        <a href="../vk-secondary-pages/neumann-u47-fet-v2.html" target="_blank">neumann-u47-fet ↗</a>
+        <a href="../vk-secondary-pages/coles-4038-v2.html" target="_blank">coles-4038 ↗</a>
+        <a href="../vk-secondary-pages/universal-audio-apollo-x-v2.html" target="_blank">ua-apollo-x ↗</a>
+        <a href="../vk-secondary-pages/neve-1081-v2.html" target="_blank">neve-1081 ↗</a>
+      </div>
     </div>
+
+  </div>
+</section>
+
+<!-- ========== CUSTOM BUILD ========== -->
+<section class="bucket" id="custom">
+  <div class="bucket-inner">
+    <div class="bucket-head">
+      <div class="id">SECTION 04 of 04</div>
+      <h2>Custom build · pick your own from the buffet</h2>
+      <p>If your page doesn't fit T1–T5 cleanly, build it from the buffet. Use this recipe as scaffolding. <strong>Stay in section rhythm</strong>: light hero → strip → off-white grid → white content → light CTA → dark closer (max one) → footer.</p>
+    </div>
+
+    <div class="row">
+      <div class="wire">
+        <div class="wb wb-nav">NAV · single mega menu</div>
+        <div class="wb wb-hero-light">PICK A HERO · from heroes catalog</div>
+        <div class="wb wb-strip-amber">PICK A STRIP · from strip picker</div>
+        <div class="wb wb-faq">PICK BODY SECTIONS · from secondary or PLP body buffet</div>
+        <div class="wb wb-faq">— stack as many as the brief needs —</div>
+        <div class="wb wb-faq">— but stay in section rhythm —</div>
+        <div class="wb wb-cta">CTA · always end with one (B-G or related gear)</div>
+        <div class="wb wb-footer">FOOTER · always</div>
+      </div>
+      <div class="meta">
+        <div class="id">CUSTOM · BUFFET COMPOSITION</div>
+        <h3>Custom — pick your own</h3>
+        <div class="when-label">Use when</div>
+        <div class="when">The page is one-of-a-kind and doesn't fit any locked template. Still <strong>required</strong>: nav → hero → strip → body → CTA → footer. The body is your call. Pull from the buffets.</div>
+        <div class="recipe"><strong>Recipe:</strong><br>1. Pick 1 hero (heroes catalog · H1–H9)<br>2. Pick 1 strip (strip picker · V7 / V10 / V8 / V12 / V11)<br>3. Stack 3–6 body sections (secondary or PLP body buffet)<br>4. End with 1 CTA section (B-G email form or B-H related gear)<br>5. Footer always last<br><br><strong>Rule of one:</strong> max one dark section per page (hero OR stat block OR spotlight — not all three).</div>
+      </div>
+      <div class="live">
+        <div class="lbl">Pick from</div>
+        <a href="heroes/index.html">→ Heroes catalog</a>
+        <a href="value-strips/value-strip-options.html">→ Strip picker</a>
+        <a href="buffet/secondary-body.html">→ Secondary body buffet</a>
+        <a href="buffet/plp-body.html">→ PLP body buffet</a>
+        <a class="muted" href="build-playbook.html">Build Playbook (full rules)</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <footer>
-  Page Layouts · <a href="index.html">Back to Dashboard</a> · <a href="style-guide.html">Style Guide</a> · <a href="section-buffet.html">Section Buffet</a>
+  Page Layouts Catalog · 5 secondary templates + 4 PLP layouts + 1 PDP + custom · <a href="index.html">Dashboard</a> · <a href="heroes/index.html">Heroes</a> · <a href="section-buffet.html">Section Buffet</a> · <a href="build-playbook.html">Playbook</a>
 </footer>
 </body>
 </html>

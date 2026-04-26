@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Buffet · Secondary Body Sections | VK Redesign Final</title>
-<meta name="description" content="Every body section that can sit between hero and footer on a secondary content page. Mark Keep / Maybe / Kill.">
+<title>Buffet · Secondary Body Sections (15 patterns) | VK Redesign Final</title>
+<meta name="description" content="15 body sections — every block that can sit between hero and footer on a secondary content page. Mark Keep / Maybe / Kill.">
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -121,6 +121,51 @@ section.opt{padding:36px 32px;border-bottom:1px solid var(--hairline)}
 .dark h3{font-family:var(--font-display);font-size:28px;font-weight:600;line-height:1.2;max-width:720px;margin:0 auto 12px}
 .dark p{font-size:15px;color:rgba(255,255,255,0.65);max-width:620px;margin:0 auto;line-height:1.6}
 
+/* K — 20/80 image split (asymmetric) */
+.split8020{display:grid;grid-template-columns:20% 80%;background:#fff;min-height:300px;gap:1px;background:rgba(26,26,24,0.08);padding:1px}
+.split8020 .narrow{background:linear-gradient(135deg,#cfc8be,#9c9489)}
+.split8020 .wide{background:#fff;padding:32px 36px;display:flex;flex-direction:column;justify-content:center}
+.split8020 .wide .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.split8020 .wide h3{font-family:var(--font-display);font-size:26px;font-weight:600;line-height:1.2;margin-bottom:10px}
+.split8020 .wide p{font-size:14px;color:var(--mid-grey);line-height:1.65;margin-bottom:14px;max-width:560px}
+.split8020 .wide .lk{font-size:12px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;color:var(--near-black);border-bottom:2px solid var(--amber);padding-bottom:2px;align-self:flex-start}
+.split8020.flip{grid-template-columns:80% 20%}
+
+/* L — Single large image (full bleed editorial) */
+.big-img{position:relative;height:480px;background:linear-gradient(135deg,#3a3a36,#1a1a18);display:grid;place-items:center;color:#fff;text-align:center;overflow:hidden}
+.big-img:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.10) 0%,rgba(0,0,0,0.55) 100%)}
+.big-img .inner{position:relative;z-index:2;max-width:780px;padding:0 32px}
+.big-img .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.big-img h3{font-family:var(--font-display);font-size:38px;font-weight:600;line-height:1.1;margin-bottom:14px}
+.big-img p{font-size:15px;color:rgba(255,255,255,0.80);line-height:1.6;max-width:600px;margin:0 auto 22px}
+.big-img .cap{position:absolute;bottom:14px;right:18px;z-index:2;font-size:11px;color:rgba(255,255,255,0.55);letter-spacing:0.06em}
+
+/* M — Image gallery (4-up grid) */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(26,26,24,0.08);padding:1px}
+.gallery .tile{aspect-ratio:1/1;background:linear-gradient(135deg,#cfc8be,#9c9489)}
+.gallery .tile:nth-child(2){background:linear-gradient(135deg,#3a3a36,#1a1a18)}
+.gallery .tile:nth-child(3){background:linear-gradient(135deg,#e0d8cc,#b8ad9f)}
+.gallery .tile:nth-child(4){background:linear-gradient(135deg,#5a5550,#2a2520)}
+
+/* N — Video block */
+.video{position:relative;height:420px;background:#1a1a18;display:grid;place-items:center;cursor:pointer}
+.video:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(80,75,70,0.55),rgba(20,15,10,0.85))}
+.video .play{position:relative;z-index:2;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.95);display:grid;place-items:center;box-shadow:0 12px 40px rgba(0,0,0,0.30)}
+.video .play:after{content:"";width:0;height:0;border-style:solid;border-width:14px 0 14px 22px;border-color:transparent transparent transparent var(--vk-red);margin-left:5px}
+.video .meta{position:absolute;bottom:24px;left:28px;z-index:2;color:#fff}
+.video .meta .eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+.video .meta h4{font-family:var(--font-display);font-size:20px;font-weight:600}
+.video .meta small{display:block;font-size:12px;color:rgba(255,255,255,0.55);margin-top:4px}
+
+/* O — Timeline (heritage) */
+.timeline{padding:32px 28px;background:#fff;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.timeline:before{content:"";position:absolute;top:60px;left:32px;right:32px;height:2px;background:var(--amber);opacity:0.30}
+.timeline .pt{padding:0 14px;position:relative}
+.timeline .pt .yr{font-family:var(--font-display);font-size:24px;font-weight:600;color:var(--amber);margin-bottom:10px;position:relative;z-index:2;background:#fff;display:inline-block;padding-right:8px}
+.timeline .pt .dot{position:absolute;top:48px;left:14px;width:14px;height:14px;border-radius:50%;background:var(--amber);border:3px solid #fff;z-index:3}
+.timeline .pt h5{font-family:var(--font-display);font-size:16px;font-weight:600;margin:18px 0 6px}
+.timeline .pt p{font-size:12px;color:var(--mid-grey);line-height:1.55}
+
 footer{background:var(--near-black);color:rgba(255,255,255,0.7);padding:32px;text-align:center;font-size:13px;margin-top:0}
 footer a{color:var(--amber)}
 
@@ -130,6 +175,12 @@ footer a{color:var(--amber)}
   .stat:last-child{border-bottom:0}
   .rel,.fifty{grid-template-columns:1fr}
   .ctaform .row{grid-template-columns:1fr}
+  .split8020,.split8020.flip{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .timeline{grid-template-columns:repeat(2,1fr)}
+  .timeline:before{display:none}
+  .big-img{height:340px}
+  .big-img h3{font-size:28px}
 }
 </style>
 </head>
@@ -140,7 +191,7 @@ footer a{color:var(--amber)}
   <div class="page-hero-inner">
     <div class="eye">Buffet · Room 03 of 05</div>
     <h1>Body sections for secondary content pages.</h1>
-    <p>Every block that can sit between hero and footer on a secondary content page (HOF, About, Careers, Trade Program, Section 179, Audio Consultants, Studio Pros, Make Your Mark, Playback, etc.). Mark each one Keep / Maybe / Kill. Selections persist locally for export.</p>
+    <p>15 patterns. Every block that can sit between hero and footer on a secondary content page (HOF, About, Careers, Trade Program, Section 179, Audio Consultants, Studio Pros, Make Your Mark, Playback, etc.). Mark each one Keep / Maybe / Kill. Selections persist locally for export.</p>
     <p style="font-size:13px;color:var(--mid-grey)"><strong>Out of scope here</strong> — Headers (see <a href="../headers/index.html" style="color:var(--vk-red)">headers buffet</a>), value strips (see <a href="../value-strips/value-strip-options.html" style="color:var(--vk-red)">strip picker</a>), PLP body (see <a href="plp-body.html" style="color:var(--vk-red)">PLP body buffet</a>).</p>
   </div>
 </section>
@@ -267,8 +318,64 @@ footer a{color:var(--amber)}
   </div></div>
 </div></section>
 
+<section class="opt"><div class="opt-inner">
+  <div class="opt-head">
+    <div class="opt-meta"><div class="id">B-K · 20/80 image split</div><h2>Image + body · 20/80 asymmetric (mood image left)</h2><p>Lighter cousin of 50/50. Narrow mood image (20%) anchors a wide content block (80%). Used when the image is decorative — not the headline. Strong on About sub-sections, program detail blocks, "what we believe" rails.</p></div>
+    <div class="markers" data-id="B-K"><button class="keep">Keep</button><button class="maybe">Maybe</button><button class="kill">Kill</button></div>
+  </div>
+  <div class="preview"><div class="code-note">.split-20-80 · 20% image / 80% body · alternates with .flip class</div><div class="split8020">
+    <div class="narrow"></div>
+    <div class="wide"><div class="eye">What we believe</div><h3>Gear should be inspected by people who actually use it.</h3><p>Every used unit on this site goes through a tech who has serviced and recorded with the same model. That's the gap between "tested" and "VK Tech Inspected" — and it's the reason our warranty has weight.</p><a href="#" class="lk">How we inspect →</a></div>
+  </div></div>
+</div></section>
+
+<section class="opt"><div class="opt-inner">
+  <div class="opt-head">
+    <div class="opt-meta"><div class="id">B-L · Single large image (full bleed)</div><h2>Single large image · full-bleed editorial moment</h2><p>One enormous image with overlay copy + amber eyebrow + Playfair headline. Used for the editorial moment in the middle of HOF articles, About, Make Your Mark, Playback. <strong>Counts as the page's dark moment.</strong> Caption corner-pinned bottom-right.</p></div>
+    <div class="markers" data-id="B-L"><button class="keep">Keep</button><button class="maybe">Maybe</button><button class="kill">Kill</button></div>
+  </div>
+  <div class="preview"><div class="code-note">.image-full-bleed · 480px height · gradient overlay · centered overlay copy + corner caption</div><div class="big-img">
+    <div class="inner"><div class="eye">Inside Studio A</div><h3>The room that shaped a generation of records.</h3><p>32 years of sessions. Three Grammy-nominated mixes. The console where it all happened — and the gear that lived through it.</p></div>
+    <span class="cap">Detroit · 2024 · photo: J. Mercer</span>
+  </div></div>
+</div></section>
+
+<section class="opt"><div class="opt-inner">
+  <div class="opt-head">
+    <div class="opt-meta"><div class="id">B-M · Image gallery 4-up</div><h2>Image gallery · 4-up square grid</h2><p>Four square photos, no captions, no copy. Used as a visual breath between content-heavy sections. Strong on About, HOF article galleries, Studio Pros, Make Your Mark.</p></div>
+    <div class="markers" data-id="B-M"><button class="keep">Keep</button><button class="maybe">Maybe</button><button class="kill">Kill</button></div>
+  </div>
+  <div class="preview"><div class="code-note">.gallery-4-up · 4 columns · 1:1 aspect ratio · no copy</div><div class="gallery">
+    <div class="tile"></div><div class="tile"></div><div class="tile"></div><div class="tile"></div>
+  </div></div>
+</div></section>
+
+<section class="opt"><div class="opt-inner">
+  <div class="opt-head">
+    <div class="opt-meta"><div class="id">B-N · Video block</div><h2>Video block · centered play button + meta overlay</h2><p>Embedded video with a poster image, centered red play button, and bottom-left amber eyebrow + Playfair title + duration. Used for studio walkthroughs, tech demos, install case studies, founder interviews. One per page max.</p></div>
+    <div class="markers" data-id="B-N"><button class="keep">Keep</button><button class="maybe">Maybe</button><button class="kill">Kill</button></div>
+  </div>
+  <div class="preview"><div class="code-note">.video-block · 420px · gradient overlay · centered play button + bottom-left meta</div><div class="video">
+    <div class="play"></div>
+    <div class="meta"><div class="eye">Studio Tour · 4 min</div><h4>Inside The Vintage Lab — every signal chain explained.</h4><small>VK Tech Shop · Detroit, MI</small></div>
+  </div></div>
+</div></section>
+
+<section class="opt"><div class="opt-inner">
+  <div class="opt-head">
+    <div class="opt-meta"><div class="id">B-O · Heritage timeline</div><h2>Heritage timeline · 4-point horizontal</h2><p>Used on HOF gear pages and About. Big amber Playfair years on a horizontal line + dot markers. 4 points works at this width — drop to 2x2 on mobile.</p></div>
+    <div class="markers" data-id="B-O"><button class="keep">Keep</button><button class="maybe">Maybe</button><button class="kill">Kill</button></div>
+  </div>
+  <div class="preview"><div class="code-note">.timeline-horizontal · 4 columns · amber line + amber dots + Playfair years</div><div class="timeline">
+    <div class="pt"><span class="yr">1949</span><span class="dot"></span><h5>The original U 47</h5><p>Neumann ships the first large-diaphragm tube condenser. Sinatra picks it up the next year.</p></div>
+    <div class="pt"><span class="yr">1969</span><span class="dot"></span><h5>The FET arrives</h5><p>Solid-state replaces the VF14 tube. Same capsule, no warm-up time, same mythic sound.</p></div>
+    <div class="pt"><span class="yr">1986</span><span class="dot"></span><h5>The reissue era</h5><p>Telefunken, Wunder, and Soundelux start chasing the original. Vintage prices triple.</p></div>
+    <div class="pt"><span class="yr">2024</span><span class="dot"></span><h5>The modern lineup</h5><p>Neumann's U 87 Ai and U 47 FET ship daily from VK. Originals still hit auctions at $25k+.</p></div>
+  </div></div>
+</div></section>
+
 <footer>
-  <p>Buffet · Secondary Body · 10 patterns · <a href="../section-buffet.html">Back to Buffet Hub</a> · <a href="../index.html">Dashboard</a></p>
+  <p>Buffet · Secondary Body · 15 patterns · <a href="../section-buffet.html">Back to Buffet Hub</a> · <a href="../index.html">Dashboard</a></p>
 </footer>
 
 <script>

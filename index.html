@@ -63,9 +63,10 @@ section.zone{padding:64px 32px;border-bottom:1px solid var(--hairline)}
 .hero-tile .toc li::before{content:counter(step,decimal-leading-zero);font-family:var(--font-mono);font-size:11px;color:var(--amber);font-weight:600}
 @media(max-width:880px){.hero-tile{grid-template-columns:1fr;padding:32px}.hero-tile h3{font-size:28px}}
 
-/* SEE THE WORK — 2 big cards */
-.see-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-@media(max-width:880px){.see-grid{grid-template-columns:1fr}}
+/* SEE THE WORK — 3 big cards */
+.see-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:1080px){.see-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:780px){.see-grid{grid-template-columns:1fr}}
 .see-card{background:#fff;border:1px solid var(--hairline);border-radius:6px;padding:32px;display:flex;flex-direction:column;gap:14px;transition:all 0.2s}
 .see-card:hover{border-color:var(--amber);box-shadow:0 6px 20px rgba(26,26,24,0.06);transform:translateY(-2px)}
 .see-card .label{font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--amber);letter-spacing:0.10em;text-transform:uppercase}
@@ -182,16 +183,16 @@ footer .meta{font-size:11px;color:rgba(255,255,255,0.4);margin-top:14px;font-fam
       <p class="zone-sub">The spreadsheet is the audit-friendly tabbed view (Excel / Google Sheets). The content index is the clickable catalog with live links. Same data, two surfaces.</p>
     </div>
     <div class="see-grid">
-      <a class="see-card" href="https://github.com/barreletics/vk-secondary-pages/raw/main/vk-resources-inventory.xlsx" download>
-        <div class="label">Spreadsheet · Excel / Google Sheets</div>
-        <h3>Page inventory spreadsheet.</h3>
-        <p>Every built resource with template assignment, header used, status (built / placeholder / TBD), live URL, source file, and comments. Multi-tab — one per template family. The audit-friendly view.</p>
+      <a class="see-card" href="page-layouts.html">
+        <div class="label">Visual catalog · wireframes + live</div>
+        <h3>Page layouts catalog.</h3>
+        <p>Every layout shown as a labeled wireframe + when-to-use + live example link. 5 secondary templates (T1–T5) + 4 PLP layouts (C1–C4) + canonical PDP + custom-build template. Start here to understand the system visually.</p>
         <div class="stats">
-          <div class="stat">96<small>rows</small></div>
-          <div class="stat">9<small>tabs</small></div>
-          <div class="stat">10<small>columns</small></div>
+          <div class="stat">5<small>templates</small></div>
+          <div class="stat">4<small>PLP layouts</small></div>
+          <div class="stat">+PDP<small>+ custom</small></div>
         </div>
-        <span class="arrow">Download xlsx →</span>
+        <span class="arrow">Open layouts catalog →</span>
       </a>
       <a class="see-card" href="content/index.html">
         <div class="label">Web index · clickable catalog</div>
@@ -204,6 +205,20 @@ footer .meta{font-size:11px;color:rgba(255,255,255,0.4);margin-top:14px;font-fam
         </div>
         <span class="arrow">Open content index →</span>
       </a>
+      <a class="see-card" href="mobile/index.html">
+        <div class="label">Mobile · 375 px previews</div>
+        <h3>Mobile preview gallery.</h3>
+        <p>Every major page type rendered in a 375 px iframe so you can see how it collapses without opening 30 tabs. Phone-frame mockups grouped by dashboard / secondary / PLP / PDP / policy.</p>
+        <div class="stats">
+          <div class="stat">17<small>page types</small></div>
+          <div class="stat">5<small>buckets</small></div>
+          <div class="stat">375<small>px width</small></div>
+        </div>
+        <span class="arrow">Open mobile gallery →</span>
+      </a>
+    </div>
+    <div style="margin-top:18px;padding:14px 18px;background:var(--off-white);border-left:3px solid var(--amber);font-size:13px;color:var(--mid-grey);max-width:1280px;border-radius:3px">
+      <strong style="color:var(--near-black);font-weight:600">Audit / handoff:</strong> the same data also lives in the <a href="https://github.com/barreletics/vk-secondary-pages/raw/main/vk-resources-inventory.xlsx" download style="color:var(--vk-red);font-weight:500;border-bottom:1px solid var(--hairline)">page inventory spreadsheet</a> (Excel · 96 rows · 9 tabs · 10 columns) for Google Sheets import.
     </div>
   </div>
 </section>
@@ -232,8 +247,8 @@ footer .meta{font-size:11px;color:rgba(255,255,255,0.4);margin-top:14px;font-fam
       <a class="dec" href="section-buffet.html">
         <div class="num">Decision 03</div>
         <h3>Section buffet — 5 rooms, no overlap.</h3>
-        <p>One component library, organized by usage context. Headers (secondary + PLP), body (secondary + PLP), strips (cross-cutting). Walk each room. Mark Keep / Maybe / Kill.</p>
-        <span class="meta">section-buffet.html · 5 rooms · 30+ patterns</span>
+        <p>One component library, organized by usage context. Heroes catalog (9 variants), secondary body (15), PLP body (8), strips (12). Walk each room. Mark Keep / Maybe / Kill.</p>
+        <span class="meta">section-buffet.html · 5 rooms · 44 patterns</span>
         <span class="arrow">Open the buffet →</span>
       </a>
     </div>
@@ -247,17 +262,21 @@ footer .meta{font-size:11px;color:rgba(255,255,255,0.4);margin-top:14px;font-fam
       <p>Optional reading. The playbook is the front door — these are the deeper-dive comparison surfaces. Keep accessible, don't lead with them.</p>
     </div>
     <div class="ref-grid">
-      <a class="ref-card" href="secondary/index.html"><div class="label">Buffet</div><div class="name">Templates buffet</div><div class="desc">5 templates · live examples per template</div></a>
-      <a class="ref-card" href="headers/index.html"><div class="label">Buffet</div><div class="name">Headers buffet</div><div class="desc">4 hero families · bucketed by page type</div></a>
-      <a class="ref-card" href="category/index.html"><div class="label">Buffet</div><div class="name">PLP layouts buffet</div><div class="desc">4 PLP layouts · live PLPs linked</div></a>
+      <a class="ref-card" href="heroes/index.html"><div class="label">Catalog</div><div class="name">Heroes catalog</div><div class="desc">9 hero variants · 3 buckets · when-to-use</div></a>
+      <a class="ref-card" href="page-layouts.html"><div class="label">Catalog</div><div class="name">Page layouts catalog</div><div class="desc">Wireframe + when-to-use + live per layout</div></a>
+      <a class="ref-card" href="mobile/index.html"><div class="label">Catalog</div><div class="name">Mobile previews</div><div class="desc">17 page types at 375 px · phone frames</div></a>
+      <a class="ref-card" href="section-buffet.html"><div class="label">Buffet hub</div><div class="name">Section buffet (5 rooms)</div><div class="desc">All sections · pick from menu</div></a>
+      <a class="ref-card" href="buffet/secondary-body.html"><div class="label">Buffet room</div><div class="name">Secondary body sections</div><div class="desc">15 patterns · keep / maybe / kill</div></a>
+      <a class="ref-card" href="buffet/plp-body.html"><div class="label">Buffet room</div><div class="name">PLP body sections</div><div class="desc">8 patterns · canonical filter inside</div></a>
+      <a class="ref-card" href="value-strips/value-strip-options.html"><div class="label">Buffet room</div><div class="name">Strip picker</div><div class="desc">12 strip variants · 5 recommended</div></a>
+      <a class="ref-card" href="secondary/index.html"><div class="label">Buffet room</div><div class="name">Templates room</div><div class="desc">5 templates · live examples per template</div></a>
+      <a class="ref-card" href="category/index.html"><div class="label">Buffet room</div><div class="name">PLP layouts room</div><div class="desc">4 PLP layouts · live PLPs linked</div></a>
       <a class="ref-card" href="product/neumann-u47.html"><div class="label">PDP</div><div class="name">Product page pattern</div><div class="desc">Neumann U47 · canonical PDP</div></a>
       <a class="ref-card" href="style-guide.html"><div class="label">Spec</div><div class="name">Style guide (slim)</div><div class="desc">Colors · type · spacing · no-go list</div></a>
-      <a class="ref-card" href="page-layouts.html"><div class="label">Spec</div><div class="name">Page layouts catalog</div><div class="desc">Visual catalog of every layout pattern</div></a>
       <a class="ref-card" href="mega-menu/mega-menu-final.html"><div class="label">Locked</div><div class="name">Mega menu (canonical)</div><div class="desc">Single mega menu · 6 parent categories</div></a>
       <a class="ref-card" href="core/index.html"><div class="label">Locked source</div><div class="name">10 core ecommerce screens</div><div class="desc">Deep links into the locked main prototype</div></a>
+      <a class="ref-card" href="content/index.html"><div class="label">Index</div><div class="name">Content page index</div><div class="desc">All 60+ secondary pages by template</div></a>
       <a class="ref-card" href="https://github.com/barreletics/vk-secondary-pages" target="_blank"><div class="label">Source repo</div><div class="name">vk-secondary-pages</div><div class="desc">All 60+ secondary HTML files</div></a>
-      <a class="ref-card" href="https://github.com/barreletics/vintage-king-redesign" target="_blank"><div class="label">Source repo · locked</div><div class="name">vintage-king-redesign</div><div class="desc">Core single-file prototype</div></a>
-      <a class="ref-card" href="https://barreletics.github.io/vk-secondary-pages/navigator.html" target="_blank"><div class="label">Inventory</div><div class="name">Old repo navigator</div><div class="desc">Original 60+ file visual inventory</div></a>
       <a class="ref-card" href="https://github.com/barreletics/vk-redesign-final" target="_blank"><div class="label">Source repo</div><div class="name">vk-redesign-final (this)</div><div class="desc">GitHub source for this dashboard</div></a>
     </div>
   </div>
@@ -267,6 +286,9 @@ footer .meta{font-size:11px;color:rgba(255,255,255,0.4);margin-top:14px;font-fam
   <div><strong>VK Redesign Final</strong> · Vintage Pro Audio · Roadmap to heaven · Single entry point</div>
   <div class="links">
     <a href="build-playbook.html">Playbook</a>
+    <a href="page-layouts.html">Page layouts</a>
+    <a href="heroes/index.html">Heroes</a>
+    <a href="mobile/index.html">Mobile</a>
     <a href="content/index.html">Content index</a>
     <a href="type-test.html">Type test</a>
     <a href="value-strips/value-strip-options.html">Strip picker</a>

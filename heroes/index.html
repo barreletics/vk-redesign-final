@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Heroes Catalog — every hero, when to use | VK Redesign Final</title>
+<meta name="description" content="Every hero / page header pattern in one place. 9 variants, bucketed by page type, with live preview and when-to-use guidance.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--vk-red:#C0392B;--amber:#D4860A;--amber-bg:#F5E6C8;--near-black:#1A1A18;--warm-white:#FDFCFB;--off-white:#F7F5F2;--mid-grey:#6B6B68;--hairline:rgba(26,26,24,0.08);--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--warm-white);color:var(--near-black);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.topbar{background:var(--near-black);color:#fff;padding:10px 24px;font-size:12px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.topbar .back{background:var(--vk-red);color:#fff;padding:7px 14px;border-radius:3px;font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase}
+.topbar strong{color:#fff;font-weight:600}
+
+.page-hero{background:#EDE8E2;padding:56px 32px}
+.page-hero-inner{max-width:1080px;margin:0 auto}
+.page-hero .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.page-hero h1{font-family:var(--font-display);font-size:42px;font-weight:600;line-height:1.05;margin-bottom:14px;max-width:840px}
+.page-hero p{font-size:16px;color:var(--near-black);max-width:780px;margin-bottom:8px}
+
+/* Section-bucket tabs */
+.bucket-nav{position:sticky;top:0;background:#fff;padding:14px 32px;border-bottom:1px solid var(--hairline);z-index:50;display:flex;gap:8px;overflow-x:auto;box-shadow:0 2px 8px rgba(26,26,24,0.04)}
+.bucket-nav a{font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:8px 14px;border:1px solid var(--hairline);border-radius:18px;color:var(--near-black);white-space:nowrap;background:#fff}
+.bucket-nav a:hover{background:var(--off-white)}
+.bucket-nav strong{font-size:11px;color:var(--mid-grey);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;align-self:center;margin-right:6px}
+
+section.bucket{padding:48px 32px;border-bottom:1px solid var(--hairline)}
+.bucket:nth-of-type(odd){background:var(--off-white)}
+.bucket-inner{max-width:1280px;margin:0 auto}
+.bucket-head{margin-bottom:24px}
+.bucket-head .id{font-family:var(--font-display);font-size:13px;font-weight:600;color:var(--amber);margin-bottom:8px;letter-spacing:0.08em}
+.bucket-head h2{font-family:var(--font-display);font-size:30px;font-weight:600;margin-bottom:8px;line-height:1.1}
+.bucket-head p{font-size:14px;color:var(--mid-grey);max-width:740px;line-height:1.6}
+
+.opt{background:#fff;border:1px solid var(--hairline);border-radius:6px;overflow:hidden;margin-bottom:22px}
+.opt-meta{padding:18px 22px;border-bottom:1px solid var(--hairline);display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap;background:#fff}
+.opt-meta .left .var-id{font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber);margin-bottom:4px}
+.opt-meta .left h3{font-family:var(--font-display);font-size:20px;font-weight:600;margin-bottom:6px}
+.opt-meta .left .when{font-size:13px;color:var(--mid-grey);max-width:580px;line-height:1.55}
+.opt-meta .left .when strong{color:var(--near-black);font-weight:600}
+.opt-meta .right{display:flex;flex-direction:column;gap:6px;align-items:flex-end;flex-shrink:0}
+.opt-meta .tag{font-size:10px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;padding:5px 10px;border-radius:3px;background:var(--off-white);color:var(--mid-grey)}
+.opt-meta .tag.rec{background:var(--amber-bg);color:var(--amber)}
+.opt-meta .tag.alt{background:rgba(46,125,50,0.10);color:#2E7D32}
+.opt-meta .tag.kill{background:rgba(192,57,43,0.10);color:var(--vk-red)}
+.opt-meta .examples{font-size:12px;color:var(--mid-grey)}
+.opt-meta .examples a{color:var(--vk-red);font-weight:500;border-bottom:1px solid var(--hairline)}
+.code-note{background:var(--off-white);padding:10px 16px;font-size:12px;color:var(--mid-grey);border-bottom:1px solid var(--hairline);font-family:'SF Mono',Menlo,Monaco,monospace}
+.preview-frame{padding:0;background:var(--warm-white)}
+
+/* === HERO STYLES === */
+
+/* H1 — PLP centered light */
+.h1-plp{background:#EDE8E2;padding:56px 40px;text-align:center}
+.h1-plp .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.h1-plp h2{font-family:var(--font-display);font-size:44px;font-weight:600;line-height:1.05;margin-bottom:12px}
+.h1-plp p{font-size:15px;color:var(--mid-grey);max-width:680px;margin:0 auto;line-height:1.6}
+.h1-plp .count{font-size:13px;color:var(--mid-grey);margin-top:14px;font-weight:500}
+
+/* H2 — PLP split product (homepage style) */
+.h2-split{background:var(--warm-white);display:grid;grid-template-columns:1.1fr 0.9fr;min-height:380px}
+.h2-split .body{padding:48px 40px;display:flex;flex-direction:column;justify-content:center}
+.h2-split .body .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.h2-split .body h2{font-family:var(--font-display);font-size:48px;font-weight:600;line-height:1.05;margin-bottom:14px}
+.h2-split .body h2 em{font-style:italic;color:var(--vk-red)}
+.h2-split .body p{font-size:15px;color:var(--mid-grey);max-width:480px;line-height:1.6;margin-bottom:22px}
+.h2-split .body .actions{display:flex;gap:10px;flex-wrap:wrap}
+.h2-split .body .btn{display:inline-block;background:var(--vk-red);color:#fff;padding:12px 22px;font-size:12px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;border-radius:3px}
+.h2-split .body .btn.ghost{background:transparent;color:var(--near-black);border:1px solid var(--near-black)}
+.h2-split .img{background:linear-gradient(135deg,#cfc8be,#9c9489);position:relative;display:grid;place-items:center}
+.h2-split .img .featured{background:rgba(0,0,0,0.55);color:#fff;padding:18px 22px;border-radius:4px;text-align:center}
+.h2-split .img .featured .lbl{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+.h2-split .img .featured .name{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:4px}
+.h2-split .img .featured .price{font-size:14px;color:#fff;font-weight:500}
+
+/* H3 — PLP dark editorial band (Vintage / Open Box) */
+.h3-dark{background:var(--near-black);color:#fff;padding:48px 40px;text-align:center;position:relative}
+.h3-dark .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.h3-dark h2{font-family:var(--font-display);font-size:42px;font-weight:600;line-height:1.05;margin-bottom:12px;max-width:760px;margin-left:auto;margin-right:auto}
+.h3-dark p{font-size:15px;color:rgba(255,255,255,0.75);max-width:620px;margin:0 auto;line-height:1.6}
+.h3-dark .div{width:60px;height:2px;background:var(--amber);margin:14px auto 18px}
+
+/* H4 — Secondary centered light (default secondary hero) */
+.h4-sec{background:#EDE8E2;padding:64px 40px;text-align:center}
+.h4-sec .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
+.h4-sec h2{font-family:var(--font-display);font-size:48px;font-weight:600;line-height:1.05;margin-bottom:16px;max-width:780px;margin-left:auto;margin-right:auto}
+.h4-sec p{font-size:16px;color:var(--near-black);max-width:680px;margin:0 auto 22px;line-height:1.6}
+.h4-sec .btn{display:inline-block;background:var(--amber);color:#fff;padding:13px 26px;font-size:12px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;border-radius:3px}
+
+/* H5 — Secondary 50/50 light + image */
+.h5-5050{background:#EDE8E2;display:grid;grid-template-columns:1fr 1fr;min-height:420px}
+.h5-5050 .body{padding:48px 40px;display:flex;flex-direction:column;justify-content:center}
+.h5-5050 .body .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.h5-5050 .body h2{font-family:var(--font-display);font-size:42px;font-weight:600;line-height:1.05;margin-bottom:14px}
+.h5-5050 .body p{font-size:15px;color:var(--near-black);max-width:480px;line-height:1.6;margin-bottom:22px}
+.h5-5050 .body .actions{display:flex;gap:10px;flex-wrap:wrap}
+.h5-5050 .body .btn{background:var(--amber);color:#fff;padding:12px 22px;font-size:12px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;border-radius:3px}
+.h5-5050 .body .btn.ghost{background:transparent;color:var(--near-black);border:1px solid var(--near-black)}
+.h5-5050 .img{background:linear-gradient(135deg,#cfc8be,#9c9489)}
+
+/* H6 — Secondary dark editorial (HOF / heritage articles) */
+.h6-hof{background:var(--near-black);color:#fff;padding:80px 40px;text-align:center;position:relative;min-height:480px;display:grid;place-items:center}
+.h6-hof:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 0%,rgba(0,0,0,0.55) 90%)}
+.h6-hof .inner{position:relative;z-index:2;max-width:820px}
+.h6-hof .crumb{font-size:11px;color:rgba(255,255,255,0.55);letter-spacing:0.10em;margin-bottom:18px}
+.h6-hof .crumb a{color:rgba(255,255,255,0.75)}
+.h6-hof .eye{font-size:12px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
+.h6-hof h2{font-family:var(--font-display);font-size:48px;font-weight:600;line-height:1.05;margin-bottom:16px}
+.h6-hof h2 em{font-style:italic;color:var(--amber)}
+.h6-hof p{font-size:16px;color:rgba(255,255,255,0.75);max-width:620px;margin:0 auto 0;line-height:1.6}
+.h6-hof .meta{font-size:12px;color:rgba(255,255,255,0.45);letter-spacing:0.08em;margin-top:22px}
+.h6-hof .meta strong{color:rgba(255,255,255,0.75);font-weight:500}
+
+/* H7 — Photo background overlay (program / drop) */
+.h7-photo{position:relative;min-height:480px;background:linear-gradient(135deg,#3a3a36,#1a1a18);display:grid;align-items:end;color:#fff;padding:0}
+.h7-photo:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.0) 30%,rgba(0,0,0,0.75) 100%)}
+.h7-photo .body{position:relative;z-index:2;padding:40px 40px 48px;max-width:780px}
+.h7-photo .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.h7-photo h2{font-family:var(--font-display);font-size:46px;font-weight:600;line-height:1.05;margin-bottom:14px;max-width:680px}
+.h7-photo p{font-size:16px;color:rgba(255,255,255,0.85);max-width:560px;line-height:1.6;margin-bottom:22px}
+.h7-photo .btn{background:var(--amber);color:#fff;padding:13px 26px;font-size:12px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;border-radius:3px;display:inline-block}
+
+/* H8 — Service / Program (Sell or Trade pattern, light + warm strip below) */
+.h8-svc{background:#EDE8E2;padding:56px 40px}
+.h8-svc-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:center}
+.h8-svc .body .eye{font-size:12px;font-weight:700;letter-spacing:0.20em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.h8-svc .body h2{font-family:var(--font-display);font-size:46px;font-weight:600;line-height:1.05;margin-bottom:14px}
+.h8-svc .body p{font-size:15px;color:var(--near-black);max-width:520px;line-height:1.6;margin-bottom:22px}
+.h8-svc .body .actions{display:flex;gap:10px;flex-wrap:wrap}
+.h8-svc .body .btn{background:var(--amber);color:#fff;padding:13px 24px;font-size:12px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;border-radius:3px}
+.h8-svc .body .btn.ghost{background:transparent;color:var(--near-black);border:1px solid var(--near-black);padding:12px 24px}
+.h8-svc .img{background:linear-gradient(135deg,#cfc8be,#9c9489);min-height:280px;border-radius:4px}
+
+/* H9 — Search results / utility (compact) */
+.h9-util{background:#fff;padding:32px 40px;border-bottom:1px solid var(--hairline)}
+.h9-util .crumb{font-size:12px;color:var(--mid-grey);margin-bottom:8px}
+.h9-util h2{font-family:var(--font-display);font-size:30px;font-weight:600;margin-bottom:6px}
+.h9-util p{font-size:14px;color:var(--mid-grey);max-width:680px}
+
+/* === Decision panel === */
+.decision{padding:36px 32px;background:var(--off-white);border-top:1px solid var(--hairline)}
+.decision-inner{max-width:980px;margin:0 auto;background:var(--amber-bg);padding:24px 28px;border-radius:6px;border-left:4px solid var(--amber)}
+.decision h3{font-family:var(--font-display);font-size:22px;font-weight:600;margin-bottom:10px}
+.decision p{font-size:14px;color:var(--near-black);margin-bottom:8px;line-height:1.65}
+
+footer{background:var(--near-black);color:rgba(255,255,255,0.7);padding:32px;text-align:center;font-size:13px}
+footer a{color:var(--amber)}
+
+@media(max-width:780px){
+  .h2-split,.h5-5050,.h8-svc-inner{grid-template-columns:1fr}
+  .h6-hof{padding:48px 24px;min-height:380px}
+  .h6-hof h2,.h7-photo h2,.h8-svc .body h2,.h5-5050 .body h2,.h2-split .body h2,.h4-sec h2,.h1-plp h2,.h3-dark h2{font-size:32px}
+  .opt-meta{flex-direction:column}
+  .opt-meta .right{align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<div class="topbar"><a href="../index.html" class="back">← Dashboard</a><span><strong>Heroes Catalog</strong> — every hero, bucketed by page type, with when-to-use guidance.</span></div>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eye">Reference · Heroes catalog</div>
+    <h1>Every hero option in one place. 9 variants. 3 buckets.</h1>
+    <p>The single source of truth for page heroes. Bucketed by where it belongs (PLP / category, Secondary content, Service / program), each variant shows a live preview, when to use it, and which built pages already use it.</p>
+    <p style="font-size:13px;color:var(--mid-grey)">Pick one hero per page. <strong>Don't mix.</strong> The recommended default is tagged in amber per bucket.</p>
+  </div>
+</section>
+
+<nav class="bucket-nav">
+  <strong>Jump to:</strong>
+  <a href="#plp">PLP / Category (3)</a>
+  <a href="#secondary">Secondary Content (4)</a>
+  <a href="#service">Service / Program (2)</a>
+</nav>
+
+<!-- ========== BUCKET 1: PLP / CATEGORY ========== -->
+<section class="bucket" id="plp">
+  <div class="bucket-inner">
+    <div class="bucket-head">
+      <div class="id">BUCKET 01 of 03</div>
+      <h2>Heroes for PLP / category / collection pages.</h2>
+      <p>Use one of these on category, collection, search-results, sale, Vintage, Open Box, and Demo Deals pages. Always pair with the canonical filter pattern (see <a href="../buffet/plp-body.html#P-A" style="color:var(--vk-red)">PLP body P-A</a>) directly underneath.</p>
+    </div>
+
+    <div class="opt">
+      <div class="opt-meta">
+        <div class="left"><div class="var-id">H1 · PLP centered light</div><h3>Centered light hero · category H1 + count + lede</h3><p class="when"><strong>Default for PLPs.</strong> Light <code>#EDE8E2</code> bg, amber eyebrow, big Playfair H1, product count + 1-line lede underneath. Quiet, fast to scan, doesn't compete with the grid.</p></div>
+        <div class="right"><span class="tag rec">Recommended default</span><span class="examples">Live: <a href="../../vk-secondary-pages/microphones-plp-default.html" target="_blank">microphones-plp-default.html</a></span></div>
+      </div>
+      <div class="code-note">.hero-plp-centered-light · #EDE8E2 · 56px padding · centered · amber eyebrow + Playfair 44px + count + lede</div>
+      <div class="preview-frame"><div class="h1-plp">
+        <div class="eye">Microphones · 843 products</div>
+        <h2>Microphones</h2>
+        <p>Condenser, dynamic, ribbon, and tube mics from Neumann, Telefunken, Coles, AKG, Royer, Shure, and 60+ more brands.</p>
+        <div class="count">843 products · all in stock today</div>
+      </div></div>
+    </div>
+
+    <div class="opt">
+      <div class="opt-meta">
+        <div class="left"><div class="var-id">H2 · PLP split product</div><h3>Split product hero · 60/40 with featured piece</h3><p class="when">Used on the homepage and high-priority sale / drop PLPs. Body left (eyebrow + Playfair + lede + 2 CTAs) + featured product image right with overlay caption (label / name / price).</p></div>
+        <div class="right"><span class="tag alt">Alternate · drop pages</span><span class="examples">Pattern from: <a href="https://barreletics.github.io/vintage-king-redesign/" target="_blank">core homepage</a></span></div>
+      </div>
+      <div class="code-note">.hero-split-product · 1.1fr 0.9fr · body left + product image right · overlay featured caption</div>
+      <div class="preview-frame"><div class="h2-split">
+        <div class="body"><div class="eye">New Arrivals · Spring 2026</div><h2>Built for the way <em>you</em> make sound.</h2><p>The finest new, used, and vintage pro audio gear — curated by people who've spent their careers inside the world's best studios.</p><div class="actions"><a href="#" class="btn">Shop new arrivals</a><a href="#" class="btn ghost">Talk to an expert</a></div></div>
+        <div class="img"><div class="featured"><div class="lbl">Featured Piece</div><div class="name">Neumann U 87 Ai</div><div class="price">$3,595</div></div></div>
+      </div></div>
+    </div>
+
+    <div class="opt">
+      <div class="opt-meta">
+        <div class="left"><div class="var-id">H3 · PLP dark editorial band</div><h3>Dark editorial band · centered, amber accent</h3><p class="when">Reserved for <strong>Vintage</strong>, <strong>Open Box</strong>, <strong>Demo Deals</strong>, and the rare editorial PLP that deserves a different mood. Near-black bg, amber eyebrow + 60px amber rule + Playfair H1 + grey lede. <strong>Counts as the page's dark moment.</strong></p></div>
+        <div class="right"><span class="tag alt">Alternate · vintage / open box</span><span class="examples">Pattern from: Open Box page in core prototype</span></div>
+      </div>
+      <div class="code-note">.hero-plp-dark · near-black · centered · amber rule divider · 42px Playfair</div>
+      <div class="preview-frame"><div class="h3-dark">
+        <div class="eye">Vintage · Hand-selected</div>
+        <h2>Pro audio gear with provenance.</h2>
+        <div class="div"></div>
+        <p>Every vintage piece comes with the original session log, the technician's notes, and 32 years of trust behind the price tag.</p>
+      </div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== BUCKET 2: SECONDARY CONTENT ========== -->
+<section class="bucket" id="secondary">
+  <div class="bucket-inner">
+    <div class="bucket-head">
+      <div class="id">BUCKET 02 of 03</div>
+      <h2>Heroes for secondary content pages.</h2>
+      <p>HOF articles, About, Careers, Audio Consultants, Studio Pros, Make Your Mark, Playback, gear heritage articles, sale teasers, Black Friday landing, NAMM, Back to School. <strong>All start light.</strong> The dark HOF/photo variants are reserved for editorial moments with real photography.</p>
+    </div>
+
+    <div class="opt">
+      <div class="opt-meta">
+        <div class="left"><div class="var-id">H4 · Secondary centered light</div><h3>Centered light hero · amber eyebrow + amber CTA</h3><p class="when"><strong>Default for secondary content pages.</strong> Light <code>#EDE8E2</code> bg, amber eyebrow, big Playfair H1, lede paragraph, single amber CTA. Used on policy pages, program pages, sale teasers, NAMM, Back to School, and most secondary landings.</p></div>
+        <div class="right"><span class="tag rec">Recommended default</span><span class="examples">Live: <a href="../../vk-secondary-pages/back-to-school-v2.html" target="_blank">back-to-school</a> · <a href="../../vk-secondary-pages/section-179.html" target="_blank">section-179</a></span></div>
+      </div>
+      <div class="code-note">.hero-secondary-centered · #EDE8E2 · 64px padding · centered · amber CTA</div>
+      <div class="preview-frame"><div class="h4-sec">
+        <div class="eye">Section 179 · 2025 Tax Year</div>
+        <h2>Write off up to $1,160,000 in studio gear this year.</h2>
+        <p>Section 179 lets working studios deduct the full purchase price of qualifying equipment. We've helped 600+ studios put it to work. Here's how.</p>
+        <a href="#" class="btn">Calculate my deduction</a>
+      </div></div>
+    </div>
+
+    <div class="opt">
+      <div class="opt-meta">
+        <div class="left"><div class="var-id">H5 · Secondary 50/50 light + image</div><h3>50/50 split · body left + image right (light)</h3><p class="when">When the page has real photography that earns its space. Light <code>#EDE8E2</code> bg, body on the left, full-bleed image on the right. Strong on Make Your Mark, Playback, Audio Consultants, Studio Pros.</p></div>
+        <div class="right"><span class="tag alt">Alternate · with photography</span><span class="examples">Live: <a href="../../vk-secondary-pages/make-your-mark.html" target="_blank">make-your-mark</a> · <a href="../../vk-secondary-pages/playback.html" target="_blank">playback</a></span></div>
+      </div>
+      <div class="code-note">.hero-secondary-5050-light · #EDE8E2 left · image right · amber CTA + ghost</div>
+      <div class="preview-frame"><div class="h5-5050">
+        <div class="body"><div class="eye">Make Your Mark · 2026</div><h2>The artists shaping the next 10 years of recorded sound.</h2><p>Six engineers. Six signal chains. The gear they reach for first — and why.</p><div class="actions"><a href="#" class="btn">Read the series</a><a href="#" class="btn ghost">See the gear</a></div></div>
+        <div class="img"></div>
+      </div></div>
+    </div>
+
+    <div class="opt">
+      <div class="opt-meta">
+        <div class="left"><div class="var-id">H6 · HOF / heritage editorial dark</div><h3>HOF dark editorial · breadcrumb + Playfair + author meta</h3><p class="when"><strong>Reserved for Hall of Fame articles and gear heritage deep articles.</strong> Near-black bg, breadcrumb top, amber eyebrow, big Playfair H1 with one amber italicized word, lede paragraph, byline + read-time + date underneath. <strong>Counts as the page's dark moment.</strong></p></div>
+        <div class="right"><span class="tag alt">HOF + heritage articles</span><span class="examples">Live: <a href="../../vk-secondary-pages/neumann-u47.html" target="_blank">neumann-u47</a> · <a href="../../vk-secondary-pages/neve-1073.html" target="_blank">neve-1073</a> · <a href="../../vk-secondary-pages/la-2a.html" target="_blank">la-2a</a></span></div>
+      </div>
+      <div class="code-note">.hero-hof-dark · near-black · 480px min · centered · breadcrumb + amber eyebrow + Playfair 48px + meta byline</div>
+      <div class="preview-frame"><div class="h6-hof">
+        <div class="inner">
+          <div class="crumb"><a href="#">Hall of Fame</a> · Microphones</div>
+          <div class="eye">Hall of Fame · The Originals</div>
+          <h2>The Neumann U 47 — the <em>voice</em> of recorded music.</h2>
+          <p>The microphone that captured Sinatra, the Beatles, and a thousand records you know by heart. The story of how a 1949 design rewrote the rules of pop production.</p>
+          <div class="meta">By <strong>VK Editorial</strong> · 8 min read · Updated Mar 2026</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="opt">
+      <div class="opt-meta">
+        <div class="left"><div class="var-id">H7 · Photo background overlay</div><h3>Photo background overlay · body bottom-left</h3><p class="when">For drop launches, brand co-op pages, and big editorial moments where the photography <em>is</em> the headline. Full-bleed photo + dark gradient bottom + amber eyebrow + Playfair H1 + amber CTA bottom-left. <strong>Counts as the page's dark moment.</strong></p></div>
+        <div class="right"><span class="tag alt">Drop launches · co-op</span><span class="examples">Pattern from: editorial drop landing pages</span></div>
+      </div>
+      <div class="code-note">.hero-photo-overlay · 480px min · gradient bottom · body bottom-left · amber CTA</div>
+      <div class="preview-frame"><div class="h7-photo">
+        <div class="body"><div class="eye">Drop · Limited</div><h2>Universal Audio Apollo Heritage Edition.</h2><p>Six remastered classics. One interface. Three days to claim your spot before the next drop disappears.</p><a href="#" class="btn">Reserve yours</a></div>
+      </div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== BUCKET 3: SERVICE / PROGRAM ========== -->
+<section class="bucket" id="service">
+  <div class="bucket-inner">
+    <div class="bucket-head">
+      <div class="id">BUCKET 03 of 03</div>
+      <h2>Heroes for service / program pages.</h2>
+      <p>Sell or Trade, Trade Program, Audio Consultants, Studio Installations, Tech Shop, Financing, VK Credit Card, Section 179. Always pair with the credential bar (see <a href="../value-strips/value-strip-options.html#V7" style="color:var(--vk-red)">strip V7 or V10</a>) directly underneath.</p>
+    </div>
+
+    <div class="opt">
+      <div class="opt-meta">
+        <div class="left"><div class="var-id">H8 · Service / Program</div><h3>Service hero · body left + product/photo right (light)</h3><p class="when"><strong>Default for service and program pages.</strong> Light <code>#EDE8E2</code> bg, body left (eyebrow + Playfair + lede + 2 CTAs: amber primary + ghost secondary), gear photo / illustration right. The Sell or Trade pattern.</p></div>
+        <div class="right"><span class="tag rec">Recommended for service pages</span><span class="examples">Live: Sell or Trade in <a href="https://barreletics.github.io/vintage-king-redesign/" target="_blank">core prototype</a> · <a href="../../vk-secondary-pages/audio-consultants.html" target="_blank">audio-consultants</a></span></div>
+      </div>
+      <div class="code-note">.hero-service-program · #EDE8E2 · 1.2fr 1fr · body left + photo right · amber + ghost CTAs</div>
+      <div class="preview-frame"><div class="h8-svc"><div class="h8-svc-inner">
+        <div class="body"><div class="eye">Sell or Trade · No phone trees</div><h2>Send us your gear. Get a real offer in 24 hours.</h2><p>Our buyers respond with a firm cash or trade-credit number — not an algorithm. Free prepaid shipping. Fast payouts. 32 years doing this right.</p><div class="actions"><a href="#" class="btn">Start my quote</a><a href="#" class="btn ghost">How it works</a></div></div>
+        <div class="img"></div>
+      </div></div></div>
+    </div>
+
+    <div class="opt">
+      <div class="opt-meta">
+        <div class="left"><div class="var-id">H9 · Utility / search results</div><h3>Utility hero · compact, white bg</h3><p class="when">Search results, account pages, FAQ landing, internal utility pages. White bg, breadcrumb, smaller Playfair H1, single sub-line. No CTA. <strong>Don't use on marketing pages.</strong></p></div>
+        <div class="right"><span class="tag">Utility only</span><span class="examples">Pattern from: search results, account, FAQ</span></div>
+      </div>
+      <div class="code-note">.hero-utility · #fff · 32px padding · breadcrumb + 30px Playfair + sub-line</div>
+      <div class="preview-frame"><div class="h9-util">
+        <div class="crumb">Search results for "neumann u47"</div>
+        <h2>17 results for "neumann u47"</h2>
+        <p>Showing all microphones, microphone accessories, and Hall of Fame articles matching your query.</p>
+      </div></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="decision"><div class="decision-inner">
+  <h3>How to pick a hero — the 30-second rule</h3>
+  <p><strong>If it's a PLP:</strong> H1 (centered light) — unless it's Vintage / Open Box / Demo Deals, then H3 (dark editorial band). H2 (split product) only on the homepage and high-priority drops.</p>
+  <p><strong>If it's a secondary content page:</strong> H4 (centered light) is the default. H5 (50/50 with image) when you have real photography. H6 (HOF dark) only for HOF + gear heritage articles. H7 (photo overlay) only for drop launches.</p>
+  <p><strong>If it's a service / program page:</strong> H8 (service hero with photo right). Always pair with strip V7 or V10 underneath.</p>
+  <p><strong>If it's utility:</strong> H9. Never on a marketing page.</p>
+</div></section>
+
+<footer>
+  Heroes Catalog · 9 variants · 3 buckets · <a href="../index.html">Dashboard</a> · <a href="../section-buffet.html">Section Buffet</a> · <a href="../page-layouts.html">Page Layouts</a>
+</footer>
+</body>
+</html>
