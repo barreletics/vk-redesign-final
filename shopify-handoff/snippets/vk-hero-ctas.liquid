@@ -1,0 +1,25 @@
+{%- comment -%}
+  Shared CTA block for vk-hero.liquid.
+  Renders primary + optional secondary button using section.settings.
+{%- endcomment -%}
+
+{%- if section.settings.cta_primary_label != blank or section.settings.cta_secondary_label != blank -%}
+  <div class="vk-hero__actions">
+    {%- if section.settings.cta_primary_label != blank -%}
+      <a
+        class="vk-hero__btn vk-hero__btn--primary"
+        href="{{ section.settings.cta_primary_url | default: '#' }}"
+      >
+        {{- section.settings.cta_primary_label | escape -}}
+      </a>
+    {%- endif -%}
+    {%- if section.settings.cta_secondary_label != blank -%}
+      <a
+        class="vk-hero__btn vk-hero__btn--ghost"
+        href="{{ section.settings.cta_secondary_url | default: '#' }}"
+      >
+        {{- section.settings.cta_secondary_label | escape -}}
+      </a>
+    {%- endif -%}
+  </div>
+{%- endif -%}

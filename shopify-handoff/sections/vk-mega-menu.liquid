@@ -1,0 +1,391 @@
+{%- comment -%}
+  ============================================================
+  VK Mega Menu — exemplar Shopify section (STRUCTURE SHELL)
+  ============================================================
+  Visual / behavioral reference:
+    https://barreletics.github.io/vintage-king-redesign/mega-menu/VintageKing-MegaMenu-CursorLab-v2.html
+
+  ⚠ IMPORTANT FOR HAMMER
+  ────────────────────────
+  This file shows the STRUCTURE of the VK mega menu — header bar,
+  panel layout, column grid, and featured / tile slots. It does NOT
+  hardcode any nav links. Every link comes from a Shopify linklist
+  picked in the theme editor (Online Store › Navigation).
+
+  Recommended Shopify wiring:
+    1. Main bar links + first-level columns
+         → driven by section.settings.menu (linklist picker).
+         → Loop link.links for category columns,
+           loop sub_link.links for column items.
+    2. Featured right-rail panel (one per top-level link)
+         → driven by blocks of type "featured_panel" where
+           settings.parent_handle matches the top-level link.handle.
+         → Each block holds product picker + headline + image + CTA.
+    3. Promo tile row (3 tiles below the columns)
+         → blocks of type "promo_tile" with parent_handle match.
+
+  Hammer should swap the rendering of dummy "Microphones / Outboard"
+  items below for a real linklist iteration. The CSS is production-
+  shaped (matches the lab prototype) — only the data source changes.
+  ============================================================
+{%- endcomment -%}
+
+{%- liquid
+  assign menu = linklists[section.settings.menu]
+-%}
+
+<header class="vk-mm" {{ section.shopify_attributes }}>
+  <div class="vk-mm__bar">
+    {%- if section.settings.show_logo -%}
+      <a class="vk-mm__logo" href="{{ routes.root_url }}">
+        {%- if section.settings.logo != blank -%}
+          {{
+            section.settings.logo
+            | image_url: width: 200
+            | image_tag:
+              loading: 'eager',
+              widths: '120,200,300',
+              alt: shop.name
+          }}
+        {%- else -%}
+          {{ shop.name }}
+        {%- endif -%}
+      </a>
+    {%- endif -%}
+
+    <nav class="vk-mm__nav" aria-label="Main navigation">
+      <ul class="vk-mm__list" role="menubar">
+        {%- for link in menu.links -%}
+          {%- assign parent_handle = link.handle -%}
+          <li class="vk-mm__item {% if link.links.size > 0 %}vk-mm__item--has-panel{% endif %}" role="none">
+            <a
+              class="vk-mm__top"
+              href="{{ link.url }}"
+              {% if link.links.size > 0 %}aria-haspopup="true" aria-expanded="false"{% endif %}
+              role="menuitem"
+            >
+              {{ link.title }}
+              {%- if link.links.size > 0 -%}
+                <svg class="vk-mm__chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <path d="M2 3.5l3 3 3-3"/>
+                </svg>
+              {%- endif -%}
+            </a>
+
+            {%- if link.links.size > 0 -%}
+              <div class="vk-mm__panel" data-parent="{{ parent_handle }}">
+                <div class="vk-mm__panel-body">
+                  {%- comment -%} ── Category columns from child links ── {%- endcomment -%}
+                  <div class="vk-mm__cats">
+                    {%- for child in link.links -%}
+                      <div class="vk-mm__col">
+                        <div class="vk-mm__col-head">{{ child.title }}</div>
+                        {%- if child.links.size > 0 -%}
+                          <ul>
+                            {%- for grand in child.links -%}
+                              <li>
+                                <a href="{{ grand.url }}" {% if forloop.first %}class="vk-mm__bold"{% endif %}>
+                                  {{ grand.title }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        {%- endif -%}
+                      </div>
+                    {%- endfor -%}
+                  </div>
+
+                  {%- comment -%} ── Right-rail featured panel (block match by parent handle) ── {%- endcomment -%}
+                  {%- for block in section.blocks -%}
+                    {%- if block.type == 'featured_panel' and block.settings.parent_handle == parent_handle -%}
+                      {%- assign featured = all_products[block.settings.product] -%}
+                      <aside class="vk-mm__featured" {{ block.shopify_attributes }}>
+                        {%- if block.settings.eyebrow != blank -%}
+                          <div class="vk-mm__featured-eyebrow">{{ block.settings.eyebrow | escape }}</div>
+                        {%- endif -%}
+                        {%- if featured != blank -%}
+                          <div class="vk-mm__featured-brand">{{ featured.vendor }}</div>
+                          <div class="vk-mm__featured-name">{{ featured.title }}</div>
+                          <div class="vk-mm__featured-img">
+                            {%- if block.settings.image != blank -%}
+                              {{ block.settings.image | image_url: width: 240 | image_tag: loading: 'lazy', alt: featured.title }}
+                            {%- elsif featured.featured_image != blank -%}
+                              {{ featured.featured_image | image_url: width: 240 | image_tag: loading: 'lazy', alt: featured.title }}
+                            {%- endif -%}
+                          </div>
+                          <div>
+                            <div class="vk-mm__featured-price">{{ featured.price | money }}</div>
+                            <a href="{{ featured.url }}" class="vk-mm__featured-cta">Shop Now →</a>
+                          </div>
+                        {%- else -%}
+                          {%- comment -%} Manual override when no product picked {%- endcomment -%}
+                          {%- if block.settings.headline != blank -%}
+                            <div class="vk-mm__featured-name">{{ block.settings.headline | escape }}</div>
+                          {%- endif -%}
+                          {%- if block.settings.image != blank -%}
+                            <div class="vk-mm__featured-img">
+                              {{ block.settings.image | image_url: width: 240 | image_tag: loading: 'lazy', alt: block.settings.headline }}
+                            </div>
+                          {%- endif -%}
+                          {%- if block.settings.cta_label != blank -%}
+                            <a href="{{ block.settings.cta_url | default: '#' }}" class="vk-mm__featured-cta">
+                              {{- block.settings.cta_label | escape -}} →
+                            </a>
+                          {%- endif -%}
+                        {%- endif -%}
+                      </aside>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+
+                {%- comment -%} ── Promo tiles row (3-up, optional) ── {%- endcomment -%}
+                {%- assign tile_count = 0 -%}
+                {%- for block in section.blocks -%}
+                  {%- if block.type == 'promo_tile' and block.settings.parent_handle == parent_handle -%}
+                    {%- assign tile_count = tile_count | plus: 1 -%}
+                  {%- endif -%}
+                {%- endfor -%}
+
+                {%- if tile_count > 0 -%}
+                  <div class="vk-mm__tiles">
+                    {%- for block in section.blocks -%}
+                      {%- if block.type == 'promo_tile' and block.settings.parent_handle == parent_handle -%}
+                        <a class="vk-mm__tile" href="{{ block.settings.link_url | default: '#' }}" {{ block.shopify_attributes }}>
+                          <div class="vk-mm__tile-img">
+                            {%- if block.settings.image != blank -%}
+                              {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', alt: block.settings.title }}
+                            {%- endif -%}
+                            <span class="vk-mm__tile-arrow">↗</span>
+                          </div>
+                          <div class="vk-mm__tile-body">
+                            <div class="vk-mm__tile-label">{{ block.settings.eyebrow | escape }}</div>
+                            <div class="vk-mm__tile-name">{{ block.settings.title | escape }}</div>
+                            <div class="vk-mm__tile-sub">{{ block.settings.sub | escape }}</div>
+                            <div class="vk-mm__tile-cta">{{ block.settings.cta_label | default: 'Shop' | escape }} →</div>
+                          </div>
+                        </a>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+{% stylesheet %}
+  .vk-mm {
+    --vk-near-black: #1A1A18;
+    --vk-mid-grey: #6B6B68;
+    --vk-amber: #D4860A;
+    --vk-red: #C0392B;
+    --vk-hairline: rgba(255, 255, 255, 0.10);
+    background: #1a1a18;
+    color: #fff;
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    position: relative;
+  }
+  .vk-mm__bar {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 14px 22px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .vk-mm__logo { color: #fff; text-decoration: none; font-weight: 700; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .vk-mm__nav { flex: 1; }
+  .vk-mm__list { list-style: none; margin: 0; padding: 0; display: flex; gap: 0; }
+  .vk-mm__item { position: static; }
+  .vk-mm__top {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 14px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .vk-mm__chev { width: 9px; height: 9px; opacity: 0.65; transition: transform 0.15s ease; }
+  .vk-mm__item:hover .vk-mm__chev,
+  .vk-mm__item:focus-within .vk-mm__chev { transform: rotate(180deg); }
+  .vk-mm__top:hover { color: var(--vk-amber); }
+
+  /* Panel */
+  .vk-mm__panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #1a1a18;
+    color: #fff;
+    border-top: 1px solid var(--vk-hairline);
+    display: none;
+    z-index: 50;
+  }
+  .vk-mm__item--has-panel:hover .vk-mm__panel,
+  .vk-mm__item--has-panel:focus-within .vk-mm__panel {
+    display: block;
+  }
+
+  .vk-mm__panel-body {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 28px 22px;
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 36px;
+  }
+  .vk-mm__cats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .vk-mm__col-head {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--vk-amber);
+    margin-bottom: 10px;
+  }
+  .vk-mm__col ul { list-style: none; margin: 0 0 16px; padding: 0; }
+  .vk-mm__col li { padding: 4px 0; }
+  .vk-mm__col a { color: rgba(255, 255, 255, 0.78); text-decoration: none; font-size: 13px; }
+  .vk-mm__col a:hover { color: #fff; }
+  .vk-mm__bold { font-weight: 600; color: #fff; }
+
+  /* Featured right rail */
+  .vk-mm__featured {
+    border-left: 1px solid var(--vk-hairline);
+    padding-left: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .vk-mm__featured-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--vk-amber); }
+  .vk-mm__featured-brand { font-size: 11px; color: rgba(255, 255, 255, 0.55); text-transform: uppercase; letter-spacing: 0.08em; }
+  .vk-mm__featured-name { font-family: 'Playfair Display', Georgia, serif; font-size: 16px; font-weight: 600; }
+  .vk-mm__featured-img { background: rgba(255, 255, 255, 0.03); aspect-ratio: 1/1; display: grid; place-items: center; padding: 12px; }
+  .vk-mm__featured-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .vk-mm__featured-price { font-size: 14px; font-weight: 600; margin: 6px 0; }
+  .vk-mm__featured-cta { font-size: 11px; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase; color: var(--vk-amber); text-decoration: none; }
+
+  /* Promo tiles */
+  .vk-mm__tiles {
+    border-top: 1px solid var(--vk-hairline);
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .vk-mm__tiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+  }
+  .vk-mm__tile {
+    background: #1a1a18;
+    padding: 16px;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .vk-mm__tile:hover { background: rgba(255, 255, 255, 0.04); }
+  .vk-mm__tile-img {
+    width: 84px;
+    height: 84px;
+    flex-shrink: 0;
+    background: #111;
+    position: relative;
+    overflow: hidden;
+  }
+  .vk-mm__tile-img img { width: 100%; height: 100%; object-fit: cover; }
+  .vk-mm__tile-arrow { position: absolute; top: 6px; right: 6px; color: rgba(255, 255, 255, 0.45); font-size: 11px; }
+  .vk-mm__tile-body { flex: 1; min-width: 0; }
+  .vk-mm__tile-label { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--vk-amber); margin-bottom: 4px; }
+  .vk-mm__tile-name { font-family: 'Playfair Display', Georgia, serif; font-size: 14px; font-weight: 600; line-height: 1.2; margin-bottom: 4px; }
+  .vk-mm__tile-sub { font-size: 11px; color: rgba(255, 255, 255, 0.55); line-height: 1.4; margin-bottom: 6px; }
+  .vk-mm__tile-cta { font-size: 11px; font-weight: 600; color: var(--vk-amber); letter-spacing: 0.06em; }
+
+  @media (max-width: 1024px) {
+    .vk-mm__panel-body { grid-template-columns: 1fr; }
+    .vk-mm__cats { grid-template-columns: 1fr 1fr; }
+    .vk-mm__featured { border-left: 0; border-top: 1px solid var(--vk-hairline); padding-left: 0; padding-top: 20px; }
+    .vk-mm__tiles { grid-template-columns: 1fr; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VK Mega Menu",
+  "tag": "header",
+  "class": "vk-section-mega",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "All nav links come from Shopify navigation. Set up your menu in Online Store › Navigation, then pick it below."
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Main menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_logo",
+      "label": "Show logo",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_panel",
+      "name": "Featured right-rail (per top link)",
+      "settings": [
+        { "type": "paragraph", "content": "Shows on the right side of the panel when its parent top-link is hovered." },
+        { "type": "text",          "id": "parent_handle", "label": "Parent link handle", "info": "Must match the top-level menu link handle (e.g. 'microphones')." },
+        { "type": "text",          "id": "eyebrow",       "label": "Eyebrow", "default": "Featured · Neumann" },
+        { "type": "product",       "id": "product",       "label": "Featured product (optional)" },
+        { "type": "image_picker",  "id": "image",         "label": "Image override" },
+        { "type": "text",          "id": "headline",      "label": "Headline override", "info": "Used only if no product is picked." },
+        { "type": "text",          "id": "cta_label",     "label": "CTA label override" },
+        { "type": "url",           "id": "cta_url",       "label": "CTA URL override" }
+      ]
+    },
+    {
+      "type": "promo_tile",
+      "name": "Promo tile (per top link)",
+      "settings": [
+        { "type": "paragraph", "content": "Up to 3 tiles render in a row below the columns for the matching parent." },
+        { "type": "text",         "id": "parent_handle", "label": "Parent link handle" },
+        { "type": "text",         "id": "eyebrow",       "label": "Eyebrow", "default": "Just Landed" },
+        { "type": "text",         "id": "title",         "label": "Title",   "default": "Telefunken ELA M 251" },
+        { "type": "text",         "id": "sub",           "label": "Sub copy","default": "c.1961 · 1 available · $22,500" },
+        { "type": "image_picker", "id": "image",         "label": "Image" },
+        { "type": "text",         "id": "cta_label",     "label": "CTA label", "default": "Shop" },
+        { "type": "url",          "id": "link_url",      "label": "Link URL" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "VK Mega Menu",
+      "blocks": [
+        { "type": "featured_panel" },
+        { "type": "promo_tile" },
+        { "type": "promo_tile" },
+        { "type": "promo_tile" }
+      ]
+    }
+  ]
+}
+{% endschema %}

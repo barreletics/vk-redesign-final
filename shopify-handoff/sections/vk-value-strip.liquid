@@ -1,0 +1,299 @@
+{%- comment -%}
+  ============================================================
+  VK Value Strip — exemplar Shopify section
+  ============================================================
+  Covers index strip variants: V7, V7b, V8, V12
+  Index spec : https://barreletics.github.io/vk-redesign-final/index-v2.html#strips
+  Live refs  :
+    V7   credential bar  — https://barreletics.github.io/vk-secondary-pages/audio-consultants.html
+    V7b  warm-grey stats — https://barreletics.github.io/vk-secondary-pages/audio-consultants.html
+    V8   check 4-up      — https://barreletics.github.io/vk-secondary-pages/section-179.html
+    V12  PLP trust strip — https://barreletics.github.io/vk-secondary-pages/microphones-plp-spotlight.html
+
+  Repeatable blocks (max 4) become the strip items. Each block holds
+  a stat / label / detail string. Layout preset controls visual style.
+  ============================================================
+{%- endcomment -%}
+
+{%- liquid
+  assign layout     = section.settings.layout
+  assign accent     = section.settings.accent_color
+  assign accent_hex = '#D4860A'
+  assign accent_bg  = '#F5E6C8'
+  if accent == 'red'
+    assign accent_hex = '#C0392B'
+    assign accent_bg  = '#FDF1EE'
+  endif
+-%}
+
+<section
+  class="vk-strip vk-strip--{{ layout }}"
+  style="--vk-accent: {{ accent_hex }}; --vk-accent-bg: {{ accent_bg }};"
+  {{ section.shopify_attributes }}
+>
+  <div class="vk-strip__row">
+    {%- case layout -%}
+
+      {%- when 'credential-bar' -%}
+        {%- comment -%} V7 — inline credential bar on amber wash {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          <span class="vk-strip__credential" {{ block.shopify_attributes }}>
+            {%- if block.settings.lead != blank -%}<strong>{{ block.settings.lead | escape }}</strong>{%- endif -%}
+            {{ block.settings.label | escape }}
+          </span>
+        {%- endfor -%}
+
+      {%- when 'stats-grid' -%}
+        {%- comment -%} V7b — warm-grey stats with big Playfair numbers {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          <div class="vk-strip__stat" {{ block.shopify_attributes }}>
+            <div class="vk-strip__stat-num">{{ block.settings.lead | escape }}</div>
+            <div class="vk-strip__stat-label">{{ block.settings.label | escape }}</div>
+          </div>
+        {%- endfor -%}
+
+      {%- when 'check-4up' -%}
+        {%- comment -%} V8 — rounded square + check, 4-up {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          <div class="vk-strip__item" {{ block.shopify_attributes }}>
+            <div class="vk-strip__icon" aria-hidden="true">✓</div>
+            <div class="vk-strip__meta">
+              <strong>{{ block.settings.label | escape }}</strong>
+              {%- if block.settings.detail != blank -%}
+                <small>{{ block.settings.detail | escape }}</small>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+
+      {%- when 'plp-trust' -%}
+        {%- comment -%} V12 — soft-wash circle + check for PLP {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          <div class="vk-strip__item vk-strip__item--wash" {{ block.shopify_attributes }}>
+            <div class="vk-strip__icon vk-strip__icon--wash" aria-hidden="true">✓</div>
+            <div class="vk-strip__meta">
+              <strong>{{ block.settings.label | escape }}</strong>
+              {%- if block.settings.detail != blank -%}
+                <small>{{ block.settings.detail | escape }}</small>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+
+    {%- endcase -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .vk-strip {
+    --vk-near-black: #1A1A18;
+    --vk-mid-grey: #6B6B68;
+    --vk-hairline: rgba(26, 26, 24, 0.08);
+    --vk-warm-grey: #E8E3DC;
+    background: #fff;
+    border-top: 1px solid var(--vk-hairline);
+    border-bottom: 1px solid var(--vk-hairline);
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    color: var(--vk-near-black);
+  }
+  .vk-strip__row {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 24px 28px;
+    display: grid;
+    gap: 22px;
+  }
+
+  /* V7 — credential bar */
+  .vk-strip--credential-bar { background: var(--vk-accent-bg); }
+  .vk-strip--credential-bar .vk-strip__row {
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    justify-content: center;
+    padding: 14px 28px;
+    gap: 28px;
+    font-size: 12px;
+  }
+  .vk-strip__credential strong {
+    font-weight: 700;
+    margin-right: 5px;
+  }
+
+  /* V7b — warm-grey stats grid */
+  .vk-strip--stats-grid {
+    background: var(--vk-warm-grey);
+    border-top: 2px solid #D0C9C0;
+    border-bottom: 2px solid #D0C9C0;
+  }
+  .vk-strip--stats-grid .vk-strip__row {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0 28px;
+    gap: 0;
+  }
+  .vk-strip__stat {
+    text-align: center;
+    padding: 32px 16px;
+    border-right: 1px solid rgba(26, 26, 24, 0.10);
+  }
+  .vk-strip__stat:last-child { border-right: 0; }
+  .vk-strip__stat-num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--vk-near-black);
+    line-height: 1;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.10);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .vk-strip__stat-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--vk-accent);
+  }
+
+  /* V8 — check 4-up + V12 PLP trust (shared layout) */
+  .vk-strip--check-4up .vk-strip__row,
+  .vk-strip--plp-trust .vk-strip__row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .vk-strip__item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .vk-strip__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    background: var(--vk-accent);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 2px rgba(212, 134, 10, 0.12);
+  }
+  .vk-strip__icon--wash {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--vk-accent-bg);
+    color: var(--vk-accent);
+    box-shadow: none;
+    font-size: 13px;
+  }
+  .vk-strip__meta strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: var(--vk-near-black);
+  }
+  .vk-strip__meta small {
+    font-size: 11px;
+    color: var(--vk-mid-grey);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 749px) {
+    .vk-strip--stats-grid .vk-strip__row,
+    .vk-strip--check-4up .vk-strip__row,
+    .vk-strip--plp-trust .vk-strip__row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .vk-strip--credential-bar .vk-strip__row {
+      grid-auto-flow: row;
+      grid-auto-columns: 1fr;
+      justify-content: stretch;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VK Value Strip",
+  "tag": "section",
+  "class": "vk-section-strip",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout preset",
+      "info": "V7 inline credential · V7b stat grid · V8 check 4-up · V12 PLP trust",
+      "options": [
+        { "value": "credential-bar", "label": "V7 · Inline credential bar (amber wash)" },
+        { "value": "stats-grid",     "label": "V7b · Warm-grey stats grid" },
+        { "value": "check-4up",      "label": "V8 · Check 4-up (daily driver)" },
+        { "value": "plp-trust",      "label": "V12 · PLP trust strip (soft wash circle)" }
+      ],
+      "default": "check-4up"
+    },
+    {
+      "type": "select",
+      "id": "accent_color",
+      "label": "Accent",
+      "options": [
+        { "value": "amber", "label": "Amber (secondary)" },
+        { "value": "red",   "label": "VK Red (core ecommerce)" }
+      ],
+      "default": "amber"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "strip_item",
+      "name": "Strip item",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "lead",
+          "label": "Lead / number",
+          "info": "Big Playfair number on V7b · bold lead on V7 (e.g. 32 yrs). Leave blank on V8 / V12."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label / headline",
+          "default": "Free expert consultation"
+        },
+        {
+          "type": "text",
+          "id": "detail",
+          "label": "Detail line",
+          "info": "Small grey copy under the label (V8 / V12 only).",
+          "default": "30-min sessions with a VK consultant — by appointment"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "VK Value Strip — V8 check 4-up",
+      "settings": { "layout": "check-4up", "accent_color": "amber" },
+      "blocks": [
+        { "type": "strip_item", "settings": { "label": "Free expert consultation", "detail": "30-min sessions with a VK consultant — by appointment" } },
+        { "type": "strip_item", "settings": { "label": "32-year track record", "detail": "Built audio chains for 600+ pro studios since 1993" } },
+        { "type": "strip_item", "settings": { "label": "Authorized for 200+ brands", "detail": "Direct relationships with manufacturers + first-year warranty" } },
+        { "type": "strip_item", "settings": { "label": "VK Warranty on all used gear", "detail": "30 days on every piece. Tech-inspected before listing." } }
+      ]
+    },
+    {
+      "name": "VK Value Strip — V7b stats",
+      "settings": { "layout": "stats-grid", "accent_color": "amber" },
+      "blocks": [
+        { "type": "strip_item", "settings": { "lead": "30+ Years", "label": "Buying Pro Audio" } },
+        { "type": "strip_item", "settings": { "lead": "24 Hr",    "label": "Offer Guarantee" } },
+        { "type": "strip_item", "settings": { "lead": "Same Day", "label": "Trade Credit Applied" } },
+        { "type": "strip_item", "settings": { "lead": "We Pay",   "label": "All Shipping Costs" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,347 @@
+{%- comment -%}
+  ============================================================
+  VK Collection Filters — exemplar Shopify section (UI SHELL ONLY)
+  ============================================================
+  Covers index variant: P-A canonical filter pattern
+  Index spec : https://barreletics.github.io/vk-redesign-final/index-v2.html#body-plp
+  Live ref   : https://barreletics.github.io/vk-secondary-pages/microphones-plp-default.html
+
+  ⚠ IMPORTANT FOR HAMMER
+  ────────────────────────
+  This file is the VISUAL SHELL ONLY for the P-A filter pattern:
+    • Category head (breadcrumb, h1, count, lede)
+    • Pill row + "More filters" toggle
+    • Quick links row (middot-separated)
+    • Meta row (count left, sort/view right)
+    • Expanded facet panel (tabs + chip list)
+
+  Real filtering values, counts, sort, pagination, and product cards MUST
+  be wired to Shopify Search & Discovery (Storefront Filtering API) using
+  collection.filters + section rendering API. See:
+    https://shopify.dev/docs/themes/navigation-search/filtering/storefront-filtering
+
+  The hardcoded chip text below is placeholder — Hammer should replace
+  the .vk-flt__pills / .vk-flt__panel-chips loops with collection.filters
+  iteration. Suggested mapping is shown in inline comments.
+  ============================================================
+{%- endcomment -%}
+
+<section class="vk-flt" {{ section.shopify_attributes }}>
+  {%- comment -%} ── Category head ── {%- endcomment -%}
+  <header class="vk-flt__head">
+    <nav class="vk-flt__crumb" aria-label="Breadcrumb">
+      Home <span class="vk-flt__sep">›</span> Recording <span class="vk-flt__sep">›</span> Microphones
+    </nav>
+    <h1 class="vk-flt__h">
+      {{- section.settings.heading | default: collection.title | default: 'Microphones' -}}
+    </h1>
+    <div class="vk-flt__count">
+      {%- if collection -%}
+        {{ collection.products_count }} products in stock
+      {%- else -%}
+        {{ section.settings.fallback_count }} products in stock
+      {%- endif -%}
+    </div>
+    {%- if section.settings.lede != blank -%}
+      <p class="vk-flt__lede">{{ section.settings.lede }}</p>
+    {%- endif -%}
+  </header>
+
+  {%- comment -%} ── Pill filter row ── {%- endcomment -%}
+  <div class="vk-flt__bar" role="region" aria-label="Quick filters">
+    <div class="vk-flt__pills">
+      {%- comment -%}
+        HAMMER: replace the static chips below with a loop over
+        collection.filters that surfaces the merchant's top facets.
+        Example mapping:
+          for filter in collection.filters
+            for value in filter.active_values  // pre-selected = .vk-flt__chip--red
+            for value in filter.presented_values
+      {%- endcomment -%}
+      <button type="button" class="vk-flt__chip vk-flt__chip--red">Condenser</button>
+      <button type="button" class="vk-flt__chip">Dynamic</button>
+      <button type="button" class="vk-flt__chip">Ribbon</button>
+      <button type="button" class="vk-flt__chip">Tube</button>
+      <button type="button" class="vk-flt__chip">Large Diaphragm</button>
+      <button
+        type="button"
+        class="vk-flt__chip vk-flt__chip--more"
+        aria-controls="vk-flt-panel"
+        aria-expanded="false"
+        data-vk-flt-toggle
+      >
+        More filters +
+      </button>
+    </div>
+
+    <div class="vk-flt__sort">
+      <label for="vk-flt-sort">Sort:</label>
+      <select id="vk-flt-sort" name="sort_by">
+        {%- if collection -%}
+          {%- for option in collection.sort_options -%}
+            <option value="{{ option.value }}" {% if collection.sort_by == option.value %}selected{% endif %}>
+              {{ option.name }}
+            </option>
+          {%- endfor -%}
+        {%- else -%}
+          <option>Featured</option>
+          <option>Price · low to high</option>
+          <option>Newest</option>
+        {%- endif -%}
+      </select>
+    </div>
+  </div>
+
+  {%- comment -%} ── Quick row (middot links) ── {%- endcomment -%}
+  <div class="vk-flt__qrow">
+    <span class="vk-flt__qlbl">QUICK:</span>
+    <a href="#">In stock</a><span class="vk-flt__qsep">·</span>
+    <a href="#">Under $1,000</a><span class="vk-flt__qsep">·</span>
+    <a href="#">Open box</a><span class="vk-flt__qsep">·</span>
+    <a href="#">Vintage</a><span class="vk-flt__qsep">·</span>
+    <a href="#">Co-op</a>
+  </div>
+
+  {%- comment -%} ── Meta row (count + sort/view right) ── {%- endcomment -%}
+  <div class="vk-flt__mrow">
+    <div class="vk-flt__mcount">
+      Showing <strong>1–24</strong> of <strong>
+        {%- if collection -%}{{ collection.products_count }}{%- else -%}{{ section.settings.fallback_count }}{%- endif -%}
+      </strong>
+    </div>
+    <div class="vk-flt__mright">
+      <span class="vk-flt__minline"><strong>Sort:</strong> Featured</span>
+      <span class="vk-flt__minline"><strong>View:</strong> Grid <span class="vk-flt__msep">·</span> List</span>
+    </div>
+  </div>
+
+  {%- comment -%} ── Expanded facet panel (toggled by "More filters +") ── {%- endcomment -%}
+  <div class="vk-flt__panel" id="vk-flt-panel" hidden>
+    <nav class="vk-flt__tabs" role="tablist">
+      <span class="vk-flt__tab vk-flt__tab--act" role="tab">Type</span>
+      <span class="vk-flt__tab" role="tab">Brand</span>
+      <span class="vk-flt__tab" role="tab">Price</span>
+      <span class="vk-flt__tab" role="tab">Condition</span>
+      <span class="vk-flt__tab" role="tab">Polar Pattern</span>
+    </nav>
+    <div class="vk-flt__panel-chips">
+      {%- comment -%}
+        HAMMER: render the chip list from the active tab's filter values.
+        Each chip is a checkbox-style button:
+          <button class="vk-flt__chip">{{ value.label }} ({{ value.count }})</button>
+      {%- endcomment -%}
+      <button class="vk-flt__chip">Condenser (84)</button>
+      <button class="vk-flt__chip">Dynamic (52)</button>
+      <button class="vk-flt__chip">Ribbon (18)</button>
+      <button class="vk-flt__chip">Tube (29)</button>
+      <button class="vk-flt__chip">FET (61)</button>
+    </div>
+    <a class="vk-flt__seeall" href="#">See all type options →</a>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var toggle = document.querySelector('[data-vk-flt-toggle]');
+    var panel  = document.getElementById('vk-flt-panel');
+    if (!toggle || !panel) return;
+    toggle.addEventListener('click', function () {
+      var open = panel.hasAttribute('hidden') ? false : true;
+      if (open) {
+        panel.setAttribute('hidden', '');
+        toggle.setAttribute('aria-expanded', 'false');
+      } else {
+        panel.removeAttribute('hidden');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+    });
+  })();
+</script>
+
+{% stylesheet %}
+  .vk-flt {
+    --vk-near-black: #1A1A18;
+    --vk-mid-grey: #6B6B68;
+    --vk-red: #C0392B;
+    --vk-hairline: rgba(26, 26, 24, 0.08);
+    --vk-hairline-strong: rgba(26, 26, 24, 0.20);
+    --vk-off-white: #FAF9F6;
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    color: var(--vk-near-black);
+    background: #fff;
+  }
+
+  /* Category head */
+  .vk-flt__head { padding: 22px 22px 18px; border-bottom: 1px solid var(--vk-hairline); }
+  .vk-flt__crumb { font-size: 11px; color: var(--vk-mid-grey); margin-bottom: 6px; }
+  .vk-flt__sep { margin: 0 4px; opacity: 0.6; }
+  .vk-flt__h {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.1;
+    margin: 0 0 4px;
+  }
+  .vk-flt__count { font-size: 12px; color: var(--vk-mid-grey); font-weight: 500; }
+  .vk-flt__lede { font-size: 12px; color: var(--vk-mid-grey); margin-top: 8px; max-width: 680px; line-height: 1.55; }
+
+  /* Pill bar */
+  .vk-flt__bar {
+    padding: 12px 22px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom: 1px solid var(--vk-hairline);
+  }
+  .vk-flt__pills { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .vk-flt__chip {
+    font-size: 11px;
+    padding: 6px 12px;
+    border: 1px solid var(--vk-hairline-strong);
+    border-radius: 18px;
+    color: var(--vk-near-black);
+    background: #fff;
+    white-space: nowrap;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .vk-flt__chip:hover { background: var(--vk-off-white); }
+  .vk-flt__chip--red,
+  .vk-flt__chip--more {
+    background: var(--vk-red);
+    color: #fff;
+    border-color: var(--vk-red);
+    font-weight: 600;
+  }
+  .vk-flt__chip--red:hover,
+  .vk-flt__chip--more:hover { opacity: 0.92; background: var(--vk-red); }
+
+  .vk-flt__sort { margin-left: auto; font-size: 11px; color: var(--vk-mid-grey); }
+  .vk-flt__sort select {
+    font-size: 11px;
+    padding: 4px 8px;
+    border: 1px solid var(--vk-hairline-strong);
+    background: #fff;
+    font-family: inherit;
+  }
+
+  /* Quick row */
+  .vk-flt__qrow {
+    padding: 10px 22px 12px;
+    font-size: 12px;
+    color: var(--vk-mid-grey);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    line-height: 1.6;
+    border-bottom: 1px solid var(--vk-hairline);
+  }
+  .vk-flt__qlbl { font-weight: 600; color: var(--vk-near-black); margin-right: 10px; letter-spacing: 0.02em; }
+  .vk-flt__qrow a { color: var(--vk-mid-grey); padding: 2px 0; text-decoration: none; }
+  .vk-flt__qrow a:hover { color: var(--vk-near-black); }
+  .vk-flt__qsep { color: rgba(26, 26, 24, 0.22); margin: 0 10px; }
+
+  /* Meta row */
+  .vk-flt__mrow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 22px;
+    border-bottom: 1px solid var(--vk-hairline);
+    font-size: 12px;
+    color: var(--vk-near-black);
+  }
+  .vk-flt__mcount { color: var(--vk-mid-grey); }
+  .vk-flt__mcount strong { color: var(--vk-near-black); font-weight: 600; }
+  .vk-flt__mright {
+    margin-left: auto;
+    display: inline-flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .vk-flt__minline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--vk-mid-grey);
+  }
+  .vk-flt__minline strong { color: var(--vk-near-black); font-weight: 600; }
+  .vk-flt__msep { color: rgba(26, 26, 24, 0.22); margin: 0 4px; }
+
+  /* Expanded panel */
+  .vk-flt__panel {
+    padding: 20px 22px;
+    background: var(--vk-off-white);
+    border-bottom: 1px solid var(--vk-hairline);
+  }
+  .vk-flt__tabs {
+    display: flex;
+    gap: 14px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--vk-mid-grey);
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--vk-hairline);
+    padding-bottom: 8px;
+  }
+  .vk-flt__tab {
+    padding: 4px 0;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .vk-flt__tab--act {
+    color: var(--vk-near-black);
+    border-bottom: 2px solid var(--vk-red);
+    padding-bottom: 6px;
+    margin-bottom: -9px;
+  }
+  .vk-flt__panel-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+  .vk-flt__seeall {
+    font-size: 11px;
+    color: var(--vk-red);
+    font-weight: 600;
+    border-bottom: 1px solid var(--vk-red);
+    padding-bottom: 1px;
+    text-decoration: none;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VK Collection Filters",
+  "tag": "section",
+  "class": "vk-section-collection-filters",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "This section is the UI shell for the P-A canonical filter pattern. Wire chips, counts, and sort to Shopify Search & Discovery via collection.filters in the live theme."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading override",
+      "info": "Defaults to collection.title when blank."
+    },
+    {
+      "type": "richtext",
+      "id": "lede",
+      "label": "Lede paragraph"
+    },
+    {
+      "type": "number",
+      "id": "fallback_count",
+      "label": "Fallback product count",
+      "info": "Used only when rendered outside a collection context (preview/demo).",
+      "default": 247
+    }
+  ],
+  "presets": [
+    {
+      "name": "VK Collection Filters (P-A)"
+    }
+  ]
+}
+{% endschema %}

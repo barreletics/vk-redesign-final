@@ -1,0 +1,387 @@
+{%- comment -%}
+  ============================================================
+  VK Hero — exemplar Shopify section
+  ============================================================
+  Covers index variants: H4 (centered), H5 (50/50), H8 (service/program)
+  Index spec : https://barreletics.github.io/vk-redesign-final/index-v2.html#heroes
+  Live refs  :
+    H4 — https://barreletics.github.io/vk-secondary-pages/section-179.html
+    H5 — https://barreletics.github.io/vk-secondary-pages/make-your-mark.html
+    H8 — https://barreletics.github.io/vk-secondary-pages/audio-consultants.html
+
+  This is a PATTERN file for Hammer. Pixel-faithful to the prototype,
+  Shopify Online Store 2.0 schema with theme-editor controls. Does NOT
+  include cart, product, or collection logic — content-section only.
+  ============================================================
+{%- endcomment -%}
+
+{%- liquid
+  assign layout      = section.settings.layout
+  assign accent      = section.settings.accent_color
+  assign hero_bg     = section.settings.background_color | default: '#EDE8E2'
+  assign accent_hex  = '#D4860A'
+  if accent == 'red'
+    assign accent_hex = '#C0392B'
+  endif
+-%}
+
+<section
+  class="vk-hero vk-hero--{{ layout }}"
+  style="--vk-accent: {{ accent_hex }}; --vk-hero-bg: {{ hero_bg }};"
+  {{ section.shopify_attributes }}
+  aria-label="{{ section.settings.headline | escape }}"
+>
+  {%- case layout -%}
+
+    {%- when 'centered' -%}
+      <div class="vk-hero__inner vk-hero__inner--center">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="vk-hero__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.headline != blank -%}
+          <h1 class="vk-hero__title">{{ section.settings.headline }}</h1>
+        {%- endif -%}
+        {%- if section.settings.lede != blank -%}
+          <p class="vk-hero__lede">{{ section.settings.lede }}</p>
+        {%- endif -%}
+        {% render 'vk-hero-ctas', section: section %}
+      </div>
+
+    {%- when 'split-5050' -%}
+      <div class="vk-hero__split">
+        <div class="vk-hero__copy">
+          {%- if section.settings.eyebrow != blank -%}
+            <p class="vk-hero__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+          {%- endif -%}
+          {%- if section.settings.headline != blank -%}
+            <h1 class="vk-hero__title">{{ section.settings.headline }}</h1>
+          {%- endif -%}
+          {%- if section.settings.lede != blank -%}
+            <p class="vk-hero__lede">{{ section.settings.lede }}</p>
+          {%- endif -%}
+          {% render 'vk-hero-ctas', section: section %}
+        </div>
+        <div class="vk-hero__media">
+          {%- if section.settings.image != blank -%}
+            {{
+              section.settings.image
+              | image_url: width: 1200
+              | image_tag:
+                loading: 'eager',
+                fetchpriority: 'high',
+                widths: '600,900,1200,1600',
+                sizes: '(min-width: 750px) 50vw, 100vw',
+                alt: section.settings.image.alt | default: section.settings.headline,
+                class: 'vk-hero__img'
+            }}
+          {%- else -%}
+            <div class="vk-hero__img vk-hero__img--placeholder" aria-hidden="true"></div>
+          {%- endif -%}
+        </div>
+      </div>
+
+    {%- when 'service' -%}
+      <div class="vk-hero__service">
+        <div class="vk-hero__service-inner">
+          <div class="vk-hero__copy">
+            {%- if section.settings.eyebrow != blank -%}
+              <p class="vk-hero__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+            {%- endif -%}
+            {%- if section.settings.headline != blank -%}
+              <h1 class="vk-hero__title">{{ section.settings.headline }}</h1>
+            {%- endif -%}
+            {%- if section.settings.lede != blank -%}
+              <p class="vk-hero__lede">{{ section.settings.lede }}</p>
+            {%- endif -%}
+            {% render 'vk-hero-ctas', section: section %}
+          </div>
+          <div class="vk-hero__media vk-hero__media--rounded">
+            {%- if section.settings.image != blank -%}
+              {{
+                section.settings.image
+                | image_url: width: 900
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '500,700,900,1200',
+                  sizes: '(min-width: 750px) 42vw, 100vw',
+                  alt: section.settings.image.alt | default: section.settings.headline,
+                  class: 'vk-hero__img'
+              }}
+            {%- else -%}
+              <div class="vk-hero__img vk-hero__img--placeholder" aria-hidden="true"></div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+
+  {%- endcase -%}
+</section>
+
+{% stylesheet %}
+  .vk-hero {
+    --vk-near-black: #1A1A18;
+    --vk-mid-grey: #6B6B68;
+    background: var(--vk-hero-bg);
+    color: var(--vk-near-black);
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .vk-hero__eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--vk-accent);
+    margin: 0 0 14px;
+  }
+
+  .vk-hero__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    line-height: 1.05;
+    margin: 0 0 14px;
+    letter-spacing: -0.005em;
+  }
+  .vk-hero__title em {
+    font-style: italic;
+    color: var(--vk-accent);
+  }
+
+  .vk-hero__lede {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--vk-near-black);
+    margin: 0 0 18px;
+  }
+
+  .vk-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .vk-hero__btn {
+    display: inline-block;
+    padding: 11px 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: opacity 0.15s ease, background-color 0.15s ease;
+  }
+  .vk-hero__btn--primary {
+    background: var(--vk-accent);
+    color: #fff;
+    border: 1px solid var(--vk-accent);
+  }
+  .vk-hero__btn--primary:hover { opacity: 0.92; }
+  .vk-hero__btn--ghost {
+    background: transparent;
+    color: var(--vk-near-black);
+    border: 1px solid var(--vk-near-black);
+  }
+  .vk-hero__btn--ghost:hover { background: var(--vk-near-black); color: #fff; }
+
+  /* H4 — centered */
+  .vk-hero__inner--center {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 24px;
+    text-align: center;
+  }
+  .vk-hero__inner--center .vk-hero__title { font-size: clamp(28px, 4.5vw, 42px); }
+  .vk-hero__inner--center .vk-hero__lede {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+  }
+  .vk-hero__inner--center .vk-hero__actions { justify-content: center; }
+
+  /* H5 — 50/50 split */
+  .vk-hero__split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 480px;
+  }
+  .vk-hero__copy {
+    padding: 48px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .vk-hero__copy .vk-hero__title {
+    font-size: clamp(28px, 4vw, 42px);
+    max-width: 480px;
+  }
+  .vk-hero__copy .vk-hero__lede {
+    font-size: 14px;
+    max-width: 440px;
+  }
+  .vk-hero__media {
+    position: relative;
+    min-height: 400px;
+    overflow: hidden;
+  }
+  .vk-hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    min-height: inherit;
+  }
+  .vk-hero__img--placeholder {
+    background: linear-gradient(135deg, #cfc8be 0%, #9c9489 100%);
+  }
+
+  /* H8 — service / program (rounded image card) */
+  .vk-hero__service { padding: 48px 36px; }
+  .vk-hero__service-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 32px;
+    align-items: stretch;
+  }
+  .vk-hero__service .vk-hero__copy { padding: 0; }
+  .vk-hero__media--rounded {
+    border-radius: 3px;
+    min-height: 380px;
+  }
+
+  @media (max-width: 749px) {
+    .vk-hero__split,
+    .vk-hero__service-inner {
+      grid-template-columns: 1fr;
+    }
+    .vk-hero__copy { padding: 36px 24px; }
+    .vk-hero__media { min-height: 260px; }
+    .vk-hero__media--rounded { min-height: 260px; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "VK Hero",
+  "tag": "section",
+  "class": "vk-section-hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout preset",
+      "info": "H4 centered light · H5 50/50 light + image · H8 service / program",
+      "options": [
+        { "value": "centered",   "label": "H4 · Centered light (most secondary pages)" },
+        { "value": "split-5050", "label": "H5 · 50/50 light + image" },
+        { "value": "service",    "label": "H8 · Service / program (rounded image)" }
+      ],
+      "default": "centered"
+    },
+    {
+      "type": "select",
+      "id": "accent_color",
+      "label": "Accent color",
+      "info": "Amber = secondary / program pages. Red = core ecommerce surfaces.",
+      "options": [
+        { "value": "amber", "label": "Amber (#D4860A)" },
+        { "value": "red",   "label": "VK Red (#C0392B)" }
+      ],
+      "default": "amber"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#EDE8E2",
+      "info": "Locked hero tone (#EDE8E2) by default. Change only for special cases."
+    },
+
+    {
+      "type": "header",
+      "content": "Copy"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Section 179 · 2025 Tax Year"
+    },
+    {
+      "type": "richtext",
+      "id": "headline",
+      "label": "Headline",
+      "info": "Use <em> to italicize a word in the accent color.",
+      "default": "<p>Write off up to $1,160,000 in studio gear this year.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "lede",
+      "label": "Lede",
+      "default": "<p>Section 179 lets working studios deduct the full purchase price of qualifying equipment.</p>"
+    },
+
+    {
+      "type": "header",
+      "content": "Image",
+      "info": "Required for H5 and H8. Ignored on H4 centered."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+
+    {
+      "type": "header",
+      "content": "Primary CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_label",
+      "label": "Primary button label",
+      "default": "Calculate my deduction"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_url",
+      "label": "Primary button URL"
+    },
+
+    {
+      "type": "header",
+      "content": "Secondary CTA (optional)"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_label",
+      "label": "Secondary button label"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_url",
+      "label": "Secondary button URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "VK Hero — centered (H4)",
+      "settings": { "layout": "centered", "accent_color": "amber" }
+    },
+    {
+      "name": "VK Hero — 50/50 (H5)",
+      "settings": { "layout": "split-5050", "accent_color": "amber" }
+    },
+    {
+      "name": "VK Hero — service (H8)",
+      "settings": { "layout": "service", "accent_color": "amber" }
+    }
+  ]
+}
+{% endschema %}
